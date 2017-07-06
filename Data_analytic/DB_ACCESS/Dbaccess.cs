@@ -65,7 +65,7 @@ namespace DB_ACCESS
                     MessageBox.Show("Application configuration file is corrupt.", "DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Application.Exit();
                 }
-
+      
                 strConnString = @"Password=abc123;Persist Security Info=True;User ID=sa;Initial Catalog=" + dataBaseName + ";MultipleActiveResultSets=True;Timeout=120;Data Source=" + server;
 
 

@@ -48,7 +48,7 @@ namespace BusinessLayer
            
           //  BusGenral.DS.Tables["Userinfo"].Clear();
         }
-       
+    
         public int  GetUserInfoRecord(string strUserName, string strpass)
         {
             DT.Clear();
