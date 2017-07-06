@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data_analytic", "Data_analytic\Data_analytic.csproj", "{033F8B8E-7DC8-47A2-9ADF-D4AF55828315}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{CF5086D2-D222-4D30-BC54-C9F6E36DA89F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DB_ACCESS", "DB_ACCESS\DB_ACCESS.csproj", "{5E439874-25B0-421E-84C2-AB9231B4AA58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{033F8B8E-7DC8-47A2-9ADF-D4AF55828315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{033F8B8E-7DC8-47A2-9ADF-D4AF55828315}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{033F8B8E-7DC8-47A2-9ADF-D4AF55828315}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{033F8B8E-7DC8-47A2-9ADF-D4AF55828315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF5086D2-D222-4D30-BC54-C9F6E36DA89F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF5086D2-D222-4D30-BC54-C9F6E36DA89F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF5086D2-D222-4D30-BC54-C9F6E36DA89F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF5086D2-D222-4D30-BC54-C9F6E36DA89F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E439874-25B0-421E-84C2-AB9231B4AA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E439874-25B0-421E-84C2-AB9231B4AA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E439874-25B0-421E-84C2-AB9231B4AA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E439874-25B0-421E-84C2-AB9231B4AA58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

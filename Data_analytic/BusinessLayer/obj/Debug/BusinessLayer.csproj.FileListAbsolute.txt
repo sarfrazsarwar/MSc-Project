@@ -1,0 +1,21 @@
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
+C:\Users\sohail.satti\Desktop\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.dll
+C:\Users\sohail.satti\Desktop\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
+C:\Users\sohail.satti\Desktop\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
+C:\Users\sohail.satti\Desktop\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
+C:\Users\sohail.satti\Desktop\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+C:\Users\sohail.satti\Desktop\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
+C:\Users\sohail.satti\Desktop\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\BusinessLayer\bin\Debug\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\BusinessLayer\bin\Debug\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\BusinessLayer\obj\Debug\BusinessLayer.pdb
