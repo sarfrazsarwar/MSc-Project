@@ -31,11 +31,11 @@ namespace Data_analytic.Account
                
                 m.InsertRecord(strlist);
                 Session.Add("UserName", UserName.Text);
-                Response.Redirect("~/Programing.aspx");
+//                Response.Redirect("~/Programing.aspx");
             }
             else
             {
-                Response.Redirect("About.aspx");
+//                Response.Redirect("About.aspx");
             }
           //  string continueUrl = RegisterUser.ContinueDestinationPageUrl;
             //if (String.IsNullOrEmpty(continueUrl))

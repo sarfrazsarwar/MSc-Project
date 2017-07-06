@@ -25,3 +25,12 @@ D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_ana
 D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
 D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\Data_analytic\obj\Debug\Data_analytic.dll
 D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(User Register +Login)1\Data_analytic\obj\Debug\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
