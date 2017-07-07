@@ -1,0 +1,64 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Mathmetic.aspx.cs" Inherits="Data_analytic.Mathmetic" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <h3>Plese Select the Programing Information </h3>
+   <div> <asp:Label ID="Label1" runat="server" Text="Mathmetic Aplitude"></asp:Label>  <%-- oncheckedchanged="CHK_TOOL_CheckedChanged"--%>
+       <%--<asp:Literal ID="Literal1" runat="server" Text="Level">--%><%--AutoPostBack="true"--%>
+   <asp:RadioButton ID="RBT_Noexperience" Text="No experience "  runat="server" Checked="true" GroupName="ToolGroup" />
+   <asp:RadioButton ID="RBT_NOVOICE" Text="Novice" runat="server"  GroupName="ToolGroup" />
+   <asp:RadioButton ID="RBT_Intermediate" Text="Intermediate" runat="server"  GroupName="ToolGroup" />
+   <asp:RadioButton ID="RBT_Expert" Text="Expert" runat="server"  GroupName="ToolGroup"/>
+  <%-- </asp:Literal>--%>
+   
+   </div>
+<div style="margin-top:20px"></div>
+    <asp:Panel ID="Panel1" runat="server">
+       <asp:GridView ID="MATH_GD" runat="server" AutoGenerateColumns="False"
+   
+    EnableViewState="False" Height="108px" Width="511px"><%-- AllowPaging="true"
+    OnPageIndexChanging="OnPageIndexChanging" PageSize="5" DataKeyNames="SupplierID" DataSourceID="SuppliersDataSource" --%>
+   <Columns  >
+        
+        <asp:BoundField DataField="Academic_info" HeaderText="Mathmetic" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+            <asp:TemplateField HeaderText="available "> 
+            <ItemTemplate>
+                <asp:RadioButton ID="RBT_AVAIABLE" runat="server" 
+                    GroupName="InfoGroup" Width="100" />
+            </ItemTemplate>
+            </asp:TemplateField>
+             <asp:TemplateField  HeaderText="Notavailable"> 
+            <ItemTemplate>
+                <asp:RadioButton ID="RBT_NOTAVAIABLE" runat="server" 
+                    GroupName="InfoGroup"    Width="100" />
+            </ItemTemplate>
+            </asp:TemplateField>
+            <%-- <asp:TemplateField> Checked="true"
+            <ItemTemplate>
+                <asp:RadioButton ID="RowSelector2" Text="True" runat="server" 
+                    GroupName="SuppliersGroup" />
+            </ItemTemplate>
+        </asp:TemplateField>--%>
+    </Columns>
+          
+
+
+</asp:GridView>
+<div style="margin-top:12px">
+<asp:Label ID="LBL_RESEARCH" runat="server" Text="Research Experience"></asp:Label>  
+ <asp:RadioButton ID="RBT_R_NOEXP" Text="No experience " runat="server" Checked="true" GroupName="REXP" />
+   <asp:RadioButton ID="RBT_R_NOvice" Text="Novice" runat="server" GroupName="REXP" />
+   <asp:RadioButton ID="RBT_R_Inter" Text="Intermediate" runat="server" GroupName="REXP" />
+   <asp:RadioButton ID="RBT_R_Expert" Text="Expert" runat="server" GroupName="REXP"/>
+
+ </div>
+      
+     <asp:Button ID="Pre" runat="server" Text="Pre" onclick="Pre_Click" />
+     <asp:Button ID="NEXT" runat="server" Text="Next" onclick="NEXT_Click" />
+    </asp:Panel>
+   
+
+
+
+</asp:Content>

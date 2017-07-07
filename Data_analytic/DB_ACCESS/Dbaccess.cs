@@ -65,7 +65,7 @@ namespace DB_ACCESS
                     MessageBox.Show("Application configuration file is corrupt.", "DB", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     Application.Exit();
                 }
-      
+
                 strConnString = @"Password=abc123;Persist Security Info=True;User ID=sa;Initial Catalog=" + dataBaseName + ";MultipleActiveResultSets=True;Timeout=120;Data Source=" + server;
 
 
@@ -255,15 +255,10 @@ namespace DB_ACCESS
                         DbCommand.CommandText = query;
                         DbCommand.CommandType = CommandType.Text;
                         DbCommand.CommandTimeout = 0;
-                        //Modify Date 28-06-07 (Salman)
-                        //DbAdapter = new SqlDataAdapter(DbCommand);
+
                         DbAdapter.SelectCommand = DbCommand;
                         DbAdapter.Fill(tblName);
 
-                        ////Change Date 20-06-07
-                        //DA1.SelectCommand = DbCommand;
-                        //DA1.Fill(tblName);
-                        //DA1.Dispose();
                         DbAdapter.Dispose();
                         DbCommand.Dispose();
                         return;

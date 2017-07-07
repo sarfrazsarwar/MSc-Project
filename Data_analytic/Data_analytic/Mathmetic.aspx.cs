@@ -8,71 +8,71 @@ using System.Data;
 
 namespace Data_analytic
 {
-    public partial class Programing : System.Web.UI.Page
+    public partial class Mathmetic : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
-            DataTable dtb = m.GetProgramingAcademicAssociatedInfo();
+            DataTable dt = m.GetMathmeticAcademicAssociatedInfo();
             //if (RBT_Noexperience.Checked)
             //{
-            //    dtb.Clear();
+            //    dt.Clear();
             //}
-            PRO_GD.DataSource = dtb;
-            PRO_GD.DataBind();
+            MATH_GD.DataSource = dt;
+            MATH_GD.DataBind();
             //Session.Add("UserName", "");
-            if (Session["Programing"] != null && !IsPostBack)
+            if (Session["Mathmetic"] != null && !IsPostBack)
             {
-                LoadSelectedState();
-                //if (Session["CHK_PROG"].ToString() == "1")
+               
+                //if (Session["CHK_MATH"].ToString() == "1")
                 //{
-                //    CHK_PROG.Checked = true;
+                //    CHK_MATH.Checked = true;
                 //}
                 //else
                 //{
-                //    CHK_PROG.Checked = false;
+                //    CHK_MATH.Checked = false;
                 //}
-                if (Session["CHK_PROG_VALUE"].ToString() == "1")
+                if (Session["CHK_MATH_VALUE"].ToString() == "1")
                 {
                     RBT_Noexperience.Checked = true;
 
                 }
-                if (Session["CHK_PROG_VALUE"].ToString() == "2")
+                if (Session["CHK_MATH_VALUE"].ToString() == "2")
                 {
                     RBT_NOVOICE.Checked = true;
 
                 }
-                if (Session["CHK_PROG_VALUE"].ToString() == "3")
+                if (Session["CHK_MATH_VALUE"].ToString() == "3")
                 {
                     RBT_Intermediate.Checked = true;
 
                 }
-                if (Session["CHK_PROG_VALUE"].ToString() == "4")
+                if (Session["CHK_MATH_VALUE"].ToString() == "4")
                 {
                     RBT_Expert.Checked = true;
 
                 }
 
-
+                LoadSelectedState();
             }
-           
+
         }
         void LoadSelectedState()
         {
-            DataTable dt = (DataTable)Session["Programing"];
+            DataTable dt = (DataTable)Session["Mathmetic"];
             int i = 0;
             foreach (DataRow dr in dt.Rows)
             {
-                GridViewRow gdrow = PRO_GD.Rows[i];
-                RadioButton rbt = (RadioButton)gdrow.FindControl("RBT_AVAILABLE_PRO") as RadioButton;
-                RadioButton rbt1 = (RadioButton)gdrow.FindControl("RBT_NOTAVAILABLE_PRO") as RadioButton;
+                GridViewRow gdrow = MATH_GD.Rows[i];
+                RadioButton rbt = (RadioButton)gdrow.FindControl("RBT_AVAIABLE");
+                RadioButton rbt1 = (RadioButton)gdrow.FindControl("RBT_NOTAVAIABLE");
                 if (dr["Available"].ToString() == "1")
                 {
 
                     rbt.Checked = true;
                 }
-                
-                else // if (dr["NotAvailable"].ToString() == "1")
+
+                else if (dr["NotAvailable"].ToString() == "1")
                 {
                     rbt1.Checked = true;
                 }
@@ -82,37 +82,30 @@ namespace Data_analytic
         }
         protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            PRO_GD.PageIndex = e.NewPageIndex;
-            PRO_GD.DataBind();
+            MATH_GD.PageIndex = e.NewPageIndex;
+            MATH_GD.DataBind();
             //  this.BindGrid();
         }
-
-        protected void NEXT_Click(object sender, EventArgs e)
+        void SetMathmeticData()
         {
             DataTable dt = new DataTable();
             DataColumn dc = new DataColumn();
+
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
-
             dc = new DataColumn("Available", typeof(int));
             // dc.ColumnName = "Available";
 
             dt.Columns.Add(dc);
 
             dc = new DataColumn("NotAvailable", typeof(int));
-            //dc = new DataColumn();
-            //dc.ColumnName = "Available";
-
-            //dt.Columns.Add(dc);
-
-            //dc = new DataColumn();
-            //dc.ColumnName = "NotAvailable";
+            //dc.ColumnName = "";
 
             dt.Columns.Add(dc);
 
 
-            foreach (GridViewRow row in PRO_GD.Rows)
+            foreach (GridViewRow row in MATH_GD.Rows)
             {
                 DataRow dr = dt.NewRow();
                 //    <asp:RadioButton ID="RowSelector1" runat="server" 
@@ -126,51 +119,75 @@ namespace Data_analytic
                 }
                 else
                 {
-                    RadioButton r = (RadioButton)row.FindControl("RBT_NOTAVAILABLE_PRO");
+                    RadioButton r = (RadioButton)row.FindControl("RBT_AVAIABLE");
                     if (r.Checked)
-                        dr["NotAvailable"] = 1;
-
-                    else
-                        dr["NotAvailable"] = 0;
-                    RadioButton r1 = (RadioButton)row.FindControl("RBT_AVAILABLE_PRO");
-
-                    if (r1.Checked)
                         dr["Available"] = 1;
 
                     else
                         dr["Available"] = 0;
-                    }
-                    dt.Rows.Add(dr);
-               
+                    RadioButton r1 = (RadioButton)row.FindControl("RBT_NOTAVAIABLE");
+
+                    if (r1.Checked)
+                        dr["NotAvailable"] = 1;
+
+                    else
+                        dr["NotAvailable"] = 0;
+                }
+                dt.Rows.Add(dr);
             }
-            Session["Programing"] = dt;
-            //if (CHK_PROG.Checked)
+            Session["Mathmetic"] = dt;
+            //if (CHK_MATH.Checked)
             //{
-            //    Session["CHK_PROG"] = 1;
+            //    Session["CHK_MATH"] = 1;
             //}
             //else
             //{
-            //    Session["CHK_PROG"] = 0;
+            //    Session["CHK_MATH"] = 0;
             //}
             if (RBT_Expert.Checked)
             {
-                Session["CHK_PROG_VALUE"] = 4;
+                Session["CHK_MATH_VALUE"] = 4;
             }
             if (RBT_Intermediate.Checked)
             {
-                Session["CHK_PROG_VALUE"] = 3;
+                Session["CHK_MATH_VALUE"] = 3;
             }
             if (RBT_Noexperience.Checked)
             {
-                Session["CHK_PROG_VALUE"] = 1;
+                Session["CHK_MATH_VALUE"] = 1;
             }
             if (RBT_NOVOICE.Checked)
             {
-                Session["CHK_PROG_VALUE"] = 2;
+                Session["CHK_MATH_VALUE"] = 2;
             }
-            Response.Redirect("~/Mathmetic.aspx");
-            
-        }
 
+            if (RBT_R_Expert.Checked)
+            {
+                Session["CHK_RE_VALUE"] = 4;
+            }
+            if (RBT_R_Inter.Checked)
+            {
+                Session["CHK_RE_VALUE"] = 3;
+            }
+            if (RBT_R_NOEXP.Checked)
+            {
+                Session["CHK_RE_VALUE"] = 1;
+            }
+            if (RBT_R_NOvice.Checked)
+            {
+                Session["CHK_RE_VALUE"] = 2;
+            }
+        }
+        protected void NEXT_Click(object sender, EventArgs e)
+        {
+            SetMathmeticData();
+            Response.Redirect("~/Tool.aspx");
+
+        }
+        protected void Pre_Click(object sender, EventArgs e)
+        {
+            SetMathmeticData();
+            Response.Redirect("~/Programing.aspx");
+        }
     }
 }
