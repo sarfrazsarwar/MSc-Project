@@ -5,10 +5,10 @@ F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\DB_AC
 F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
 F:\Sohail Data\webProj\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Previouis Selection)4\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Previouis Selection)4\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Previouis Selection)4\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Previouis Selection)4\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Previouis Selection)4\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Previouis Selection)4\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Previouis Selection)4\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic_1(Modify Programing Page and Mathmetic + data Base Change)5\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic_1(Modify Programing Page and Mathmetic + data Base Change)5\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic_1(Modify Programing Page and Mathmetic + data Base Change)5\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic_1(Modify Programing Page and Mathmetic + data Base Change)5\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic_1(Modify Programing Page and Mathmetic + data Base Change)5\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic_1(Modify Programing Page and Mathmetic + data Base Change)5\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic_1(Modify Programing Page and Mathmetic + data Base Change)5\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb

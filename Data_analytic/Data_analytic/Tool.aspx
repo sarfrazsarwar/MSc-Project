@@ -21,7 +21,8 @@
     <asp:Panel ID="Panel1" runat="server">
        <asp:GridView ID="TOOL_GV" runat="server" AutoGenerateColumns="False"
    
-    EnableViewState="False" Height="108px" Width="511px"><%-- AllowPaging="true"
+    EnableViewState="False" Height="108px" Width="511px" Font-Bold="True" 
+            Font-Italic="False" Font-Names="Aparajita" Font-Size="X-Large"><%-- AllowPaging="true"
     OnPageIndexChanging="OnPageIndexChanging" PageSize="5" DataKeyNames="SupplierID" DataSourceID="SuppliersDataSource" --%>
     <Columns  >
         

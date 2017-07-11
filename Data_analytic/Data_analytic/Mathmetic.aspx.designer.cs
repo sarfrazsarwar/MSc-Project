@@ -22,42 +22,6 @@ namespace Data_analytic {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// RBT_Noexperience control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_Noexperience;
-        
-        /// <summary>
-        /// RBT_NOVOICE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_NOVOICE;
-        
-        /// <summary>
-        /// RBT_Intermediate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_Intermediate;
-        
-        /// <summary>
-        /// RBT_Expert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_Expert;
-        
-        /// <summary>
         /// Panel1 control.
         /// </summary>
         /// <remarks>
@@ -85,40 +49,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.WebControls.Label LBL_RESEARCH;
         
         /// <summary>
-        /// RBT_R_NOEXP control.
+        /// DG_RESEAECH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_R_NOEXP;
-        
-        /// <summary>
-        /// RBT_R_NOvice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_R_NOvice;
-        
-        /// <summary>
-        /// RBT_R_Inter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_R_Inter;
-        
-        /// <summary>
-        /// RBT_R_Expert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_R_Expert;
+        protected global::System.Web.UI.WebControls.GridView DG_RESEAECH;
         
         /// <summary>
         /// Pre control.

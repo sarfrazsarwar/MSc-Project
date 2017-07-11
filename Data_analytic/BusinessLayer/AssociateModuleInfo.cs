@@ -12,7 +12,7 @@ namespace BusinessLayer
         public DataTable GetToolAcademicAssociatedInfo()
         {
             DT.Clear();
-            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=3";
+            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=4";
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
             int rcord = DT.Rows.Count;
             return DT;
@@ -29,6 +29,14 @@ namespace BusinessLayer
         {
             DT.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=2";
+            DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
+            int rcord = DT.Rows.Count;
+            return DT;
+        }
+        public DataTable GetResearchAcademicAssociatedInfo()
+        {
+            DT.Clear();
+            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=3";
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
             int rcord = DT.Rows.Count;
             return DT;

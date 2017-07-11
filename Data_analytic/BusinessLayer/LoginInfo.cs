@@ -48,11 +48,11 @@ namespace BusinessLayer
            
           //  BusGenral.DS.Tables["Userinfo"].Clear();
         }
-/*        public string DuplicateRecor(string Uname,string Pass)
+        public string DuplicateRecor(string Uname,string Pass)
         {
            string qury = "";
             return DB_ACCESS.Dbaccess.executeScalarQuery(qury);
-        }*/
+        }
         public int  GetUserInfoRecord(string strUserName, string strpass)
         {
             DT.Clear();

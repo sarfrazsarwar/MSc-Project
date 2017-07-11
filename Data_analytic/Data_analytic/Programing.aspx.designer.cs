@@ -22,42 +22,6 @@ namespace Data_analytic {
         protected global::System.Web.UI.WebControls.Label LBL_PROG;
         
         /// <summary>
-        /// RBT_Noexperience control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_Noexperience;
-        
-        /// <summary>
-        /// RBT_NOVOICE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_NOVOICE;
-        
-        /// <summary>
-        /// RBT_Intermediate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_Intermediate;
-        
-        /// <summary>
-        /// RBT_Expert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RBT_Expert;
-        
-        /// <summary>
         /// Panel1 control.
         /// </summary>
         /// <remarks>
