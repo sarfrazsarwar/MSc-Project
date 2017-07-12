@@ -58,6 +58,15 @@ namespace Data_analytic {
         protected global::System.Web.UI.WebControls.Label LBL_RESearch;
         
         /// <summary>
+        /// GD_RESearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GD_RESearch;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
