@@ -171,9 +171,9 @@ namespace Data_analytic
 
         void showResearchSummary()
         {
-            if (Session["ResearcExp"] != null)
+            if (Session["ResearchExp"] != null)
             {
-                DataTable dt = (DataTable)Session["ResearcExp"];
+                DataTable dt = (DataTable)Session["ResearchExp"];
                 DataRow[] result = dt.Select("NotAvailable=0");
                 DataTable dt1 = new DataTable();
                 DataColumn dc = new DataColumn();
@@ -255,8 +255,68 @@ namespace Data_analytic
                 GD_TOOL.DataBind();
             }
         }
+
+
+        void SaveUserInputRecor(string TblName, BusinessLayer.AssociateModuleInfo m)
+        {
+            if (Session[TblName] != null)
+            {
+                DataTable dt = (DataTable)Session[TblName]; // casting into datatable
+                //int User_ID = 0; //(int)Session["UserID"];
+                int User_ID = (int)Session["UserID"]; // casting into int
+               
+                
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (dr["NotAvailable"].ToString() == "0") // no need to save if "not avaliable" is 1
+                    {
+                        
+                        int AA_ID= int.Parse(dr["AA_ID"].ToString());
+                        int Level = 1;
+                        if (dr["Intermedite"].ToString() == "1")
+                        {
+                            Level = 3;
+                        }
+                        else if (dr["Expert"].ToString() == "1")
+                        {
+                            Level = 4;
+                        }
+                        else if (dr["Available"].ToString() == "1")
+                        {
+                            Level = 2;
+                        }
+
+                        m.InsertUserInputRecord(User_ID, AA_ID, Level); //for each table in session, for each row and its level is saved in database
+                    }
+                }
+            }
+        }
         protected void NEXT_Click(object sender, EventArgs e)
         {
+             BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
+             
+            int User_ID = (int)Session["UserID"];
+            m.DeleteUserInputRecord(User_ID); // delete previous data 
+            
+            for (int i = 0; i < 4; i++) // Loop not actually required
+            {
+                if (i == 0)
+                {
+                    SaveUserInputRecor("Programing", m);
+                }
+                else if (i == 1)
+                {
+                    SaveUserInputRecor("Tool", m);
+                }
+                else if (i == 2)
+                {
+                    SaveUserInputRecor("Mathmetic", m);
+                }
+                else if (i == 3)
+                {
+                    SaveUserInputRecor("ResearchExp", m);
+                }
+            }
             Response.Redirect("~/Result.aspx");
         }
         protected void Pre_Click(object sender, EventArgs e)

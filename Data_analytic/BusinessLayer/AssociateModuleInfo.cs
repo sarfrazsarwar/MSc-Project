@@ -12,7 +12,8 @@ namespace BusinessLayer
         public DataTable GetToolAcademicAssociatedInfo()
         {
             DT.Clear();
-            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=4";
+            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=4 AND"+
+                " [Academic_info]  not like '%_anyOne' ORDER BY AA_ID";
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
             int rcord = DT.Rows.Count;
             return DT;
@@ -20,7 +21,7 @@ namespace BusinessLayer
         public DataTable GetProgramingAcademicAssociatedInfo()
         {
             DT.Clear();
-            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=1";
+            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=1 AND [Academic_info]  not like '%_anyOne' ORDER BY AA_ID";
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
             int rcord = DT.Rows.Count;
             return DT;
@@ -28,7 +29,7 @@ namespace BusinessLayer
         public DataTable GetMathmeticAcademicAssociatedInfo()
         {
             DT.Clear();
-            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=2";
+            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=2 AND [Academic_info]  not like '%_anyOne' ORDER BY AA_ID";
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
             int rcord = DT.Rows.Count;
             return DT;
@@ -36,10 +37,27 @@ namespace BusinessLayer
         public DataTable GetResearchAcademicAssociatedInfo()
         {
             DT.Clear();
-            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=3";
+            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=3 ORDER BY AA_ID";
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
             int rcord = DT.Rows.Count;
             return DT;
+        }
+
+        public void DeleteUserInputRecord(int user_id)
+        {
+
+            string str = "DELETE FROM [Data_Analytics].[dbo].[User_Input]" +
+                            "WHERE [user_ID]=" + user_id;
+            DB_ACCESS.Dbaccess.executeQuery(str);
+
+        }
+        public void InsertUserInputRecord(int user_id,int AA_ID,int Level)
+        {
+
+                string str = "INSERT Into [Data_Analytics].[dbo].[User_Input] ([AA_ID] ,[user_ID],[Expertise_Level]) VALUES " +
+                                            "(" + AA_ID + "," + user_id + "," + Level + ")";
+                DB_ACCESS.Dbaccess.executeQuery(str);
+           
         }
     }
 }

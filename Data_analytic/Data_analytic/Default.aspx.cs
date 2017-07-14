@@ -23,6 +23,8 @@ namespace Data_analytic
             int noofRecord = m.GetUserInfoRecord(LoginUser.UserName, LoginUser.Password);
             if (noofRecord >= 1)
             {
+                Session.Add("UserID", noofRecord);
+                Session.Add("UserName", LoginUser.UserName);
                 Response.Redirect("~/Programing.aspx");
             }
 

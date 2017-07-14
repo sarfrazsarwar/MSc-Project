@@ -66,7 +66,9 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Summary.aspx" />
     <Content Include="Tool.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

@@ -21,6 +21,7 @@ namespace Data_analytic.Account
             if (noofRecord >= 1)
             {
                 Session.Add("UserName",LoginUser.UserName);
+                Session.Add("UserID", noofRecord);
                 Response.Redirect("~/Tool.aspx");
               
             }

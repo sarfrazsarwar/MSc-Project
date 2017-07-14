@@ -30,7 +30,7 @@ namespace Data_analytic
                 
                 if(Session["Mathmetic"] != null)
                 LoadMathmeticSelectedState();
-                if (Session["ResearcExp"] != null)
+                if (Session["ResearchExp"] != null)
                 LoadResearchSelectedState();
             }
 
@@ -151,7 +151,7 @@ namespace Data_analytic
 
         void LoadResearchSelectedState()
         {
-            DataTable dt = (DataTable)Session["ResearcExp"];
+            DataTable dt = (DataTable)Session["ResearchExp"];
             int i = 0;
             foreach (DataRow dr in dt.Rows)
             {
@@ -259,7 +259,7 @@ namespace Data_analytic
 
                 dt.Rows.Add(dr);
             }
-            Session["ResearcExp"] = dt;
+            Session["ResearchExp"] = dt;
         }
 
         //void LoadSelectedState()

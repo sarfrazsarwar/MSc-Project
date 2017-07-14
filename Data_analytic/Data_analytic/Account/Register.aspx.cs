@@ -22,7 +22,7 @@ namespace Data_analytic.Account
             //FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
 
             BusinessLayer.LoginInfo m = new BusinessLayer.LoginInfo();
-            if (m.GetUserInfoRecord(UserName.Text, Password.Text) == 0)
+            if (m.DuplicateUserInfoRecord(UserName.Text) == 0)
             {
                 List<string> strlist=new List<string>();
                 strlist.Add(UserName.Text);
@@ -30,6 +30,8 @@ namespace Data_analytic.Account
                 strlist.Add(Email.Text);
                
                 m.InsertRecord(strlist);
+                int noofRecord = m.GetUserInfoRecord(UserName.Text, Password.Text);
+                Session.Add("UserID", noofRecord);
                 Session.Add("UserName", UserName.Text);
                 Response.Redirect("~/Programing.aspx");
             }

@@ -61,6 +61,10 @@ namespace Data_analytic
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
+            dc = new DataColumn();
+            dc.ColumnName = "AA_ID";
+
+            dt.Columns.Add(dc);
             dc = new DataColumn("Available", typeof(int));
             // dc.ColumnName = "Available";
 
@@ -95,7 +99,7 @@ namespace Data_analytic
                 //        GroupName="SuppliersGroup"  Width="100" />
                 //</ItemTemplate>r
                 dr["data"] = row.Cells[0].Text;
-
+                dr["AA_ID"] = row.Cells[1].Text;
                 RadioButton r = (RadioButton)row.FindControl("RowSelector1");
                 if (r.Checked)
                     dr["Available"] = 1;

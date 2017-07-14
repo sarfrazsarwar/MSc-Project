@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Plese Select the Mathmetic Information </h3>
+    <h3>Plese select appropriate options, while considering one's own expertise in Mathematics domain </h3>
    <div> <asp:Label ID="Label1" runat="server" Text="Mathmetic Aplitude" Font-Size="X-Large" Font-Bold="True"></asp:Label>  <%-- oncheckedchanged="CHK_TOOL_CheckedChanged"--%>
        <%--<asp:Literal ID="Literal1" runat="server" Text="Level">--%><%--AutoPostBack="true"--%>
   <%-- <asp:RadioButton ID="RBT_Noexperience" Text="No experience "  runat="server" Checked="true" GroupName="ToolGroup" />
@@ -16,42 +16,49 @@
     <asp:Panel ID="Panel1" runat="server">
        <asp:GridView ID="MATH_GD" runat="server" AutoGenerateColumns="False"
    
-    EnableViewState="False" Height="108px" Width="511px" Font-Bold="True" 
+    EnableViewState="False" Height="108px" Width="511px"  
             Font-Italic="False" Font-Names="Aparajita" Font-Size="X-Large"><%-- AllowPaging="true"
     OnPageIndexChanging="OnPageIndexChanging" PageSize="5" DataKeyNames="SupplierID" DataSourceID="SuppliersDataSource" --%>
    <Columns  >
         
-        <asp:BoundField DataField="Academic_info" HeaderText="Mathmetic" 
-                HtmlEncode="False" ItemStyle-Width="400px"/>
+        <asp:BoundField DataField="Academic_info" 
+                HtmlEncode="False" ItemStyle-Width="400px">
+        <ItemStyle Width="400px" />
+        </asp:BoundField>
         <asp:BoundField DataField="AA_ID" HeaderText="AA_ID" 
                    HtmlEncode="False" ItemStyle-Width="300px" Visible="true">
                <ItemStyle Width="300px" />
                </asp:BoundField>
-               <asp:TemplateField HeaderText="Not available "> 
+               <asp:TemplateField HeaderText="No Knowledge" 
+            HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector" runat="server" 
                     GroupName="InfoGroup" Checked="true" Width="100" />
             </ItemTemplate>
+                   <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
-             <asp:TemplateField  HeaderText="available"> 
+             <asp:TemplateField  HeaderText="Novice" HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector1" runat="server" 
                     GroupName="InfoGroup"  Width="100" />
             </ItemTemplate>
+                 <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
 
-            <asp:TemplateField  HeaderText="Intermedite"> 
+            <asp:TemplateField  HeaderText="Intermedite" HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector2" runat="server" 
                     GroupName="InfoGroup"  Width="100" />
             </ItemTemplate>
+                <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
 
-            <asp:TemplateField  HeaderText="Expert"> 
+            <asp:TemplateField  HeaderText="Expert" HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector3" runat="server" 
                     GroupName="InfoGroup"  Width="100" />
             </ItemTemplate>
+                <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
             <%--<asp:TemplateField HeaderText="available "> 
             <ItemTemplate>
@@ -77,48 +84,55 @@
 
 </asp:GridView>
 <div style="margin-top:12px">
-<h3>Plese Select the Research/Experience Information </h3>
+<h3>Plese select appropriate options, while considering one's own expertise in research domain </h3>
 <asp:Label ID="LBL_RESEARCH" runat="server" Text="Research Experience" Font-Size="X-Large" Font-Bold="True"></asp:Label> 
 
 
        <asp:GridView ID="DG_RESEAECH" runat="server" AutoGenerateColumns="False"
    
-    EnableViewState="False" Height="108px" Width="511px" Font-Bold="True" 
+    EnableViewState="False" Height="108px" Width="511px" 
             Font-Italic="False" Font-Names="Aparajita" Font-Size="X-Large"><%-- AllowPaging="true"
     OnPageIndexChanging="OnPageIndexChanging" PageSize="5" DataKeyNames="SupplierID" DataSourceID="SuppliersDataSource" --%>
    <Columns  >
         
-        <asp:BoundField DataField="Academic_info" HeaderText="Research/Exprience" 
-                HtmlEncode="False" ItemStyle-Width="400px"/>
+        <asp:BoundField DataField="Academic_info" 
+                HtmlEncode="False" ItemStyle-Width="400px">
+        <ItemStyle Width="400px" />
+        </asp:BoundField>
         <asp:BoundField DataField="AA_ID" HeaderText="AA_ID" 
                    HtmlEncode="False" ItemStyle-Width="300px" Visible="true">
                <ItemStyle Width="300px" />
                </asp:BoundField>
-               <asp:TemplateField HeaderText="Not available "> 
+               <asp:TemplateField HeaderText="No Knowledge" 
+            HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector4" runat="server" 
                     GroupName="InfoGroup1" Checked="true" Width="100" />
             </ItemTemplate>
+                   <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
-             <asp:TemplateField  HeaderText="available"> 
+             <asp:TemplateField  HeaderText="Novice" HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector5" runat="server" 
                     GroupName="InfoGroup1"  Width="100" />
             </ItemTemplate>
+                 <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
 
-            <asp:TemplateField  HeaderText="Intermedite"> 
+            <asp:TemplateField  HeaderText="Intermedite" HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector6" runat="server" 
                     GroupName="InfoGroup1"  Width="100" />
             </ItemTemplate>
+                <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
 
-            <asp:TemplateField  HeaderText="Expert"> 
+            <asp:TemplateField  HeaderText="Expert" HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector7" runat="server" 
                     GroupName="InfoGroup1"  Width="100" />
             </ItemTemplate>
+                <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
 
     </Columns>

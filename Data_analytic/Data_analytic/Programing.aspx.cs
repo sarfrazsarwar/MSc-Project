@@ -18,6 +18,7 @@ namespace Data_analytic
             //{
             //    dtb.Clear();
             //}
+
             PRO_GD.DataSource = dtb;
             PRO_GD.DataBind();
             //Session.Add("UserName", "");

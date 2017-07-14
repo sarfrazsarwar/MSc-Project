@@ -60,9 +60,17 @@ namespace BusinessLayer
 
 
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
-            int rcord = DT.Rows.Count;
+            if (DT.Rows.Count > 0)
+            {
+                int UserId=0;
+                DataRow dr = DT.Rows[0];
+                 UserId=int.Parse(dr["user_ID"].ToString());
                 DT.Clear();
-                return rcord;
+                return UserId;
+            }
+            else
+                return 0;
+                
         }
         public int DuplicateUserInfoRecord(string strUserName)
         {
@@ -71,9 +79,18 @@ namespace BusinessLayer
 
            // AND [Password]= '" + strpass + "'
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
-            int rcord = DT.Rows.Count;
-            DT.Clear();
-            return rcord;
+            return DT.Rows.Count;
+
+            //if (DT.Rows.Count > 0)
+            //{
+            //    int UserId = 0;
+            //    DataRow dr = DT.Rows[0];
+            //    UserId = int.Parse(dr["user_ID"].ToString());
+            //    DT.Clear();
+            //    return UserId;
+            //}
+            //else
+            //    return 0;
         }
         public DataTable UserInfoRecord(string strUserName)
         {
