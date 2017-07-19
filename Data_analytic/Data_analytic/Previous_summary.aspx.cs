@@ -19,6 +19,14 @@ namespace Data_analytic
                 showProgramingSummary();
                 showMathmeticSummary();
                 showResearchSummary();
+                 BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+                   int user_id = (int)Session["UserID"];
+                 DataTable dt=  obj.GetPreRecordSM2(user_id);
+                 GV_SM2.DataSource = dt;
+                 GV_SM2.DataBind();
+                  DataTable dt2=obj.GetPreRecordSM1(user_id);
+                  Gv_SM1.DataSource = dt;
+                  Gv_SM1.DataBind();
             }
            
         }

@@ -315,6 +315,61 @@ namespace BusinessLayer
             else
                 return false;
         }
+
+
+
+        public void InsertUserInputRecord(int user_id, int AA_ID,float p)
+        {
+
+            string str = "INSERT Into [Data_Analytics].[dbo].[User_Module_Selections] ([AM_ID] ,[user_ID],[Module Priority]) VALUES " +
+                                        "(" + AA_ID + "," + user_id + "," + p + ")";
+            DB_ACCESS.Dbaccess.executeQuery(str);
+
+        }
+        public void DeleteUserSelectionRecord(int user_id)
+        {
+
+            string str = "DELETE FROM [Data_Analytics].[dbo].[User_Module_Selections]" +
+                            "WHERE [user_ID]=" + user_id;
+            DB_ACCESS.Dbaccess.executeQuery(str);
+
+        }
+    public  DataTable GetPreRecordSM1(int user_ID)
+      {
+          DT.Clear();
+        
+   string qury=     "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours], "+
+  "ab.[Theoretical Lecture],ab.[Practical Labs],ab.[CourseWorks_Weightage],ab.[ExamType], "+
+  "ab.[Exam Weightage],mm.[Manager Name],mm.Email,se.[Module Priority] " +
+  "FROM [Data_Analytics].[dbo].[Academic_module_model] ab inner join "+
+  "[Data_Analytics].[dbo].[User_Module_Selections] se ON ab.AM_ID=se.AM_ID  "+ 
+  "inner join [Data_Analytics].[dbo].[Module_Manager_Details] mm on ab.[MM_ID]=mm.MM_ID  "+
+  "where se.[User_ID]=" +user_ID+" and ab.Smester=1";
+
+        
+          //string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours],ab.[Theoretical Lecture],ab.[Practical Labs]" +
+          //   ",ab.[CourseWorks_Weightage],ab.[ExamType],ab.[Exam Weightage]" +
+          //  "FROM [Data_Analytics].[dbo].[Academic_module_model] ab inner join [Data_Analytics].[dbo].[User_Module_Selections] se " +
+          //  "ON ab.AM_ID=se.AM_ID where se.[User_ID]="+user_ID+" and ab.Smester=1";
+          DB_ACCESS.Dbaccess.FillLocalTable(DT, qury);
+          return DT;
+      }
+     public DataTable GetPreRecordSM2(int user_ID)
+      {
+          DT.Clear();
+          string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours], " +
+                            "ab.[Theoretical Lecture],ab.[Practical Labs],ab.[CourseWorks_Weightage],ab.[ExamType], " +
+                             "ab.[Exam Weightage],mm.[Manager Name],mm.Email,se.[Module Priority] " +
+                             "FROM [Data_Analytics].[dbo].[Academic_module_model] ab inner join " +
+                             "[Data_Analytics].[dbo].[User_Module_Selections] se ON ab.AM_ID=se.AM_ID  " +
+                             "inner join [Data_Analytics].[dbo].[Module_Manager_Details] mm on ab.[MM_ID]=mm.MM_ID  " +
+                               "where se.[User_ID]=" + user_ID + " and ab.Smester=2";
+          DB_ACCESS.Dbaccess.FillLocalTable(DT, qury);
+          return DT;
+      }
+
+
+     
         void checkExpertise(DataRow[] drreq, DataTable dtConMat, DataRow drModule, DataTable dtTools, DataTable dtMath, DataTable dtResearch, DataTable dtPrograming)
         {
 
