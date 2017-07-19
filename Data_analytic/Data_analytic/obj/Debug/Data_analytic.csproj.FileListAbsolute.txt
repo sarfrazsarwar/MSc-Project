@@ -16,21 +16,12 @@ F:\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
 F:\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
 F:\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
 F:\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(anyone, logic,Font,Reserch)9\Data_analytic\Data_analytic\bin\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(anyone, logic,Font,Reserch)9\Data_analytic\Data_analytic\bin\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(anyone, logic,Font,Reserch)9\Data_analytic\Data_analytic\bin\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(anyone, logic,Font,Reserch)9\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(anyone, logic,Font,Reserch)9\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(anyone, logic,Font,Reserch)9\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(anyone, logic,Font,Reserch)9\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(anyone, logic,Font,Reserch)9\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(anyone, logic,Font,Reserch)9\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(display the Previous selection of Student)10\Data_analytic\Data_analytic\bin\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(display the Previous selection of Student)10\Data_analytic\Data_analytic\bin\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(display the Previous selection of Student)10\Data_analytic\Data_analytic\bin\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(display the Previous selection of Student)10\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(display the Previous selection of Student)10\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(display the Previous selection of Student)10\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(display the Previous selection of Student)10\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(display the Previous selection of Student)10\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(display the Previous selection of Student)10\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb

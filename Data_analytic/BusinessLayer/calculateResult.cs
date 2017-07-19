@@ -11,7 +11,7 @@ namespace BusinessLayer
 {
   public  class calculateResult
     { 
-        DataTable dtConfusionMat = new DataTable(); // global scope
+        DataTable dtConfusionMat = new DataTable();
         private DataTable DT = new DataTable("Academic_module_model");
         private DataTable DTRE = new DataTable("Module_Requirment");
        
@@ -91,7 +91,6 @@ namespace BusinessLayer
             dtConfusionMat.Columns.Add(dc);
             dc = new DataColumn("Practicle Lab");
             dtConfusionMat.Columns.Add(dc);
-            
             BusinessLayer.calculateResult m = new BusinessLayer.calculateResult();
             DataTable dtMoudle = m.GetModuleInfo();
 
@@ -99,9 +98,9 @@ namespace BusinessLayer
 
             foreach (DataRow dr in dtMoudle.Rows)
             {
-                DataRow[] dtRer = dtMoudleRequirment.Select("AM_ID=" + dr["AM_ID"]); // array of rows
+                DataRow[] dtRer = dtMoudleRequirment.Select("AM_ID=" + dr["AM_ID"]);
                 if (dtRer.Length > 0)
-                    checkExpertise(dtRer, dtConfusionMat, dr, dtTools, dtMath , dtResearch , dtPrograming ); // 19 times called, confusion table: 19 rows
+                    checkExpertise(dtRer, dtConfusionMat, dr, dtTools, dtMath , dtResearch , dtPrograming );
             }
             //SortSmesterData(dtConfusionMat);
         }
@@ -145,7 +144,7 @@ namespace BusinessLayer
             DataTable dtTempSmester1 = fRow.CopyToDataTable();
             dtMat = dtConfusionMat.Clone();
             dtMat.Clear();
-            DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dtMat); // by reference
+            DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dtMat);
             ds1.Tables.Add(dtSm1);
             ds1.Tables.Add(dtMat);
             return ds1;
@@ -193,7 +192,7 @@ namespace BusinessLayer
                     if (TotalCridetHour > 70)
                     {
                         TotalCridetHour = TotalCridetHour - CridetHour;
-                        DataRow drnew = dttemp.NewRow(); // non rec
+                        DataRow drnew = dttemp.NewRow();
 
 
                         drnew["AM_ID"] = drNonCom["AM_ID"];
@@ -209,7 +208,7 @@ namespace BusinessLayer
                         drnew["Recall"] = drNonCom["Recall"]; ;
                         dttemp.Rows.Add(drnew);
                     }
-                    else  // rec
+                    else
                     {
                         DataRow drnew = dtcom.NewRow();
 
@@ -260,7 +259,7 @@ namespace BusinessLayer
                 if (dr["AA_ID"].ToString() == ID)
                 {
                     return dr;
-                    //break;
+                    break;
                 }
             }
             return null;
@@ -328,7 +327,6 @@ namespace BusinessLayer
             int TruePostive = 0;
             int FalseNegtive = 0;
             int AM_ID = 0;
-            
             DataRow drComp = null;
 
             
@@ -371,7 +369,7 @@ namespace BusinessLayer
                                                 drTemp = dra;
                                             }
                                         }
-                                        //break;
+                                        break;
                                     }
                                 }
                             }
@@ -458,23 +456,22 @@ namespace BusinessLayer
 
                         }
 
-                        
+                       
                     }
-//                    else
- //                  {
-   //                     FalseNegtive++;
-     //              }
-                    
                     if (ReqExpertise > Level)
-                        {
-                            FalseNegtive++;
-                        }
-                        else
-                        {
-                            TruePostive++;
-                        }
+                    {
+                        FalseNegtive++;
+                    }
+                    else
+                    {
+                        TruePostive++;
+                    }
 
                 }
+
+
+
+
 
             }
             if (AM_ID > 0)

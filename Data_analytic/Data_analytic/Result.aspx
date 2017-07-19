@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Result.aspx.cs" Inherits="Data_analytic.Result" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Result.aspx.cs" Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -6,22 +6,40 @@
 
     <div style="margin-top:20px">
     <h2>Smester 1 Suggest Modules</h2>
-        <asp:GridView ID="GV_SM1" runat="server" Width="904px" AutoGenerateColumns="false">
+        <asp:GridView ID="GV_SM1" runat="server" Width="904px" 
+            AutoGenerateColumns="false"  OnRowDataBound = "OnRowDataBound" OnSelectedIndexChanged = "OnSelectedIndexChanged" >
              <Columns  >
        <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="300px">
+                 <ItemStyle Width="300px" />
+                 </asp:BoundField>
         <asp:BoundField DataField="TruePostive" HeaderText="True Postive" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="300px">
+                 <ItemStyle Width="300px" />
+                 </asp:BoundField>
         <asp:BoundField DataField="FalseNegtive" HeaderText="False Negtive" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="300px">
+                 <ItemStyle Width="300px" />
+                 </asp:BoundField>
         <asp:BoundField DataField="Recall" HeaderText="Recall" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="300px">
+                 <ItemStyle Width="300px" />
+                 </asp:BoundField>
         <asp:BoundField DataField="Compulsory" HeaderText="Compulsory" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="300px">
+                 <ItemStyle Width="300px" />
+                 </asp:BoundField>
         <asp:BoundField DataField="Credit hours" HeaderText="Credit Hr" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="300px">
+                 <ItemStyle Width="300px" />
+                 </asp:BoundField>
                  </Columns  >
+             <selectedrowstyle backcolor="LightCyan"
+         forecolor="DarkBlue"
+         font-bold="true"/> 
         </asp:GridView>
+       <asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>
+   
     </div>
 
 

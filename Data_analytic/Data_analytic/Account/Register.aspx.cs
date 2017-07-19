@@ -15,6 +15,8 @@ namespace Data_analytic.Account
         protected void Page_Load(object sender, EventArgs e)
         {
            // RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+            if(!IsPostBack)
+            Session.RemoveAll();
         }
 
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)

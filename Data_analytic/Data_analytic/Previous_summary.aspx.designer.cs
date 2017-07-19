@@ -10,60 +10,78 @@
 namespace Data_analytic {
     
     
-    public partial class Result {
+    public partial class Previous_summary {
         
         /// <summary>
-        /// Panel1 control.
+        /// LBL_Programing control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::System.Web.UI.WebControls.Label LBL_Programing;
         
         /// <summary>
-        /// GV_SM1 control.
+        /// GD_PRO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GV_SM1;
+        protected global::System.Web.UI.WebControls.GridView GD_PRO;
         
         /// <summary>
-        /// lnkDummy control.
+        /// LBL_MATH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDummy;
+        protected global::System.Web.UI.WebControls.Label LBL_MATH;
         
         /// <summary>
-        /// Gv_SM1_NO control.
+        /// GD_MATH control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gv_SM1_NO;
+        protected global::System.Web.UI.WebControls.GridView GD_MATH;
         
         /// <summary>
-        /// GV_SM2 control.
+        /// LBL_RESearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GV_SM2;
+        protected global::System.Web.UI.WebControls.Label LBL_RESearch;
         
         /// <summary>
-        /// Gv_SM2_NO control.
+        /// GD_RESearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gv_SM2_NO;
+        protected global::System.Web.UI.WebControls.GridView GD_RESearch;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// GD_TOOL control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GD_TOOL;
     }
 }

@@ -4,7 +4,7 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-<h3>Plese select appropriate options, while considering one's own expertise in following tools </h3>
+<h3>Plese Select the Tool Information </h3>
 
 <h3>Tool</h3>
    <div> <%--<asp:CheckBox ID="CHK_TOOL" Text="Tool" runat="server" 
@@ -26,27 +26,22 @@
     OnPageIndexChanging="OnPageIndexChanging" PageSize="5" DataKeyNames="SupplierID" DataSourceID="SuppliersDataSource" --%>
     <Columns  >
         
-        <asp:BoundField DataField="Academic_info" 
-                HtmlEncode="False" ItemStyle-Width="300px">
-        <ItemStyle Width="300px" />
-        </asp:BoundField>
+        <asp:BoundField DataField="Academic_info" HeaderText="TOOLS" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="AA_ID" HeaderText="AA_ID" 
                    HtmlEncode="False" ItemStyle-Width="300px" Visible="true">
-                   <ItemStyle Width="300px" />
                    </asp:BoundField>
-            <asp:TemplateField HeaderText="No Knowledge" HeaderStyle-Font-Bold="false"> 
+            <asp:TemplateField HeaderText="Not available " HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector" runat="server" 
                     GroupName="InfoGroup" Checked="true" Width="100" />
             </ItemTemplate>
-                <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
-             <asp:TemplateField  HeaderText="Novice" HeaderStyle-Font-Bold="false"> 
+             <asp:TemplateField  HeaderText="available" HeaderStyle-Font-Bold="false"> 
             <ItemTemplate>
                 <asp:RadioButton ID="RowSelector1" runat="server" 
                     GroupName="InfoGroup"  Width="100" />
             </ItemTemplate>
-                 <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
 
             <asp:TemplateField  HeaderText="Intermedite" HeaderStyle-Font-Bold="false"> 
@@ -54,7 +49,6 @@
                 <asp:RadioButton ID="RowSelector2" runat="server" 
                     GroupName="InfoGroup"  Width="100" />
             </ItemTemplate>
-                <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
 
             <asp:TemplateField  HeaderText="Expert" HeaderStyle-Font-Bold="false"> 
@@ -62,7 +56,6 @@
                 <asp:RadioButton ID="RowSelector3" runat="server" 
                     GroupName="InfoGroup"  Width="100" />
             </ItemTemplate>
-                <HeaderStyle Font-Bold="False" />
             </asp:TemplateField>
             <%-- <asp:TemplateField> 
             <ItemTemplate>

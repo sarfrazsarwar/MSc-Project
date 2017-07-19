@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace Data_analytic
 {
@@ -14,6 +15,8 @@ namespace Data_analytic
         {
            
             RegisterHyperLink.NavigateUrl = "Account/Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+            if (!IsPostBack)
+                Session.RemoveAll();
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
@@ -25,8 +28,25 @@ namespace Data_analytic
             {
                 Session.Add("UserID", noofRecord);
                 Session.Add("UserName", LoginUser.UserName);
-                Response.Redirect("~/Programing.aspx");
-            }
+                BusinessLayer.previous_Result pr = new BusinessLayer.previous_Result();
+                DataTable dtProg = pr.GetProg_Selection(noofRecord);
+                DataTable dtTool = pr.GetTool_Selection(noofRecord);
+                DataTable dtmath = pr.GetMathmetic_Selection(noofRecord);
+                DataTable dtresearch = pr.GetResearch_Selection(noofRecord);
+
+                if (dtProg.Rows.Count == 0 && dtTool.Rows.Count == 0 && dtmath.Rows.Count == 0 && dtresearch.Rows.Count == 0)
+                    Response.Redirect("~/Programing.aspx");
+                else
+                {
+                    Session["Programing"] = dtProg;
+                    Session["ResearchExp"] =dtresearch;
+                    Session["Mathmetic"] = dtmath;
+                    Session["TOOL"] = dtTool;
+                    Response.Redirect("~/Previous_summary.aspx");
+                    
+                }
+                }
+
 
 
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Drawing;
 using System.Data;
 
 namespace Data_analytic
@@ -12,69 +13,128 @@ namespace Data_analytic
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            DataTable dtTools = null;
-            DataTable dtMath = null;
-            DataTable dtResearch = null;
-            DataTable dtPrograming = null;
-            if (Session["TOOL"] != null)
+            if (!IsPostBack)
             {
-                dtTools = (DataTable)Session["TOOL"];
+                DataTable dtTools = null;
+                DataTable dtMath = null;
+                DataTable dtResearch = null;
+                DataTable dtPrograming = null;
+                if (Session["TOOL"] != null)
+                {
+                    dtTools = (DataTable)Session["TOOL"];
+                }
+                if (Session["Mathmetic"] != null)
+                {
+                    dtMath = (DataTable)Session["Mathmetic"];
+                }
+                if (Session["Programing"] != null)
+                {
+                    dtPrograming = (DataTable)Session["Programing"];
+                }
+                if (Session["ResearchExp"] != null)
+                {
+                    dtResearch = (DataTable)Session["ResearchExp"];
+                }
+
+
+                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+                obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
+                DataSet dtsm1 = obj.SortSmester1Data();
+                GV_SM1.DataSource = dtsm1.Tables[0];
+                GV_SM1.DataBind();
+                Gv_SM1_NO.DataSource = dtsm1.Tables[1];
+                Gv_SM1_NO.DataBind();
+
+
+                DataSet dtsm2 = obj.SortSmester2Data();
+
+                GV_SM2.DataSource = dtsm2.Tables[0];
+                GV_SM2.DataBind();
+                Gv_SM2_NO.DataSource = dtsm2.Tables[1];
+                Gv_SM2_NO.DataBind();
+
+
+                //    CalculateResults();
+
+                //DataRow[] fRow = dtMat.Select("Smester=1");
+                //DataTable dtTempSmester1 = fRow.CopyToDataTable();
+                //DataTable dttem = dtTempSmester1.Clone();
+                //dttem.Clear();
+                //DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dttem);
+                //GV_SM1.DataSource = dtSm1;
+                //GV_SM1.DataBind();
+                //Gv_SM1_NO.DataSource = dttem;
+                //Gv_SM1_NO.DataBind();
+                //DataRow[] fRow1 = dtMat.Select("Smester=2");
+                //DataTable dtTempSmester2 = fRow1.CopyToDataTable();
+                //dttem.Clear();
+                //DataTable dtSm2 = SmesterModuleSelction(dtTempSmester2, dttem);
+                //GV_SM2.DataSource = dtSm2;
+                //GV_SM2.DataBind();
+
+
+
+
+                //Gv_SM2_NO.DataSource = dttem;
+                //Gv_SM2_NO.DataBind();
             }
-            if (Session["Mathmetic"] != null)
+        }
+
+        protected void OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                dtMath = (DataTable)Session["Mathmetic"];
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GV_SM1, "Select$" + e.Row.RowIndex);
+                e.Row.ToolTip = "Click to select this row.";
             }
-            if (Session["Programing"] != null)
+        }
+
+        protected void OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (GridViewRow row in GV_SM1.Rows)
             {
-                dtPrograming = (DataTable)Session["Programing"];
+                if (row.RowIndex == GV_SM1.SelectedIndex)
+                {
+                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                    row.ToolTip = string.Empty;
+                }
+                else
+                {
+                    row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                    row.ToolTip = "Click to select this row.";
+                }
             }
-            if (Session["ResearchExp"] != null)
-            {
-                dtResearch = (DataTable)Session["ResearchExp"];
-            }
+        }
 
+        void CustomersGridView_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+            // Get the currently selected row using the SelectedRow property.
+            GridViewRow row = GV_SM1.SelectedRow;
 
-            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
-            obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
-            
-            DataSet dtsm1 = obj.SortSmester1Data();
-            GV_SM1.DataSource = dtsm1.Tables[0];
-            GV_SM1.DataBind();
-            Gv_SM1_NO.DataSource = dtsm1.Tables[1] ;
-            Gv_SM1_NO.DataBind();
+            // Display the first name from the selected row.
+            // In this example, the third column (index 2) contains
+            // the first name.
+            //MessageLabel.Text = "You selected " + row.Cells[2].Text + ".";
+        }
 
-           
-            DataSet dtsm2 = obj.SortSmester2Data();
-            GV_SM2.DataSource = dtsm2.Tables[0];
-            GV_SM2.DataBind();
-            Gv_SM2_NO.DataSource = dtsm2.Tables[1];
-            Gv_SM2_NO.DataBind();
+        void CustomersGridView_SelectedIndexChanging(Object sender, GridViewSelectEventArgs e)
+        {
+            // Get the currently selected row. Because the SelectedIndexChanging event
+            // occurs before the select operation in the GridView control, the
+            // SelectedRow property cannot be used. Instead, use the Rows collection
+            // and the NewSelectedIndex property of the e argument passed to this 
+            // event handler.
+            GridViewRow row = GV_SM1.Rows[e.NewSelectedIndex];
 
-
-            //    CalculateResults();
-
-            //DataRow[] fRow = dtMat.Select("Smester=1");
-            //DataTable dtTempSmester1 = fRow.CopyToDataTable();
-            //DataTable dttem = dtTempSmester1.Clone();
-            //dttem.Clear();
-            //DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dttem);
-            //GV_SM1.DataSource = dtSm1;
-            //GV_SM1.DataBind();
-            //Gv_SM1_NO.DataSource = dttem;
-            //Gv_SM1_NO.DataBind();
-            //DataRow[] fRow1 = dtMat.Select("Smester=2");
-            //DataTable dtTempSmester2 = fRow1.CopyToDataTable();
-            //dttem.Clear();
-            //DataTable dtSm2 = SmesterModuleSelction(dtTempSmester2, dttem);
-            //GV_SM2.DataSource = dtSm2;
-            //GV_SM2.DataBind();
-
-
-
-
-            //Gv_SM2_NO.DataSource = dttem;
-            //Gv_SM2_NO.DataBind();
+            // You can cancel the select operation by using the Cancel
+            // property. For this example, if the user selects a customer with 
+            // the ID "ANATR", the select operation is canceled and an error message
+            // is displayed.
+            //if (row.Cells[1].Text == "ANATR")
+            //{
+            //    e.Cancel = true;
+            //    MessageLabel.Text = "You cannot select " + row.Cells[2].Text + ".";
+            //}
         }
         //void CalculateResults()
         //{

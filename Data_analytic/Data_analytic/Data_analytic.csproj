@@ -56,6 +56,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Mathmetic.aspx" />
+    <Content Include="Previous_summary.aspx" />
     <Content Include="Programing.aspx" />
     <Content Include="Result.aspx" />
     <Content Include="Styles\Site.css" />
@@ -66,9 +67,7 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Summary.aspx" />
     <Content Include="Tool.aspx" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -128,6 +127,13 @@
     </Compile>
     <Compile Include="Mathmetic.aspx.designer.cs">
       <DependentUpon>Mathmetic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Previous_summary.aspx.cs">
+      <DependentUpon>Previous_summary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Previous_summary.aspx.designer.cs">
+      <DependentUpon>Previous_summary.aspx</DependentUpon>
     </Compile>
     <Compile Include="Programing.aspx.cs">
       <DependentUpon>Programing.aspx</DependentUpon>
