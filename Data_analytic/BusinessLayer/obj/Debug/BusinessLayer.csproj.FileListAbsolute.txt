@@ -19,3 +19,10 @@ D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_ana
 D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(database ,Module ajustment ,Summary Page)11\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(database ,Module ajustment ,Summary Page)11\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
 D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(database ,Module ajustment ,Summary Page)11\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
