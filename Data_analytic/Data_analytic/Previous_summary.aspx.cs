@@ -20,7 +20,7 @@ namespace Data_analytic
                 showMathmeticSummary();
                 showResearchSummary();
                  BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
-                   int user_id = (int)Session["UserID"];
+                   int user_id = 0;// (int)Session["UserID"];;
                  DataTable dt=  obj.GetPreRecordSM2(user_id);
                  GV_SM2.DataSource = dt;
                  GV_SM2.DataBind();

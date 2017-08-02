@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-
+using System.Drawing;
 namespace Data_analytic
 {
     public partial class Mathmetic : System.Web.UI.Page
@@ -35,7 +35,60 @@ namespace Data_analytic
             }
 
         }
+        protected void OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(MATH_GD, "Select$" + e.Row.RowIndex);
+                e.Row.ToolTip = "Click to select this row.";
+            }
+        }
 
+        protected void OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            foreach (GridViewRow row in MATH_GD.Rows)
+            {
+                if (row.RowIndex == MATH_GD.SelectedIndex)
+                {
+                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                    row.ToolTip = string.Empty;
+
+                }
+                else
+                {
+                    row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                    row.ToolTip = "Click to select this row.";
+                }
+            }
+        }
+        protected void OnRowDataBound1(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(DG_RESEAECH, "Select$" + e.Row.RowIndex);
+                e.Row.ToolTip = "Click to select this row.";
+            }
+        }
+
+        protected void OnSelectedIndexChanged1(object sender, EventArgs e)
+        {
+
+            foreach (GridViewRow row in DG_RESEAECH.Rows)
+            {
+                if (row.RowIndex == DG_RESEAECH.SelectedIndex)
+                {
+                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                    row.ToolTip = string.Empty;
+
+                }
+                else
+                {
+                    row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                    row.ToolTip = "Click to select this row.";
+                }
+            }
+        }
         void LoadMathmeticSelectedState()
         {
             DataTable dt = (DataTable)Session["Mathmetic"];

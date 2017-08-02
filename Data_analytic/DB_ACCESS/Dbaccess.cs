@@ -244,7 +244,8 @@ namespace DB_ACCESS
             DbAdapter.Update(dt.Select(null, null, DataViewRowState.ModifiedCurrent));
             DbAdapter.Update(dt.Select(null, null, DataViewRowState.Added));
 
-           
+
+
             //DA1.Dispose();
             DbAdapter.Dispose();
 
@@ -296,7 +297,7 @@ namespace DB_ACCESS
 
                 DbAdapter.SelectCommand = (DbCommand);
                 DbAdapter.Fill(dSet, tblName);
-             
+
                 DbAdapter.Dispose();
                 DbCommand.Dispose();
 
@@ -332,7 +333,7 @@ namespace DB_ACCESS
                 DbAdapter.SelectCommand = DbCommand;
                 DbAdapter.Fill(dSet, tblName);
 
-             
+
                 DbAdapter.Dispose();
                 DbCommand.Dispose();
 
@@ -433,11 +434,10 @@ namespace DB_ACCESS
                         DbCommand.CommandText = query;
                         DbCommand.CommandType = CommandType.Text;
                         DbCommand.CommandTimeout = 0;
-                        
+
                         DbAdapter.SelectCommand = DbCommand;
                         DbAdapter.Fill(tblName);
 
-                      
                         DbAdapter.Dispose();
                         DbCommand.Dispose();
                         return;
@@ -619,7 +619,7 @@ namespace DB_ACCESS
                     DbAdapter.SelectCommand = DbCommand;
                     DbAdapter.SelectCommand = DbCommand;
                     SqlCommandBuilder DbCommandBuilder = new SqlCommandBuilder(DbAdapter);
-                  
+
                     DbCommandBuilder.ConflictOption = ConflictOption.OverwriteChanges;
                     //  DbCommandBuilder.DataAdapter = DbAdapter;
                     return DbAdapter.Update(dSet, tblName);

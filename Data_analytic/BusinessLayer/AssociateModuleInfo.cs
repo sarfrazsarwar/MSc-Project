@@ -59,5 +59,15 @@ namespace BusinessLayer
                 DB_ACCESS.Dbaccess.executeQuery(str);
            
         }
+
+        public DataTable GetResearchAcademicAssociatedInfo1(string pr)
+        {
+            DT.Clear();
+            string str = "Select [Sug_Word] from [Data_Analytics].[dbo].[Academic_Interests] where Sug_Word like '%"+pr+"%' ORDER BY AM_ID";
+            DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
+            int rcord = DT.Rows.Count;
+            return DT;
+        }
+
     }
 }

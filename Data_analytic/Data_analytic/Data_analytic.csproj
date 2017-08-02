@@ -67,13 +67,16 @@
     <Content Include="Scripts\jquery-1.4.1.min.js" />
     <Content Include="Summary.aspx" />
     <Content Include="Tool.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="word_Selection.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -170,6 +173,13 @@
     </Compile>
     <Compile Include="Tool.aspx.designer.cs">
       <DependentUpon>Tool.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="word_Selection.aspx.cs">
+      <DependentUpon>word_Selection.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="word_Selection.aspx.designer.cs">
+      <DependentUpon>word_Selection.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -261,6 +261,7 @@ namespace Data_analytic
                     {
                         dtSMAT.Rows.Add(drRemove);
                         drRemove = null;
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Compulsory Module');", true);
                     }
                     //remove Selection 
                 }
@@ -444,6 +445,7 @@ namespace Data_analytic
                          dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
                          dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
                          dtSm2.Rows.Add(dr);
+                         ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
                      }
                 }
                 else
@@ -531,7 +533,9 @@ namespace Data_analytic
                     if (str.ToUpper() == "TRUE")
                     {
                         dtSMAT.Rows.Add(drRemove);
+
                         drRemove = null;
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Can not Remove Compulsory module');", true);
                     }
                     //remove Selection 
                 }
@@ -685,6 +689,7 @@ namespace Data_analytic
                         dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
                         dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
                         dtSm2.Rows.Add(dr);
+                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
                     }
                 }
                 else
@@ -713,23 +718,27 @@ namespace Data_analytic
             {
                 BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
 
-                int user_id = (int)Session["UserID"];
+                int user_id = 0;// (int)Session["UserID"];;
                 obj.DeleteUserSelectionRecord(user_id);
                 foreach (GridViewRow row in GV_SM1.Rows)
                 {
                     string str = row.Cells[5].ToString().Trim();
                     int AM_ID = int.Parse(row.Cells[6].Text.ToString().Trim());
                     float p = float.Parse(row.Cells[3].Text.ToString().Trim());
-                    obj.InsertUserInputRecord(user_id, AM_ID,p);
+                    obj.InsertUserInputRecord(user_id, AM_ID, p);
                 }
                 foreach (GridViewRow row in GV_SM2.Rows)
                 {
                     int AM_ID = int.Parse(row.Cells[6].Text.ToString().Trim());
                     float p = float.Parse(row.Cells[3].Text.ToString().Trim());
-                    obj.InsertUserInputRecord(user_id, AM_ID,p);
+                    obj.InsertUserInputRecord(user_id, AM_ID, p);
                 }
 
                 Response.Redirect("~/Previous_summary.aspx");
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Smestr 1 and Smester 2 must have 60 crdit Hr each');", true);
             }
         }
 

@@ -33,7 +33,7 @@
            
                  </asp:BoundField>
          <asp:BoundField DataField="AM_ID" HeaderText="AM_ID" 
-                HtmlEncode="False" ItemStyle-Width="300px" >
+                HtmlEncode="False" ItemStyle-Width="300px"   ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" >
                  </asp:BoundField>
                  </Columns  >
              <selectedrowstyle backcolor="LightCyan"
@@ -66,7 +66,7 @@
         <asp:BoundField DataField="Credit hours" HeaderText="Credit Hr" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="AM_ID" HeaderText="AM_ID" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="300px"  ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" />
                  </Columns  >
                  <selectedrowstyle backcolor="LightCyan"
          forecolor="DarkBlue"
@@ -102,7 +102,7 @@
         <asp:BoundField DataField="Credit hours" HeaderText="Credit Hr" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="AM_ID" HeaderText="AM_ID" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="300px"  ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" />
                  </Columns  >
           <selectedrowstyle backcolor="LightCyan"
          forecolor="DarkBlue"
@@ -134,7 +134,7 @@
         <asp:BoundField DataField="Credit hours" HeaderText="Credit Hr" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="AM_ID" HeaderText="AM_ID" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="300px"  ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" />
                  </Columns  >
           <selectedrowstyle backcolor="LightCyan"
          forecolor="DarkBlue"

@@ -171,12 +171,15 @@ namespace BusinessLayer
                 TotalCridetHour = TotalCridetHour + CridetHour;
             }
 
-            DataRow[] dr1 = dtSm.Select("compulsory=false", "Recall DESC");
+            DataRow[] dr1 = dtSm.Select("compulsory=false", "TruePostive DESC");
 
             DataTable dtNonCom = null;
             if (dr1.Length > 0)
             {
-                dtNonCom = dr1.CopyToDataTable();
+                DataTable dtTm = dr1.CopyToDataTable();
+                //DataTable dtTm = dr1.CopyToDataTable();
+                DataRow[] dr2 = dtTm.Select("compulsory=false", "Recall DESC");
+                dtNonCom = dr2.CopyToDataTable();
             }
             else
             {
@@ -379,8 +382,8 @@ namespace BusinessLayer
             
             //bool isFind = false;
             // DataRow[] dTselet;
-            int TruePostive = 0;
-            int FalseNegtive = 0;
+            float TruePostive = 0;
+            float FalseNegtive = 0;
             int AM_ID = 0;
             DataRow drComp = null;
 
@@ -513,6 +516,14 @@ namespace BusinessLayer
 
                        
                     }
+                    int Th = ReqExpertise - 1;
+                    double final = 0;
+                    if (Th >= Level && Th>=2 && Level>1)
+                    {
+                        final = 0.5;
+                    }
+
+
                     if (ReqExpertise > Level)
                     {
                         FalseNegtive++;
@@ -520,7 +531,13 @@ namespace BusinessLayer
                     else
                     {
                         TruePostive++;
+                        final = 0.0;
                     }
+                    if (final > 0.0)
+                    {
+                        FalseNegtive--;
+                    }
+                    TruePostive = (float)(TruePostive + final);
 
                 }
 

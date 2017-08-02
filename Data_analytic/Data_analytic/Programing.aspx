@@ -1,80 +1,72 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Programing.aspx.cs" Inherits="Data_analytic.Programing" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Programing.aspx.cs" Inherits="Data_analytic.Programing" enableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<h3>Plese Select the Programing Information </h3>
+    
    <div>
-   <asp:Label ID="LBL_PROG" runat="server" Text="Programing Domain"  Font-Bold="True" 
-           Font-Size="X-Large"></asp:Label>  
-   
-   <%-- <asp:CheckBox ID="CHK_PROG" Text="Tool" runat="server" 
-            AutoPostBack="True" />--%><%-- oncheckedchanged="CHK_TOOL_CheckedChanged"--%>
-       <%--<asp:Literal ID="Literal1" runat="server" Text="Level">--%><%--AutoPostBack="true" --%>
-   <%--<asp:RadioButton ID="RBT_Noexperience" Text="No experience " runat="server"  Checked="true" GroupName="ToolGroup" />
-   <asp:RadioButton ID="RBT_NOVOICE" Text="Novice" runat="server" GroupName="ToolGroup" />
-   <asp:RadioButton ID="RBT_Intermediate" Text="Intermediate" runat="server" GroupName="ToolGroup" />
-   <asp:RadioButton ID="RBT_Expert" Text="Expert" runat="server"  GroupName="ToolGroup"/>--%>
-  <%-- </asp:Literal>--%>
+    <asp:Label ID="LBL_PROG" runat="server" Text="Programing Domain:"  Font-Bold="True" 
+           Font-Size="Medium"></asp:Label>  
+   <h4>   Plese Select the Programing Information </h4>
+
    
    </div>
 <div style="margin-top:20px"></div>
     <asp:Panel ID="Panel1" runat="server">
        <asp:GridView ID="PRO_GD" runat="server" AutoGenerateColumns="False"
    
-    EnableViewState="False" Height="108px" Width="511px" 
-            Font-Italic="False" Font-Names="Aparajita" Font-Size="X-Large" 
-             ShowFooter="True"><%-- AllowPaging="true"
-    OnPageIndexChanging="OnPageIndexChanging" PageSize="5" DataKeyNames="SupplierID" DataSourceID="SuppliersDataSource" Visible="false"--%>
-           <%--<AlternatingRowStyle BackColor="#FFFF99" BorderColor="#FFCC00" 
-               BorderStyle="Outset" />--%>
-           <Columns >
-               <asp:BoundField DataField="Academic_info" HeaderText="Programing" 
-                   HtmlEncode="False" ItemStyle-Width="300px" HeaderStyle-Font-Bold="false">
-                    <ItemStyle Width="300px" />
-               </asp:BoundField>
-                <%--</Columns>
-                 <Columns>--%>
-                   <asp:BoundField DataField="AA_ID" HeaderText="AA_ID" 
-                   HtmlEncode="False" ItemStyle-Width="300px" Visible="true" HeaderStyle-Font-Bold="false">
+    EnableViewState="False" Height="108px" Width="698px" 
+            Font-Italic="False" Font-Names="Calibri" Font-Size="Small" 
+            BorderColor="#66CCFF" OnRowDataBound = "OnRowDataBound" OnSelectedIndexChanged = "OnSelectedIndexChanged">
+           <Columns>
+               <asp:BoundField DataField="Academic_info" HeaderStyle-Font-Bold="false" 
+                   HeaderText="Programing" HtmlEncode="False" ItemStyle-Width="300px">
+               <HeaderStyle Font-Bold="True" Font-Size="Medium" />
                <ItemStyle Width="300px" />
                </asp:BoundField>
-               <asp:TemplateField HeaderText="Not available " HeaderStyle-Font-Bold="false"> 
-            <ItemTemplate>
-                <asp:RadioButton ID="RowSelector" runat="server" 
-                    GroupName="InfoGroup" Checked="true" Width="100" />
-            </ItemTemplate>
-            </asp:TemplateField>
-             <asp:TemplateField  HeaderText="available" HeaderStyle-Font-Bold="false"> 
-            <ItemTemplate>
-                <asp:RadioButton ID="RowSelector1" runat="server" 
-                    GroupName="InfoGroup"  Width="100" />
-            </ItemTemplate>
-            </asp:TemplateField>
-
-            <asp:TemplateField  HeaderText="Intermedite" HeaderStyle-Font-Bold="false"> 
-            <ItemTemplate>
-                <asp:RadioButton ID="RowSelector2" runat="server" 
-                    GroupName="InfoGroup"  Width="100" />
-            </ItemTemplate>
-            </asp:TemplateField>
-
-            <asp:TemplateField  HeaderText="Expert" HeaderStyle-Font-Bold="false"> 
-            <ItemTemplate>
-                <asp:RadioButton ID="RowSelector3" runat="server" 
-                    GroupName="InfoGroup"  Width="100" />
-            </ItemTemplate>
-            </asp:TemplateField>
-               <%-- <asp:TemplateField> Checked="true" 
-            <ItemTemplate>
-                <asp:RadioButton ID="RowSelector2" Text="True" runat="server" 
-                    GroupName="SuppliersGroup" />
-            </ItemTemplate>
-        </asp:TemplateField>--%>
+               <asp:BoundField DataField="AA_ID" HeaderStyle-Font-Bold="false" 
+                   HeaderText="AA_ID" HtmlEncode="False" ItemStyle-Width="300px" 
+                   ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" >
+               <HeaderStyle Font-Bold="False" />
+               <ItemStyle Width="300px" />
+               </asp:BoundField>
+               <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="No Expriance">
+                  <ItemTemplate>
+                       <asp:RadioButton ID="RowSelector" runat="server" Checked="true" 
+                           GroupName="InfoGroup" Width="100"  TextAlign="Left" />
+                   </ItemTemplate>
+                   <HeaderStyle Font-Bold="True" Font-Size="Medium" />
+               </asp:TemplateField>
+               <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="Bignner">
+                   <ItemTemplate>
+                       <asp:RadioButton ID="RowSelector1" runat="server" GroupName="InfoGroup" 
+                           Width="100" />
+                   </ItemTemplate>
+                   <HeaderStyle Font-Bold="True" Font-Size="Medium" />
+               </asp:TemplateField>
+               <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="Intermedite">
+                   <ItemTemplate>
+                       <asp:RadioButton ID="RowSelector2" runat="server" GroupName="InfoGroup" 
+                           Width="100" />
+                   </ItemTemplate>
+                   <HeaderStyle Font-Bold="True" Font-Size="Medium" />
+               </asp:TemplateField>
+               <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="Expert">
+                   <ItemTemplate>
+                       <asp:RadioButton ID="RowSelector3" runat="server" GroupName="InfoGroup" 
+                           Width="100" />
+                   </ItemTemplate>
+                   <HeaderStyle Font-Bold="True" Font-Size="Medium" />
+               </asp:TemplateField>
            </Columns>
-          <%-- <RowStyle BackColor="#FFFFCC" />--%>
+           <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" />
+           <SelectedRowStyle BackColor="Aqua" Font-Bold="True" />
           
 </asp:GridView>
+<asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>
+<br />
+    <div style="margin-left:55%">
      <asp:Button ID="NEXT" runat="server" Text="Next" onclick="NEXT_Click" />
+     </div>
     </asp:Panel>
     </div>
 </asp:Content>
