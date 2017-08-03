@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="AssociateModuleInfo.cs" />
     <Compile Include="calculateResult.cs" />
+    <Compile Include="EditRequirment.cs" />
     <Compile Include="LoginInfo.cs" />
     <Compile Include="previous_Result.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

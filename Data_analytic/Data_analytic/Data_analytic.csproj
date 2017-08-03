@@ -55,7 +55,9 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
+    <Content Include="EditReq.aspx" />
     <Content Include="Mathmetic.aspx" />
+    <Content Include="ModifyReq.aspx" />
     <Content Include="Previous_summary.aspx" />
     <Content Include="Programing.aspx" />
     <Content Include="Result.aspx" />
@@ -121,6 +123,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EditReq.aspx.cs">
+      <DependentUpon>EditReq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditReq.aspx.designer.cs">
+      <DependentUpon>EditReq.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -130,6 +139,13 @@
     </Compile>
     <Compile Include="Mathmetic.aspx.designer.cs">
       <DependentUpon>Mathmetic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModifyReq.aspx.cs">
+      <DependentUpon>ModifyReq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModifyReq.aspx.designer.cs">
+      <DependentUpon>ModifyReq.aspx</DependentUpon>
     </Compile>
     <Compile Include="Previous_summary.aspx.cs">
       <DependentUpon>Previous_summary.aspx</DependentUpon>
@@ -184,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Resource\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -203,7 +220,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>7617</DevelopmentServerPort>
+          <DevelopmentServerPort>26689</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

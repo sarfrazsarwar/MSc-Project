@@ -12,17 +12,10 @@ F:\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
 F:\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
 F:\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
 F:\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Test)\Data_analytic(Test)\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Test)\Data_analytic(Test)\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Test)\Data_analytic(Test)\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Test)\Data_analytic(Test)\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Test)\Data_analytic(Test)\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Test)\Data_analytic(Test)\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Test)\Data_analytic(Test)\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(GUI,Full,True--)12\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(GUI,Full,True--)12\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(GUI,Full,True--)12\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(GUI,Full,True--)12\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(GUI,Full,True--)12\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(GUI,Full,True--)12\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(GUI,Full,True--)12\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb

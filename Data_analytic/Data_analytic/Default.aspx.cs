@@ -26,24 +26,32 @@ namespace Data_analytic
             int noofRecord = m.GetUserInfoRecord(LoginUser.UserName, LoginUser.Password);
             if (noofRecord >= 1)
             {
-                Session.Add("UserID", noofRecord);
-                Session.Add("UserName", LoginUser.UserName);
-                BusinessLayer.previous_Result pr = new BusinessLayer.previous_Result();
-                DataTable dtProg = pr.GetProg_Selection(noofRecord);
-                DataTable dtTool = pr.GetTool_Selection(noofRecord);
-                DataTable dtmath = pr.GetMathmetic_Selection(noofRecord);
-                DataTable dtresearch = pr.GetResearch_Selection(noofRecord);
 
-                if (dtProg.Rows.Count == 0 && dtTool.Rows.Count == 0 && dtmath.Rows.Count == 0 && dtresearch.Rows.Count == 0)
-                    Response.Redirect("~/Programing.aspx");
+                if (LoginUser.UserName.ToUpper() == "ADMINISTRATOR" || LoginUser.UserName.ToUpper() == "ADMIN")
+                {
+                    Response.Redirect("~/ModifyReq.aspx");
+                }
                 else
                 {
-                    Session["Programing"] = dtProg;
-                    Session["ResearchExp"] =dtresearch;
-                    Session["Mathmetic"] = dtmath;
-                    Session["TOOL"] = dtTool;
-                    Response.Redirect("~/Previous_summary.aspx");
-                    
+                    Session.Add("UserID", noofRecord);
+                    Session.Add("UserName", LoginUser.UserName);
+                    BusinessLayer.previous_Result pr = new BusinessLayer.previous_Result();
+                    DataTable dtProg = pr.GetProg_Selection(noofRecord);
+                    DataTable dtTool = pr.GetTool_Selection(noofRecord);
+                    DataTable dtmath = pr.GetMathmetic_Selection(noofRecord);
+                    DataTable dtresearch = pr.GetResearch_Selection(noofRecord);
+
+                    if (dtProg.Rows.Count == 0 && dtTool.Rows.Count == 0 && dtmath.Rows.Count == 0 && dtresearch.Rows.Count == 0)
+                        Response.Redirect("~/Programing.aspx");
+                    else
+                    {
+                        Session["Programing"] = dtProg;
+                        Session["ResearchExp"] = dtresearch;
+                        Session["Mathmetic"] = dtmath;
+                        Session["TOOL"] = dtTool;
+                        Response.Redirect("~/Previous_summary.aspx");
+
+                    }
                 }
                 }
 

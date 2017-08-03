@@ -51,7 +51,7 @@ namespace Data_analytic
             {
                 if (row.RowIndex == MATH_GD.SelectedIndex)
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
 
                 }
@@ -78,7 +78,7 @@ namespace Data_analytic
             {
                 if (row.RowIndex == DG_RESEAECH.SelectedIndex)
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
 
                 }

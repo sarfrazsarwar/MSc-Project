@@ -54,9 +54,38 @@ namespace Data_analytic
                 Gv_SM2_NO.DataSource = dtsm2.Tables[1];
                 Gv_SM2_NO.DataBind();
 
+                
+             
+               // dt = dtsm1.Tables[0].Copy();
+               //DataRow[] dr=dtsm1.Tables[1].Select("Compulsory=false");
+               //if (dr.Length > 0)
+               //{
+               //    int i=0;
+               //    foreach (DataRow drNonCom in dr)
+               //    {
+               //        DataRow drnew = dt.NewRow();
+               //        drnew["AM_ID"] = drNonCom["AM_ID"];
+               //        drnew["ACademic_Module"] = drNonCom["ACademic_Module"];
+               //        drnew["TruePostive"] = drNonCom["TruePostive"];
+               //        drnew["Smester"] = drNonCom["Smester"];
+               //        drnew["Compulsory"] = drNonCom["Compulsory"];
+               //        drnew["FalseNegtive"] = drNonCom["FalseNegtive"]; ;
+               //        drnew["Credit hours"] = drNonCom["Credit hours"];
+               //        //""
 
-                //    CalculateResults();
 
+               //        drnew["Recall"] = drNonCom["Recall"];
+               //        dt.Rows.Add(drnew);
+               //    }
+                  
+               //}
+
+                DataTable dt =obj.GetSM1RecordInfo();
+                   GridView1.DataSource=dt;
+                   GridView1.DataBind();
+                   DataTable dttemp = obj.GetSM2RecordInfo();
+                   GridView2.DataSource = dttemp;
+                   GridView2.DataBind();
                 //DataRow[] fRow = dtMat.Select("Smester=1");
                 //DataTable dtTempSmester1 = fRow.CopyToDataTable();
                 //DataTable dttem = dtTempSmester1.Clone();
@@ -89,7 +118,29 @@ namespace Data_analytic
                 e.Row.ToolTip = "Click to select this row.";
             }
         }
+        void selectROw(GridViewRow rowSEl)
+        {
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                if (row.Cells[0].Text.Trim() == rowSEl.Cells[0].Text.Trim())
+                {
+                    GridView1.SelectedIndex = row.RowIndex;
+                }
+                
+            }
+        }
 
+        void selectSM2Row(GridViewRow rowSEl)
+        {
+            foreach (GridViewRow row in GridView2.Rows)
+            {
+                if (row.Cells[0].Text.Trim() == rowSEl.Cells[0].Text.Trim())
+                {
+                    GridView2.SelectedIndex = row.RowIndex;
+                }
+
+            }
+        }
         protected void SM1NON_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             SelROw = null;
@@ -97,13 +148,16 @@ namespace Data_analytic
             {
                 if (row.RowIndex == Gv_SM1_NO.SelectedIndex)
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     SelROw = row;
+                    selectROw(SelROw);
+                    if (GV_SM1.SelectedIndex >= 0)
+                        GV_SM1.SelectedIndex = -1;
                 }
                 else
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                   //// row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
                     row.ToolTip = "Click to select this row.";
                 }
             }
@@ -124,13 +178,16 @@ namespace Data_analytic
             {
                 if (row.RowIndex == GV_SM1.SelectedIndex)
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     SelROw = row;
+                    selectROw(SelROw);
+                    if( Gv_SM1_NO.SelectedIndex>=0)
+                    Gv_SM1_NO.SelectedIndex = -1;
                 }
                 else
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                   // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
                     row.ToolTip = "Click to select this row.";
                 }
             }
@@ -155,13 +212,16 @@ namespace Data_analytic
             {
                 if (row.RowIndex == Gv_SM2_NO.SelectedIndex)
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     SelROw = row;
+                    selectSM2Row(SelROw);
+                    if (GV_SM2.SelectedIndex >= 0)
+                        GV_SM2.SelectedIndex = -1;
                 }
                 else
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                   // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
                     row.ToolTip = "Click to select this row.";
                 }
             }
@@ -182,13 +242,16 @@ namespace Data_analytic
             {
                 if (row.RowIndex == GV_SM2.SelectedIndex)
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     SelROw = row;
+                    selectSM2Row(SelROw);
+                    if (Gv_SM2_NO.SelectedIndex >= 0)
+                        Gv_SM2_NO.SelectedIndex = -1;
                 }
                 else
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                   // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
                     row.ToolTip = "Click to select this row.";
                 }
             }
@@ -198,6 +261,7 @@ namespace Data_analytic
 
         void RemoveSm1MoudleSugest()
         {
+           
             DataTable dtSMAT = new DataTable();
             DataColumn dc = new DataColumn("AM_ID");
             dtSMAT.Columns.Add(dc);
@@ -247,13 +311,13 @@ namespace Data_analytic
                 {
                     drRemove = dtSMAT.NewRow();
                     drRemove["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    drRemove["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    drRemove["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                    drRemove["Recall"] = row.Cells[3].Text.ToString().Trim();
+                    //drRemove["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                    //drRemove["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                    drRemove["Recall"] = row.Cells[1].Text.ToString().Trim();
                     //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    drRemove["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                    drRemove["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                    drRemove["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                    drRemove["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    drRemove["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                    drRemove["AM_ID"] = row.Cells[4].Text.ToString().Trim();
 
                     string str=drRemove["Compulsory"].ToString();
 
@@ -269,13 +333,13 @@ namespace Data_analytic
                 {
                     DataRow dr = dtSMAT.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                     //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                    dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSMAT.Rows.Add(dr);
                 }
             }
@@ -288,14 +352,14 @@ namespace Data_analytic
             {
 
                 DataRow dr = dtSm2.NewRow();
-                    dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[3].Text.ToString().Trim();
-                    //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                    dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
+                //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                //dr["Smester"] = row.Cells[5].ToString().Trim();
+                dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSm2.Rows.Add(dr);
                 
             }
@@ -303,8 +367,8 @@ namespace Data_analytic
             {
                 DataRow drTemp = dtSm2.NewRow();
                 drTemp["ACademic_Module"] = drRemove["ACademic_Module"];
-                drTemp["TruePostive"] = drRemove["TruePostive"];
-                drTemp["FalseNegtive"] = drRemove["FalseNegtive"];
+                //drTemp["TruePostive"] = drRemove["TruePostive"];
+                //drTemp["FalseNegtive"] = drRemove["FalseNegtive"];
                 drTemp["Recall"] = drRemove["Recall"];
                 drTemp["Credit hours"] = drRemove["Credit hours"];
                 drTemp["Compulsory"] = drRemove["Compulsory"];
@@ -320,7 +384,7 @@ namespace Data_analytic
             int creditHr = 0;
             foreach (GridViewRow row in GV_SM1.Rows)
             {
-                creditHr = creditHr+int.Parse(row.Cells[5].Text.ToString().Trim());
+                creditHr = creditHr+int.Parse(row.Cells[3].Text.ToString().Trim());
             }
             if (creditHr < 60)
             {
@@ -336,7 +400,7 @@ namespace Data_analytic
             int creditHr = 0;
             foreach (GridViewRow row in GV_SM2.Rows)
             {
-                creditHr = creditHr + int.Parse(row.Cells[5].Text.ToString().Trim());
+                creditHr = creditHr + int.Parse(row.Cells[3].Text.ToString().Trim());
             }
             if (creditHr < 60)
             {
@@ -397,15 +461,15 @@ namespace Data_analytic
                 
                     DataRow dr = dtSMAT.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                     //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
+                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
 
                     totalcreditHour = totalcreditHour + int.Parse(dr["Credit hours"].ToString());
-                    dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                    dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSMAT.Rows.Add(dr);
             }
            
@@ -417,33 +481,33 @@ namespace Data_analytic
                 if (row.RowIndex == Gv_SM1_NO.SelectedIndex)
                 {
 
-                     int temphour=   int.Parse(row.Cells[5].Text.ToString().Trim());
+                     int temphour=   int.Parse(row.Cells[3].Text.ToString().Trim());
 
                      totalcreditHour = totalcreditHour + temphour;
                      if (totalcreditHour <= 70)
                      {
                          DataRow dr = dtSMAT.NewRow();
                          dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                         dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                         dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                         dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                         //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                         //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                         dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                          //dr["Smester"] = row.Cells[5].ToString().Trim();
-                         dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                         dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                         dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                         dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                         dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                         dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                          dtSMAT.Rows.Add(dr);
                      }
                      else
                      {
                          DataRow dr = dtSm2.NewRow();
                          dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                         dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                         dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                         dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                         //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                         //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                         dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                          //dr["Smester"] = row.Cells[5].ToString().Trim();
-                         dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                         dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                         dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                         dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                         dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                         dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                          dtSm2.Rows.Add(dr);
                          ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
                      }
@@ -452,13 +516,13 @@ namespace Data_analytic
                 {
                     DataRow dr = dtSm2.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                     //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                    dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSm2.Rows.Add(dr);
                 }
             }
@@ -520,13 +584,13 @@ namespace Data_analytic
                 {
                     drRemove = dtSMAT.NewRow();
                     drRemove["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    drRemove["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    drRemove["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                    drRemove["Recall"] = row.Cells[3].Text.ToString().Trim();
+                    //drRemove["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                    //drRemove["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                    drRemove["Recall"] = row.Cells[1].Text.ToString().Trim();
                     //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    drRemove["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                    drRemove["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                    drRemove["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                    drRemove["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    drRemove["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                    drRemove["AM_ID"] = row.Cells[4].Text.ToString().Trim();
 
                     string str = drRemove["Compulsory"].ToString();
 
@@ -543,13 +607,13 @@ namespace Data_analytic
                 {
                     DataRow dr = dtSMAT.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                     //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                    dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSMAT.Rows.Add(dr);
                 }
             }
@@ -563,13 +627,13 @@ namespace Data_analytic
 
                 DataRow dr = dtSm2.NewRow();
                 dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                 //dr["Smester"] = row.Cells[5].ToString().Trim();
-                dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                 dtSm2.Rows.Add(dr);
 
             }
@@ -577,8 +641,8 @@ namespace Data_analytic
             {
                 DataRow drTemp = dtSm2.NewRow();
                 drTemp["ACademic_Module"] = drRemove["ACademic_Module"];
-                drTemp["TruePostive"] = drRemove["TruePostive"];
-                drTemp["FalseNegtive"] = drRemove["FalseNegtive"];
+                //drTemp["TruePostive"] = drRemove["TruePostive"];
+                //drTemp["FalseNegtive"] = drRemove["FalseNegtive"];
                 drTemp["Recall"] = drRemove["Recall"];
                 drTemp["Credit hours"] = drRemove["Credit hours"];
                 drTemp["Compulsory"] = drRemove["Compulsory"];
@@ -641,15 +705,17 @@ namespace Data_analytic
 
                 DataRow dr = dtSMAT.NewRow();
                 dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                 //dr["Smester"] = row.Cells[5].ToString().Trim();
-                dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
+                dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
 
                 totalcreditHour = totalcreditHour + int.Parse(dr["Credit hours"].ToString());
-                dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                //dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
+                //dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
                 dtSMAT.Rows.Add(dr);
             }
 
@@ -661,33 +727,33 @@ namespace Data_analytic
                 if (row.RowIndex == Gv_SM2_NO.SelectedIndex)
                 {
 
-                    int temphour = int.Parse(row.Cells[5].Text.ToString().Trim());
+                    int temphour = int.Parse(row.Cells[3].Text.ToString().Trim());
 
                     totalcreditHour = totalcreditHour + temphour;
                     if (totalcreditHour <= 70)
                     {
                         DataRow dr = dtSMAT.NewRow();
                         dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                        dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                        dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                        dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                        //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                        //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                        dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                         //dr["Smester"] = row.Cells[5].ToString().Trim();
-                        dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                        dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                        dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                        dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                        dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                        dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                         dtSMAT.Rows.Add(dr);
                     }
                     else
                     {
                         DataRow dr = dtSm2.NewRow();
                         dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                        dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                        dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                        dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                        //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                        //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                        dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                         //dr["Smester"] = row.Cells[5].ToString().Trim();
-                        dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                        dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                        dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                        dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                        dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                        dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                         dtSm2.Rows.Add(dr);
                         ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
                     }
@@ -696,13 +762,13 @@ namespace Data_analytic
                 {
                     DataRow dr = dtSm2.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[3].Text.ToString().Trim();
+                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
+                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
                     //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[5].Text.ToString().Trim();
-                    dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
+                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSm2.Rows.Add(dr);
                 }
             }
@@ -718,19 +784,19 @@ namespace Data_analytic
             {
                 BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
 
-                int user_id = 0;// (int)Session["UserID"];;
+                int user_id = (int)Session["UserID"];;
                 obj.DeleteUserSelectionRecord(user_id);
                 foreach (GridViewRow row in GV_SM1.Rows)
                 {
-                    string str = row.Cells[5].ToString().Trim();
-                    int AM_ID = int.Parse(row.Cells[6].Text.ToString().Trim());
-                    float p = float.Parse(row.Cells[3].Text.ToString().Trim());
+                    //string str = row.Cells[5].ToString().Trim();
+                    int AM_ID = int.Parse(row.Cells[4].Text.ToString().Trim());
+                    float p = float.Parse(row.Cells[1].Text.ToString().Trim());
                     obj.InsertUserInputRecord(user_id, AM_ID, p);
                 }
                 foreach (GridViewRow row in GV_SM2.Rows)
                 {
-                    int AM_ID = int.Parse(row.Cells[6].Text.ToString().Trim());
-                    float p = float.Parse(row.Cells[3].Text.ToString().Trim());
+                    int AM_ID = int.Parse(row.Cells[4].Text.ToString().Trim());
+                    float p = float.Parse(row.Cells[1].Text.ToString().Trim());
                     obj.InsertUserInputRecord(user_id, AM_ID, p);
                 }
 
@@ -760,6 +826,58 @@ namespace Data_analytic
         protected void BTN_SM2_DOWN_Click(object sender, EventArgs e)
         {
             RemoveSm2MoudleSugest();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            DataTable dtTools = null;
+            DataTable dtMath = null;
+            DataTable dtResearch = null;
+            DataTable dtPrograming = null;
+            if (Session["TOOL"] != null)
+            {
+                dtTools = (DataTable)Session["TOOL"];
+            }
+            if (Session["Mathmetic"] != null)
+            {
+                dtMath = (DataTable)Session["Mathmetic"];
+            }
+            if (Session["Programing"] != null)
+            {
+                dtPrograming = (DataTable)Session["Programing"];
+            }
+            if (Session["ResearchExp"] != null)
+            {
+                dtResearch = (DataTable)Session["ResearchExp"];
+            }
+
+
+            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+            obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
+            DataSet dtsm1 = obj.SortSmester1Data();
+            GV_SM1.DataSource = dtsm1.Tables[0];
+            GV_SM1.DataBind();
+            Gv_SM1_NO.DataSource = dtsm1.Tables[1];
+            Gv_SM1_NO.DataBind();
+
+
+            DataSet dtsm2 = obj.SortSmester2Data();
+
+            GV_SM2.DataSource = dtsm2.Tables[0];
+            GV_SM2.DataBind();
+            Gv_SM2_NO.DataSource = dtsm2.Tables[1];
+            Gv_SM2_NO.DataBind();
+
+
+
+
+            DataTable dt = obj.GetSM1RecordInfo();
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            DataTable dttemp = obj.GetSM2RecordInfo();
+            GridView2.DataSource = dttemp;
+            GridView2.DataBind();
+           
         }
 
       

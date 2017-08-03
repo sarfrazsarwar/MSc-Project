@@ -35,6 +35,11 @@ namespace Data_analytic.Account
                 int noofRecord = m.GetUserInfoRecord(UserName.Text, Password.Text);
                 Session.Add("UserID", noofRecord);
                 Session.Add("UserName", UserName.Text);
+                if (UserName.Text.ToUpper() == "ADMINISTRATOR" || UserName.Text.ToUpper() == "ADMIN")
+                {
+                    Response.Redirect("~/ModifyReq.aspx");
+                }
+                else
                 Response.Redirect("~/Programing.aspx");
             }
             else

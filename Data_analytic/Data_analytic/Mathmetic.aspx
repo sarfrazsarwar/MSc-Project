@@ -21,7 +21,7 @@
       <asp:GridView ID="MATH_GD" runat="server" AutoGenerateColumns="False"
    
     EnableViewState="False" Height="108px" Width="774px" 
-            Font-Italic="False" Font-Names="Calibri" Font-Size="Small" 
+            Font-Italic="False" Font-Names="Calibri" Font-Size="Medium"  
             BorderColor="#66CCFF" OnRowDataBound = "OnRowDataBound" OnSelectedIndexChanged = "OnSelectedIndexChanged">
            <Columns>
                <asp:BoundField DataField="Academic_info" HeaderStyle-Font-Bold="false" 
@@ -65,7 +65,7 @@
                </asp:TemplateField>
            </Columns>
            <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
-           <SelectedRowStyle BackColor="Aqua" Font-Bold="True" />
+           <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
           
 </asp:GridView>
 <asp:LinkButton ID="LinkButton1" runat="server"></asp:LinkButton>
@@ -79,7 +79,7 @@
        <asp:GridView ID="DG_RESEAECH" runat="server" AutoGenerateColumns="False"
    
     EnableViewState="False" Height="50px" Width="777px" 
-            Font-Italic="False" Font-Names="Calibri" Font-Size="Small" 
+            Font-Italic="False" Font-Names="Calibri" Font-Size="Medium"  
             BorderColor="#66CCFF" OnRowDataBound = "OnRowDataBound1" OnSelectedIndexChanged = "OnSelectedIndexChanged1">
            <Columns>
                <asp:BoundField DataField="Academic_info" HeaderStyle-Font-Bold="false" 
@@ -124,7 +124,7 @@
            </Columns>
            <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
            <RowStyle Height="10px" />
-           <SelectedRowStyle BackColor="Aqua" Font-Bold="True" />
+           <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
           
 </asp:GridView> 
 <asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>

@@ -262,7 +262,7 @@ namespace Data_analytic
             if (Session[TblName] != null)
             {
                 DataTable dt = (DataTable)Session[TblName];
-                int User_ID = 0;// (int)Session["UserID"];
+                int User_ID =  (int)Session["UserID"];
                
                 
                 foreach (DataRow dr in dt.Rows)
@@ -293,7 +293,7 @@ namespace Data_analytic
         protected void NEXT_Click(object sender, EventArgs e)
         {
              BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
-             int User_ID = 0;//int)Session["UserID"];
+             int User_ID = (int)Session["UserID"];
              m.DeleteUserInputRecord(User_ID);
             for (int i = 0; i < 4; i++)
             {

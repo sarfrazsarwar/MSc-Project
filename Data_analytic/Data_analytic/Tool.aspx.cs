@@ -40,7 +40,7 @@ namespace Data_analytic
             {
                 if (row.RowIndex == TOOL_GV.SelectedIndex)
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
 
                 }

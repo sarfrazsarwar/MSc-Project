@@ -2,23 +2,23 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head runat="server">
+<head id="Head1" runat="server">
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form runat="server">
+    <form id="Form1" runat="server">
     <div class="page">
         <div class="header">
-            <div class="title">
-                <h1>
-                    Data analytic Of User
-                </h1>
-            </div>
-           <div class="loginDisplay">
-               <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                <div class="title">
+                    <h1>
+                        Data analytic Of User
+                    </h1>
+                </div>
+          <div class="loginDisplay">
+               <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
            <asp:Button ID ="logout" runat="server" Text="Button"></asp:Button>
                <%--  <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
@@ -30,26 +30,25 @@
                     </LoggedInTemplate>
                 </asp:LoginView>--%>
             </div>
-            <div class="clear hideSkiplink">
-               <%-- <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
-                    <Items>
-                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="About"/>
-                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Login"/>
-                        <asp:MenuItem NavigateUrl="~/Account/Login.aspx" Text="Login"/>
-                    </Items>
-                </asp:Menu>--%>
-            </div>
+          
         </div>
-        <div class="main">
+<table>
+<tr>
+<td>
+        <div class="LeftSide"></div></td>
+       <td> <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
         </div>
-        <div class="clear">
-        </div>
+        </td>
+        </tr>
+        </table>
     </div>
     <div class="footer">
-        
-    </div>
+        <p>Copyright &copy 2017 Research and analysis Msc Project ......... </p>
+            <p>  Posted by: Sarfraz</p>
+        </div>
+    
+    
     </form>
 </body>
 </html>

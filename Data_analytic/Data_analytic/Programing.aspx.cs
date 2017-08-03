@@ -76,7 +76,7 @@ namespace Data_analytic
             {
                 if (row.RowIndex == PRO_GD.SelectedIndex)
                 {
-                    row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     
                 }

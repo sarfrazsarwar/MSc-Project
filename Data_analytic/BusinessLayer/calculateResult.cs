@@ -31,6 +31,9 @@ namespace BusinessLayer
             int rcord = DT.Rows.Count;
             return DT;
         }
+
+
+     
         public DataTable GetModuleInfo()
         {
             DT.Clear();
@@ -357,6 +360,40 @@ namespace BusinessLayer
           DB_ACCESS.Dbaccess.FillLocalTable(DT, qury);
           return DT;
       }
+
+    public DataTable GetSM1RecordInfo()
+    {
+        DT.Clear();
+
+        string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours], " +
+       "ab.[Theoretical Lecture],ab.[Practical Labs],ab.[CourseWorks_Weightage],ab.[ExamType], " +
+       "ab.[Exam Weightage],mm.[Manager Name],mm.Email  " +
+       "FROM [Data_Analytics].[dbo].[Academic_module_model] ab  " +
+       "inner join [Data_Analytics].[dbo].[Module_Manager_Details] mm on ab.[MM_ID]=mm.MM_ID  " +
+       "where  ab.Smester=1";
+
+
+        //string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours],ab.[Theoretical Lecture],ab.[Practical Labs]" +
+        //   ",ab.[CourseWorks_Weightage],ab.[ExamType],ab.[Exam Weightage]" +
+        //  "FROM [Data_Analytics].[dbo].[Academic_module_model] ab inner join [Data_Analytics].[dbo].[User_Module_Selections] se " +
+        //  "ON ab.AM_ID=se.AM_ID where se.[User_ID]="+user_ID+" and ab.Smester=1";
+        DB_ACCESS.Dbaccess.FillLocalTable(DT, qury);
+        return DT;
+    }
+
+    public DataTable GetSM2RecordInfo()
+    {
+        DT.Clear();
+
+        string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours], " +
+       "ab.[Theoretical Lecture],ab.[Practical Labs],ab.[CourseWorks_Weightage],ab.[ExamType], " +
+       "ab.[Exam Weightage],mm.[Manager Name],mm.Email  " +
+       "FROM [Data_Analytics].[dbo].[Academic_module_model] ab  " +
+       "inner join [Data_Analytics].[dbo].[Module_Manager_Details] mm on ab.[MM_ID]=mm.MM_ID  " +
+       "where  ab.Smester=2";
+        DB_ACCESS.Dbaccess.FillLocalTable(DT, qury);
+        return DT;
+    }
      public DataTable GetPreRecordSM2(int user_ID)
       {
           DT.Clear();
@@ -518,11 +555,22 @@ namespace BusinessLayer
                     }
                     int Th = ReqExpertise - 1;
                     double final = 0;
-                    if (Th >= Level && Th>=2 && Level>1)
+                    //if (Th >= Level && Th>=2 && Level>1)
+                    //{
+                    //    final = 0.5;
+                    //}
+                    if (ReqExpertise == 4 && Level == 3)
+                    {
+                        final = 0.666;
+                    }
+                    else if(ReqExpertise==4 && Level==2)
+                    {
+                        final = 0.333;
+                    }
+                    else if (ReqExpertise == 3 && Level == 2)
                     {
                         final = 0.5;
                     }
-
 
                     if (ReqExpertise > Level)
                     {

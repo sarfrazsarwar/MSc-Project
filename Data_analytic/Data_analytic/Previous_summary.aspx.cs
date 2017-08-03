@@ -193,5 +193,10 @@ namespace Data_analytic
                 GD_TOOL.DataBind();
             }
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Programing.aspx");
+        }
     }
 }

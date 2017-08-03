@@ -79,7 +79,7 @@
      <div style="margin-top:20px">
      <asp:Label ID="Label2" runat="server" Text="Semester 1 Module" Font-Bold="True" 
             Font-Size="X-Large"></asp:Label>
-     <asp:GridView ID="Gv_SM1" runat="server" Width="904px" AutoGenerateColumns="false">
+     <asp:GridView ID="Gv_SM1" runat="server" Width="1237px" AutoGenerateColumns="false">
              <Columns  >
        <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
@@ -108,7 +108,8 @@
 
  <asp:Label ID="Label3" runat="server" Text="Smester 2 Module" Font-Bold="True" 
             Font-Size="X-Large"></asp:Label>
-     <asp:GridView ID="GV_SM2" runat="server" Width="904px" AutoGenerateColumns="false">
+     <asp:GridView ID="GV_SM2" runat="server" Width="1229px" 
+         AutoGenerateColumns="false">
              <Columns  >
        <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
@@ -133,6 +134,7 @@
         </asp:GridView>
  </div> 
  <div style="margin-top:20px">
+     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Modify" />
  </div>
  </asp:Panel>
 </asp:Content>
