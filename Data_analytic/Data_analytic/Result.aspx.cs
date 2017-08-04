@@ -81,9 +81,20 @@ namespace Data_analytic
                //}
 
                 DataTable dt =obj.GetSM1RecordInfo();
+
+                DataColumn dc = new DataColumn("none Selected");
+                dt.Columns.Add(dc);
+                Add_falseNegetive(dtsm1.Tables[0], dt);
+                Add_falseNegetive(dtsm1.Tables[1], dt);
                    GridView1.DataSource=dt;
                    GridView1.DataBind();
                    DataTable dttemp = obj.GetSM2RecordInfo();
+                   //dc = new DataColumn("none Selected");
+                   //dttemp.Columns.Add(dc);
+
+                   Add_falseNegetive(dtsm2.Tables[0], dttemp);
+                   Add_falseNegetive(dtsm2.Tables[1], dttemp);
+
                    GridView2.DataSource = dttemp;
                    GridView2.DataBind();
                 //DataRow[] fRow = dtMat.Select("Smester=1");
@@ -109,7 +120,21 @@ namespace Data_analytic
                 //Gv_SM2_NO.DataBind();
             }
         }
+        void Add_falseNegetive(DataTable dtSrc, DataTable dtDes)
+        {
+            foreach (DataRow dr in dtSrc.Rows)
+                {
+                    foreach (DataRow dr1 in dtDes.Rows)
+                    {
+                        if (dr["ACademic_Module"].ToString().Trim() == dr1["ACademic_Module"].ToString().Trim())
+                        {
+                            dr1["none Selected"] = dr["none Selected"];
+                            break;
+                        }
+                    }
+                }
 
+        }
         protected void SM1NON_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -784,7 +809,8 @@ namespace Data_analytic
             {
                 BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
 
-                int user_id = (int)Session["UserID"];;
+                //int user_id = (int)Session["UserID"];;
+                int user_id = (int)Session["UserID"];
                 obj.DeleteUserSelectionRecord(user_id);
                 foreach (GridViewRow row in GV_SM1.Rows)
                 {
@@ -854,11 +880,11 @@ namespace Data_analytic
 
             BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
             obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
-            DataSet dtsm1 = obj.SortSmester1Data();
-            GV_SM1.DataSource = dtsm1.Tables[0];
-            GV_SM1.DataBind();
-            Gv_SM1_NO.DataSource = dtsm1.Tables[1];
-            Gv_SM1_NO.DataBind();
+            //DataSet dtsm1 = obj.SortSmester1Data();
+            //GV_SM1.DataSource = dtsm1.Tables[0];
+            //GV_SM1.DataBind();
+            //Gv_SM1_NO.DataSource = dtsm1.Tables[1];
+            //Gv_SM1_NO.DataBind();
 
 
             DataSet dtsm2 = obj.SortSmester2Data();
@@ -868,15 +894,58 @@ namespace Data_analytic
             Gv_SM2_NO.DataSource = dtsm2.Tables[1];
             Gv_SM2_NO.DataBind();
 
-
-
-
-            DataTable dt = obj.GetSM1RecordInfo();
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
             DataTable dttemp = obj.GetSM2RecordInfo();
+            DataColumn dc = new DataColumn("none Selected");
+            dttemp.Columns.Add(dc);
+
+            Add_falseNegetive(dtsm2.Tables[0], dttemp);
+            Add_falseNegetive(dtsm2.Tables[1], dttemp);
+
             GridView2.DataSource = dttemp;
             GridView2.DataBind();
+           
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            DataTable dtTools = null;
+            DataTable dtMath = null;
+            DataTable dtResearch = null;
+            DataTable dtPrograming = null;
+            if (Session["TOOL"] != null)
+            {
+                dtTools = (DataTable)Session["TOOL"];
+            }
+            if (Session["Mathmetic"] != null)
+            {
+                dtMath = (DataTable)Session["Mathmetic"];
+            }
+            if (Session["Programing"] != null)
+            {
+                dtPrograming = (DataTable)Session["Programing"];
+            }
+            if (Session["ResearchExp"] != null)
+            {
+                dtResearch = (DataTable)Session["ResearchExp"];
+            }
+
+
+            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+            obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
+            DataSet dtsm1 = obj.SortSmester1Data();
+            GV_SM1.DataSource = dtsm1.Tables[0];
+            GV_SM1.DataBind();
+            Gv_SM1_NO.DataSource = dtsm1.Tables[1];
+            Gv_SM1_NO.DataBind();
+
+            DataTable dt = obj.GetSM1RecordInfo();
+            DataColumn dc = new DataColumn("none Selected");
+            dt.Columns.Add(dc);
+            Add_falseNegetive(dtsm1.Tables[0], dt);
+            Add_falseNegetive(dtsm1.Tables[1], dt);
+            GridView1.DataSource = dt;
+            GridView1.DataBind();
+            
            
         }
 

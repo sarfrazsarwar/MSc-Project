@@ -74,12 +74,13 @@
 
 
 
-    <asp:Panel ID="Panel2" runat="server" BorderStyle="Outset" ToolTip="Smester Module">
+    <asp:Panel ID="Panel2" runat="server" BorderStyle="Outset" >
    
-     <div style="margin-top:20px">
+     <div style="margin-top:20px;  overflow:scroll; width:673px; height: 193px;">
      <asp:Label ID="Label2" runat="server" Text="Semester 1 Module" Font-Bold="True" 
-            Font-Size="X-Large"></asp:Label>
-     <asp:GridView ID="Gv_SM1" runat="server" Width="1237px" AutoGenerateColumns="false">
+            Font-Size="Large"></asp:Label>
+     <asp:GridView ID="Gv_SM1" runat="server" Width="1192px" AutoGenerateColumns="false" 
+             Height="155px">
              <Columns  >
        <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
@@ -95,6 +96,14 @@
                 HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="Exam Weightage" HeaderText="Exam Weightage" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="ClassTests" HeaderText="ClassTest" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="Private study required" HeaderText="Private Studey Required" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="CourseWorks" HeaderText="courseWorks" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="CourseWorks_Weightage" HeaderText="CourseWorks_Wtg" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
                  <asp:BoundField DataField="Manager Name" HeaderText="Manager Name" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                  <asp:BoundField DataField="Email" HeaderText="Email" 
@@ -104,11 +113,11 @@
  </div>
 
 
- <div style="margin-top:20px">
+ <div style="margin-top:20px; overflow:scroll; width:667px">
 
  <asp:Label ID="Label3" runat="server" Text="Smester 2 Module" Font-Bold="True" 
-            Font-Size="X-Large"></asp:Label>
-     <asp:GridView ID="GV_SM2" runat="server" Width="1229px" 
+            Font-Size="Large"></asp:Label>
+     <asp:GridView ID="GV_SM2" runat="server" Width="1178px" 
          AutoGenerateColumns="false">
              <Columns  >
        <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
@@ -122,6 +131,15 @@
         <asp:BoundField DataField="Theoretical Lecture" HeaderText="Theoretical Lecture" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="ExamType" HeaderText="ExamType" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+
+         <asp:BoundField DataField="ClassTests" HeaderText="ClassTest" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="Private study required" HeaderText="Private Studey Required" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="CourseWorks" HeaderText="courseWorks" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="CourseWorks_Weightage" HeaderText="CourseWorks_Wtg" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="Exam Weightage" HeaderText="Exam Weightage" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>

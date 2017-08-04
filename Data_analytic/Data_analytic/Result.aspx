@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Result.aspx.cs" Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Result.aspx.cs"
+Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
     <style type="text/css">
         .style1
@@ -15,7 +16,8 @@
     <asp:Panel ID="Panel1" runat="server" Width="1049px">
 
 <asp:Panel ID="Panel2"
-           runat="server" BorderStyle="Dashed" BorderWidth="2px" Width="947px">
+           runat="server" BorderStyle="Dashed" BorderWidth="2px" Width="1004px" 
+            style="margin-right: 0px">
 <table style="margin-left:50Px">
    <%-- <div style="margin-top:20px">--%>
     <tr>
@@ -30,7 +32,7 @@
         <td> 
         
         <asp:GridView ID="GV_SM1" runat="server" AutoGenerateColumns="False"
-            Width="395px"  
+            Width="426px"  
                         Font-Italic="False" Font-Names="Calibri" Font-Size="Medium"  
             BorderColor="#66CCFF" OnRowDataBound = "OnRowDataBound" 
             OnSelectedIndexChanged = "OnSelectedIndexChanged" >
@@ -86,7 +88,7 @@
    <td class="style1">
       <div>  
           <asp:GridView ID="Gv_SM1_NO" runat="server" AutoGenerateColumns="False"
-                       Width="397px" 
+                       Width="452px" 
             Font-Italic="False" Font-Names="Calibri" Font-Size="Medium"  
             BorderColor="#66CCFF" OnRowDataBound = "SM1NON_OnRowDataBound" 
             OnSelectedIndexChanged = "SM1NON_OnSelectedIndexChanged">
@@ -103,6 +105,10 @@
                 HtmlEncode="False" ItemStyle-Width="100px"/>
         <asp:BoundField DataField="Credit hours" HeaderText="Credit Hr" 
                 HtmlEncode="False" ItemStyle-Width="50px"/>
+<%--
+    <asp:BoundField DataField="none Selected" HeaderText="False Negtive" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>--%>
+                
         <asp:BoundField DataField="AM_ID" HeaderText="AM_ID" 
                 HtmlEncode="False" ItemStyle-Width="25px"  ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" />
                  </Columns  >
@@ -122,6 +128,7 @@
     </table>
     <br />
     <br />
+    <%-- ab.[ClassTests],ab.[Private study required],ab.[CourseWorks],ab.[ExamType],ab.[Exam Weightage],--%>
     <div style='overflow:scroll; width:80%;height:150px; margin-left:50px'>
      <asp:GridView ID="GridView1" runat="server" Width="1194px" 
             AutoGenerateColumns="false"  Font-Italic="False" Font-Names="Calibri" 
@@ -139,9 +146,26 @@
                 HtmlEncode="False" ItemStyle-Width="200px"/>
         <asp:BoundField DataField="Exam Weightage" HeaderText="Exam Weightage" 
                 HtmlEncode="False" ItemStyle-Width="100px"/>
+
+
+                 <asp:BoundField DataField="ClassTests" HeaderText="ClassTest" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="Private study required" HeaderText="Private Studey Required" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="CourseWorks" HeaderText="courseWorks" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="CourseWorks_Weightage" HeaderText="CourseWorks_Wtg" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 
+
+
+
                  <asp:BoundField DataField="Manager Name" HeaderText="Manager Name" 
                 HtmlEncode="False" ItemStyle-Width="350px"/>
                  <asp:BoundField DataField="Email" HeaderText="Email" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+
+                <asp:BoundField DataField="none Selected" HeaderText="False Negtive" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                  </Columns  >
                  <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
@@ -149,12 +173,14 @@
         </asp:GridView>
        <asp:LinkButton ID="LinkButton4" runat="server"></asp:LinkButton> 
        </div>
+       <asp:Button ID="Button2" runat="server" Text="Reset" 
+        onclick="Button2_Click" />
        </asp:Panel>
 
       <br />
       <br />
 <asp:Panel ID="Panel3"
-           runat="server" BorderStyle="Dashed" BorderWidth="2px" Width="949px">
+           runat="server" BorderStyle="Dashed" BorderWidth="2px" Width="1005px">
 <table style="margin-top:20px">
    <%-- <div style="margin-top:20px">--%>
     <tr>
@@ -168,6 +194,7 @@
    <tr>
    <td>
     <div style="margin-top:20px">
+        
     
         <asp:GridView ID="GV_SM2" runat="server" Width="414px" 
             AutoGenerateColumns="false" OnRowDataBound = "SM2_OnRowDataBound" 
@@ -210,7 +237,7 @@
         <div style="margin-top:20px">
         <asp:GridView ID="Gv_SM2_NO" runat="server" Width="396px" 
                 AutoGenerateColumns="false" OnRowDataBound = "SM2NON_OnRowDataBound" 
-                OnSelectedIndexChanged = "SM2NON_OnSelectedIndexChanged">
+                OnSelectedIndexChanged = "SM2NON_OnSelectedIndexChanged" >
              <Columns  >
        <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
@@ -224,6 +251,7 @@
                 HtmlEncode="False" ItemStyle-Width="50px"/>
         <asp:BoundField DataField="Credit hours" HeaderText="Credit Hr" 
                 HtmlEncode="False" ItemStyle-Width="50px"/>
+                
         <asp:BoundField DataField="AM_ID" HeaderText="AM_ID" 
                 HtmlEncode="False" ItemStyle-Width="50px"  ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol" />
                  </Columns  >
@@ -254,9 +282,21 @@
                 HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="Exam Weightage" HeaderText="Exam Weightage" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
+
+                 <asp:BoundField DataField="ClassTests" HeaderText="ClassTest" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="Private study required" HeaderText="Private Studey Required" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="CourseWorks" HeaderText="courseWorks" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                 <asp:BoundField DataField="CourseWorks_Weightage" HeaderText="CourseWorks_Wtg" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+
                  <asp:BoundField DataField="Manager Name" HeaderText="Manager Name" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                  <asp:BoundField DataField="Email" HeaderText="Email" 
+                HtmlEncode="False" ItemStyle-Width="300px"/>
+                <asp:BoundField DataField="none Selected" HeaderText="False Negtive" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                  </Columns  >
                  <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
@@ -264,11 +304,16 @@
         </asp:GridView>
        <asp:LinkButton ID="LinkButton5" runat="server"></asp:LinkButton>
    </div>
+    <asp:Button
+             ID="Button1" runat="server" Text="Reset" onclick="Button1_Click" />
+    
    </asp:Panel>
      <div style="margin-top:20px">
+     <asp:Label ID="Label2" runat="server" Text="Reviews"></asp:Label>
+         <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Width="503px"></asp:TextBox>
+         <br />
          <asp:Button ID="Save" runat="server" Text="Submit" onclick="Save_Click" />
-         <asp:Button
-             ID="Button1" runat="server" Text="Reset" onclick="Button1_Click" />
+        
       </div>
     </asp:Panel>
 </asp:Content>

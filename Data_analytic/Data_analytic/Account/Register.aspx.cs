@@ -42,10 +42,10 @@ namespace Data_analytic.Account
                 else
                 Response.Redirect("~/Programing.aspx");
             }
-            else
-            {
-                Response.Redirect("About.aspx");
-            }
+            //else
+            //{
+            //    Response.Redirect("About.aspx");
+            //}
           //  string continueUrl = RegisterUser.ContinueDestinationPageUrl;
             //if (String.IsNullOrEmpty(continueUrl))
             //{

@@ -94,6 +94,8 @@ namespace BusinessLayer
             dtConfusionMat.Columns.Add(dc);
             dc = new DataColumn("Practicle Lab");
             dtConfusionMat.Columns.Add(dc);
+            dc = new DataColumn("none Selected");
+            dtConfusionMat.Columns.Add(dc);
             BusinessLayer.calculateResult m = new BusinessLayer.calculateResult();
             DataTable dtMoudle = m.GetModuleInfo();
 
@@ -201,6 +203,7 @@ namespace BusinessLayer
                         DataRow drnew = dttemp.NewRow();
 
 
+                        drnew["none Selected"] = drNonCom["none Selected"];
                         drnew["AM_ID"] = drNonCom["AM_ID"];
                         drnew["ACademic_Module"] = drNonCom["ACademic_Module"];
                         drnew["TruePostive"] = drNonCom["TruePostive"];
@@ -218,7 +221,7 @@ namespace BusinessLayer
                     {
                         DataRow drnew = dtcom.NewRow();
 
-
+                        drnew["none Selected"] = drNonCom["none Selected"];
                         drnew["AM_ID"] = drNonCom["AM_ID"];
                         drnew["ACademic_Module"] = drNonCom["ACademic_Module"];
                         drnew["TruePostive"] = drNonCom["TruePostive"];
@@ -246,7 +249,7 @@ namespace BusinessLayer
                     drnew["FalseNegtive"] = drNonCom["FalseNegtive"]; ;
                     drnew["Credit hours"] = drNonCom["Credit hours"];
                     //""
-
+                    drnew["none Selected"] = drNonCom["none Selected"];
 
                     drnew["Recall"] = drNonCom["Recall"]; ;
                     dttemp.Rows.Add(drnew);
@@ -346,7 +349,8 @@ namespace BusinessLayer
         
    string qury=     "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours], "+
   "ab.[Theoretical Lecture],ab.[Practical Labs],ab.[CourseWorks_Weightage],ab.[ExamType], "+
-  "ab.[Exam Weightage],mm.[Manager Name],mm.Email,se.[Module Priority] " +
+  "ab.[Exam Weightage],mm.[Manager Name],mm.Email,se.[Module Priority], " +
+  " ab.[ClassTests],ab.[Private study required] ,ab.[CourseWorks] " +
   "FROM [Data_Analytics].[dbo].[Academic_module_model] ab inner join "+
   "[Data_Analytics].[dbo].[User_Module_Selections] se ON ab.AM_ID=se.AM_ID  "+ 
   "inner join [Data_Analytics].[dbo].[Module_Manager_Details] mm on ab.[MM_ID]=mm.MM_ID  "+
@@ -367,6 +371,7 @@ namespace BusinessLayer
 
         string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours], " +
        "ab.[Theoretical Lecture],ab.[Practical Labs],ab.[CourseWorks_Weightage],ab.[ExamType], " +
+       " ab.[ClassTests],ab.[Private study required],ab.[CourseWorks],ab.[ExamType],ab.[Exam Weightage], "+
        "ab.[Exam Weightage],mm.[Manager Name],mm.Email  " +
        "FROM [Data_Analytics].[dbo].[Academic_module_model] ab  " +
        "inner join [Data_Analytics].[dbo].[Module_Manager_Details] mm on ab.[MM_ID]=mm.MM_ID  " +
@@ -384,9 +389,10 @@ namespace BusinessLayer
     public DataTable GetSM2RecordInfo()
     {
         DT.Clear();
-
+       
         string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours], " +
        "ab.[Theoretical Lecture],ab.[Practical Labs],ab.[CourseWorks_Weightage],ab.[ExamType], " +
+       " ab.[ClassTests],ab.[Private study required],ab.[CourseWorks], " +
        "ab.[Exam Weightage],mm.[Manager Name],mm.Email  " +
        "FROM [Data_Analytics].[dbo].[Academic_module_model] ab  " +
        "inner join [Data_Analytics].[dbo].[Module_Manager_Details] mm on ab.[MM_ID]=mm.MM_ID  " +
@@ -399,7 +405,8 @@ namespace BusinessLayer
           DT.Clear();
           string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours], " +
                             "ab.[Theoretical Lecture],ab.[Practical Labs],ab.[CourseWorks_Weightage],ab.[ExamType], " +
-                             "ab.[Exam Weightage],mm.[Manager Name],mm.Email,se.[Module Priority] " +
+                             "ab.[Exam Weightage],mm.[Manager Name],mm.Email,se.[Module Priority], " +
+                               " ab.[ClassTests],ab.[Private study required] ,ab.[CourseWorks]" +
                              "FROM [Data_Analytics].[dbo].[Academic_module_model] ab inner join " +
                              "[Data_Analytics].[dbo].[User_Module_Selections] se ON ab.AM_ID=se.AM_ID  " +
                              "inner join [Data_Analytics].[dbo].[Module_Manager_Details] mm on ab.[MM_ID]=mm.MM_ID  " +
@@ -424,12 +431,13 @@ namespace BusinessLayer
             int AM_ID = 0;
             DataRow drComp = null;
 
-            
+            string nonSel="";
             foreach (DataRow dr in drreq)
             {
                 //DataRow[] dTselet=null;
                 drComp = null;
                 int ReqExpertise = int.Parse(dr["E_ID"].ToString());
+
                 AM_ID = int.Parse(dr["AM_ID"].ToString());
                 int AA_ID = int.Parse(dr["AA_ID"].ToString());
                 if (dtPrograming != null)
@@ -572,21 +580,21 @@ namespace BusinessLayer
                         final = 0.5;
                     }
 
-                    if (ReqExpertise > Level)
+                    if (ReqExpertise > Level && final==0)
                     {
                         FalseNegtive++;
+                        nonSel = nonSel + drComp["Data"].ToString() + ",";
+                        
                     }
-                    else
+                    else if (final == 0)
                     {
                         TruePostive++;
                         final = 0.0;
                     }
-                    if (final > 0.0)
+                    else
                     {
-                        FalseNegtive--;
+                        TruePostive = (float)(TruePostive + final);
                     }
-                    TruePostive = (float)(TruePostive + final);
-
                 }
 
 
@@ -603,7 +611,7 @@ namespace BusinessLayer
                 dr["Compulsory"] = drModule["Compulsory"];
                 dr["FalseNegtive"] = FalseNegtive;
                 dr["Credit hours"] = drModule["Credit hours"];
-                //""
+                dr["none Selected"] = nonSel;
                 dr["ACademic_Module"] = drModule["ACademic_Module"];
                 float Re = ((float)TruePostive / (float)(TruePostive + FalseNegtive));
                 dr["Recall"] = Re;

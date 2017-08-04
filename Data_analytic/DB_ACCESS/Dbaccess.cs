@@ -217,7 +217,11 @@ namespace DB_ACCESS
             DbAdapter.UpdateCommand = updateCommand;
             DbAdapter.DeleteCommand = deleteCommand;
 
-        
+            ////Change Date 20-06-07
+            //DA1.InsertCommand = inserCommand;
+            //DA1.UpdateCommand = updateCommand;
+            //DA1.DeleteCommand = deleteCommand;
+
             DataTable dt = (DataTable)ds.Tables[tableName];
             SqlParameter p = null;
 
@@ -243,8 +247,13 @@ namespace DB_ACCESS
             DbAdapter.Update(dt.Select(null, null, DataViewRowState.Deleted));
             DbAdapter.Update(dt.Select(null, null, DataViewRowState.ModifiedCurrent));
             DbAdapter.Update(dt.Select(null, null, DataViewRowState.Added));
-          
-        
+
+            //Change Date 20-06-07
+            //DA1.Update(dt.Select(null, null, DataViewRowState.Deleted));
+            //DA1.Update(dt.Select(null, null, DataViewRowState.ModifiedCurrent));
+            //DA1.Update(dt.Select(null, null, DataViewRowState.Added));
+
+            //DA1.Dispose();
             DbAdapter.Dispose();
 
         }
@@ -295,7 +304,10 @@ namespace DB_ACCESS
 
                 DbAdapter.SelectCommand = (DbCommand);
                 DbAdapter.Fill(dSet, tblName);
-
+                ////Change Date 20-06-07
+                //DA1.SelectCommand = (DbCommand);
+                //DA1.Fill(dSet, tblName);
+                //DA1.Dispose();
                 DbAdapter.Dispose();
                 DbCommand.Dispose();
 
@@ -331,7 +343,11 @@ namespace DB_ACCESS
                 DbAdapter.SelectCommand = DbCommand;
                 DbAdapter.Fill(dSet, tblName);
 
+                ////Change Date 20-06-07
+                //DA1.SelectCommand = DbCommand;
+                //DA1.Fill(dSet, tblName);
 
+                //DA1.Dispose();
                 DbAdapter.Dispose();
                 DbCommand.Dispose();
 
@@ -432,10 +448,15 @@ namespace DB_ACCESS
                         DbCommand.CommandText = query;
                         DbCommand.CommandType = CommandType.Text;
                         DbCommand.CommandTimeout = 0;
-
+                        //Modify Date 28-06-07 (Salman)
+                        //DbAdapter = new SqlDataAdapter(DbCommand);
                         DbAdapter.SelectCommand = DbCommand;
                         DbAdapter.Fill(tblName);
 
+                        ////Change Date 20-06-07
+                        //DA1.SelectCommand = DbCommand;
+                        //DA1.Fill(tblName);
+                        //DA1.Dispose();
                         DbAdapter.Dispose();
                         DbCommand.Dispose();
                         return;
@@ -617,7 +638,9 @@ namespace DB_ACCESS
                     DbAdapter.SelectCommand = DbCommand;
                     DbAdapter.SelectCommand = DbCommand;
                     SqlCommandBuilder DbCommandBuilder = new SqlCommandBuilder(DbAdapter);
-
+                    //DbAdapter.DeleteCommand = DbCommandBuilder.GetDeleteCommand();
+                    //DbAdapter.UpdateCommand = DbCommandBuilder.GetUpdateCommand();
+                    //DbAdapter.InsertCommand = DbCommandBuilder.GetInsertCommand();
                     DbCommandBuilder.ConflictOption = ConflictOption.OverwriteChanges;
                     //  DbCommandBuilder.DataAdapter = DbAdapter;
                     return DbAdapter.Update(dSet, tblName);

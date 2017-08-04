@@ -32,7 +32,7 @@
                <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="No Expriance">
                   <ItemTemplate>
                        <asp:RadioButton ID="RowSelector" runat="server" Checked="true" 
-                           GroupName="InfoGroup" Width="100"  TextAlign="Left" />
+                           GroupName="InfoGroup" Width="100"  TextAlign="Left"  />
                    </ItemTemplate>
                    <HeaderStyle Font-Bold="True" Font-Size="Medium" />
                </asp:TemplateField>

@@ -1,12 +1,3 @@
-F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.dll
-F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.pdb
-F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.dll
-F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
-F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
-F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
-F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
-F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
-F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
 F:\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.dll
 F:\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.pdb
 F:\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.dll
@@ -25,12 +16,21 @@ K:\Web\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
 K:\Web\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
 K:\Web\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
 K:\Web\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\Data_analytic\bin\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\Data_analytic\bin\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\Data_analytic\bin\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\Versions\Data_analytic(Admin Pannel,result pages Font change)14\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(BugRem,ResPageMod,RegPageErrorRem)16\Data_analytic\Data_analytic\bin\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(BugRem,ResPageMod,RegPageErrorRem)16\Data_analytic\Data_analytic\bin\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(BugRem,ResPageMod,RegPageErrorRem)16\Data_analytic\Data_analytic\bin\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(BugRem,ResPageMod,RegPageErrorRem)16\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(BugRem,ResPageMod,RegPageErrorRem)16\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(BugRem,ResPageMod,RegPageErrorRem)16\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(BugRem,ResPageMod,RegPageErrorRem)16\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(BugRem,ResPageMod,RegPageErrorRem)16\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(BugRem,ResPageMod,RegPageErrorRem)16\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
