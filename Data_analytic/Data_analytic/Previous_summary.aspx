@@ -27,6 +27,8 @@
         <asp:BoundField DataField="Expertise" HeaderText="Expertise" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                  </Columns  >
+           <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
+           <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
         </asp:GridView> </div>
     </th>
    <th style="margin-top:20px"> 
@@ -37,6 +39,8 @@
         <asp:BoundField DataField="Expertise" HeaderText="Expertise" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                  </Columns  >
+            <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
+           <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
     </asp:GridView>
     </th></tr>
     <tr>
@@ -52,7 +56,8 @@
         <asp:BoundField DataField="Expertise" HeaderText="Expertise" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                  </Columns  >
-      
+            <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
+           <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
       
     </asp:GridView></th>
     <th style="margin-top:20px">
@@ -63,6 +68,8 @@
         <asp:BoundField DataField="Expertise" HeaderText="Expertise" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                  </Columns  >
+            <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
+           <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
     </asp:GridView>
     </th>
     
@@ -76,11 +83,11 @@
 
     <asp:Panel ID="Panel2" runat="server" BorderStyle="Outset" >
    
-     <div style="margin-top:20px;  overflow:scroll; width:673px; height: 193px;">
+     <div style="margin-top:20px;  overflow:scroll; width:826px; height: 360px;">
      <asp:Label ID="Label2" runat="server" Text="Semester 1 Module" Font-Bold="True" 
             Font-Size="Large"></asp:Label>
      <asp:GridView ID="Gv_SM1" runat="server" Width="1192px" AutoGenerateColumns="false" 
-             Height="155px">
+             Height="311px">
              <Columns  >
        <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
@@ -109,16 +116,18 @@
                  <asp:BoundField DataField="Email" HeaderText="Email" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                  </Columns  >
+           <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
+           <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
         </asp:GridView>
  </div>
 
 
- <div style="margin-top:20px; overflow:scroll; width:667px">
+ <div style="margin-top:26px; overflow:scroll; width:826px; height: 358px;">
 
  <asp:Label ID="Label3" runat="server" Text="Smester 2 Module" Font-Bold="True" 
             Font-Size="Large"></asp:Label>
      <asp:GridView ID="GV_SM2" runat="server" Width="1178px" 
-         AutoGenerateColumns="false">
+         AutoGenerateColumns="false" Height="339px">
              <Columns  >
        <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>
@@ -149,6 +158,8 @@
                 HtmlEncode="False" ItemStyle-Width="300px"/>
                 
                  </Columns  >
+           <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
+           <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
         </asp:GridView>
  </div> 
  <div style="margin-top:20px">

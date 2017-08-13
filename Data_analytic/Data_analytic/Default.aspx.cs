@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Data_analytic
 {
-    public partial class _Default : System.Web.UI.Page
+    public partial class _Default : System.Web.UI.Page  //change//
     {
         
         protected void Page_Load(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace Data_analytic
         protected void LoginButton_Click(object sender, EventArgs e)
         {
 
-            BusinessLayer.LoginInfo m = new BusinessLayer.LoginInfo();
+            BusinessLayer.LoginInfo m = new BusinessLayer.LoginInfo();  //change//
             int noofRecord = m.GetUserInfoRecord(LoginUser.UserName, LoginUser.Password);
             if (noofRecord >= 1)
             {
@@ -35,11 +35,11 @@ namespace Data_analytic
                 {
                     Session.Add("UserID", noofRecord);
                     Session.Add("UserName", LoginUser.UserName);
-                    BusinessLayer.previous_Result pr = new BusinessLayer.previous_Result();
-                    DataTable dtProg = pr.GetProg_Selection(noofRecord);
-                    DataTable dtTool = pr.GetTool_Selection(noofRecord);
-                    DataTable dtmath = pr.GetMathmetic_Selection(noofRecord);
-                    DataTable dtresearch = pr.GetResearch_Selection(noofRecord);
+                    BusinessLayer.previous_Result pr = new BusinessLayer.previous_Result();  //change//
+                    DataTable dtProg = pr.GetProg_Selection(noofRecord);  //change//
+                    DataTable dtTool = pr.GetTool_Selection(noofRecord);  //change//
+                    DataTable dtmath = pr.GetMathmetic_Selection(noofRecord);  //change//
+                    DataTable dtresearch = pr.GetResearch_Selection(noofRecord);  //change//
 
                     if (dtProg.Rows.Count == 0 && dtTool.Rows.Count == 0 && dtmath.Rows.Count == 0 && dtresearch.Rows.Count == 0)
                         Response.Redirect("~/Programing.aspx");

@@ -13,8 +13,8 @@ namespace Data_analytic
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
-            DataTable dtb = m.GetProgramingAcademicAssociatedInfo();
+            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo(); //change//
+            DataTable dtb = m.GetProgramingAcademicAssociatedInfo();   //change//
             //if (RBT_Noexperience.Checked)
             //{
             //    dtb.Clear();
@@ -89,7 +89,7 @@ namespace Data_analytic
         }
         void LoadSelectedState()
         {
-            DataTable dt = (DataTable)Session["programing"];
+            DataTable dt = (DataTable)Session["programing"]; //change//
             int i = 0;
             foreach (DataRow dr in dt.Rows)
             {
@@ -121,8 +121,8 @@ namespace Data_analytic
         }
         void SetLoadStateData()
         {
-            DataTable dt = new DataTable();
-            DataColumn dc = new DataColumn();
+            DataTable dt = new DataTable(); //change//
+            DataColumn dc = new DataColumn(); //change//
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc); 

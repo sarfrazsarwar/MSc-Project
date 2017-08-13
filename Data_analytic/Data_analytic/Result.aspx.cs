@@ -11,7 +11,7 @@ namespace Data_analytic
 {
     public partial class Result : System.Web.UI.Page
     {
-        GridViewRow SelROw;
+        GridViewRow SelROw;  //change//
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -38,16 +38,16 @@ namespace Data_analytic
                 }
 
 
-                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();  //change//
                 obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
-                DataSet dtsm1 = obj.SortSmester1Data();
+                DataSet dtsm1 = obj.SortSmester1Data();  //change//
                 GV_SM1.DataSource = dtsm1.Tables[0];
                 GV_SM1.DataBind();
                 Gv_SM1_NO.DataSource = dtsm1.Tables[1];
                 Gv_SM1_NO.DataBind();
 
 
-                DataSet dtsm2 = obj.SortSmester2Data();
+                DataSet dtsm2 = obj.SortSmester2Data();  //change//
 
                 GV_SM2.DataSource = dtsm2.Tables[0];
                 GV_SM2.DataBind();
@@ -80,15 +80,15 @@ namespace Data_analytic
                   
                //}
 
-                DataTable dt =obj.GetSM1RecordInfo();
+                DataTable dt = obj.GetSM1RecordInfo();  //change//
 
-                DataColumn dc = new DataColumn("none Selected");
+                DataColumn dc = new DataColumn("none Selected");   //change//
                 dt.Columns.Add(dc);
                 Add_falseNegetive(dtsm1.Tables[0], dt);
                 Add_falseNegetive(dtsm1.Tables[1], dt);
                    GridView1.DataSource=dt;
                    GridView1.DataBind();
-                   DataTable dttemp = obj.GetSM2RecordInfo();
+                   DataTable dttemp = obj.GetSM2RecordInfo();  //change//
                    //dc = new DataColumn("none Selected");
                    //dttemp.Columns.Add(dc);
 
@@ -143,7 +143,7 @@ namespace Data_analytic
                 e.Row.ToolTip = "Click to select this row.";
             }
         }
-        void selectROw(GridViewRow rowSEl)
+        void selectROw(GridViewRow rowSEl)  //change//
         {
             foreach (GridViewRow row in GridView1.Rows)
             {
@@ -155,7 +155,7 @@ namespace Data_analytic
             }
         }
 
-        void selectSM2Row(GridViewRow rowSEl)
+        void selectSM2Row(GridViewRow rowSEl)  //change//
         {
             foreach (GridViewRow row in GridView2.Rows)
             {
@@ -284,7 +284,7 @@ namespace Data_analytic
 
 
 
-        void RemoveSm1MoudleSugest()
+        void RemoveSm1MoudleSugest()  //change//
         {
            
             DataTable dtSMAT = new DataTable();
@@ -404,7 +404,7 @@ namespace Data_analytic
             Gv_SM1_NO.DataBind();
         }
 
-        bool validateSmester1CreditHr()
+        bool validateSmester1CreditHr()  //change//
         {
             int creditHr = 0;
             foreach (GridViewRow row in GV_SM1.Rows)
@@ -420,7 +420,7 @@ namespace Data_analytic
         }
 
 
-        bool validateSmester2CreditHr()
+        bool validateSmester2CreditHr()  //change//
         {
             int creditHr = 0;
             foreach (GridViewRow row in GV_SM2.Rows)
@@ -807,10 +807,9 @@ namespace Data_analytic
 
             if (validateSmester1CreditHr() && validateSmester2CreditHr())
             {
-                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();  //change//
 
-                //int user_id = (int)Session["UserID"];;
-                int user_id = (int)Session["UserID"];
+                int user_id = (int)Session["UserID"]; //change//
                 obj.DeleteUserSelectionRecord(user_id);
                 foreach (GridViewRow row in GV_SM1.Rows)
                 {
@@ -854,7 +853,7 @@ namespace Data_analytic
             RemoveSm2MoudleSugest();
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e)  //change//
         {
             DataTable dtTools = null;
             DataTable dtMath = null;
@@ -878,7 +877,7 @@ namespace Data_analytic
             }
 
 
-            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();  //change//
             obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
             //DataSet dtsm1 = obj.SortSmester1Data();
             //GV_SM1.DataSource = dtsm1.Tables[0];
@@ -906,7 +905,7 @@ namespace Data_analytic
            
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)  //change//
         {
             DataTable dtTools = null;
             DataTable dtMath = null;
@@ -930,7 +929,7 @@ namespace Data_analytic
             }
 
 
-            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();  //change//
             obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
             DataSet dtsm1 = obj.SortSmester1Data();
             GV_SM1.DataSource = dtsm1.Tables[0];

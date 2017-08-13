@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Data_analytic
 {
-    public partial class Previous_summary : System.Web.UI.Page
+    public partial class Previous_summary : System.Web.UI.Page  //change//
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -194,7 +194,7 @@ namespace Data_analytic
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void Button1_Click(object sender, EventArgs e) //change//
         {
             Response.Redirect("~/Programing.aspx");
         }

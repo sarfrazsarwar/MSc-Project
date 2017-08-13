@@ -6,7 +6,7 @@ using System.Data;
 
 namespace BusinessLayer
 {
-   public class previous_Result
+   public class previous_Result  //change//
     {
         AssociateModuleInfo m = new AssociateModuleInfo();
         DataRow FindRow(DataTable dt, int id)
@@ -25,7 +25,7 @@ namespace BusinessLayer
 
             return drfind;
         }
-           public DataTable GetProg_Selection(int id)
+           public DataTable GetProg_Selection(int id)  //change//
         {
             DataTable dt = null;
              dt = new DataTable();
@@ -112,7 +112,7 @@ namespace BusinessLayer
             return dt;
         }
 
-      public  DataTable GetTool_Selection(int id)
+      public  DataTable GetTool_Selection(int id)  //change//
         {
             DataTable dt = null;
             dt = new DataTable();
@@ -150,7 +150,7 @@ namespace BusinessLayer
                 return dt;
             }
 
-            DataTable dtProg = new DataTable();
+            DataTable dtProg = new DataTable(); //change//
             dtProg = m.GetToolAcademicAssociatedInfo();
             foreach (DataRow dr in dtProg.Rows)
             {
@@ -201,7 +201,7 @@ namespace BusinessLayer
             return dt;
         }
 
-    public    DataTable GetMathmetic_Selection(int id)
+    public    DataTable GetMathmetic_Selection(int id)  //change//
         {
             DataTable dt = null;
             dt = new DataTable();
@@ -238,7 +238,7 @@ namespace BusinessLayer
             {
                 return dt;
             }
- DataTable dtProg = new DataTable();
+ DataTable dtProg = new DataTable();  //change//
             dtProg = m.GetMathmeticAcademicAssociatedInfo();
             foreach (DataRow dr in dtProg.Rows)
             {
@@ -288,7 +288,7 @@ namespace BusinessLayer
             }
             return dt;
         }
-     public   DataTable GetResearch_Selection(int id)
+     public   DataTable GetResearch_Selection(int id)  //cjange//
         {
             DataTable dt = null;
             dt = new DataTable();
@@ -325,7 +325,7 @@ namespace BusinessLayer
             {
                 return dt;
             }         
-         DataTable dtProg = new DataTable();
+         DataTable dtProg = new DataTable();  //change//
             dtProg = m.GetResearchAcademicAssociatedInfo();
             foreach (DataRow dr in dtProg.Rows)
             {

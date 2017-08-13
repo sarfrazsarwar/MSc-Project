@@ -68,5 +68,4 @@
      <asp:Button ID="NEXT" runat="server" Text="Next" onclick="NEXT_Click" />
      </div>
     </asp:Panel>
-    </div>
 </asp:Content>

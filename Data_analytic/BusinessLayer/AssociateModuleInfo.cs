@@ -8,14 +8,14 @@ namespace BusinessLayer
 {
    public class AssociateModuleInfo
     {
-        private DataTable DT = new DataTable("Academic_associated_info");
+        private DataTable DT = new DataTable("Academic_associated_info"); //change//
         public DataTable GetToolAcademicAssociatedInfo()
         {
             DT.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=4 AND"+
                 " [Academic_info]  not like '%_anyOne' ORDER BY AA_ID";
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
-            int rcord = DT.Rows.Count;
+            int rcord = DT.Rows.Count; //change//
             return DT;
         }
         public DataTable GetProgramingAcademicAssociatedInfo()
@@ -29,7 +29,7 @@ namespace BusinessLayer
         public DataTable GetMathmeticAcademicAssociatedInfo()
         {
             DT.Clear();
-            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=2 AND [Academic_info]  not like '%_anyOne' ORDER BY AA_ID";
+            string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=2 AND [Academic_info]  not like '%_anyOne' ORDER BY AA_ID"; //change//
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
             int rcord = DT.Rows.Count;
             return DT;
@@ -60,7 +60,7 @@ namespace BusinessLayer
            
         }
 
-        public DataTable GetResearchAcademicAssociatedInfo1(string pr)
+        public DataTable GetResearchAcademicAssociatedInfo1(string pr) //delete//
         {
             DT.Clear();
             string str = "Select [Sug_Word] from [Data_Analytics].[dbo].[Academic_Interests] where Sug_Word like '%"+pr+"%' ORDER BY AM_ID";

@@ -6,7 +6,7 @@ using System.Data;
 
 namespace BusinessLayer
 {
-    public class LoginInfo
+    public class LoginInfo  //change//
     {
         private string StrLoginTableName;
         private DataTable DT = new DataTable("Userinfo");
@@ -62,7 +62,7 @@ namespace BusinessLayer
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
             if (DT.Rows.Count > 0)
             {
-                int UserId=0;
+                int UserId=0;  //change//
                 DataRow dr = DT.Rows[0];
                  UserId=int.Parse(dr["user_ID"].ToString());
                 DT.Clear();
@@ -99,7 +99,7 @@ namespace BusinessLayer
 
             // AND [Password]= '" + strpass + "
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
-            int rcord = DT.Rows.Count;
+            int rcord = DT.Rows.Count;  //change//
            
             return DT;
         }
