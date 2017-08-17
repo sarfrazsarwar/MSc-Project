@@ -13,8 +13,9 @@ namespace Data_analytic
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo(); //change//
-            DataTable dtb = m.GetProgramingAcademicAssociatedInfo();   //change//
+            
+            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
+            DataTable dtb = m.GetProgramingAcademicAssociatedInfo();
             //if (RBT_Noexperience.Checked)
             //{
             //    dtb.Clear();
@@ -89,7 +90,7 @@ namespace Data_analytic
         }
         void LoadSelectedState()
         {
-            DataTable dt = (DataTable)Session["programing"]; //change//
+            DataTable dt = (DataTable)Session["programing"];
             int i = 0;
             foreach (DataRow dr in dt.Rows)
             {
@@ -121,8 +122,8 @@ namespace Data_analytic
         }
         void SetLoadStateData()
         {
-            DataTable dt = new DataTable(); //change//
-            DataColumn dc = new DataColumn(); //change//
+            DataTable dt = new DataTable();
+            DataColumn dc = new DataColumn();
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc); 
@@ -290,6 +291,24 @@ namespace Data_analytic
             //}
             Response.Redirect("~/Mathmetic.aspx");
             
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
+            DataTable dtb = m.GetProgramingAcademicAssociatedInfo();
+            //if (RBT_Noexperience.Checked)
+            //{
+            //    dtb.Clear();
+            //}
+
+            PRO_GD.DataSource = dtb;
+            PRO_GD.DataBind();
+            //foreach (GridViewRow row in PRO_GD.Rows)
+            //{
+            //    RadioButton r1 = (RadioButton)row.FindControl("RowSelector");
+            //    r1.Checked = true;
+            //}
         }
 
     }

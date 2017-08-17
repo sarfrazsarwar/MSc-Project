@@ -8,18 +8,18 @@ namespace BusinessLayer
 {
    public class EditRequirment
     {
-        private DataTable DT = new DataTable("Academic_module_model");  //change//
+        private DataTable DT = new DataTable("Academic_module_model");
         public DataTable GetModuleInfo()
         {
             DT.Clear();
-            string str = "Select *from [Data_Analytics].[dbo].[Academic_module_model]";  //change//
+            string str = "Select *from [Data_Analytics].[dbo].[Academic_module_model]";
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
             return DT;
         }
 
         public DataTable GetModuleRequirement(int id)
         {
-            DataTable dtreq = new DataTable();  //change//
+            DataTable dtreq = new DataTable();
             string query = "select ab.[Academic_info],ce.[Expertise] ,ce.[E_ID],ab.AA_ID from " +
                  "[Data_Analytics].[dbo].[Academic_associated_info] ab " +
                  "inner join [Data_Analytics].[dbo].[Module_Requirment] ac on ab.AA_ID=ac.AA_ID " +
@@ -33,7 +33,7 @@ namespace BusinessLayer
             DT.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info]  ORDER BY AA_ID";
             DB_ACCESS.Dbaccess.FillLocalTable(DT, str);
-            int rcord = DT.Rows.Count;  //change//
+            int rcord = DT.Rows.Count;
             return DT;
         }
 

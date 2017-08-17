@@ -9,7 +9,7 @@ using System.Data;
 
 namespace Data_analytic.Account
 {
-    public partial class Register : System.Web.UI.Page  //change//
+    public partial class Register : System.Web.UI.Page
     {
 
         protected void Page_Load(object sender, EventArgs e)
@@ -19,20 +19,20 @@ namespace Data_analytic.Account
             Session.RemoveAll();
         }
 
-        protected void RegisterUser_CreatedUser(object sender, EventArgs e)  //change//
+        protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
             //FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
 
             BusinessLayer.LoginInfo m = new BusinessLayer.LoginInfo();
             if (m.DuplicateUserInfoRecord(UserName.Text) == 0)
             {
-                List<string> strlist=new List<string>();  //change//
+                List<string> strlist=new List<string>();
                 strlist.Add(UserName.Text);
                 strlist.Add(Password.Text);
                 strlist.Add(Email.Text);
                
                 m.InsertRecord(strlist);
-                int noofRecord = m.GetUserInfoRecord(UserName.Text, Password.Text);  //change//
+                int noofRecord = m.GetUserInfoRecord(UserName.Text, Password.Text);
                 Session.Add("UserID", noofRecord);
                 Session.Add("UserName", UserName.Text);
                 if (UserName.Text.ToUpper() == "ADMINISTRATOR" || UserName.Text.ToUpper() == "ADMIN")

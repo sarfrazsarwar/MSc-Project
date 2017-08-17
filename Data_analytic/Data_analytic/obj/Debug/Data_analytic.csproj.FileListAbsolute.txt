@@ -16,21 +16,30 @@ K:\Web\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
 K:\Web\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
 K:\Web\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
 K:\Web\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(GUI Setting)17\Data_analytic\Data_analytic\bin\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(GUI Setting)17\Data_analytic\Data_analytic\bin\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(GUI Setting)17\Data_analytic\Data_analytic\bin\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(GUI Setting)17\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(GUI Setting)17\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(GUI Setting)17\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(GUI Setting)17\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(GUI Setting)17\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(GUI Setting)17\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
+F:\Sohail Data\webProj\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
+K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.dll
+K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.pdb
+K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.dll
+K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
+K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
+K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
+K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
+K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
+K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\obj\Debug\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\obj\Debug\Data_analytic.pdb

@@ -1,10 +1,21 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ModifyReq.aspx.cs" Inherits="Data_analytic.ModifyReq" enableEventValidation="false" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+    <style type="text/css">
+        .style2
+        {
+            width: 496px;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
  <%--OnRowDataBound = "OnRowDataBound" OnSelectedIndexChanged = "OnSelectedIndexChanged"--%>
- <table><tr><td>
+<%-- <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+</asp:ScriptManager>--%>
+
+ <table><tr><td valign="top">
+<%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" >
+      <ContentTemplate>--%>
 <asp:GridView ID="Module_GD" runat="server" AutoGenerateColumns="False"
    
     EnableViewState="False" Height="108px" Width="421px" 
@@ -33,26 +44,34 @@
            <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
           
 </asp:GridView>
+
+<%--</ContentTemplate>
+</asp:UpdatePanel>--%>
 <asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>
-</td><td>
+</td>
+
+
+<td class="style2" valign="top" >
+<%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >
+      <ContentTemplate>--%>
 <asp:GridView ID="REQ_GD" runat="server" AutoGenerateColumns="False"
    
-    EnableViewState="False" Height="108px" Width="309px" 
+    EnableViewState="False" Height="108px" Width="300px" 
             Font-Italic="False" Font-Names="Calibri" Font-Size="Medium"  
-            BorderColor="#66CCFF"   style="margin-left: 159px">
+            BorderColor="#66CCFF"   >
            
            <Columns>
                <asp:BoundField DataField="Academic_info" HeaderStyle-Font-Bold="false" 
                    HeaderText="Academic_info" HtmlEncode="False" ItemStyle-Width="300px">
                <HeaderStyle Font-Bold="True" Font-Size="Medium" />
-               <ItemStyle Width="300px" />
+               <ItemStyle Width="200px" />
                </asp:BoundField>
                
                <asp:BoundField DataField="Expertise" HeaderStyle-Font-Bold="false" 
                    HeaderText="Expertise" HtmlEncode="False" ItemStyle-Width="300px" 
                     >
                <HeaderStyle Font-Bold="False" />
-                 <ItemStyle Width="300px" />
+                 <ItemStyle Width="100px" />
                </asp:BoundField>
                
               
@@ -61,8 +80,19 @@
            <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" />
            <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
           
-</asp:GridView></td></tr></table>
+</asp:GridView>
+<%--</ContentTemplate>
+</asp:UpdatePanel>--%>
+
+</td>
+
+</tr></table>
+<br />
+<br />
+<div style=" float:right; margin-right:40%">
 <asp:Button ID="Button1" runat="server" Text="Modify Requriment" 
-        onclick="Button1_Click" />
+        onclick="Button1_Click"  Height="43px" style="margin-left: 0px" Width="146px" BackColor="#55a6dd" 
+             BorderColor="#666768" BorderStyle="Solid" />
+ </div>
 </asp:Content>
 

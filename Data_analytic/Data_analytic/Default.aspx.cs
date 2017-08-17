@@ -8,9 +8,19 @@ using System.Data;
 
 namespace Data_analytic
 {
-    public partial class _Default : System.Web.UI.Page  //change//
+    public partial class _Default : System.Web.UI.Page
     {
-        
+        [System.Web.Services.WebMethod]
+        public static string GetText()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                // In actual projects this action may be a database operation.
+                //For demsonstration I have made this loop to sleep.
+              
+            }
+            return "Download Complete...";
+        }        
         protected void Page_Load(object sender, EventArgs e)
         {
            
@@ -22,7 +32,7 @@ namespace Data_analytic
         protected void LoginButton_Click(object sender, EventArgs e)
         {
 
-            BusinessLayer.LoginInfo m = new BusinessLayer.LoginInfo();  //change//
+            BusinessLayer.LoginInfo m = new BusinessLayer.LoginInfo();
             int noofRecord = m.GetUserInfoRecord(LoginUser.UserName, LoginUser.Password);
             if (noofRecord >= 1)
             {
@@ -35,11 +45,11 @@ namespace Data_analytic
                 {
                     Session.Add("UserID", noofRecord);
                     Session.Add("UserName", LoginUser.UserName);
-                    BusinessLayer.previous_Result pr = new BusinessLayer.previous_Result();  //change//
-                    DataTable dtProg = pr.GetProg_Selection(noofRecord);  //change//
-                    DataTable dtTool = pr.GetTool_Selection(noofRecord);  //change//
-                    DataTable dtmath = pr.GetMathmetic_Selection(noofRecord);  //change//
-                    DataTable dtresearch = pr.GetResearch_Selection(noofRecord);  //change//
+                    BusinessLayer.previous_Result pr = new BusinessLayer.previous_Result();
+                    DataTable dtProg = pr.GetProg_Selection(noofRecord);
+                    DataTable dtTool = pr.GetTool_Selection(noofRecord);
+                    DataTable dtmath = pr.GetMathmetic_Selection(noofRecord);
+                    DataTable dtresearch = pr.GetResearch_Selection(noofRecord);
 
                     if (dtProg.Rows.Count == 0 && dtTool.Rows.Count == 0 && dtmath.Rows.Count == 0 && dtresearch.Rows.Count == 0)
                         Response.Redirect("~/Programing.aspx");

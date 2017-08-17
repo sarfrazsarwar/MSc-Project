@@ -9,6 +9,10 @@
 <br />
 <br />
 <br />
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+</asp:ScriptManager>
+<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >
+      <ContentTemplate>
 <asp:GridView ID="Modyfy_GD" runat="server" AutoGenerateColumns="False"
 
     EnableViewState="False" Height="108px" Width="774px" 
@@ -16,7 +20,7 @@
             BorderColor="#66CCFF" OnRowDataBound = "OnRowDataBound" OnSelectedIndexChanged = "OnSelectedIndexChanged">
            <Columns>
                <asp:BoundField DataField="Academic_info" HeaderStyle-Font-Bold="false" 
-                   HeaderText="Math" HtmlEncode="False" ItemStyle-Width="300px">
+                   HeaderText="Moudle Associted info" HtmlEncode="False" ItemStyle-Width="300px">
                <HeaderStyle Font-Bold="True" Font-Size="Medium" />
                <ItemStyle Width="300px" />
                </asp:BoundField>
@@ -59,12 +63,16 @@
            <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
           
 </asp:GridView>
+</ContentTemplate>
+</asp:UpdatePanel>
 <asp:LinkButton ID="LinkButton1" runat="server"></asp:LinkButton>
 
 
 <br />
 
 <br />
-<asp:Button ID="Button1" runat="server" Text="Save" onclick="Button1_Click" />
-
+<div style=" float:right; margin-right:19%">
+<asp:Button ID="Button1" runat="server" Text="Save" onclick="Button1_Click"  Height="43px" style="margin-left: 0px" Width="146px"  BackColor="#55a6dd" 
+             BorderColor="#666768" BorderStyle="Solid"/>
+</div>
 </asp:Content>

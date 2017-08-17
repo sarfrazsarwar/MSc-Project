@@ -8,7 +8,7 @@ using System.Data;
 
 namespace Data_analytic
 {
-    public partial class Summary : System.Web.UI.Page  //change//
+    public partial class Summary : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -97,10 +97,10 @@ namespace Data_analytic
         {
             if (Session["Programing"] != null)
             {
-                DataTable dt = (DataTable)Session["Programing"]; //change//
-                DataRow[] result = dt.Select("NotAvailable=0");  //change//
-                DataTable dt1 = new DataTable();  //change//
-                DataColumn dc = new DataColumn();  //change//
+                DataTable dt = (DataTable)Session["Programing"];
+                DataRow[] result = dt.Select("NotAvailable=0");
+                DataTable dt1=new DataTable();
+                DataColumn dc= new DataColumn();
                 dc.ColumnName="Data";
                 dt1.Columns.Add(dc);
                 dc = new DataColumn();
@@ -261,8 +261,8 @@ namespace Data_analytic
         {
             if (Session[TblName] != null)
             {
-                DataTable dt = (DataTable)Session[TblName];  //change//
-                int User_ID =  (int)Session["UserID"];  //change//
+                DataTable dt = (DataTable)Session[TblName];
+                int User_ID =  (int)Session["UserID"];
                
                 
                 foreach (DataRow dr in dt.Rows)
@@ -292,8 +292,8 @@ namespace Data_analytic
         }
         protected void NEXT_Click(object sender, EventArgs e)
         {
-             BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();  //change//
-             int User_ID = (int)Session["UserID"];  //change//
+             BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
+             int User_ID = (int)Session["UserID"];
              m.DeleteUserInputRecord(User_ID);
             for (int i = 0; i < 4; i++)
             {

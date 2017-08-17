@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace Data_analytic
 {
-    public partial class ModifyReq : System.Web.UI.Page  //change//
+    public partial class ModifyReq : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         { 
@@ -85,7 +85,7 @@ namespace Data_analytic
                 }
             }
         }
-        protected void TestLink(object sender, EventArgs e) //change
+        protected void TestLink(object sender, EventArgs e)
         {
             int id = Module_GD.SelectedIndex;
             if (id >= 0)
@@ -94,7 +94,7 @@ namespace Data_analytic
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)  //change//
+        protected void Button1_Click(object sender, EventArgs e)
         {
             if (Session["REQ_Module"] == null && Session["REQ_ID"] == null)
             {

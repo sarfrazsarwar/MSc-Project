@@ -31,13 +31,13 @@ namespace Data_analytic
         {
             BusinessLayer.EditRequirment R = new BusinessLayer.EditRequirment();
 
-            int id = int.Parse(Session["REQ_ID"].ToString());  //change//
+            int id = int.Parse(Session["REQ_ID"].ToString());
             DataTable dt1 = R.GetModuleRequirement(id);
             {
                 foreach (DataRow dr in dt1.Rows)
                 {
-                    string str = dr["Academic_info"].ToString(); //change//
-                    int idd=int.Parse(dr["E_ID"].ToString());  //change//
+                    string str = dr["Academic_info"].ToString();
+                    int idd=int.Parse(dr["E_ID"].ToString());
                     SetCheckState(str,idd);
                 }
             }

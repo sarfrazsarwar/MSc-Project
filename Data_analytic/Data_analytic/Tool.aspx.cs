@@ -194,6 +194,13 @@ namespace Data_analytic
             //}
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
+            TOOL_GV.DataSource = m.GetToolAcademicAssociatedInfo();
+            TOOL_GV.DataBind();
+        }
+
        
     }
 }

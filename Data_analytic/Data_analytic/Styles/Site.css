@@ -40,11 +40,12 @@ p
 h1, h2, h3, h4, h5, h6
 {
     font-size: 1.5em;
-    color: #666666;
+   
     font-variant: small-caps;
     text-transform: none;
     font-weight: 200;
     margin-bottom: 0px;
+    font-family:Calibri;
 }
 
 h1
@@ -52,29 +53,39 @@ h1
     font-size: 1.6em;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    font-family:Calibri;
 }
 
 h2
 {
     font-size: 1.5em;
     font-weight: 600;
+    font-family:Calibri;
 }
 
 h3
 {
     font-size: 1.2em;
+    font-weight:bold;
+    font-family:Calibri;
 }
 
 h4
 {
     font-size: 1.1em;
+    font-family:Calibri;
 }
 
-h5, h6
+h5
 {
     font-size: 1em;
+    font-weight: ;
+    font-family:Calibri;
+   
 }
-
+h6
+{
+}
 /* this rule styles <h1> and <h2> tags that are the 
 first child of the left and right table columns */
 .rightColumn > h1, .rightColumn > h2, .leftColumn > h1, .leftColumn > h2

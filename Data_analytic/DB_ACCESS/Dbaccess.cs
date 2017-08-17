@@ -15,15 +15,13 @@ namespace DB_ACCESS
     /// </summary>
     public class Dbaccess
     {
-        // GUI setting
-        public static SqlConnection DbConn = new SqlConnection(); //change//
+        public static SqlConnection DbConn = new SqlConnection();
         //        private static SqlDataAdapter DbAdapter = new SqlDataAdapter();
-        public static SqlCommand DbCommand = new SqlCommand();  //change//
-        public static SqlTransaction DbTran;  //change//
+        public static SqlCommand DbCommand = new SqlCommand();
+        public static SqlTransaction DbTran;
         private static string strConnString;
-        public static SqlCommand DbComandTan = new SqlCommand();  //delete//
-        public static int NoOfAttempts = 1;  //change//
-
+        public static SqlCommand DbComandTan = new SqlCommand();
+        public static int NoOfAttempts = 1;
         public static void setConnString(string strConn)
         {
             try
@@ -237,7 +235,7 @@ namespace DB_ACCESS
                 p.SourceVersion = DataRowVersion.Current;
             }
 
-            //DataColumn dc = dt.Columns[0];
+
             p = deleteCommand.Parameters.AddWithValue("@" + dt.Columns[0].ColumnName, dt.Columns[0].DataType);
             p.SourceColumn = dt.Columns[0].ColumnName;
             p.SourceVersion = DataRowVersion.Current;
@@ -335,6 +333,8 @@ namespace DB_ACCESS
                 DbAdapter.Fill(dSet, tblName);
 
 
+
+                //DA1.Dispose();
                 DbAdapter.Dispose();
                 DbCommand.Dispose();
 
@@ -460,7 +460,7 @@ namespace DB_ACCESS
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public static int executeQuery(string query) //change//
+        public static int executeQuery(string query)
         {
             for (int i = 0; i < NoOfAttempts; i++)
             {

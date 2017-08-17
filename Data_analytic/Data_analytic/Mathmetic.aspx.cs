@@ -8,12 +8,12 @@ using System.Data;
 using System.Drawing;
 namespace Data_analytic
 {
-    public partial class Mathmetic : System.Web.UI.Page  //change//
+    public partial class Mathmetic : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo(); //change//
-            DataTable dt = m.GetMathmeticAcademicAssociatedInfo();  //change//  
+            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
+            DataTable dt = m.GetMathmeticAcademicAssociatedInfo();
             //if (RBT_Noexperience.Checked)
             //{
             //    dt.Clear();
@@ -21,7 +21,7 @@ namespace Data_analytic
             MATH_GD.DataSource = dt;
             MATH_GD.DataBind();
 
-            DataTable dt1 = m.GetResearchAcademicAssociatedInfo();  //change//
+            DataTable dt1 = m.GetResearchAcademicAssociatedInfo();
             DG_RESEAECH.DataSource = dt1;
             DG_RESEAECH.DataBind();
             if (!IsPostBack)
@@ -35,7 +35,7 @@ namespace Data_analytic
             }
 
         }
-        protected void OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e) //change//
+        protected void OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
@@ -44,7 +44,7 @@ namespace Data_analytic
             }
         }
 
-        protected void OnSelectedIndexChanged(object sender, EventArgs e) //change//
+        protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
 
             foreach (GridViewRow row in MATH_GD.Rows)
@@ -62,7 +62,7 @@ namespace Data_analytic
                 }
             }
         }
-        protected void OnRowDataBound1(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e) //change//
+        protected void OnRowDataBound1(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
@@ -71,7 +71,7 @@ namespace Data_analytic
             }
         }
 
-        protected void OnSelectedIndexChanged1(object sender, EventArgs e)  //change//
+        protected void OnSelectedIndexChanged1(object sender, EventArgs e)
         {
 
             foreach (GridViewRow row in DG_RESEAECH.Rows)
@@ -89,9 +89,9 @@ namespace Data_analytic
                 }
             }
         }
-        void LoadMathmeticSelectedState() //change//
+        void LoadMathmeticSelectedState()
         {
-            DataTable dt = (DataTable)Session["Mathmetic"];  //change//
+            DataTable dt = (DataTable)Session["Mathmetic"];
             int i = 0;
             foreach (DataRow dr in dt.Rows)
             {
@@ -123,8 +123,8 @@ namespace Data_analytic
         }
         void SetMathmeticData()
         {
-            DataTable dt = new DataTable();  //change//
-            DataColumn dc = new DataColumn();  //change//
+            DataTable dt = new DataTable();
+            DataColumn dc = new DataColumn();
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
@@ -204,7 +204,7 @@ namespace Data_analytic
 
         void LoadResearchSelectedState()
         {
-            DataTable dt = (DataTable)Session["ResearchExp"];  //change//
+            DataTable dt = (DataTable)Session["ResearchExp"];
             int i = 0;
             foreach (DataRow dr in dt.Rows)
             {
@@ -234,10 +234,10 @@ namespace Data_analytic
                 i++;
             }
         }
-        void SetResearchExprianceData()  //change//
+        void SetResearchExprianceData()
         {
-            DataTable dt = new DataTable(); //change//
-            DataColumn dc = new DataColumn();  //change//
+            DataTable dt = new DataTable();
+            DataColumn dc = new DataColumn();
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
@@ -449,6 +449,22 @@ namespace Data_analytic
             SetResearchExprianceData();
             Response.Redirect("~/Programing.aspx");
             
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
+            DataTable dt = m.GetMathmeticAcademicAssociatedInfo();
+            //if (RBT_Noexperience.Checked)
+            //{
+            //    dt.Clear();
+            //}
+            MATH_GD.DataSource = dt;
+            MATH_GD.DataBind();
+
+            DataTable dt1 = m.GetResearchAcademicAssociatedInfo();
+            DG_RESEAECH.DataSource = dt1;
+            DG_RESEAECH.DataBind();
         }
     }
 }

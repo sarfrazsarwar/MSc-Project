@@ -4,7 +4,7 @@ Released for free under a Creative Commons Attribution 3.0 License
 */
 
 @charset "utf-8";
-body { margin:0; padding:0; width:100%;  background: url(images/body_bg.gif) top center; }
+body {   margin:0; padding:0; width:100%;  background: url(../images/body_bg.gif) top center;  }
 html { padding:0; margin:0;}
 li.bg, .bg { clear:both; border-bottom:1px  solid #cccccc;   border-top:1px  solid #cccccc; padding:0; margin:10px 0; background:#fff; list-style:none; height:1px;}
 li.bg2, .bg2 { clear:both; border-bottom:1px dashed #dfdfdf;   padding:0; margin:10px 0; background:none; list-style:none;}
@@ -16,7 +16,7 @@ p { font: normal 12px Georgia, "Times New Roman", Times, serif; color:#5f5f5f; p
 a { color:#3085ca; text-decoration:none;}
 /* header */
 .header_resize { margin:0 auto; padding:0; width:970px;}
-.header { margin:0; padding:0; background : url(images/header_bg.jpg) top center repeat-x }
+.header { margin:0; padding:0; background : url(../images/header_bg.jpg) top center repeat-x }
 /* logo */
 .logo { width:500px; margin:0 auto; padding:0; float:left;}
 h1 { margin:0; padding:33px 0; color:#fff; font:normal 40px/1.2em Georgia, "Times New Roman", Times, serif; text-transform:uppercase; letter-spacing:-2px;}
@@ -37,21 +37,21 @@ float:right;
 .menu ul {  padding:0; margin:0; list-style:none; border:0; float:left;}
 .menu ul li { float:left; margin:0; padding:0; border:0;}
 .menu ul li a { float:left; margin:0; padding:23px 15px; color:#fff; font:normal 12px Georgia, "Times New Roman", Times, serif; text-decoration:none; text-transform:uppercase;}
-.menu ul li a:hover { background:url(images/hover.gif) top repeat-x; }
-.menu ul li a.active {  background:url(images/hover.gif) top repeat-x; }
+.menu ul li a:hover { background:url(../images/hover.gif) top repeat-x; }
+.menu ul li a.active {  background:url(../images/hover.gif) top repeat-x; }
 /*body*/
 .body_resize { margin:0 auto; padding:10px 35px; background:#fff; width:900px;}
-.body { margin:0; padding:0;  background:#6d7c83 url(images/body_bg.gif) top repeat-x;}
+.body { margin:0; padding:0;  background:#6d7c83 url(../images/body_bg.gif) top repeat-x;}
 .body h2 {  font: normal 24px  Georgia, "Times New Roman", Times, serif; color:#4b4b4b; padding:10px 5px; margin:5px 0 10px 0; }
 .body h2 span { font: normal 12px Georgia, "Times New Roman", Times, serif; color:#959595;}
 
 .body p span { font: bold 14px Georgia, "Times New Roman", Times, serif; color:#4b4b4b; padding:0; margin:0;}
 .body img { float:left; margin:5px; padding:0;}
 .body img.floated { float:left; margin:5px 10px 5px 0; padding:0;}
-.left { float:left; width:850px; margin:0; padding:0;}
+.left { float:left; width:850px; min-height:800px; margin:0; padding:0;}
 .right { float:right; width:260px; margin:0; padding:0;}
 .right ul { list-style:none; margin:5px 10px; padding:0;}
-.right li {  background: url(images/ul_li.gif) 10px 7px no-repeat; font: normal 14px Arial, Helvetica, sans-serif; color:#464646; padding:5px 0; margin:3px 0;}
+.right li {  background: url(../images/ul_li.gif) 10px 7px no-repeat; font: normal 14px Arial, Helvetica, sans-serif; color:#464646; padding:5px 0; margin:3px 0;}
 .right li a {  padding:0 0 0 25px; margin:0; font: normal 13px Georgia, "Times New Roman", Times, serif; color:#5f5f5f; text-decoration:none;}
 .right li a:hover { color:#3085ca; text-decoration:none; }
 .right ul.sponsors { list-style:none; margin:5px 10px; padding:0;}
@@ -82,3 +82,22 @@ float:right;
 #contactform li.buttons input { border:1px solid #000; background:#ea7d1b; padding:10px; margin:10px 0 0 110px;  color:#fff; float:left; font: normal 12px Arial, Helvetica, sans-serif;}
 p.response { text-align:center; color:#F00; font: normal 11px Georgia, "Times New Roman", Times, serif; line-height:1.8em; width:auto; }
 .hiddencol { display: none; }
+.btnstyle1{ background: url(../images/hover.gif) top center repeat-x; height: 36px; width: 70; }
+
+.Nextstyle{ 
+           
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+    background: url(../images/next.jpg); 
+   
+            }
+.Prestyle{ background: url(../images/pre.jpg); height: 43px; width: 47px; }
+.rightstyle{ background: url(../images/r.jpg); height: 43px; width: 47px; }
+.leftstyle{ background: url(../images/l.jpg); height: 43px; width: 47px;
+            
+             }
+             
+             

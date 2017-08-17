@@ -11,7 +11,7 @@ namespace Data_analytic
 {
     public partial class Result : System.Web.UI.Page
     {
-        GridViewRow SelROw;  //change//
+        GridViewRow SelROw;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -38,16 +38,16 @@ namespace Data_analytic
                 }
 
 
-                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();  //change//
+                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
                 obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
-                DataSet dtsm1 = obj.SortSmester1Data();  //change//
+                DataSet dtsm1 = obj.SortSmester1Data();
                 GV_SM1.DataSource = dtsm1.Tables[0];
                 GV_SM1.DataBind();
                 Gv_SM1_NO.DataSource = dtsm1.Tables[1];
                 Gv_SM1_NO.DataBind();
 
 
-                DataSet dtsm2 = obj.SortSmester2Data();  //change//
+                DataSet dtsm2 = obj.SortSmester2Data();
 
                 GV_SM2.DataSource = dtsm2.Tables[0];
                 GV_SM2.DataBind();
@@ -80,15 +80,15 @@ namespace Data_analytic
                   
                //}
 
-                DataTable dt = obj.GetSM1RecordInfo();  //change//
+                DataTable dt =obj.GetSM1RecordInfo();
 
-                DataColumn dc = new DataColumn("none Selected");   //change//
+                DataColumn dc = new DataColumn("none Selected");
                 dt.Columns.Add(dc);
                 Add_falseNegetive(dtsm1.Tables[0], dt);
                 Add_falseNegetive(dtsm1.Tables[1], dt);
                    GridView1.DataSource=dt;
                    GridView1.DataBind();
-                   DataTable dttemp = obj.GetSM2RecordInfo();  //change//
+                   DataTable dttemp = obj.GetSM2RecordInfo();
                    //dc = new DataColumn("none Selected");
                    //dttemp.Columns.Add(dc);
 
@@ -141,9 +141,15 @@ namespace Data_analytic
             {
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(Gv_SM1_NO, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
+                string str = e.Row.Cells[2].Text.ToString();
+                if(e.Row.Cells[2].Text.ToString()=="True")
+                    e.Row.ForeColor = ColorTranslator.FromHtml("#FF0000");
+
+
+
             }
         }
-        void selectROw(GridViewRow rowSEl)  //change//
+        void selectROw(GridViewRow rowSEl)
         {
             foreach (GridViewRow row in GridView1.Rows)
             {
@@ -155,7 +161,7 @@ namespace Data_analytic
             }
         }
 
-        void selectSM2Row(GridViewRow rowSEl)  //change//
+        void selectSM2Row(GridViewRow rowSEl)
         {
             foreach (GridViewRow row in GridView2.Rows)
             {
@@ -173,16 +179,21 @@ namespace Data_analytic
             {
                 if (row.RowIndex == Gv_SM1_NO.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                    // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     SelROw = row;
                     selectROw(SelROw);
                     if (GV_SM1.SelectedIndex >= 0)
+                    {
+                        
+                        UpdatePanel1.Update();
                         GV_SM1.SelectedIndex = -1;
+                    }
+                    UpdatePanel5.Update();
                 }
                 else
                 {
-                   //// row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                    //// row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
                     row.ToolTip = "Click to select this row.";
                 }
             }
@@ -193,6 +204,9 @@ namespace Data_analytic
             {
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GV_SM1, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
+                string str = e.Row.Cells[2].Text.ToString();
+                if (e.Row.Cells[2].Text.ToString() == "True")
+                    e.Row.ForeColor = ColorTranslator.FromHtml("#FF0000");
             }
         }
 
@@ -203,16 +217,21 @@ namespace Data_analytic
             {
                 if (row.RowIndex == GV_SM1.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                    // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     SelROw = row;
                     selectROw(SelROw);
-                    if( Gv_SM1_NO.SelectedIndex>=0)
-                    Gv_SM1_NO.SelectedIndex = -1;
+                    if (Gv_SM1_NO.SelectedIndex >= 0)
+                    {
+                        Gv_SM1_NO.SelectedIndex = -1;
+                       
+                        UpdatePanel4.Update();
+                    }
+                    UpdatePanel5.Update();
                 }
                 else
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                    // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
                     row.ToolTip = "Click to select this row.";
                 }
             }
@@ -227,6 +246,9 @@ namespace Data_analytic
             {
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(Gv_SM2_NO, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
+                string str = e.Row.Cells[2].Text.ToString();
+                if (e.Row.Cells[2].Text.ToString() == "True")
+                    e.Row.ForeColor = ColorTranslator.FromHtml("#FF0000");
             }
         }
 
@@ -242,7 +264,11 @@ namespace Data_analytic
                     SelROw = row;
                     selectSM2Row(SelROw);
                     if (GV_SM2.SelectedIndex >= 0)
+                    {
                         GV_SM2.SelectedIndex = -1;
+                        UpdatePanel3.Update();
+                    }
+                    UpdatePanel6.Update();
                 }
                 else
                 {
@@ -257,6 +283,8 @@ namespace Data_analytic
             {
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GV_SM2, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
+                if (e.Row.Cells[2].Text.ToString() == "True")
+                    e.Row.ForeColor = ColorTranslator.FromHtml("#FF0000");
             }
         }
 
@@ -267,16 +295,20 @@ namespace Data_analytic
             {
                 if (row.RowIndex == GV_SM2.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                    // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
                     SelROw = row;
                     selectSM2Row(SelROw);
                     if (Gv_SM2_NO.SelectedIndex >= 0)
+                    {
                         Gv_SM2_NO.SelectedIndex = -1;
+                        UpdatePanel2.Update();
+                    }
+                    UpdatePanel6.Update();
                 }
                 else
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                    // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
                     row.ToolTip = "Click to select this row.";
                 }
             }
@@ -284,9 +316,9 @@ namespace Data_analytic
 
 
 
-        void RemoveSm1MoudleSugest()  //change//
+        void RemoveSm1MoudleSugest()
         {
-           
+            LBLerror.Text = "";
             DataTable dtSMAT = new DataTable();
             DataColumn dc = new DataColumn("AM_ID");
             dtSMAT.Columns.Add(dc);
@@ -350,7 +382,8 @@ namespace Data_analytic
                     {
                         dtSMAT.Rows.Add(drRemove);
                         drRemove = null;
-                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Compulsory Module');", true);
+                        LBLerror.Text = "Compulsory Module cannot Shifted";
+                      //  ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Compulsory Module');", true);
                     }
                     //remove Selection 
                 }
@@ -404,7 +437,7 @@ namespace Data_analytic
             Gv_SM1_NO.DataBind();
         }
 
-        bool validateSmester1CreditHr()  //change//
+        bool validateSmester1CreditHr()
         {
             int creditHr = 0;
             foreach (GridViewRow row in GV_SM1.Rows)
@@ -420,7 +453,7 @@ namespace Data_analytic
         }
 
 
-        bool validateSmester2CreditHr()  //change//
+        bool validateSmester2CreditHr()
         {
             int creditHr = 0;
             foreach (GridViewRow row in GV_SM2.Rows)
@@ -534,7 +567,8 @@ namespace Data_analytic
                          dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                          dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                          dtSm2.Rows.Add(dr);
-                         ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
+                         LBLerror.Text = "Maximum 70 crdit hr in Smester";
+                         //ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
                      }
                 }
                 else
@@ -624,7 +658,8 @@ namespace Data_analytic
                         dtSMAT.Rows.Add(drRemove);
 
                         drRemove = null;
-                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Can not Remove Compulsory module');", true);
+                        Label1.Text = "Compulsory module can not Shifted";
+                        //ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Can not Remove Compulsory module');", true);
                     }
                     //remove Selection 
                 }
@@ -780,7 +815,8 @@ namespace Data_analytic
                         dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                         dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                         dtSm2.Rows.Add(dr);
-                        ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
+                        Label1.Text = "Maximum 70 crdit hr in Smester";
+                       // ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
                     }
                 }
                 else
@@ -807,9 +843,9 @@ namespace Data_analytic
 
             if (validateSmester1CreditHr() && validateSmester2CreditHr())
             {
-                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();  //change//
+                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
 
-                int user_id = (int)Session["UserID"]; //change//
+                int user_id = (int)Session["UserID"];;
                 obj.DeleteUserSelectionRecord(user_id);
                 foreach (GridViewRow row in GV_SM1.Rows)
                 {
@@ -835,25 +871,50 @@ namespace Data_analytic
 
         protected void BTN_UP_SM1_Click(object sender, EventArgs e)
         {
+            LBLerror.Text = "";
+            Label1.Text = "";
             RemoveSm1MoudleNonSugest();
+            UpdatePanel1.Update();
+            UpdatePanel4.Update();
+            UpdatePanel12.Update();
+            UpdatePanel11.Update();
         }
 
         protected void BTN_DOWN_SM1_Click(object sender, EventArgs e)
         {
+            LBLerror.Text = "";
+            Label1.Text = "";
             RemoveSm1MoudleSugest();
+            UpdatePanel1.Update();
+            UpdatePanel4.Update();
+            UpdatePanel12.Update();
+            UpdatePanel11.Update();
         }
 
         protected void BTN_SM2_UP_Click(object sender, EventArgs e)
         {
+            LBLerror.Text = "";
+            Label1.Text = "";
             RemoveSm2MoudleNonSugest();
+            UpdatePanel2.Update();
+            UpdatePanel3.Update();
+            UpdatePanel12.Update();
+            UpdatePanel11.Update();
         }
 
         protected void BTN_SM2_DOWN_Click(object sender, EventArgs e)
         {
+            LBLerror.Text = "";
+            Label1.Text = "";
             RemoveSm2MoudleSugest();
+            UpdatePanel2.Update();
+            UpdatePanel3.Update();
+            UpdatePanel12.Update();
+            UpdatePanel11.Update();
+           
         }
 
-        protected void Button1_Click(object sender, EventArgs e)  //change//
+        protected void Button1_Click(object sender, EventArgs e)
         {
             DataTable dtTools = null;
             DataTable dtMath = null;
@@ -877,7 +938,7 @@ namespace Data_analytic
             }
 
 
-            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();  //change//
+            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
             obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
             //DataSet dtsm1 = obj.SortSmester1Data();
             //GV_SM1.DataSource = dtsm1.Tables[0];
@@ -905,7 +966,7 @@ namespace Data_analytic
            
         }
 
-        protected void Button2_Click(object sender, EventArgs e)  //change//
+        protected void Button2_Click(object sender, EventArgs e)
         {
             DataTable dtTools = null;
             DataTable dtMath = null;
@@ -929,7 +990,7 @@ namespace Data_analytic
             }
 
 
-            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();  //change//
+            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
             obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
             DataSet dtsm1 = obj.SortSmester1Data();
             GV_SM1.DataSource = dtsm1.Tables[0];

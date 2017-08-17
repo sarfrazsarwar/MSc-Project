@@ -12,8 +12,8 @@ namespace BusinessLayer
   public  class calculateResult
     { 
         DataTable dtConfusionMat = new DataTable();
-        private DataTable DT = new DataTable("Academic_module_model"); //change//
-        private DataTable DTRE = new DataTable("Module_Requirment");  //change//
+        private DataTable DT = new DataTable("Academic_module_model");
+        private DataTable DTRE = new DataTable("Module_Requirment");
        
         public DataTable GetPrograming_AnyOne()
         {
@@ -109,7 +109,7 @@ namespace BusinessLayer
             }
             //SortSmesterData(dtConfusionMat);
         }
-      public DataSet SortSmester1Data()  //change//
+      public DataSet SortSmester1Data()
         {
            // Semester 1
             DataSet ds = new DataSet();
@@ -154,7 +154,7 @@ namespace BusinessLayer
             ds1.Tables.Add(dtMat);
             return ds1;
          }
-        DataTable SmesterModuleSelction(DataTable dtSm, DataTable dttemp)  //change//
+        DataTable SmesterModuleSelction(DataTable dtSm, DataTable dttemp)
         {
             //dtTempSmester1.DefaultView.Sort = "Recall DESC";
             //DataTable dtSmester1 = dtTempSmester1.DefaultView.ToTable();
@@ -275,7 +275,7 @@ namespace BusinessLayer
         }
         bool IsChangeRow(DataRow dr, DataRow dr1)
         {
-            int Level = 1;  //change//
+            int Level = 1;
             if (dr["NotAvailable"].ToString() == "0")
             {
                 
@@ -343,7 +343,7 @@ namespace BusinessLayer
             DB_ACCESS.Dbaccess.executeQuery(str);
 
         }
-    public  DataTable GetPreRecordSM1(int user_ID)  //change//
+    public  DataTable GetPreRecordSM1(int user_ID)
       {
           DT.Clear();
         
@@ -400,7 +400,7 @@ namespace BusinessLayer
         DB_ACCESS.Dbaccess.FillLocalTable(DT, qury);
         return DT;
     }
-     public DataTable GetPreRecordSM2(int user_ID)  //change//
+     public DataTable GetPreRecordSM2(int user_ID)
       {
           DT.Clear();
           string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module No],ab.[Credit hours], " +
@@ -426,9 +426,9 @@ namespace BusinessLayer
             
             //bool isFind = false;
             // DataRow[] dTselet;
-            float TruePostive = 0;  //change//
-            float FalseNegtive = 0;  //change//
-            int AM_ID = 0;  //change//
+            float TruePostive = 0;
+            float FalseNegtive = 0;
+            int AM_ID = 0;
             DataRow drComp = null;
 
             string nonSel="";

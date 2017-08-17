@@ -1,22 +1,55 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Programing.aspx.cs" Inherits="Data_analytic.Programing" enableEventValidation="false" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Programing.aspx.cs" Inherits="Data_analytic.Programing" MaintainScrollPositionOnPostback="true" enableEventValidation="false" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server" >
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    
-   <div>
-    <asp:Label ID="LBL_PROG" runat="server" Text="Programing Domain:"  Font-Bold="True" 
-           Font-Size="Medium"></asp:Label>  
-   <h4>   Plese Select the Programing Information </h4>
+   <script type="text/javascript" language="javascript">
+       $(document).ready(function () {
+           $("#progressbar").progressbar({ value: 0 });
+           $(window).load(function () {
+               var intervalID = setInterval(updateProgress, 100);
+               $.ajax({
+                   type: "POST",
+                   url: "Default.aspx/GetText",
+                   data: "{}",
+                   contentType: "application/json; charset=utf-8",
+                   dataType: "json",
+                   async: true,
+                   success: function (msg) {
+                       $("#progressbar").progressbar("value", 5);
+                      $("#progressbar").appendTo(10);
+                       clearInterval(intervalID);
 
-   
+                   }
+               });
+               return false;
+           });
+       });
+       function updateProgress() {
+           var value = $("#progressbar").progressbar("option", "value");
+           if (value < 15) {
+               $("#progressbar").progressbar("value", value + 1);
+           }
+       }        
+        
+    </script>
+    <div id="progressbar";  style="width:100%"></div>
+    <div id="result" style="width:100%"><%--<span>--%><div style="float:left;text-align:justify; width:51%">0 <span style="float:right">50</span></div> <div style="float:right;text-align:justify">100%</div><%--</span>--%></div>
+   <div  style="margin-left:100px;">
+   <h3>Programing Domain:</h3>
+   <h4 style="font-weight:lighter"> &nbsp Plese Select the Programing Information </h4>
    </div>
 <div style="margin-top:20px"></div>
-    <asp:Panel ID="Panel1" runat="server">
+<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+</asp:ScriptManager>
+       <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >
+      <ContentTemplate>
+   <%-- <asp:Panel ID="Panel1" runat="server">--%>
+   <div style="margin-left:100px;">
        <asp:GridView ID="PRO_GD" runat="server" AutoGenerateColumns="False"
    
-    EnableViewState="False" Height="108px" Width="698px" 
+    EnableViewState="false" Height="108px" Width="698px" 
             Font-Italic="False" Font-Names="Calibri" Font-Size="Medium"  
-            BorderColor="#66CCFF" OnRowDataBound = "OnRowDataBound" OnSelectedIndexChanged = "OnSelectedIndexChanged">
+            BorderColor="#66CCFF" OnRowDataBound = "OnRowDataBound" OnSelectedIndexChanged = "OnSelectedIndexChanged" >
            <Columns>
                <asp:BoundField DataField="Academic_info" HeaderStyle-Font-Bold="false" 
                    HeaderText="Programing" HtmlEncode="False" ItemStyle-Width="300px">
@@ -32,28 +65,28 @@
                <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="No Expriance">
                   <ItemTemplate>
                        <asp:RadioButton ID="RowSelector" runat="server" Checked="true" 
-                           GroupName="InfoGroup" Width="100"  TextAlign="Left"  />
+                           GroupName="InfoGroup" Width="100"  TextAlign="Left" AutoPostBack="false" />
                    </ItemTemplate>
                    <HeaderStyle Font-Bold="True" Font-Size="Medium" />
                </asp:TemplateField>
                <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="Bignner">
                    <ItemTemplate>
                        <asp:RadioButton ID="RowSelector1" runat="server" GroupName="InfoGroup" 
-                           Width="100" />
+                           Width="100" AutoPostBack="false" />
                    </ItemTemplate>
                    <HeaderStyle Font-Bold="True" Font-Size="Medium" />
                </asp:TemplateField>
                <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="Intermedite">
                    <ItemTemplate>
                        <asp:RadioButton ID="RowSelector2" runat="server" GroupName="InfoGroup" 
-                           Width="100" />
+                           Width="100" AutoPostBack="false" />
                    </ItemTemplate>
                    <HeaderStyle Font-Bold="True" Font-Size="Medium" />
                </asp:TemplateField>
                <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="Expert">
                    <ItemTemplate>
                        <asp:RadioButton ID="RowSelector3" runat="server" GroupName="InfoGroup" 
-                           Width="100" />
+                           Width="100" AutoPostBack="false" />
                    </ItemTemplate>
                    <HeaderStyle Font-Bold="True" Font-Size="Medium" />
                </asp:TemplateField>
@@ -62,10 +95,25 @@
            <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
           
 </asp:GridView>
-<asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>
+</div>
+ </ContentTemplate>
+ 
+ <%--<Triggers>
+         <asp:AsyncPostBackTrigger ControlID="PRO_GD"  EventName="OnSelectedIndexChanged"/>
+         <asp:AsyncPostBackTrigger ControlID="PRO_GD" EventName=" OnRowDataBound"  />
+     </Triggers>--%>
+ </asp:UpdatePanel>
+ <asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>
 <br />
-    <div style="margin-left:55%">
-     <asp:Button ID="NEXT" runat="server" Text="Next" onclick="NEXT_Click" />
+<br />
+    <div style=" float:right; margin-right:6%">
+    <asp:Button ID="Button1" runat="server" Text="Reset"  
+            Height="43px" style="margin-left: 0px" Width="146px"   
+            onclick="Button1_Click" BackColor="#55a6dd" BorderStyle="Solid" 
+            BorderColor="#666768"  />
+     <asp:Button ID="NEXT" runat="server" Text="Next"  onclick="NEXT_Click"
+            Height="43px" style="margin-left: 0px" Width="146px" BackColor="#55a6dd" 
+            BorderColor="#666768" BorderStyle="Solid"    />
      </div>
-    </asp:Panel>
+   <%--CssClass="btnstyle1" CssClass="Nextstyle"</asp:Panel>--%>
 </asp:Content>
