@@ -34,12 +34,21 @@ K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
 K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
 K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
 K:\New folder (2)\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\Data_analytic.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\bin\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\obj\Debug\Data_analytic.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\Data_analytic\obj\Debug\Data_analytic.pdb
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.dll
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\Data_analytic\bin\Data_analytic.pdb
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.dll
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\Data_analytic\bin\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\Data_analytic\bin\Data_analytic.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\Data_analytic\bin\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\Data_analytic\bin\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\Data_analytic\bin\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\Data_analytic\bin\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\Data_analytic\obj\Debug\Data_analytic.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\Data_analytic\obj\Debug\Data_analytic.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\Data_analytic\obj\Debug\Data_analytic.pdb

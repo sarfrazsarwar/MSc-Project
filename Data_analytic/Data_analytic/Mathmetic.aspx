@@ -15,8 +15,7 @@
                        dataType: "json",
                        async: true,
                        success: function (msg) {
-                           $("#progressbar").progressbar("value", 20);
-                           $("#progressbar").appendTo(10);
+                           $("#progressbar").progressbar("value", 33.32);
                            clearInterval(intervalID);
 
                        }
@@ -32,8 +31,16 @@
            }        
         
     </script>
-    <div id="progressbar";  style="width:100%"></div>
-    <div id="result" style="width:100%"><%--<span>--%><div style="float:left;text-align:justify; width:51%">0 <span style="float:right">50</span></div> <div style="float:right;text-align:justify">100%</div><%--</span>--%></div>
+    <div id="progressbar";  style="width:100%">
+    
+    <div class="progBar">Programing</div> 
+    <div class="progBar">Math</div> 
+    <div class="progBar">Tool</div> 
+    <div class="progBar">Summary</div>
+    <div class="progBar">Result</div>
+    <div class="progBar">Final</div>
+    </div>
+    
     
      <div style="margin-left:100px;">
       <%--<asp:Label ID="Label1" runat="server" Text="Mathmetic Aplitude" 

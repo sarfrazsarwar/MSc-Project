@@ -121,13 +121,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.WebControls.GridView GV_SM2;
         
         /// <summary>
-        /// Label3 control.
+        /// Label4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label Label4;
         
         /// <summary>
         /// Gv_SM1 control.
@@ -146,5 +146,14 @@ namespace Data_analytic {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+        
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

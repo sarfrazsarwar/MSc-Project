@@ -25,8 +25,7 @@
                    dataType: "json",
                    async: true,
                    success: function (msg) {
-                       $("#progressbar").progressbar("value", 80);
-                       $("#progressbar").appendTo(20);
+                       $("#progressbar").progressbar("value", 100);
                        //                       $("#result").text(msg.d);
                        clearInterval(intervalID);
 
@@ -43,9 +42,15 @@
        }        
         
     </script>
-    <div id="progressbar";  style="width:100%"></div>
-    <div id="result" style="width:100%; margin-bottom:1%"><%--<span>--%><div style="float:left;text-align:justify; width:51%">0 <span style="float:right">50</span></div> <div style="float:right;text-align:justify">100%</div><%--</span>--%></div>
-<asp:Panel ID="Panel1" runat="server" BorderStyle="Outset" 
+    <div id="progressbar";  style="width:101%">
+    <div class="progBar">Programing</div> 
+    <div class="progBar">Math</div> 
+    <div class="progBar">Tool</div> 
+    <div class="progBar">Summary</div>
+    <div class="progBar">Result</div>
+    <div class="progBar">Final</div>
+    </div>
+<asp:Panel ID="Panel1" runat="server" BorderStyle="Dashed" 
         style="margin-left: 25px;margin-top:1%" Height="325px" Width="844px">
 <table style="width:100%; height: 328px; margin-left: 2px;"><tr>
 <th class="style2"><asp:Label ID="LBL_Programing" runat="server" Text="Programing Domain" 
@@ -132,12 +137,16 @@
     <br />
 
 
-    <asp:Panel ID="Panel2" runat="server" BorderStyle="Outset" Height="862px" 
-        style="margin-left: 25px" Width="844px" >
-   
-     <div style="margin-top:20px;  overflow:scroll; width:814px; height: 359px; margin-left: 6px;">
-     <asp:Label ID="Label2" runat="server" Text="Semester 1 Module" Font-Bold="True" 
+    <asp:Panel ID="Panel2" runat="server" BorderStyle="Dashed" Height="690px" 
+        style="margin-left: 25px; " Width="844px" >
+    
+    <div style="margin-top:20px">
+    <asp:Label ID="Label2" runat="server" Text="Semester 1 Module" Font-Bold="True" 
             Font-Size="Large"></asp:Label>
+            </div>
+
+     <div style="margin-top:5px;  overflow:scroll; width:814px; height: 283px; margin-left: 6px;">
+    
          <asp:GridView ID="GV_SM2" runat="server" AutoGenerateColumns="false" 
              Font-Italic="False" Font-Names="Calibri" Font-Size="Medium" Height="339px" 
              style="margin-left: 7px" Width="2000px">
@@ -175,11 +184,13 @@
          </asp:GridView>
  </div>
 
-
- <div style="margin-top:26px; overflow:scroll; width:817px; height: 353px; margin-left: 3px;">
-
- <asp:Label ID="Label3" runat="server" Text="Smester 2 Module" Font-Bold="True" 
+ <div style="margin-top:20px">
+ <asp:Label ID="Label4" runat="server" Text="Smester 2 Module" Font-Bold="True" 
             Font-Size="Large"></asp:Label>
+            </div>
+ <div style="margin-top:26px; overflow:scroll; width:817px; height: 280px; margin-left: 3px;">
+
+
      <asp:GridView ID="Gv_SM1" runat="server" AutoGenerateColumns="false" 
          Font-Italic="False" Font-Names="Calibri" Font-Size="Medium" Height="311px" 
          Width="2000px">
@@ -220,9 +231,12 @@
   </asp:Panel>
   <br />
 
- <div style="margin-top:20px;margin-left:45%">
-     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Modify"  Height="43px" style="margin-left: 0px" Width="146px" BackColor="#55a6dd" 
+<div style="margin-top:20px;margin-left:40%">
+     <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="Modify Expertise"  Height="43px" style="margin-left: 0px" Width="146px" BackColor="#55a6dd" 
             BorderColor="#666768" BorderStyle="Solid"/>
+      <asp:Button ID="Button2" runat="server" Text="Modify Module"  Height="43px" 
+         style="margin-left: 0px" Width="146px" BackColor="#55a6dd" 
+            BorderColor="#666768" BorderStyle="Solid" onclick="Button2_Click" />
  </div>
  
 </asp:Content>

@@ -15,8 +15,7 @@
                    dataType: "json",
                    async: true,
                    success: function (msg) {
-                       $("#progressbar").progressbar("value", 5);
-                      $("#progressbar").appendTo(10);
+                       $("#progressbar").progressbar("value", 16.66);
                        clearInterval(intervalID);
 
                    }
@@ -32,8 +31,15 @@
        }        
         
     </script>
-    <div id="progressbar";  style="width:100%"></div>
-    <div id="result" style="width:100%"><%--<span>--%><div style="float:left;text-align:justify; width:51%">0 <span style="float:right">50</span></div> <div style="float:right;text-align:justify">100%</div><%--</span>--%></div>
+    <div id="progressbar";  style="width:100%">
+    <div class="progBar">Programing</div> 
+    <div class="progBar">Math</div> 
+    <div class="progBar">Tool</div> 
+    <div class="progBar">Summary</div>
+    <div class="progBar">Result</div>
+    <div class="progBar">Final</div>
+    </div>
+ 
    <div  style="margin-left:100px;">
    <h3>Programing Domain:</h3>
    <h4 style="font-weight:lighter"> &nbsp Plese Select the Programing Information </h4>

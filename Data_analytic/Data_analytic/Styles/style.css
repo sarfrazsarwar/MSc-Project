@@ -101,3 +101,16 @@ p.response { text-align:center; color:#F00; font: normal 11px Georgia, "Times Ne
              }
              
              
+.scrolLft
+{
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 133px;
+}
+.progBar
+{
+    border-style: Solid;
+    border-color: inherit;
+    border-width: 1px;
+    height:1.250em;float:left;text-align:center; width:16.41%;
+}

@@ -19,10 +19,10 @@ K:\New folder (2)\Data_analytic\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.
 K:\New folder (2)\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
 K:\New folder (2)\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
 K:\New folder (2)\Data_analytic\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\BusinessLayer\bin\Debug\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\BusinessLayer\bin\Debug\BusinessLayer.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\BusinessLayer\bin\Debug\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\BusinessLayer\bin\Debug\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\BusinessLayer\obj\Debug\BusinessLayer.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic20\BusinessLayer\obj\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\BusinessLayer\bin\Debug\BusinessLayer.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\BusinessLayer\bin\Debug\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(scrol,progress,result,gridsize,dashborder)22\Data_analytic\BusinessLayer\obj\Debug\BusinessLayer.pdb
