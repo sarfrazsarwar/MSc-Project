@@ -4,9 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 
-
+<div  style="margin-left:60px">
 <asp:Label ID="Label1" runat="server" Text="" Font-Bold="True" Font-Size="Medium"></asp:Label>
-<br />
 <br />
 <br />
 <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
@@ -59,6 +58,7 @@
                    <HeaderStyle Font-Bold="True" Font-Size="Medium" />
                </asp:TemplateField>
            </Columns>
+           
            <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
            <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
           
@@ -67,12 +67,16 @@
 </asp:UpdatePanel>
 <asp:LinkButton ID="LinkButton1" runat="server"></asp:LinkButton>
 
-
+</div>
 <br />
 
 <br />
-<div style=" float:right; margin-right:19%">
+<div style=" float:right; margin-right:30%">
+<asp:Button ID="Button2" runat="server" Text="Back"   Height="43px" 
+        style="margin-left: 0px" Width="146px"  BackColor="#55a6dd" 
+             BorderColor="#666768" BorderStyle="Solid" onclick="Button2_Click"/>
 <asp:Button ID="Button1" runat="server" Text="Save" onclick="Button1_Click"  Height="43px" style="margin-left: 0px" Width="146px"  BackColor="#55a6dd" 
              BorderColor="#666768" BorderStyle="Solid"/>
+
 </div>
 </asp:Content>

@@ -614,7 +614,7 @@ namespace BusinessLayer
                 dr["none Selected"] = nonSel;
                 dr["ACademic_Module"] = drModule["ACademic_Module"];
                 float Re = ((float)TruePostive / (float)(TruePostive + FalseNegtive));
-                dr["Recall"] = Re;
+                dr["Recall"] = System.Math.Round(Re, 2);
                 dtConMat.Rows.Add(dr);
             }
 

@@ -10,15 +10,16 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
  <%--OnRowDataBound = "OnRowDataBound" OnSelectedIndexChanged = "OnSelectedIndexChanged"--%>
-<%-- <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
-</asp:ScriptManager>--%>
-
- <table><tr><td valign="top">
-<%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" >
-      <ContentTemplate>--%>
+ <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+</asp:ScriptManager>
+<div style="margin-left:68px"><h3> Accadmic Module Requirment</h3></div>
+ <table style="margin-left:65px"><tr><td valign="top">
+ <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" >
+      <ContentTemplate>
+    
 <asp:GridView ID="Module_GD" runat="server" AutoGenerateColumns="False"
    
-    EnableViewState="False" Height="108px" Width="421px" 
+    EnableViewState="False" Height="194px" Width="421px" 
             Font-Italic="False" Font-Names="Calibri" Font-Size="Medium"  
             BorderColor="#66CCFF"  OnRowDataBound = "OnRowDataBound" 
          OnSelectedIndexChanged = "OnSelectedIndexChanged">
@@ -26,7 +27,7 @@
            <Columns>
                <asp:BoundField DataField="ACademic_Module" HeaderStyle-Font-Bold="false" 
                    HeaderText="Moule" HtmlEncode="False" ItemStyle-Width="300px">
-               <HeaderStyle Font-Bold="True" Font-Size="Medium" />
+               <HeaderStyle Font-Bold="True" Font-Size="Medium" Height="18px"/>
                <ItemStyle Width="300px" />
                </asp:BoundField>
                
@@ -40,20 +41,23 @@
               
                 
            </Columns>
-           <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" />
+           <RowStyle cssclass="RowStyle" />
+           <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px"/>
            <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
           
 </asp:GridView>
 
-<%--</ContentTemplate>
-</asp:UpdatePanel>--%>
+</ContentTemplate>
+</asp:UpdatePanel>
 <asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>
 </td>
 
 
 <td class="style2" valign="top" >
-<%--<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >
-      <ContentTemplate>--%>
+<asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >
+      <ContentTemplate>
+
+      <div style="margin-left:40px">
 <asp:GridView ID="REQ_GD" runat="server" AutoGenerateColumns="False"
    
     EnableViewState="False" Height="108px" Width="300px" 
@@ -63,8 +67,9 @@
            <Columns>
                <asp:BoundField DataField="Academic_info" HeaderStyle-Font-Bold="false" 
                    HeaderText="Academic_info" HtmlEncode="False" ItemStyle-Width="300px">
-               <HeaderStyle Font-Bold="True" Font-Size="Medium" />
+               <HeaderStyle Font-Bold="True" Font-Size="Medium"  Height="18px"/>
                <ItemStyle Width="200px" />
+               
                </asp:BoundField>
                
                <asp:BoundField DataField="Expertise" HeaderStyle-Font-Bold="false" 
@@ -77,12 +82,13 @@
               
                 
            </Columns>
-           <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" />
+           <RowStyle cssclass="RowStyle" />
+           <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
            <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />
           
-</asp:GridView>
-<%--</ContentTemplate>
-</asp:UpdatePanel>--%>
+</asp:GridView></div>
+</ContentTemplate>
+</asp:UpdatePanel>
 
 </td>
 

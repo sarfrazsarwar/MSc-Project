@@ -75,6 +75,7 @@ namespace Data_analytic
                         DataTable dt1 = R.GetModuleRequirement(mmID);
                         REQ_GD.DataSource = dt1;
                         REQ_GD.DataBind();
+                        UpdatePanel1.Update();
                     }
 
                 }

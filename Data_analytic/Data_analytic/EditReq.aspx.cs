@@ -148,5 +148,10 @@ namespace Data_analytic
              Response.Redirect("~/ModifyReq.aspx");
         
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/ModifyReq.aspx");
+        }
     }
 }

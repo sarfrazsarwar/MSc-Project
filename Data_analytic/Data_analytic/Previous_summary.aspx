@@ -50,6 +50,7 @@
     <div class="progBar">Result</div>
     <div class="progBar">Final</div>
     </div>
+     <div style="margin-left:25px"> <h3> Student Expertise Level</h3></div>
 <asp:Panel ID="Panel1" runat="server" BorderStyle="Dashed" 
         style="margin-left: 25px;margin-top:1%" Height="325px" Width="844px">
 <table style="width:100%; height: 328px; margin-left: 2px;"><tr>
@@ -59,7 +60,7 @@
     <th> <div><asp:Label ID="Label1" runat="server" Text="Tool" Font-Bold="True" 
             Font-Size="Large"></asp:Label></div></th>
 </tr><tr>
-      <th class="style2" valign="top" >  
+      <th class="style2" valign="top" > <div style=" overflow: scroll;overflow-x: hidden; height: 180px;"> 
           <asp:GridView ID ="GD_PRO" runat="server" 
               AutoGenerateColumns="false" Width="405px"  Font-Italic="False" 
               Font-Names="Calibri" Font-Size="Medium" Font-Bold="false">
@@ -79,6 +80,7 @@
            <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
            
         </asp:GridView> 
+        </div>
     </th>
    <th valign="top"> 
    <asp:GridView ID="GD_TOOL" runat="server" AutoGenerateColumns="false"  
@@ -136,8 +138,8 @@
 
     <br />
 
-
-    <asp:Panel ID="Panel2" runat="server" BorderStyle="Dashed" Height="690px" 
+  <div style="margin-left:25px"><h3> Module Selected</h3></div>
+    <asp:Panel ID="Panel2" runat="server" BorderStyle="Dashed" Height="785px" 
         style="margin-left: 25px; " Width="844px" >
     
     <div style="margin-top:20px">
@@ -148,7 +150,7 @@
      <div style="margin-top:5px;  overflow:scroll; width:814px; height: 283px; margin-left: 6px;">
     
          <asp:GridView ID="GV_SM2" runat="server" AutoGenerateColumns="false" 
-             Font-Italic="False" Font-Names="Calibri" Font-Size="Medium" Height="339px" 
+             Font-Italic="False" Font-Names="Calibri" Font-Size="Medium" Height="267px" 
              style="margin-left: 7px" Width="2000px">
              <Columns>
                  <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
@@ -192,7 +194,7 @@
 
 
      <asp:GridView ID="Gv_SM1" runat="server" AutoGenerateColumns="false" 
-         Font-Italic="False" Font-Names="Calibri" Font-Size="Medium" Height="311px" 
+         Font-Italic="False" Font-Names="Calibri" Font-Size="Medium" Height="274px" 
          Width="2000px">
          <Columns>
              <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
@@ -228,6 +230,10 @@
      </asp:GridView>
  </div>
  
+ <div style="margin-top:30px;  margin-left: 3px;">
+
+ <h4>Note:Smester 3 Include project of 15 credits</h4>
+ </div>
   </asp:Panel>
   <br />
 
