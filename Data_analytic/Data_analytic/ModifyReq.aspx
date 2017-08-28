@@ -10,8 +10,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
  <%--OnRowDataBound = "OnRowDataBound" OnSelectedIndexChanged = "OnSelectedIndexChanged"--%>
- <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
-</asp:ScriptManager>
+ <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+</asp:ScriptManager>--%>
 <div style="margin-left:68px"><h3> Accadmic Module Requirment</h3></div>
  <table style="margin-left:65px"><tr><td valign="top">
  <asp:UpdatePanel ID="UpdatePanel2" runat="server" UpdateMode="Conditional" >

@@ -33,6 +33,7 @@ namespace Data_analytic.Account
                
                 m.InsertRecord(strlist);
                 int noofRecord = m.GetUserInfoRecord(UserName.Text, Password.Text);
+                Session["Reviews"] = m.GetReviews();
                 Session.Add("UserID", noofRecord);
                 Session.Add("UserName", UserName.Text);
                 if (UserName.Text.ToUpper() == "ADMINISTRATOR" || UserName.Text.ToUpper() == "ADMIN")

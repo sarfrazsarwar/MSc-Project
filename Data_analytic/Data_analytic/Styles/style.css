@@ -16,7 +16,7 @@ p { font: normal 12px Georgia, "Times New Roman", Times, serif; color:#5f5f5f; p
 a { color:#3085ca; text-decoration:none;}
 /* header */
 .header_resize { margin:0 auto; padding:0; width:970px;}
-.header { margin:0; padding:0; background : url(../images/header_bg.jpg) top center repeat-x }
+.header { margin:0; padding:0; width:100%;background : url(../images/header_bg.jpg) top center repeat-x }
 /* logo */
 .logo { width:500px; margin:0 auto; padding:0; float:left;}
 h1 { margin:0; padding:33px 0; color:#fff; font:normal 40px/1.2em Georgia, "Times New Roman", Times, serif; text-transform:uppercase; letter-spacing:-2px;}
@@ -116,4 +116,68 @@ p.response { text-align:center; color:#F00; font: normal 11px Georgia, "Times Ne
 }
 .RowStyle {
   height: 30px;
+}
+.ModalPopupBG
+{
+	background-color: #666699;
+	filter: alpha(opacity=50);
+	opacity: 0.7;
+}
+
+.popup_Container {
+	background-color:#fffeb2;
+	border:2px solid #000000;
+	padding: 0px 0px 0px 0px;
+}
+
+.popupConfirmation
+{
+	width: 500px;
+	height: 300px;
+}
+
+.popup_Titlebar {
+	background: url(../Images/titlebar_bg.jpg);
+	height: 29px;
+}
+
+.popup_Body
+{
+	padding:15px 15px 15px 15px;
+	font-family:Arial;
+	font-weight:bold;
+	font-size:12px;
+	color:#000000;
+	line-height:15pt;
+	clear:both;
+	padding:20px;
+}
+
+.TitlebarLeft 
+{
+	float:left;
+	padding-left:5px;
+	padding-top:5px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	font-size:12px;
+	color:#FFFFFF;
+}
+.TitlebarRight 
+{
+	background:url(../Images/cross_icon_normal.png);
+	background-position:right;
+	background-repeat:no-repeat;
+	height:15px;
+	width:16px;
+	float:right;
+	cursor:pointer;
+	margin-right:5px;
+	margin-top:5px;
+}
+
+.popup_Buttons
+{
+	margin-left:32%;
+	margin-bottom:10px
 }

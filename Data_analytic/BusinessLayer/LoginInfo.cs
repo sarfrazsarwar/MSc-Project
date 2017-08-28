@@ -8,11 +8,11 @@ namespace BusinessLayer
 {
     public class LoginInfo
     {
-        private string StrLoginTableName;
+        private string StrReviews;
         private DataTable DT = new DataTable("Userinfo");
-        public string GetTableName()
+        public string GetReviews()
         {
-            return StrLoginTableName;
+            return StrReviews;
         }
         public void AddTableName()
         {
@@ -65,6 +65,7 @@ namespace BusinessLayer
                 int UserId=0;
                 DataRow dr = DT.Rows[0];
                  UserId=int.Parse(dr["user_ID"].ToString());
+                 StrReviews = dr["Reviews"].ToString().Trim();
                 DT.Clear();
                 return UserId;
             }
@@ -103,5 +104,30 @@ namespace BusinessLayer
            
             return DT;
         }
+        public DataTable UserReviewsUpdate(string str,int ID)
+        {
+            DT.Clear();
+            string qury = " UPDATE [Data_Analytics].[dbo].[UserInfo] SET  [Reviews] ='" + str + "' WHERE [user_id]='" + ID + "'";
+
+            // AND [Password]= '" + strpass + "
+            DB_ACCESS.Dbaccess.executeQuery(qury);
+            int rcord = DT.Rows.Count;
+           
+            return DT;
+        }
+
+        public DataTable UserpasswordUpdate(string str, int ID)
+        {
+            DT.Clear();
+            string qury = " UPDATE [Data_Analytics].[dbo].[UserInfo] SET  [password] ='" + str + "' WHERE [user_id]='" + ID + "'";
+
+            // AND [Password]= '" + strpass + "
+            DB_ACCESS.Dbaccess.executeQuery(qury);
+            int rcord = DT.Rows.Count;
+
+            return DT;
+        }
+
+       
     }
 }

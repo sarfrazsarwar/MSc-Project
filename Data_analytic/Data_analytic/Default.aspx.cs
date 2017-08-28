@@ -29,22 +29,25 @@ namespace Data_analytic
                 Session.RemoveAll();
         }
 
-        protected void LoginButton_Click(object sender, EventArgs e)
+        protected void LoginButton_Click(object sender, EventArgs e) //change//
         {
 
             BusinessLayer.LoginInfo m = new BusinessLayer.LoginInfo();
             int noofRecord = m.GetUserInfoRecord(LoginUser.UserName, LoginUser.Password);
             if (noofRecord >= 1)
             {
+                Session["Reviews"] = m.GetReviews();
+                Session.Add("UserID", noofRecord);
+                Session.Add("UserName", LoginUser.UserName.Trim());
 
                 if (LoginUser.UserName.ToUpper() == "ADMINISTRATOR" || LoginUser.UserName.ToUpper() == "ADMIN")
                 {
+                    Session["Reviews"] = "NotShow";
                     Response.Redirect("~/ModifyReq.aspx");
                 }
                 else
                 {
-                    Session.Add("UserID", noofRecord);
-                    Session.Add("UserName", LoginUser.UserName);
+                    
                     BusinessLayer.previous_Result pr = new BusinessLayer.previous_Result();
                     DataTable dtProg = pr.GetProg_Selection(noofRecord);
                     DataTable dtTool = pr.GetTool_Selection(noofRecord);

@@ -65,7 +65,8 @@
                         </fieldset>
                         <p class="submitButton">
                             <asp:Button ID="CreateUserButton" runat="server"  Text="Create User" OnClick="RegisterUser_CreatedUser"
-                                 ValidationGroup="RegisterUserValidationGroup"/>
+                                 ValidationGroup="RegisterUserValidationGroup" Height="43px" style="margin-left: 0px" Width="146px"  BackColor="#55a6dd" 
+            BorderColor="#666768" BorderStyle="Solid"/>
                         </p><%--CommandName="MoveNext"--%> 
     
                     </div>

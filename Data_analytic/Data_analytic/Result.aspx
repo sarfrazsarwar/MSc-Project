@@ -57,8 +57,8 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
 <asp:Panel ID="Panel2"
            runat="server" BorderStyle="Dashed" BorderWidth="2px" Width="895px" 
             style="margin-right: 0px; margin-left: 0px" Height="663px">
-            <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
-        </asp:ScriptManager>
+            <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+        </asp:ScriptManager>--%>
 <table >
    <%-- <div style="margin-top:20px">--%>
     <tr>

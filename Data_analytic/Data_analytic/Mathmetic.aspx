@@ -50,8 +50,8 @@
    </div>
 <div style="margin-top:5px"></div>
    <%-- <asp:Panel ID="Panel1" runat="server">--%>
-   <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
-</asp:ScriptManager>
+   <%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+</asp:ScriptManager>--%>
        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >
       <ContentTemplate>
         <div style="margin-left:40px;">

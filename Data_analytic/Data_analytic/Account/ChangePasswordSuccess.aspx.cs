@@ -13,5 +13,11 @@ namespace Data_analytic.Account
         {
 
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string str = Session["URL"].ToString().Trim();
+            Response.Redirect(str);
+        }
     }
 }

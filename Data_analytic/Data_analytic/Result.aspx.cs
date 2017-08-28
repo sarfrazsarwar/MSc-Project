@@ -437,36 +437,44 @@ namespace Data_analytic
             Gv_SM1_NO.DataBind();
         }
 
-        bool validateSmester1CreditHr()
+        bool validateSmesterCreditHr()
         {
             int creditHr = 0;
             foreach (GridViewRow row in GV_SM1.Rows)
             {
                 creditHr = creditHr+int.Parse(row.Cells[3].Text.ToString().Trim());
             }
-            if (creditHr < 60)
+            if (creditHr < 50)
             {
                 return false;
             }
-            else
-                return true;
-        }
-
-
-        bool validateSmester2CreditHr()
-        {
-            int creditHr = 0;
             foreach (GridViewRow row in GV_SM2.Rows)
             {
                 creditHr = creditHr + int.Parse(row.Cells[3].Text.ToString().Trim());
             }
-            if (creditHr < 60)
+            if (creditHr < 120)
             {
                 return false;
             }
             else
                 return true;
         }
+
+
+        //bool validateSmester2CreditHr()
+        //{
+        //    int creditHr = 0;
+        //    foreach (GridViewRow row in GV_SM2.Rows)
+        //    {
+        //        creditHr = creditHr + int.Parse(row.Cells[3].Text.ToString().Trim());
+        //    }
+        //    if (creditHr < 60)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //        return true;
+        //}
 
         void RemoveSm1MoudleNonSugest()
         {
@@ -514,6 +522,17 @@ namespace Data_analytic
             dtSMAT.Columns.Add(dc);
             DataRow drRemove = null;
             int totalcreditHour = 0;
+            int totalcreditHour2 = 0;
+
+
+            foreach (GridViewRow row in GV_SM2.Rows)
+            {
+
+
+                totalcreditHour2 = totalcreditHour2 + int.Parse(row.Cells[3].Text.ToString().Trim());
+                
+            }
+
             foreach (GridViewRow row in GV_SM1.Rows)
             {
                 
@@ -542,7 +561,7 @@ namespace Data_analytic
                      int temphour=   int.Parse(row.Cells[3].Text.ToString().Trim());
 
                      totalcreditHour = totalcreditHour + temphour;
-                     if (totalcreditHour <= 70)
+                     if (totalcreditHour <= 70 && ((totalcreditHour2+totalcreditHour)<=125))
                      {
                          DataRow dr = dtSMAT.NewRow();
                          dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
@@ -567,7 +586,10 @@ namespace Data_analytic
                          dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                          dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                          dtSm2.Rows.Add(dr);
+                         if(totalcreditHour>70)
                          LBLerror.Text = "Maximum 70 crdit hr in Smester";
+                         else
+                          LBLerror.Text = "Maximum 120 to 125 crdit hr both Smester";
                          //ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
                      }
                 }
@@ -760,6 +782,12 @@ namespace Data_analytic
             dtSMAT.Columns.Add(dc);
             DataRow drRemove = null;
             int totalcreditHour = 0;
+            int totalcreditHour2 = 0;
+            foreach (GridViewRow row in GV_SM1.Rows)
+            {
+                totalcreditHour2 = totalcreditHour2 + int.Parse(row.Cells[3].Text.ToString().Trim());
+            }
+
             foreach (GridViewRow row in GV_SM2.Rows)
             {
 
@@ -790,7 +818,7 @@ namespace Data_analytic
                     int temphour = int.Parse(row.Cells[3].Text.ToString().Trim());
 
                     totalcreditHour = totalcreditHour + temphour;
-                    if (totalcreditHour <= 70)
+                    if (totalcreditHour <= 70 && ((totalcreditHour+totalcreditHour2)<=125))
                     {
                         DataRow dr = dtSMAT.NewRow();
                         dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
@@ -815,7 +843,10 @@ namespace Data_analytic
                         dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                         dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
                         dtSm2.Rows.Add(dr);
+                        if(totalcreditHour>70)
                         Label1.Text = "Maximum 70 crdit hr in Smester";
+                        else
+                          Label1.Text = "Maximum 120 to 125 crdit hr both Smester";
                        // ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
                     }
                 }
@@ -841,7 +872,7 @@ namespace Data_analytic
         protected void Save_Click(object sender, EventArgs e)
         {
 
-            if (validateSmester1CreditHr() && validateSmester2CreditHr())
+            if (validateSmesterCreditHr())
             {
                 BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
 
@@ -865,7 +896,7 @@ namespace Data_analytic
             }
             else
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Smestr 1 and Smester 2 must have 60 crdit Hr each');", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Smestr 1 and Smester 2 must have 120 to 125 crdit Hr');", true);
             }
         }
 
@@ -966,7 +997,7 @@ namespace Data_analytic
            
         }
 
-        protected void Button2_Click(object sender, EventArgs e)
+        protected void Button2_Click(object sender, EventArgs e)  //change //
         {
             DataTable dtTools = null;
             DataTable dtMath = null;

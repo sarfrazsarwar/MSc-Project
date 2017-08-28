@@ -9,7 +9,7 @@ namespace BusinessLayer
    public class AssociateModuleInfo
     {
         private DataTable DT = new DataTable("Academic_associated_info");
-        public DataTable GetToolAcademicAssociatedInfo()
+        public DataTable GetToolAcademicAssociatedInfo() //change//
         {
             DT.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[Academic_associated_info] where CA_ID=4 AND"+

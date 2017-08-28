@@ -45,8 +45,8 @@
    <h4 style="font-weight:lighter"> &nbsp Plese Select the Programing Information </h4>
    </div>
 <div style="margin-top:20px"></div>
-<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
-</asp:ScriptManager>
+<%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+</asp:ScriptManager>--%>
        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >
       <ContentTemplate>
    <%-- <asp:Panel ID="Panel1" runat="server">--%>

@@ -12,6 +12,7 @@ namespace BusinessLayer
   public  class calculateResult
     { 
         DataTable dtConfusionMat = new DataTable();
+        int TotalCridetHour = 0;
         private DataTable DT = new DataTable("Academic_module_model");
         private DataTable DTRE = new DataTable("Module_Requirment");
        
@@ -42,7 +43,7 @@ namespace BusinessLayer
             return DT;
         }
 
-        public DataTable GetModuleRequirmentInfo()
+        public DataTable GetModuleRequirmentInfo()  //change//
         {
             DTRE.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[Module_Requirment]";
@@ -118,7 +119,7 @@ namespace BusinessLayer
 
              DataTable dtMat = dtConfusionMat.Clone();
             dtMat.Clear();
-            DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dtMat);
+            DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dtMat,60,70);
             ds.Tables.Add(dtSm1);
             ds.Tables.Add(dtMat);
             return ds;
@@ -149,16 +150,16 @@ namespace BusinessLayer
             DataTable dtTempSmester1 = fRow.CopyToDataTable();
             dtMat = dtConfusionMat.Clone();
             dtMat.Clear();
-            DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dtMat);
+            DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dtMat,120,125);
             ds1.Tables.Add(dtSm1);
             ds1.Tables.Add(dtMat);
             return ds1;
          }
-        DataTable SmesterModuleSelction(DataTable dtSm, DataTable dttemp)
+        DataTable SmesterModuleSelction(DataTable dtSm, DataTable dttemp,int RangeTo,int RangeFrom)
         {
             //dtTempSmester1.DefaultView.Sort = "Recall DESC";
             //DataTable dtSmester1 = dtTempSmester1.DefaultView.ToTable();
-            int TotalCridetHour = 0;
+            
             DataTable dtcom = null;
             DataRow[] dr = dtSm.Select("compulsory=true", "Recall DESC");
             if (dr.Length > 0)
@@ -192,12 +193,12 @@ namespace BusinessLayer
             }
             foreach (DataRow drNonCom in dtNonCom.Rows)
             {
-                if (TotalCridetHour < 60)
+                if (TotalCridetHour < RangeTo)
                 {
                     int CridetHour = int.Parse(drNonCom["Credit hours"].ToString());
 
                     TotalCridetHour = TotalCridetHour + CridetHour;
-                    if (TotalCridetHour > 70)
+                    if (TotalCridetHour > RangeFrom)
                     {
                         TotalCridetHour = TotalCridetHour - CridetHour;
                         DataRow drnew = dttemp.NewRow();

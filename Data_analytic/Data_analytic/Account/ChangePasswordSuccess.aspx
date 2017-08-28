@@ -10,4 +10,9 @@
     <p>
         Your password has been changed successfully.
     </p>
+
+    <asp:Button ID="Button1" runat="server" Text="Back" Height="43px" 
+        style="margin-right: 10px" Width="146px"  BackColor="#55a6dd" 
+             BorderColor="#666768" BorderStyle="Solid" onclick="Button1_Click" />
+
 </asp:Content>

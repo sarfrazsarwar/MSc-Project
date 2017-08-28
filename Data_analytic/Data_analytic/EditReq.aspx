@@ -8,8 +8,8 @@
 <asp:Label ID="Label1" runat="server" Text="" Font-Bold="True" Font-Size="Medium"></asp:Label>
 <br />
 <br />
-<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
-</asp:ScriptManager>
+<%--<asp:ScriptManager ID="ScriptManager1" runat="server" EnablePartialRendering="true">
+</asp:ScriptManager>--%>
 <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional" >
       <ContentTemplate>
 <asp:GridView ID="Modyfy_GD" runat="server" AutoGenerateColumns="False"

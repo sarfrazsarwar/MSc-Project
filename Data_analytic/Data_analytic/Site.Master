@@ -1,5 +1,8 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true"  CodeBehind="Site.master.cs" Inherits="Data_analytic.SiteMaster" %>
 
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head id="Head1" runat="server">
@@ -20,23 +23,66 @@
     
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
+
+    <script language="javascript" type="text/javascript">
+        function ClearUI() {
+            $find("textValidator").hide();
+        }
+        function IsValid() {
+            var textbox = $get("TextBox1");
+            if (textbox.value == "") {
+                return false;
+            }
+            else
+                return true;
+        }
+        function ClosePopup() {
+            if (IsValid()) {
+                $find('modalwithinput').hide();
+                alert("You have given your name");
+            }
+        }
+</script>
 </head>
 <body>
     
+    
 
     <div class="main">
-
-    <%--class="header "///////////////////////////////////////Header start//////////////////////////////////////////--style="margin:0; padding:0; background : url(../images/header_bg.jpg) top center repeat-x"--%>
-        <div  class="header"  > <%--style="background:url(images/header_bg.jpg) top center repeat-x"--%>
+<form id="Form1" runat="server" style="width:100%">
+ <div  class="header"  > <%--style="background:url(images/header_bg.jpg) top center repeat-x"--%>
             <div class="header_resize">
             <div class="logo"><h1><a href="Default.aspx"><small>put your slogan here</small>Module<span> chooser</span><small>University of Leads</small></a></h1></div>
             
             <div class="clr"></div>
-            <div class="search"></div>
+           <%-- <div class="search"></div>--%>
             <div class="menu"></div>
+             
             </div>
+            <div style="width:100%; margin-right:0px;">
+           <%-- <table>
+            <tr>
+            <td style="width:50%">--%>
+            <div style="display:inline-block;text-align:center ">
+            <asp:Button ID="Button2" runat="server" Text="change Password" 
+                    Height="25px" style="margin-right: 0px" Width="146px" BackColor="#55a6dd" 
+            BorderColor="#666768" BorderStyle="Solid" onclick="Button2_Click" />
+            <asp:Button ID="Button3" runat="server" Text="Contact Us"
+                    Height="25px" style="margin-right: 0px" Width="146px" BackColor="#55a6dd" 
+            BorderColor="#666768" BorderStyle="Solid" onclick="Button3_Click" />
             
+            </div>
+            <%--</td>
+            <td>--%>
+                 <div style="float:right; display:inline-block;text-align:center ">
+                     <asp:Label ID="Label1"  Height="25px" runat="server"></asp:Label>
+            <asp:Button ID="Button1" runat="server" Text="Logout" onclick="Button1_Click" 
+                    Height="25px" style="margin-right: 0px" Width="146px" BackColor="#55a6dd" 
+            BorderColor="#666768" BorderStyle="Solid" /></div>
+            <%--</td></tr></table>--%>
+            </div>
             <div class="clr">
+            
            <%-- <div style="float:right;margin-right:20px;">
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>  &nbsp   &nbsp   &nbsp  &nbsp
                 <asp:Button ID="Button1" runat="server" Text="Button" BorderStyle="None" 
@@ -44,27 +90,53 @@
             </div>
         </div>
 
-
-<%--class="body"///////////////////////////////////////Header End//////////////////////////////////////////--%>
     <div class="clr"></div>
   <div style=" margin:0; padding:0;  background:#6d7c83 url(../images/body_bg.gif) top repeat-x;">
     <div class="body_resize">
       <div class="left"> 
             
-      <form id="Form1" runat="server">
-     
-      <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+                 <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+            <cc1:ModalPopupExtender ID="ModalPopupExtender1" BackgroundCssClass="ModalPopupBG"
+                runat="server" CancelControlID="btnCancel" OnCancelScript="ClearUI();"  TargetControlID="Button3"
+                PopupControlID="Panel1" Drag="true" PopupDragHandleControlID="PopupHeader" BehaviorID="modalwithinput">
+            </cc1:ModalPopupExtender>
+            <div id="Panel1" class="popupConfirmation" style="display: none;">
+                <div class="popup_Container">
+                    <div class="popup_Titlebar" id="PopupHeader">
+                        <div class="TitlebarRight" onclick="$get('btnCancel').click();">
+                        </div>
+                    </div>
+                    
+                    <div class="popup_Body">
+                        <div>User Reviews: </div>
+                        <div> <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Width="450px"></asp:TextBox></div>
 
-       </form>
+                        
+                    </div>
+                    <div class="popup_Buttons">
+                        <asp:Button runat="server" id="btnOkay" Text="Done" onclick="btnOkay_Click"  />
+                        <input id="btnCancel" value="Cancel" type="button" />
+                    </div>
+                </div>
+            </div>
+      <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+      
+     
+
+       
 
         <br /><br />
       </div>
-     <%-- <div class="right">
+     <%-- <div class="right"><%--OnClientClick="ClosePopup();"
         <div class="clr"></div>
       </div>--%>
-      <div class="clr"></div>
+      <div class="clr">
+        
+        </div>
     </div>
   </div>
+  </form>
   <div class="FBG">
     <div class="FBG_resize">
       <div class="blok2">
