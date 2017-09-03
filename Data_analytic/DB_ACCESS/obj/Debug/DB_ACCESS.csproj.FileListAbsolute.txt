@@ -5,10 +5,15 @@ F:\Sohail Data\webProj\Data_analytic\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS
 F:\Sohail Data\webProj\Data_analytic\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS.pdb
 C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\DB_ACCESS\bin\Debug\DB_ACCESS.dll
 C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\DB_ACCESS\bin\Debug\DB_ACCESS.pdb
+C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS.csprojResolveAssemblyReference.cache
 C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS.dll
 C:\Users\muhammad\Desktop\Data_analytic\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(ChaPass,Chalogic,AddBtn, SettBtn,HeaderSize)25\DB_ACCESS\bin\Debug\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(ChaPass,Chalogic,AddBtn, SettBtn,HeaderSize)25\DB_ACCESS\bin\Debug\DB_ACCESS.pdb
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(ChaPass,Chalogic,AddBtn, SettBtn,HeaderSize)25\DB_ACCESS\obj\Debug\DB_ACCESS.csprojResolveAssemblyReference.cache
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(ChaPass,Chalogic,AddBtn, SettBtn,HeaderSize)25\DB_ACCESS\obj\Debug\DB_ACCESS.dll
-D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(ChaPass,Chalogic,AddBtn, SettBtn,HeaderSize)25\DB_ACCESS\obj\Debug\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Final)31\Data_analytic\DB_ACCESS\bin\Debug\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Final)31\Data_analytic\DB_ACCESS\bin\Debug\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Final)31\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\MSc Project Implementation\Data_analytic(Final)31\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\DB_ACCESS\bin\Debug\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\DB_ACCESS\bin\Debug\DB_ACCESS.pdb
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS.csprojResolveAssemblyReference.cache
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS.dll
+D:\MSc Advanced Computer Science\MSc Project\GitHub\Data_analytic\DB_ACCESS\obj\Debug\DB_ACCESS.pdb

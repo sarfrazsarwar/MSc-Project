@@ -13,7 +13,7 @@ namespace DB_ACCESS
     /// <summary>
     /// Constains overloaded method to access database and run queries 
     /// </summary>
-    public class Dbaccess
+    public class DbAccess
     {
         public static SqlConnection DbConn = new SqlConnection();
         //        private static SqlDataAdapter DbAdapter = new SqlDataAdapter();
@@ -124,6 +124,7 @@ namespace DB_ACCESS
                         DbAdapter.SelectCommand = DbCommand;
                         DbAdapter.Fill(tblName);
 
+                
                         DbAdapter.Dispose();
                         DbCommand.Dispose();
                         return;

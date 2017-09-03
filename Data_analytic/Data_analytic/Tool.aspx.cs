@@ -14,10 +14,9 @@ namespace Data_analytic
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
-            TOOL_GV.DataSource = m.GetToolAcademicAssociatedInfo();
-            TOOL_GV.DataBind();
-            //Session.Add("UserName", "");
+            BusinessLayer.DataServices m = new BusinessLayer.DataServices();
+            grdTools.DataSource = m.GetToolAcademicAssociatedInfo();
+            grdTools.DataBind();
             if (Session["Tool"] != null && !IsPostBack)
             {
                 LoadSelectedState();
@@ -28,7 +27,7 @@ namespace Data_analytic
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(TOOL_GV, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdTools, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
             }
         }
@@ -36,9 +35,9 @@ namespace Data_analytic
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
 
-            foreach (GridViewRow row in TOOL_GV.Rows)
+            foreach (GridViewRow row in grdTools.Rows)
             {
-                if (row.RowIndex == TOOL_GV.SelectedIndex)
+                if (row.RowIndex == grdTools.SelectedIndex)
                 {
                    // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
@@ -51,13 +50,14 @@ namespace Data_analytic
                 }
             }
         }
+        //Load Previous Selection State when visits again
         void LoadSelectedState()
         {
             DataTable dt=(DataTable)Session["Tool"];
                 int i = 0;
                 foreach (DataRow dr in dt.Rows)
                 {
-                    GridViewRow gdrow = TOOL_GV.Rows[i];
+                    GridViewRow gdrow = grdTools.Rows[i];
                      RadioButton rbt=(RadioButton) gdrow.FindControl("RowSelector1");
                      RadioButton rbt1 = (RadioButton)gdrow.FindControl("RowSelector");
                      RadioButton rbt3 = (RadioButton)gdrow.FindControl("RowSelector2");
@@ -83,6 +83,7 @@ namespace Data_analytic
                      i++;
                 }
         }
+       // maintain the user Selection Expertise   when click on next
         void SetLoadStateData()
         {
             DataTable dt = new DataTable();
@@ -91,7 +92,7 @@ namespace Data_analytic
 
             dt.Columns.Add(dc);
             dc = new DataColumn();
-            dc.ColumnName = "AA_ID";
+            dc.ColumnName = "AcademicInfo_ID";
 
             dt.Columns.Add(dc);
             dc = new DataColumn("Available", typeof(int));
@@ -100,18 +101,8 @@ namespace Data_analytic
             dt.Columns.Add(dc);
 
             dc = new DataColumn("NotAvailable", typeof(int));
-            //dc = new DataColumn();
-            //dc.ColumnName = "Available";
-
-            //dt.Columns.Add(dc);
-
-            //dc = new DataColumn();
-            //dc.ColumnName = "NotAvailable";
-
+           
             dt.Columns.Add(dc);
-
-            //dc = new DataColumn();
-            //dc.ColumnName = "Intermedite";
             dc = new DataColumn("Intermedite", typeof(int));
             dt.Columns.Add(dc);
             //dc = new DataColumn();
@@ -121,14 +112,11 @@ namespace Data_analytic
             dc = new DataColumn("Expert", typeof(int));
 
             dt.Columns.Add(dc);
-            foreach (GridViewRow row in TOOL_GV.Rows)
+            foreach (GridViewRow row in grdTools.Rows)
             {
                 DataRow dr = dt.NewRow();
-                //    <asp:RadioButton ID="RowSelector1" runat="server" 
-                //        GroupName="SuppliersGroup"  Width="100" />
-                //</ItemTemplate>r
                 dr["data"] = row.Cells[0].Text;
-                dr["AA_ID"] = row.Cells[1].Text;
+                dr["AcademicInfo_ID"] = row.Cells[1].Text;
                 RadioButton r = (RadioButton)row.FindControl("RowSelector1");
                 if (r.Checked)
                     dr["Available"] = 1;
@@ -161,44 +149,23 @@ namespace Data_analytic
             }
             Session["Tool"] = dt;
         }
-        protected void OnPageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            TOOL_GV.PageIndex = e.NewPageIndex;
-            TOOL_GV.DataBind();
-          //  this.BindGrid();
-        }
-        protected void Pre_Click(object sender, EventArgs e)
+        protected void btnPre_Click(object sender, EventArgs e)
         {
             SetLoadStateData();
-            Response.Redirect("~/Mathmetic.aspx");
+            Response.Redirect("~/MathematicsResearch.aspx");
         }
-        protected void NEXT_Click(object sender, EventArgs e)
+        protected void btnNext_Click(object sender, EventArgs e)
         {
             SetLoadStateData();
-            Response.Redirect("~/Summary.aspx");
+            Response.Redirect("~/UserProfileSummary.aspx");
         }
 
-        protected void CHK_TOOL_CheckedChanged(object sender, EventArgs e)
-        {
-            //if (CHK_TOOL.Checked)
-            //{
-            //    //BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
-            //    //Suppliers.DataSource = m.GetAcademicAssociatedInfo();
-            //    //Suppliers.DataBind();
-            //}
-            //else
-            //{
-            //    BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
-            //    Suppliers.DataSource = m.GetAcademicAssociatedInfo();
-            //    Suppliers.DataBind();
-            //}
-        }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnReset_Click(object sender, EventArgs e)
         {
-            BusinessLayer.AssociateModuleInfo m = new BusinessLayer.AssociateModuleInfo();
-            TOOL_GV.DataSource = m.GetToolAcademicAssociatedInfo();
-            TOOL_GV.DataBind();
+            BusinessLayer.DataServices m = new BusinessLayer.DataServices();
+            grdTools.DataSource = m.GetToolAcademicAssociatedInfo();
+            grdTools.DataBind();
         }
 
        

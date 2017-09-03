@@ -58,9 +58,9 @@
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
-    <Content Include="Account\Register.aspx" />
+    <Content Include="Account\RegisterUser.aspx" />
     <Content Include="images\body_bg.gif" />
-    <Content Include="EditReq.aspx" />
+    <Content Include="AdminEditReq.aspx" />
     <Content Include="images\gallery_1.gif" />
     <Content Include="images\gallery_10.gif" />
     <Content Include="images\gallery_11.gif" />
@@ -82,15 +82,15 @@
     <Content Include="images\pre.jpg" />
     <Content Include="images\r.jpg" />
     <Content Include="images\right-arrow-icon1.jpg" />
-    <Content Include="Mathmetic.aspx" />
-    <Content Include="ModifyReq.aspx" />
+    <Content Include="MathematicsResearch.aspx" />
+    <Content Include="AdminPanel.aspx" />
     <Content Include="js\cufon-yui.js" />
     <Content Include="js\cuf_run.js" />
     <Content Include="js\DD_belatedPNG_0.0.8a-min.js" />
     <Content Include="js\georgia.js" />
     <Content Include="js\jquery.js" />
-    <Content Include="Previous_summary.aspx" />
-    <Content Include="Programing.aspx" />
+    <Content Include="ResultSummary.aspx" />
+    <Content Include="Programming.aspx" />
     <Content Include="Result.aspx" />
     <Content Include="images\search.gif" />
     <Content Include="Scripts\jquery-1.3.2-vsdoc.js" />
@@ -98,7 +98,7 @@
     <Content Include="Scripts\ui.core.js" />
     <Content Include="Scripts\ui.progressbar.js" />
     <Content Include="Styles\Site.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="LogIn.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
@@ -109,7 +109,7 @@
     <Content Include="Styles\ui.core.css" />
     <Content Include="Styles\ui.progressbar.css" />
     <Content Include="Styles\ui.theme.css" />
-    <Content Include="Summary.aspx" />
+    <Content Include="UserProfileSummary.aspx" />
     <Content Include="Tool.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -120,7 +120,7 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="word_Selection.aspx" />
+    <Content Include="AcademicInterests.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="About.aspx.cs">
@@ -151,57 +151,57 @@
     <Compile Include="Account\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\Register.aspx.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="Account\RegisterUser.aspx.cs">
+      <DependentUpon>RegisterUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\Register.aspx.designer.cs">
-      <DependentUpon>Register.aspx</DependentUpon>
+    <Compile Include="Account\RegisterUser.aspx.designer.cs">
+      <DependentUpon>RegisterUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EditReq.aspx.cs">
-      <DependentUpon>EditReq.aspx</DependentUpon>
+    <Compile Include="AdminEditReq.aspx.cs">
+      <DependentUpon>AdminEditReq.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EditReq.aspx.designer.cs">
-      <DependentUpon>EditReq.aspx</DependentUpon>
+    <Compile Include="AdminEditReq.aspx.designer.cs">
+      <DependentUpon>AdminEditReq.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mathmetic.aspx.cs">
-      <DependentUpon>Mathmetic.aspx</DependentUpon>
+    <Compile Include="MathematicsResearch.aspx.cs">
+      <DependentUpon>MathematicsResearch.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Mathmetic.aspx.designer.cs">
-      <DependentUpon>Mathmetic.aspx</DependentUpon>
+    <Compile Include="MathematicsResearch.aspx.designer.cs">
+      <DependentUpon>MathematicsResearch.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ModifyReq.aspx.cs">
-      <DependentUpon>ModifyReq.aspx</DependentUpon>
+    <Compile Include="AdminPanel.aspx.cs">
+      <DependentUpon>AdminPanel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ModifyReq.aspx.designer.cs">
-      <DependentUpon>ModifyReq.aspx</DependentUpon>
+    <Compile Include="AdminPanel.aspx.designer.cs">
+      <DependentUpon>AdminPanel.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Previous_summary.aspx.cs">
-      <DependentUpon>Previous_summary.aspx</DependentUpon>
+    <Compile Include="ResultSummary.aspx.cs">
+      <DependentUpon>ResultSummary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Previous_summary.aspx.designer.cs">
-      <DependentUpon>Previous_summary.aspx</DependentUpon>
+    <Compile Include="ResultSummary.aspx.designer.cs">
+      <DependentUpon>ResultSummary.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Programing.aspx.cs">
-      <DependentUpon>Programing.aspx</DependentUpon>
+    <Compile Include="Programming.aspx.cs">
+      <DependentUpon>Programming.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Programing.aspx.designer.cs">
-      <DependentUpon>Programing.aspx</DependentUpon>
+    <Compile Include="Programming.aspx.designer.cs">
+      <DependentUpon>Programming.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.aspx.cs">
@@ -218,12 +218,12 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Summary.aspx.cs">
-      <DependentUpon>Summary.aspx</DependentUpon>
+    <Compile Include="UserProfileSummary.aspx.cs">
+      <DependentUpon>UserProfileSummary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Summary.aspx.designer.cs">
-      <DependentUpon>Summary.aspx</DependentUpon>
+    <Compile Include="UserProfileSummary.aspx.designer.cs">
+      <DependentUpon>UserProfileSummary.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tool.aspx.cs">
       <DependentUpon>Tool.aspx</DependentUpon>
@@ -232,12 +232,12 @@
     <Compile Include="Tool.aspx.designer.cs">
       <DependentUpon>Tool.aspx</DependentUpon>
     </Compile>
-    <Compile Include="word_Selection.aspx.cs">
-      <DependentUpon>word_Selection.aspx</DependentUpon>
+    <Compile Include="AcademicInterests.aspx.cs">
+      <DependentUpon>AcademicInterests.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="word_Selection.aspx.designer.cs">
-      <DependentUpon>word_Selection.aspx</DependentUpon>
+    <Compile Include="AcademicInterests.aspx.designer.cs">
+      <DependentUpon>AcademicInterests.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -262,7 +262,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>16229</DevelopmentServerPort>
+          <DevelopmentServerPort>8809</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

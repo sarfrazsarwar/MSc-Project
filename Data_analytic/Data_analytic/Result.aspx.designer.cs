@@ -31,13 +31,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// GV_SM1 control.
+        /// grdSugSemester1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GV_SM1;
+        protected global::System.Web.UI.WebControls.GridView grdSugSemester1;
         
         /// <summary>
         /// lnkDummy control.
@@ -58,13 +58,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel8;
         
         /// <summary>
-        /// BTN_UP_SM1 control.
+        /// btnSemster1LeftShift control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTN_UP_SM1;
+        protected global::System.Web.UI.WebControls.Button btnSemster1LeftShift;
         
         /// <summary>
         /// UpdatePanel9 control.
@@ -76,13 +76,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel9;
         
         /// <summary>
-        /// BTN_DOWN_SM1 control.
+        /// btnSemster1RightShift control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTN_DOWN_SM1;
+        protected global::System.Web.UI.WebControls.Button btnSemster1RightShift;
         
         /// <summary>
         /// UpdatePanel4 control.
@@ -94,13 +94,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel4;
         
         /// <summary>
-        /// Gv_SM1_NO control.
+        /// grdNonSugSemester1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gv_SM1_NO;
+        protected global::System.Web.UI.WebControls.GridView grdNonSugSemester1;
         
         /// <summary>
         /// LinkButton1 control.
@@ -139,13 +139,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel5;
         
         /// <summary>
-        /// GridView1 control.
+        /// grdSemester1Detail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.GridView grdSemester1Detail;
         
         /// <summary>
         /// LinkButton4 control.
@@ -157,13 +157,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
         
         /// <summary>
-        /// Button2 control.
+        /// btnResetSm1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Button btnResetSm1;
         
         /// <summary>
         /// Panel3 control.
@@ -184,13 +184,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
-        /// GV_SM2 control.
+        /// grdSugSemester2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GV_SM2;
+        protected global::System.Web.UI.WebControls.GridView grdSugSemester2;
         
         /// <summary>
         /// LinkButton2 control.
@@ -211,13 +211,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel10;
         
         /// <summary>
-        /// BTN_SM2_UP control.
+        /// btnSemster2LeftShift control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTN_SM2_UP;
+        protected global::System.Web.UI.WebControls.Button btnSemster2LeftShift;
         
         /// <summary>
         /// UpdatePanel7 control.
@@ -229,13 +229,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel7;
         
         /// <summary>
-        /// BTN_SM2_DOWN control.
+        /// btnSemster2RightShift control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BTN_SM2_DOWN;
+        protected global::System.Web.UI.WebControls.Button btnSemster2RightShift;
         
         /// <summary>
         /// UpdatePanel2 control.
@@ -247,13 +247,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// Gv_SM2_NO control.
+        /// grdNonSugSemester2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView Gv_SM2_NO;
+        protected global::System.Web.UI.WebControls.GridView grdNonSugSemester2;
         
         /// <summary>
         /// LinkButton3 control.
@@ -292,13 +292,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel6;
         
         /// <summary>
-        /// GridView2 control.
+        /// grdSemester2Detail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView2;
+        protected global::System.Web.UI.WebControls.GridView grdSemester2Detail;
         
         /// <summary>
         /// LinkButton5 control.
@@ -310,21 +310,30 @@ namespace Data_analytic {
         protected global::System.Web.UI.WebControls.LinkButton LinkButton5;
         
         /// <summary>
-        /// Button1 control.
+        /// btnResetSm2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnResetSm2;
         
         /// <summary>
-        /// Save control.
+        /// lblErrorMian control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Save;
+        protected global::System.Web.UI.WebControls.Label lblErrorMian;
+        
+        /// <summary>
+        /// btnSubmit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }

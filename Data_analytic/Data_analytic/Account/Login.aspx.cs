@@ -11,12 +11,12 @@ namespace Data_analytic.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterHyperLink.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
+            RegisterHyperLink.NavigateUrl = "RegisterUser.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
         }
 
         protected void LoginButton_Click(object sender, EventArgs e)
         {
-            BusinessLayer.LoginInfo m = new BusinessLayer.LoginInfo();
+            BusinessLayer.LogInInfoCalc m = new BusinessLayer.LogInInfoCalc();
             int noofRecord=m.GetUserInfoRecord(LoginUser.UserName, LoginUser.Password);
             if (noofRecord >= 1)
             {

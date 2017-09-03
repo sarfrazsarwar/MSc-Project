@@ -18,7 +18,7 @@ namespace Data_analytic.Account
         {
             Label1.Text = "";
             string str = Session["UserName"].ToString().Trim();
-            BusinessLayer.LoginInfo m = new BusinessLayer.LoginInfo();
+            BusinessLayer.LogInInfoCalc m = new BusinessLayer.LogInInfoCalc();
             int noofRecord = m.GetUserInfoRecord(str, CurrentPassword.Text.Trim());
             if (noofRecord > 0)
             {

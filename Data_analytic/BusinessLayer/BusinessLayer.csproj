@@ -86,11 +86,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssociateModuleInfo.cs" />
-    <Compile Include="calculateResult.cs" />
-    <Compile Include="EditRequirment.cs" />
-    <Compile Include="LoginInfo.cs" />
-    <Compile Include="previous_Result.cs" />
+    <Compile Include="DataServices.cs" />
+    <Compile Include="CalcualteResult.cs" />
+    <Compile Include="EditModuleReq.cs" />
+    <Compile Include="LogInInfoCalc.cs" />
+    <Compile Include="PrResultSummary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

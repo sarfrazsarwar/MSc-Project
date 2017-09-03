@@ -22,13 +22,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// TOOL_GV control.
+        /// grdTools control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView TOOL_GV;
+        protected global::System.Web.UI.WebControls.GridView grdTools;
         
         /// <summary>
         /// lnkDummy control.
@@ -40,13 +40,13 @@ namespace Data_analytic {
         protected global::System.Web.UI.WebControls.LinkButton lnkDummy;
         
         /// <summary>
-        /// Button1 control.
+        /// btnReset control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnReset;
         
         /// <summary>
         /// Pre control.
@@ -58,12 +58,12 @@ namespace Data_analytic {
         protected global::System.Web.UI.WebControls.Button Pre;
         
         /// <summary>
-        /// NEXT control.
+        /// btnNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button NEXT;
+        protected global::System.Web.UI.WebControls.Button btnNext;
     }
 }

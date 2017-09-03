@@ -38,87 +38,61 @@ namespace Data_analytic
                 }
 
 
-                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+                BusinessLayer.CalcualteResult obj = new BusinessLayer.CalcualteResult();
                 obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
-                DataSet dtsm1 = obj.SortSmester1Data();
-                GV_SM1.DataSource = dtsm1.Tables[0];
-                GV_SM1.DataBind();
-                Gv_SM1_NO.DataSource = dtsm1.Tables[1];
-                Gv_SM1_NO.DataBind();
+                //DsSemester1 contain 2 table of Semester 1..table[0] have sugesstion module  and table[1] have non sugestion module
+                DataSet dsSemester1 = obj.SortSmester1Data();
+                grdSugSemester1.DataSource = dsSemester1.Tables[0];
+                grdSugSemester1.DataBind();
+                grdNonSugSemester1.DataSource = dsSemester1.Tables[1];
+                grdNonSugSemester1.DataBind();
+
+                //Set the total range of credit hr of semester 1 and semester 2
+                obj.setTotalCridetHr(120,125);
+
+                //DsSemester2 contain 2 table of Semester 2..table[0] have sugesstion module  and table[1] have non sugestion module
+                DataSet dsSemester2 = obj.SortSmester2Data();
+
+                grdSugSemester2.DataSource = dsSemester2.Tables[0];
+                grdSugSemester2.DataBind();
+                grdNonSugSemester2.DataSource = dsSemester2.Tables[1];
+                grdNonSugSemester2.DataBind();
 
 
-                DataSet dtsm2 = obj.SortSmester2Data();
 
-                GV_SM2.DataSource = dtsm2.Tables[0];
-                GV_SM2.DataBind();
-                Gv_SM2_NO.DataSource = dtsm2.Tables[1];
-                Gv_SM2_NO.DataBind();
-
-                
-             
-               // dt = dtsm1.Tables[0].Copy();
-               //DataRow[] dr=dtsm1.Tables[1].Select("Compulsory=false");
-               //if (dr.Length > 0)
-               //{
-               //    int i=0;
-               //    foreach (DataRow drNonCom in dr)
-               //    {
-               //        DataRow drnew = dt.NewRow();
-               //        drnew["AM_ID"] = drNonCom["AM_ID"];
-               //        drnew["ACademic_Module"] = drNonCom["ACademic_Module"];
-               //        drnew["TruePostive"] = drNonCom["TruePostive"];
-               //        drnew["Smester"] = drNonCom["Smester"];
-               //        drnew["Compulsory"] = drNonCom["Compulsory"];
-               //        drnew["FalseNegtive"] = drNonCom["FalseNegtive"]; ;
-               //        drnew["Credit hours"] = drNonCom["Credit hours"];
-               //        //""
-
-
-               //        drnew["Recall"] = drNonCom["Recall"];
-               //        dt.Rows.Add(drnew);
-               //    }
-                  
-               //}
-
-                DataTable dt =obj.GetSM1RecordInfo();
+                DataTable dtSemster1 = obj.GetSM1RecordInfo();
 
                 DataColumn dc = new DataColumn("none Selected");
-                dt.Columns.Add(dc);
-                Add_falseNegetive(dtsm1.Tables[0], dt);
-                Add_falseNegetive(dtsm1.Tables[1], dt);
-                   GridView1.DataSource=dt;
-                   GridView1.DataBind();
-                   DataTable dttemp = obj.GetSM2RecordInfo();
-                   //dc = new DataColumn("none Selected");
-                   //dttemp.Columns.Add(dc);
-
-                   Add_falseNegetive(dtsm2.Tables[0], dttemp);
-                   Add_falseNegetive(dtsm2.Tables[1], dttemp);
-
-                   GridView2.DataSource = dttemp;
-                   GridView2.DataBind();
-                //DataRow[] fRow = dtMat.Select("Smester=1");
-                //DataTable dtTempSmester1 = fRow.CopyToDataTable();
-                //DataTable dttem = dtTempSmester1.Clone();
-                //dttem.Clear();
-                //DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dttem);
-                //GV_SM1.DataSource = dtSm1;
-                //GV_SM1.DataBind();
-                //Gv_SM1_NO.DataSource = dttem;
-                //Gv_SM1_NO.DataBind();
-                //DataRow[] fRow1 = dtMat.Select("Smester=2");
-                //DataTable dtTempSmester2 = fRow1.CopyToDataTable();
-                //dttem.Clear();
-                //DataTable dtSm2 = SmesterModuleSelction(dtTempSmester2, dttem);
-                //GV_SM2.DataSource = dtSm2;
-                //GV_SM2.DataBind();
+                dtSemster1.Columns.Add(dc);
+                Add_falseNegetive(dsSemester1.Tables[0], dtSemster1);
+                Add_falseNegetive(dsSemester1.Tables[1], dtSemster1);
 
 
+                grdSemester1Detail.DataSource = dtSemster1;
+                   grdSemester1Detail.DataBind();
+                   DataTable dtSemester2 = obj.GetSM2RecordInfo();
 
+                   Add_falseNegetive(dsSemester2.Tables[0], dtSemester2);
+                   Add_falseNegetive(dsSemester2.Tables[1], dtSemester2);
 
-                //Gv_SM2_NO.DataSource = dttem;
-                //Gv_SM2_NO.DataBind();
+                   grdSemester2Detail.DataSource = dtSemester2;
+                   grdSemester2Detail.DataBind();
             }
+        }
+        protected string SetUrl(object o)
+        {
+            if (o.ToString().Trim() == "")
+            {
+                return "";
+            }
+            else
+            {
+                return "WebLink";
+            }
+        }
+        protected string GetUrl(object id)
+        {
+            return "http://" + id;
         }
         void Add_falseNegetive(DataTable dtSrc, DataTable dtDes)
         {
@@ -128,18 +102,26 @@ namespace Data_analytic
                     {
                         if (dr["ACademic_Module"].ToString().Trim() == dr1["ACademic_Module"].ToString().Trim())
                         {
-                            dr1["none Selected"] = dr["none Selected"];
-                            break;
+                            if (dr["none Selected"].ToString() == "")
+                            {
+                                dr1["none Selected"] = "Nil";
+                            }
+                            else
+                            {
+                                dr1["none Selected"] = dr["none Selected"];
+                            }
+                                break;
                         }
                     }
                 }
 
         }
+        //call when binding the tabel with grid non Sugestion Module of semester 1
         protected void SM1NON_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(Gv_SM1_NO, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdNonSugSemester1, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
                 string str = e.Row.Cells[2].Text.ToString();
                 if(e.Row.Cells[2].Text.ToString()=="True")
@@ -149,60 +131,64 @@ namespace Data_analytic
 
             }
         }
+        //Semester 1 Row Selection of Detail Grid When  Selecting of Row Suggestion module or non Suggestion module
         void selectROw(GridViewRow rowSEl)
         {
-            foreach (GridViewRow row in GridView1.Rows)
+            foreach (GridViewRow row in grdSemester1Detail.Rows)
             {
                 if (row.Cells[0].Text.Trim() == rowSEl.Cells[0].Text.Trim())
                 {
-                    GridView1.SelectedIndex = row.RowIndex;
+                    grdSemester1Detail.SelectedIndex = row.RowIndex;
                 }
                 
             }
         }
-
+        //Semester 2 Row Selection of Detail Grid When  Selecting of Row Suggestion module or non Suggestion module
         void selectSM2Row(GridViewRow rowSEl)
         {
-            foreach (GridViewRow row in GridView2.Rows)
+            foreach (GridViewRow row in grdSemester2Detail.Rows)
             {
                 if (row.Cells[0].Text.Trim() == rowSEl.Cells[0].Text.Trim())
                 {
-                    GridView2.SelectedIndex = row.RowIndex;
+                    grdSemester2Detail.SelectedIndex = row.RowIndex;
                 }
 
             }
         }
+
+        //call when Row selection Index change  on non Suggestion Module in Semester 1
         protected void SM1NON_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             SelROw = null;
-            foreach (GridViewRow row in Gv_SM1_NO.Rows)
+            foreach (GridViewRow row in grdNonSugSemester1.Rows)
             {
-                if (row.RowIndex == Gv_SM1_NO.SelectedIndex)
+                if (row.RowIndex == grdNonSugSemester1.SelectedIndex)
                 {
-                    // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                    
                     row.ToolTip = string.Empty;
                     SelROw = row;
                     selectROw(SelROw);
-                    if (GV_SM1.SelectedIndex >= 0)
+                    if (grdSugSemester1.SelectedIndex >= 0)
                     {
                         
                         UpdatePanel1.Update();
-                        GV_SM1.SelectedIndex = -1;
+                        grdSugSemester1.SelectedIndex = -1;
                     }
                     UpdatePanel5.Update();
                 }
                 else
                 {
-                    //// row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                    
                     row.ToolTip = "Click to select this row.";
                 }
             }
         }
+        //call when binding the tabel with grid Sugestion Module semester 1
         protected void OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GV_SM1, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdSugSemester1, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
                 string str = e.Row.Cells[2].Text.ToString();
                 if (e.Row.Cells[2].Text.ToString() == "True")
@@ -210,20 +196,21 @@ namespace Data_analytic
             }
         }
 
+        //call when Row selection Index change  on Suggestion Module in Semester 1
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
             SelROw = null;
-            foreach (GridViewRow row in GV_SM1.Rows)
+            foreach (GridViewRow row in grdSugSemester1.Rows)
             {
-                if (row.RowIndex == GV_SM1.SelectedIndex)
+                if (row.RowIndex == grdSugSemester1.SelectedIndex)
                 {
-                    // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                   
                     row.ToolTip = string.Empty;
                     SelROw = row;
                     selectROw(SelROw);
-                    if (Gv_SM1_NO.SelectedIndex >= 0)
+                    if (grdNonSugSemester1.SelectedIndex >= 0)
                     {
-                        Gv_SM1_NO.SelectedIndex = -1;
+                        grdNonSugSemester1.SelectedIndex = -1;
                        
                         UpdatePanel4.Update();
                     }
@@ -231,7 +218,7 @@ namespace Data_analytic
                 }
                 else
                 {
-                    // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                    
                     row.ToolTip = "Click to select this row.";
                 }
             }
@@ -239,88 +226,89 @@ namespace Data_analytic
 
 
 
-
+        //call when binding the tabel with grid non Sugestion Module of semester 2
         protected void SM2NON_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(Gv_SM2_NO, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdNonSugSemester2, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
                 string str = e.Row.Cells[2].Text.ToString();
                 if (e.Row.Cells[2].Text.ToString() == "True")
                     e.Row.ForeColor = ColorTranslator.FromHtml("#FF0000");
             }
         }
-
+        //call when Row selection Index change  on non Suggestion Module in Semester 2
         protected void SM2NON_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             SelROw = null;
-            foreach (GridViewRow row in Gv_SM2_NO.Rows)
+            foreach (GridViewRow row in grdNonSugSemester2.Rows)
             {
-                if (row.RowIndex == Gv_SM2_NO.SelectedIndex)
+                if (row.RowIndex == grdNonSugSemester2.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+                  
                     row.ToolTip = string.Empty;
                     SelROw = row;
                     selectSM2Row(SelROw);
-                    if (GV_SM2.SelectedIndex >= 0)
+                    if (grdSugSemester2.SelectedIndex >= 0)
                     {
-                        GV_SM2.SelectedIndex = -1;
+                        grdSugSemester2.SelectedIndex = -1;
                         UpdatePanel3.Update();
                     }
                     UpdatePanel6.Update();
                 }
                 else
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+               
                     row.ToolTip = "Click to select this row.";
                 }
             }
         }
+        //call when binding the tabel with grid  Sugestion Module of semester 2
         protected void SM2_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(GV_SM2, "Select$" + e.Row.RowIndex);
+                e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(grdSugSemester2, "Select$" + e.Row.RowIndex);
                 e.Row.ToolTip = "Click to select this row.";
                 if (e.Row.Cells[2].Text.ToString() == "True")
                     e.Row.ForeColor = ColorTranslator.FromHtml("#FF0000");
             }
         }
-
+        //call when Row selection Index change  on  Suggestion Module in Semester 2
         protected void SM2_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             SelROw = null;
-            foreach (GridViewRow row in GV_SM2.Rows)
+            foreach (GridViewRow row in grdSugSemester2.Rows)
             {
-                if (row.RowIndex == GV_SM2.SelectedIndex)
+                if (row.RowIndex == grdSugSemester2.SelectedIndex)
                 {
-                    // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+             
                     row.ToolTip = string.Empty;
                     SelROw = row;
                     selectSM2Row(SelROw);
-                    if (Gv_SM2_NO.SelectedIndex >= 0)
+                    if (grdNonSugSemester2.SelectedIndex >= 0)
                     {
-                        Gv_SM2_NO.SelectedIndex = -1;
+                        grdNonSugSemester2.SelectedIndex = -1;
                         UpdatePanel2.Update();
                     }
                     UpdatePanel6.Update();
                 }
                 else
                 {
-                    // row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
+                    
                     row.ToolTip = "Click to select this row.";
                 }
             }
         }
 
 
-
+        //Checked and move  Suggeston module To non Suggestion module Gride during Manual shifting of Semester 1
         void RemoveSm1MoudleSugest()
         {
             LBLerror.Text = "";
             DataTable dtSMAT = new DataTable();
-            DataColumn dc = new DataColumn("AM_ID");
+            DataColumn dc = new DataColumn("AcademicModule_ID");
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("ACademic_Module");
             dtSMAT.Columns.Add(dc);
@@ -334,7 +322,7 @@ namespace Data_analytic
 
 
 
-            dc = new DataColumn("Credit hours");
+            dc = new DataColumn("Credit_hours");
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("Smester");
             dtSMAT.Columns.Add(dc);
@@ -349,7 +337,7 @@ namespace Data_analytic
 
             dc = new DataColumn("ModuleNo");
             dtSMAT.Columns.Add(dc);
-            dc = new DataColumn("Exam Weightage");
+            dc = new DataColumn("Exam_Weightage");
             dtSMAT.Columns.Add(dc);
 
             dc = new DataColumn("courswork Weightage");
@@ -362,19 +350,18 @@ namespace Data_analytic
             dc = new DataColumn("Practicle Lab");
             dtSMAT.Columns.Add(dc);
             DataRow drRemove=null;
-            foreach (GridViewRow row in GV_SM1.Rows)
+            foreach (GridViewRow row in grdSugSemester1.Rows)
             {
-                if (row.RowIndex == GV_SM1.SelectedIndex)
+                if (row.RowIndex == grdSugSemester1.SelectedIndex)
                 {
                     drRemove = dtSMAT.NewRow();
                     drRemove["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    //drRemove["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    //drRemove["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+                  
                     drRemove["Recall"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    drRemove["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                  
+                    drRemove["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     drRemove["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                    drRemove["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                    drRemove["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
 
                     string str=drRemove["Compulsory"].ToString();
 
@@ -383,7 +370,7 @@ namespace Data_analytic
                         dtSMAT.Rows.Add(drRemove);
                         drRemove = null;
                         LBLerror.Text = "Compulsory Module cannot Shifted";
-                      //  ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Compulsory Module');", true);
+                      
                     }
                     //remove Selection 
                 }
@@ -391,33 +378,26 @@ namespace Data_analytic
                 {
                     DataRow dr = dtSMAT.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                     dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    
+                    dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                    dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSMAT.Rows.Add(dr);
                 }
             }
-            GV_SM1.DataSource = dtSMAT;
-            GV_SM1.DataBind();
-
-           // dtSMAT.Clear();
+            grdSugSemester1.DataSource = dtSMAT;
+            grdSugSemester1.DataBind();
             DataTable dtSm2 = dtSMAT.Clone();
-            foreach (GridViewRow row in Gv_SM1_NO.Rows)
+            foreach (GridViewRow row in grdNonSugSemester1.Rows)
             {
 
                 DataRow dr = dtSm2.NewRow();
                 dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                 dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                //dr["Smester"] = row.Cells[5].ToString().Trim();
-                dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                 dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSm2.Rows.Add(dr);
                 
             }
@@ -425,22 +405,21 @@ namespace Data_analytic
             {
                 DataRow drTemp = dtSm2.NewRow();
                 drTemp["ACademic_Module"] = drRemove["ACademic_Module"];
-                //drTemp["TruePostive"] = drRemove["TruePostive"];
-                //drTemp["FalseNegtive"] = drRemove["FalseNegtive"];
                 drTemp["Recall"] = drRemove["Recall"];
-                drTemp["Credit hours"] = drRemove["Credit hours"];
+                drTemp["Credit_hours"] = drRemove["Credit_hours"];
                 drTemp["Compulsory"] = drRemove["Compulsory"];
-                drTemp["AM_ID"] = drRemove["AM_ID"];
+                drTemp["AcademicModule_ID"] = drRemove["AcademicModule_ID"];
                 dtSm2.Rows.Add(drTemp);
             }
-            Gv_SM1_NO.DataSource = dtSm2;
-            Gv_SM1_NO.DataBind();
+            grdNonSugSemester1.DataSource = dtSm2;
+            grdNonSugSemester1.DataBind();
         }
-
+        //validate Credit hr per Semester 
+        //Validate Total credit hr of semester 1 and Semester 2 when Submit Button pressed
         bool validateSmesterCreditHr()
         {
             int creditHr = 0;
-            foreach (GridViewRow row in GV_SM1.Rows)
+            foreach (GridViewRow row in grdSugSemester1.Rows)
             {
                 creditHr = creditHr+int.Parse(row.Cells[3].Text.ToString().Trim());
             }
@@ -448,11 +427,15 @@ namespace Data_analytic
             {
                 return false;
             }
-            foreach (GridViewRow row in GV_SM2.Rows)
+            foreach (GridViewRow row in grdSugSemester2.Rows)
             {
                 creditHr = creditHr + int.Parse(row.Cells[3].Text.ToString().Trim());
             }
             if (creditHr < 120)
+            {
+                return false;
+            }
+            else if(creditHr > 125)
             {
                 return false;
             }
@@ -461,25 +444,12 @@ namespace Data_analytic
         }
 
 
-        //bool validateSmester2CreditHr()
-        //{
-        //    int creditHr = 0;
-        //    foreach (GridViewRow row in GV_SM2.Rows)
-        //    {
-        //        creditHr = creditHr + int.Parse(row.Cells[3].Text.ToString().Trim());
-        //    }
-        //    if (creditHr < 60)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //        return true;
-        //}
+    //Checked and move non Suggeston module To Suggestion module Gride during Manual shifting of Semester 1
 
         void RemoveSm1MoudleNonSugest()
         {
             DataTable dtSMAT = new DataTable();
-            DataColumn dc = new DataColumn("AM_ID");
+            DataColumn dc = new DataColumn("AcademicModule_ID");
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("ACademic_Module");
             dtSMAT.Columns.Add(dc);
@@ -493,7 +463,7 @@ namespace Data_analytic
 
 
 
-            dc = new DataColumn("Credit hours");
+            dc = new DataColumn("Credit_hours");
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("Smester");
             dtSMAT.Columns.Add(dc);
@@ -508,7 +478,7 @@ namespace Data_analytic
 
             dc = new DataColumn("ModuleNo");
             dtSMAT.Columns.Add(dc);
-            dc = new DataColumn("Exam Weightage");
+            dc = new DataColumn("Exam_Weightage");
             dtSMAT.Columns.Add(dc);
 
             dc = new DataColumn("courswork Weightage");
@@ -520,12 +490,11 @@ namespace Data_analytic
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("Practicle Lab");
             dtSMAT.Columns.Add(dc);
-            DataRow drRemove = null;
             int totalcreditHour = 0;
             int totalcreditHour2 = 0;
 
 
-            foreach (GridViewRow row in GV_SM2.Rows)
+            foreach (GridViewRow row in grdSugSemester2.Rows)
             {
 
 
@@ -533,29 +502,26 @@ namespace Data_analytic
                 
             }
 
-            foreach (GridViewRow row in GV_SM1.Rows)
+            foreach (GridViewRow row in grdSugSemester1.Rows)
             {
                 
                     DataRow dr = dtSMAT.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                     dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
 
-                    totalcreditHour = totalcreditHour + int.Parse(dr["Credit hours"].ToString());
+                    totalcreditHour = totalcreditHour + int.Parse(dr["Credit_hours"].ToString());
                     dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                    dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSMAT.Rows.Add(dr);
             }
            
 
             // dtSMAT.Clear();
             DataTable dtSm2 = dtSMAT.Clone();
-            foreach (GridViewRow row in Gv_SM1_NO.Rows)
+            foreach (GridViewRow row in grdNonSugSemester1.Rows)
             {
-                if (row.RowIndex == Gv_SM1_NO.SelectedIndex)
+                if (row.RowIndex == grdNonSugSemester1.SelectedIndex)
                 {
 
                      int temphour=   int.Parse(row.Cells[3].Text.ToString().Trim());
@@ -565,59 +531,50 @@ namespace Data_analytic
                      {
                          DataRow dr = dtSMAT.NewRow();
                          dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                         //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                         //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                          dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                         //dr["Smester"] = row.Cells[5].ToString().Trim();
-                         dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                         dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                          dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                         dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                         dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                          dtSMAT.Rows.Add(dr);
                      }
                      else
                      {
                          DataRow dr = dtSm2.NewRow();
                          dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                         //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                         //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                          dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                         //dr["Smester"] = row.Cells[5].ToString().Trim();
-                         dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                         dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                          dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                         dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                         dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                          dtSm2.Rows.Add(dr);
                          if(totalcreditHour>70)
                          LBLerror.Text = "Maximum 70 crdit hr in Smester";
                          else
                           LBLerror.Text = "Maximum 120 to 125 crdit hr both Smester";
-                         //ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
+                       
                      }
                 }
                 else
                 {
                     DataRow dr = dtSm2.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                     dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                    dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSm2.Rows.Add(dr);
                 }
             }
-            GV_SM1.DataSource = dtSMAT;
-            GV_SM1.DataBind();
-            Gv_SM1_NO.DataSource = dtSm2;
-            Gv_SM1_NO.DataBind();
+            grdSugSemester1.DataSource = dtSMAT;
+            grdSugSemester1.DataBind();
+            grdNonSugSemester1.DataSource = dtSm2;
+            grdNonSugSemester1.DataBind();
         }
 
-
+        //Checked and move  Suggeston module To non Suggestion module Gride during Manual shifting of Semester 2
         void RemoveSm2MoudleSugest()
         {
             DataTable dtSMAT = new DataTable();
-            DataColumn dc = new DataColumn("AM_ID");
+            DataColumn dc = new DataColumn("AcademicModule_ID");
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("ACademic_Module");
             dtSMAT.Columns.Add(dc);
@@ -631,7 +588,7 @@ namespace Data_analytic
 
 
 
-            dc = new DataColumn("Credit hours");
+            dc = new DataColumn("Credit_hours");
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("Smester");
             dtSMAT.Columns.Add(dc);
@@ -646,7 +603,7 @@ namespace Data_analytic
 
             dc = new DataColumn("ModuleNo");
             dtSMAT.Columns.Add(dc);
-            dc = new DataColumn("Exam Weightage");
+            dc = new DataColumn("Exam_Weightage");
             dtSMAT.Columns.Add(dc);
 
             dc = new DataColumn("courswork Weightage");
@@ -659,19 +616,17 @@ namespace Data_analytic
             dc = new DataColumn("Practicle Lab");
             dtSMAT.Columns.Add(dc);
             DataRow drRemove = null;
-            foreach (GridViewRow row in GV_SM2.Rows)
+            foreach (GridViewRow row in grdSugSemester2.Rows)
             {
-                if (row.RowIndex == GV_SM2.SelectedIndex)
+                if (row.RowIndex == grdSugSemester2.SelectedIndex)
                 {
                     drRemove = dtSMAT.NewRow();
                     drRemove["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    //drRemove["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    //drRemove["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                     drRemove["Recall"] = row.Cells[1].Text.ToString().Trim();
                     //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    drRemove["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    drRemove["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     drRemove["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                    drRemove["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                    drRemove["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
 
                     string str = drRemove["Compulsory"].ToString();
 
@@ -681,7 +636,7 @@ namespace Data_analytic
 
                         drRemove = null;
                         Label1.Text = "Compulsory module can not Shifted";
-                        //ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Can not Remove Compulsory module');", true);
+                       
                     }
                     //remove Selection 
                 }
@@ -689,33 +644,30 @@ namespace Data_analytic
                 {
                     DataRow dr = dtSMAT.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+
                     dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                    dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSMAT.Rows.Add(dr);
                 }
             }
-            GV_SM2.DataSource = dtSMAT;
-            GV_SM2.DataBind();
+            grdSugSemester2.DataSource = dtSMAT;
+            grdSugSemester2.DataBind();
 
             // dtSMAT.Clear();
             DataTable dtSm2 = dtSMAT.Clone();
-            foreach (GridViewRow row in Gv_SM2_NO.Rows)
+            foreach (GridViewRow row in grdNonSugSemester2.Rows)
             {
 
                 DataRow dr = dtSm2.NewRow();
                 dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
+
                 dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                //dr["Smester"] = row.Cells[5].ToString().Trim();
-                dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+
+                dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                 dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                 dtSm2.Rows.Add(dr);
 
             }
@@ -723,23 +675,22 @@ namespace Data_analytic
             {
                 DataRow drTemp = dtSm2.NewRow();
                 drTemp["ACademic_Module"] = drRemove["ACademic_Module"];
-                //drTemp["TruePostive"] = drRemove["TruePostive"];
-                //drTemp["FalseNegtive"] = drRemove["FalseNegtive"];
+
                 drTemp["Recall"] = drRemove["Recall"];
-                drTemp["Credit hours"] = drRemove["Credit hours"];
+                drTemp["Credit_hours"] = drRemove["Credit_hours"];
                 drTemp["Compulsory"] = drRemove["Compulsory"];
-                drTemp["AM_ID"] = drRemove["AM_ID"];
+                drTemp["AcademicModule_ID"] = drRemove["AcademicModule_ID"];
                 dtSm2.Rows.Add(drTemp);
             }
-            Gv_SM2_NO.DataSource = dtSm2;
-            Gv_SM2_NO.DataBind();
+            grdNonSugSemester2.DataSource = dtSm2;
+            grdNonSugSemester2.DataBind();
         }
 
-
+        //Checked and move non Suggeston module To Suggestion module Gride during Manual shifting of Semester 2
         void RemoveSm2MoudleNonSugest()
         {
             DataTable dtSMAT = new DataTable();
-            DataColumn dc = new DataColumn("AM_ID");
+            DataColumn dc = new DataColumn("AcademicModule_ID");
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("ACademic_Module");
             dtSMAT.Columns.Add(dc);
@@ -753,7 +704,7 @@ namespace Data_analytic
 
 
 
-            dc = new DataColumn("Credit hours");
+            dc = new DataColumn("Credit_hours");
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("Smester");
             dtSMAT.Columns.Add(dc);
@@ -768,7 +719,7 @@ namespace Data_analytic
 
             dc = new DataColumn("ModuleNo");
             dtSMAT.Columns.Add(dc);
-            dc = new DataColumn("Exam Weightage");
+            dc = new DataColumn("Exam_Weightage");
             dtSMAT.Columns.Add(dc);
 
             dc = new DataColumn("courswork Weightage");
@@ -780,39 +731,33 @@ namespace Data_analytic
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("Practicle Lab");
             dtSMAT.Columns.Add(dc);
-            DataRow drRemove = null;
             int totalcreditHour = 0;
             int totalcreditHour2 = 0;
-            foreach (GridViewRow row in GV_SM1.Rows)
+            foreach (GridViewRow row in grdSugSemester1.Rows)
             {
                 totalcreditHour2 = totalcreditHour2 + int.Parse(row.Cells[3].Text.ToString().Trim());
             }
 
-            foreach (GridViewRow row in GV_SM2.Rows)
+            foreach (GridViewRow row in grdSugSemester2.Rows)
             {
 
                 DataRow dr = dtSMAT.NewRow();
                 dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                 dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                //dr["Smester"] = row.Cells[5].ToString().Trim();
-                dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                 dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
 
-                totalcreditHour = totalcreditHour + int.Parse(dr["Credit hours"].ToString());
-                //dr["Compulsory"] = row.Cells[4].Text.ToString().Trim();
-                //dr["AM_ID"] = row.Cells[6].Text.ToString().Trim();
+                totalcreditHour = totalcreditHour + int.Parse(dr["Credit_hours"].ToString());
                 dtSMAT.Rows.Add(dr);
             }
 
 
             // dtSMAT.Clear();
             DataTable dtSm2 = dtSMAT.Clone();
-            foreach (GridViewRow row in Gv_SM2_NO.Rows)
+            foreach (GridViewRow row in grdNonSugSemester2.Rows)
             {
-                if (row.RowIndex == Gv_SM2_NO.SelectedIndex)
+                if (row.RowIndex == grdNonSugSemester2.SelectedIndex)
                 {
 
                     int temphour = int.Parse(row.Cells[3].Text.ToString().Trim());
@@ -822,88 +767,78 @@ namespace Data_analytic
                     {
                         DataRow dr = dtSMAT.NewRow();
                         dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                        //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                        //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                         dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                        //dr["Smester"] = row.Cells[5].ToString().Trim();
-                        dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                        dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                         dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                        dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                        dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                         dtSMAT.Rows.Add(dr);
                     }
                     else
                     {
                         DataRow dr = dtSm2.NewRow();
                         dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                        //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                        //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                         dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                        //dr["Smester"] = row.Cells[5].ToString().Trim();
-                        dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                        dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                         dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                        dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                        dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                         dtSm2.Rows.Add(dr);
                         if(totalcreditHour>70)
                         Label1.Text = "Maximum 70 crdit hr in Smester";
                         else
                           Label1.Text = "Maximum 120 to 125 crdit hr both Smester";
-                       // ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Maximum 70 crdit hr in Smester');", true);
                     }
                 }
                 else
                 {
                     DataRow dr = dtSm2.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    //dr["TruePostive"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["FalseNegtive"] = row.Cells[2].Text.ToString().Trim();
                     dr["Recall"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["Smester"] = row.Cells[5].ToString().Trim();
-                    dr["Credit hours"] = row.Cells[3].Text.ToString().Trim();
+                    dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
-                    dr["AM_ID"] = row.Cells[4].Text.ToString().Trim();
+                    dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                     dtSm2.Rows.Add(dr);
                 }
             }
-            GV_SM2.DataSource = dtSMAT;
-            GV_SM2.DataBind();
-            Gv_SM2_NO.DataSource = dtSm2;
-            Gv_SM2_NO.DataBind();
+            grdSugSemester2.DataSource = dtSMAT;
+            grdSugSemester2.DataBind();
+            grdNonSugSemester2.DataSource = dtSm2;
+            grdNonSugSemester2.DataBind();
         }
-        protected void Save_Click(object sender, EventArgs e)
+        protected void btnSubmit_Click(object sender, EventArgs e)
         {
-
+            lblErrorMian.Text = "";
             if (validateSmesterCreditHr())
             {
-                BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+                BusinessLayer.CalcualteResult obj = new BusinessLayer.CalcualteResult();
 
-                int user_id = (int)Session["UserID"];;
-                obj.DeleteUserSelectionRecord(user_id);
-                foreach (GridViewRow row in GV_SM1.Rows)
+                int User_ID = (int)Session["UserID"];;
+                obj.DeleteUserSelectionRecord(User_ID);
+                foreach (GridViewRow row in grdSugSemester1.Rows)
                 {
-                    //string str = row.Cells[5].ToString().Trim();
-                    int AM_ID = int.Parse(row.Cells[4].Text.ToString().Trim());
+                    int AcademicModule_ID = int.Parse(row.Cells[4].Text.ToString().Trim());
                     float p = float.Parse(row.Cells[1].Text.ToString().Trim());
-                    obj.InsertUserInputRecord(user_id, AM_ID, p);
+                    obj.InsertUserInputRecord(User_ID, AcademicModule_ID, p);
                 }
-                foreach (GridViewRow row in GV_SM2.Rows)
+                foreach (GridViewRow row in grdSugSemester2.Rows)
                 {
-                    int AM_ID = int.Parse(row.Cells[4].Text.ToString().Trim());
+                    int AcademicModule_ID = int.Parse(row.Cells[4].Text.ToString().Trim());
                     float p = float.Parse(row.Cells[1].Text.ToString().Trim());
-                    obj.InsertUserInputRecord(user_id, AM_ID, p);
+                    obj.InsertUserInputRecord(User_ID, AcademicModule_ID, p);
                 }
 
-                Response.Redirect("~/Previous_summary.aspx");
+                Response.Redirect("~/ResultSummary.aspx");
             }
             else
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Smestr 1 and Smester 2 must have 120 to 125 crdit Hr');", true);
+                lblErrorMian.Text = "Smestr 1 and Smester 2 must have 120 to 125 crdit Hr";
             }
         }
 
-        protected void BTN_UP_SM1_Click(object sender, EventArgs e)
+        protected void btnSemster1LeftShift_Click(object sender, EventArgs e)
         {
             LBLerror.Text = "";
             Label1.Text = "";
+            lblErrorMian.Text = "";
             RemoveSm1MoudleNonSugest();
             UpdatePanel1.Update();
             UpdatePanel4.Update();
@@ -911,10 +846,11 @@ namespace Data_analytic
             UpdatePanel11.Update();
         }
 
-        protected void BTN_DOWN_SM1_Click(object sender, EventArgs e)
+        protected void btnSemster1RightShift_Click(object sender, EventArgs e)
         {
             LBLerror.Text = "";
             Label1.Text = "";
+            lblErrorMian.Text = "";
             RemoveSm1MoudleSugest();
             UpdatePanel1.Update();
             UpdatePanel4.Update();
@@ -922,10 +858,11 @@ namespace Data_analytic
             UpdatePanel11.Update();
         }
 
-        protected void BTN_SM2_UP_Click(object sender, EventArgs e)
+        protected void btnSemster2LeftShift_Click(object sender, EventArgs e)
         {
             LBLerror.Text = "";
             Label1.Text = "";
+            lblErrorMian.Text = "";
             RemoveSm2MoudleNonSugest();
             UpdatePanel2.Update();
             UpdatePanel3.Update();
@@ -933,10 +870,11 @@ namespace Data_analytic
             UpdatePanel11.Update();
         }
 
-        protected void BTN_SM2_DOWN_Click(object sender, EventArgs e)
+        protected void btnSemster2RightShift_Click(object sender, EventArgs e)
         {
             LBLerror.Text = "";
             Label1.Text = "";
+            lblErrorMian.Text = "";
             RemoveSm2MoudleSugest();
             UpdatePanel2.Update();
             UpdatePanel3.Update();
@@ -944,9 +882,12 @@ namespace Data_analytic
             UpdatePanel11.Update();
            
         }
-
-        protected void Button1_Click(object sender, EventArgs e)
+        //Reset Manual Shifting of Semester 2
+        protected void btnResetSemester2_Click(object sender, EventArgs e)
         {
+            LBLerror.Text = "";
+            Label1.Text = "";
+            lblErrorMian.Text = "";
             DataTable dtTools = null;
             DataTable dtMath = null;
             DataTable dtResearch = null;
@@ -968,22 +909,31 @@ namespace Data_analytic
                 dtResearch = (DataTable)Session["ResearchExp"];
             }
 
+            int creditHr = 0;
+            foreach (GridViewRow row in grdSugSemester1.Rows)
+            {
+                creditHr = creditHr + int.Parse(row.Cells[3].Text.ToString().Trim());
+            }
+            int rangfrom = 60;
+            int rang = 125 - creditHr;
+            if (rang >= 70)
+            {
+                rang = 70;
+            }
+            else
+            {
+                rangfrom = 50;
+            }
 
-            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+            BusinessLayer.CalcualteResult obj = new BusinessLayer.CalcualteResult();
+            obj.setTotalCridetHr(rangfrom, rang);
             obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
-            //DataSet dtsm1 = obj.SortSmester1Data();
-            //GV_SM1.DataSource = dtsm1.Tables[0];
-            //GV_SM1.DataBind();
-            //Gv_SM1_NO.DataSource = dtsm1.Tables[1];
-            //Gv_SM1_NO.DataBind();
-
-
             DataSet dtsm2 = obj.SortSmester2Data();
 
-            GV_SM2.DataSource = dtsm2.Tables[0];
-            GV_SM2.DataBind();
-            Gv_SM2_NO.DataSource = dtsm2.Tables[1];
-            Gv_SM2_NO.DataBind();
+            grdSugSemester2.DataSource = dtsm2.Tables[0];
+            grdSugSemester2.DataBind();
+            grdNonSugSemester2.DataSource = dtsm2.Tables[1];
+            grdNonSugSemester2.DataBind();
 
             DataTable dttemp = obj.GetSM2RecordInfo();
             DataColumn dc = new DataColumn("none Selected");
@@ -992,13 +942,17 @@ namespace Data_analytic
             Add_falseNegetive(dtsm2.Tables[0], dttemp);
             Add_falseNegetive(dtsm2.Tables[1], dttemp);
 
-            GridView2.DataSource = dttemp;
-            GridView2.DataBind();
+            grdSemester2Detail.DataSource = dttemp;
+            grdSemester2Detail.DataBind();
            
         }
 
-        protected void Button2_Click(object sender, EventArgs e)  //change //
+        //Reset Manual Shifting of Semester 1
+        protected void btnResetSemester1_Click(object sender, EventArgs e)
         {
+            LBLerror.Text = "";
+            Label1.Text = "";
+            lblErrorMian.Text = "";
             DataTable dtTools = null;
             DataTable dtMath = null;
             DataTable dtResearch = null;
@@ -1019,23 +973,37 @@ namespace Data_analytic
             {
                 dtResearch = (DataTable)Session["ResearchExp"];
             }
-
-
-            BusinessLayer.calculateResult obj = new BusinessLayer.calculateResult();
+            int creditHr = 0;
+            foreach (GridViewRow row in grdSugSemester2.Rows)
+            {
+                creditHr = creditHr + int.Parse(row.Cells[3].Text.ToString().Trim());
+            }
+            int rangfrom = 60;
+            int rang = 125 - creditHr;
+            if (rang >= 70)
+            {
+                rang = 70;
+            }
+            else
+            {
+                rangfrom = 50;
+            }
+            BusinessLayer.CalcualteResult obj = new BusinessLayer.CalcualteResult();
+            obj.setTotalCridetHr(rangfrom, rang);
             obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
             DataSet dtsm1 = obj.SortSmester1Data();
-            GV_SM1.DataSource = dtsm1.Tables[0];
-            GV_SM1.DataBind();
-            Gv_SM1_NO.DataSource = dtsm1.Tables[1];
-            Gv_SM1_NO.DataBind();
+            grdSugSemester1.DataSource = dtsm1.Tables[0];
+            grdSugSemester1.DataBind();
+            grdNonSugSemester1.DataSource = dtsm1.Tables[1];
+            grdNonSugSemester1.DataBind();
 
             DataTable dt = obj.GetSM1RecordInfo();
             DataColumn dc = new DataColumn("none Selected");
             dt.Columns.Add(dc);
             Add_falseNegetive(dtsm1.Tables[0], dt);
             Add_falseNegetive(dtsm1.Tables[1], dt);
-            GridView1.DataSource = dt;
-            GridView1.DataBind();
+            grdSemester1Detail.DataSource = dt;
+            grdSemester1Detail.DataBind();
             
            
         }
