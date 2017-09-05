@@ -27,7 +27,7 @@ namespace BusinessLayer
         }
 
 
-       //Get saved Progrming information of a user  from database 
+       // To retrieve saved user expertise (progrming domain) from database 
            public DataTable GetProg_Selection(int id)
         {
             DataTable dt = null;
@@ -36,7 +36,7 @@ namespace BusinessLayer
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
-            //dt.Columns.Add(dc);
+
             dc = new DataColumn();
             dc.ColumnName = "AcademicInfo_ID";
 
@@ -47,7 +47,7 @@ namespace BusinessLayer
             dt.Columns.Add(dc);
 
             
-            dc = new DataColumn("Intermedite", typeof(int));
+            dc = new DataColumn("intermediate", typeof(int));
             dt.Columns.Add(dc);
             dc = new DataColumn("Expert", typeof(int));
             dt.Columns.Add(dc);
@@ -65,7 +65,7 @@ namespace BusinessLayer
             }
  
            DataTable dtProg = new DataTable();
-           dtProg= m.GetProgramingAcademicAssociatedInfo();
+           dtProg = m.GetProgAcademicInfo();
            foreach (DataRow dr in dtProg.Rows)
            {
                DataRow dr1 = dt.NewRow();
@@ -73,7 +73,7 @@ namespace BusinessLayer
                dr1["AcademicInfo_ID"] = dr["AcademicInfo_ID"];
                dr1["Available"] = 0;
                dr1["Expert"] = 0;
-               dr1["Intermedite"] = 0;
+               dr1["intermediate"] = 0;
                dr1["NotAvailable"] = 1;
                dt.Rows.Add(dr1);
            }
@@ -82,7 +82,7 @@ namespace BusinessLayer
             {
             
                 int id1=int.Parse( dr["AcademicInfo_ID"].ToString());
-              //  DataRow[] dre = dt.Select("data=" + dr["Academic_info"].ToString());
+
                 DataRow dre = FindRow(dt, id1);
                     if(dre==null)
                         continue;
@@ -91,7 +91,7 @@ namespace BusinessLayer
                 {
                     dre["Available"] = 1;
                     dre["Expert"] = 0;
-                    dre["Intermedite"] = 0;
+                    dre["intermediate"] = 0;
                     dre["NotAvailable"] = 0;
                 }
 
@@ -99,14 +99,14 @@ namespace BusinessLayer
                 {
                     dre["Available"] = 0;
                     dre["Expert"] = 0;
-                    dre["Intermedite"] = 1;
+                    dre["intermediate"] = 1;
                     dre["NotAvailable"] = 0;
                 }
                 if (dr["Expertise_Level"].ToString() == "4")
                 {
                     dre["Available"] = 0;
                     dre["Expert"] = 1;
-                    dre["Intermedite"] = 0;
+                    dre["intermediate"] = 0;
                     dre["NotAvailable"] = 0;
                 }
                 dre.EndEdit();
@@ -114,7 +114,9 @@ namespace BusinessLayer
             }
             return dt;
         }
-           //Get saved Tool information of a user  from database 
+
+
+           // To retrieve saved user expertise (Tools domain) from database 
       public  DataTable GetTool_Selection(int id)
         {
             DataTable dt = null;
@@ -123,7 +125,7 @@ namespace BusinessLayer
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
-            //dt.Columns.Add(dc);
+
             dc = new DataColumn();
             dc.ColumnName = "AcademicInfo_ID";
 
@@ -134,7 +136,7 @@ namespace BusinessLayer
             dt.Columns.Add(dc);
 
 
-            dc = new DataColumn("Intermedite", typeof(int));
+            dc = new DataColumn("intermediate", typeof(int));
             dt.Columns.Add(dc);
             dc = new DataColumn("Expert", typeof(int));
             dt.Columns.Add(dc);
@@ -154,7 +156,7 @@ namespace BusinessLayer
             }
 
             DataTable dtProg = new DataTable();
-            dtProg = m.GetToolAcademicAssociatedInfo();
+            dtProg = m.GetToolAcademicInfo();
             foreach (DataRow dr in dtProg.Rows)
             {
                 DataRow dr1 = dt.NewRow();
@@ -162,7 +164,7 @@ namespace BusinessLayer
                 dr1["AcademicInfo_ID"] = dr["AcademicInfo_ID"];
                 dr1["Available"] = 0;
                 dr1["Expert"] = 0;
-                dr1["Intermedite"] = 0;
+                dr1["intermediate"] = 0;
                 dr1["NotAvailable"] = 1;
                 dt.Rows.Add(dr1);
             }
@@ -171,7 +173,7 @@ namespace BusinessLayer
 
 
                 int id1 = int.Parse(dr["AcademicInfo_ID"].ToString());
-                //  DataRow[] dre = dt.Select("data=" + dr["Academic_info"].ToString());
+
                 DataRow dre = FindRow(dt, id1);
                 if (dre == null)
                     continue;
@@ -180,7 +182,7 @@ namespace BusinessLayer
                 {
                     dre["Available"] = 1;
                     dre["Expert"] = 0;
-                    dre["Intermedite"] = 0;
+                    dre["intermediate"] = 0;
                     dre["NotAvailable"] = 0;
                 }
 
@@ -188,14 +190,14 @@ namespace BusinessLayer
                 {
                     dre["Available"] = 0;
                     dre["Expert"] = 0;
-                    dre["Intermedite"] = 1;
+                    dre["intermediate"] = 1;
                     dre["NotAvailable"] = 0;
                 }
                 if (dr["Expertise_Level"].ToString() == "4")
                 {
                     dre["Available"] = 0;
                     dre["Expert"] = 1;
-                    dre["Intermedite"] = 0;
+                    dre["intermediate"] = 0;
                     dre["NotAvailable"] = 0;
                 }
                 dre.EndEdit();
@@ -203,7 +205,9 @@ namespace BusinessLayer
             }
             return dt;
         }
-      //Get saved Mathmetic information of a user  from database 
+
+
+      // To retrieve saved user expertise (Mathematics domain) from database 
     public    DataTable GetMathmetic_Selection(int id)
         {
             DataTable dt = null;
@@ -212,7 +216,7 @@ namespace BusinessLayer
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
-            //dt.Columns.Add(dc);
+
             dc = new DataColumn();
             dc.ColumnName = "AcademicInfo_ID";
 
@@ -223,7 +227,7 @@ namespace BusinessLayer
             dt.Columns.Add(dc);
 
 
-            dc = new DataColumn("Intermedite", typeof(int));
+            dc = new DataColumn("intermediate", typeof(int));
             dt.Columns.Add(dc);
             dc = new DataColumn("Expert", typeof(int));
             dt.Columns.Add(dc);
@@ -241,8 +245,8 @@ namespace BusinessLayer
             {
                 return dt;
             }
- DataTable dtProg = new DataTable();
-            dtProg = m.GetMathmeticAcademicAssociatedInfo();
+            DataTable dtProg = new DataTable();
+            dtProg = m.GetMathAcademicInfo();
             foreach (DataRow dr in dtProg.Rows)
             {
                 DataRow dr1 = dt.NewRow();
@@ -250,7 +254,7 @@ namespace BusinessLayer
                 dr1["AcademicInfo_ID"] = dr["AcademicInfo_ID"];
                 dr1["Available"] = 0;
                 dr1["Expert"] = 0;
-                dr1["Intermedite"] = 0;
+                dr1["intermediate"] = 0;
                 dr1["NotAvailable"] = 1;
                 dt.Rows.Add(dr1);
             }
@@ -259,7 +263,7 @@ namespace BusinessLayer
 
 
                 int id1 = int.Parse(dr["AcademicInfo_ID"].ToString());
-                //  DataRow[] dre = dt.Select("data=" + dr["Academic_info"].ToString());
+
                 DataRow dre = FindRow(dt, id1);
                 if (dre == null)
                     continue;
@@ -268,7 +272,7 @@ namespace BusinessLayer
                 {
                     dre["Available"] = 1;
                     dre["Expert"] = 0;
-                    dre["Intermedite"] = 0;
+                    dre["intermediate"] = 0;
                     dre["NotAvailable"] = 0;
                 }
 
@@ -276,14 +280,14 @@ namespace BusinessLayer
                 {
                     dre["Available"] = 0;
                     dre["Expert"] = 0;
-                    dre["Intermedite"] = 1;
+                    dre["intermediate"] = 1;
                     dre["NotAvailable"] = 0;
                 }
                 if (dr["Expertise_Level"].ToString() == "4")
                 {
                     dre["Available"] = 0;
                     dre["Expert"] = 1;
-                    dre["Intermedite"] = 0;
+                    dre["intermediate"] = 0;
                     dre["NotAvailable"] = 0;
                 }
                 dre.EndEdit();
@@ -291,7 +295,8 @@ namespace BusinessLayer
             }
             return dt;
         }
-    //Get saved Research information of a user  from database 
+
+    // To retrieve saved user expertise (Research domain) from database 
      public   DataTable GetResearch_Selection(int id)
         {
             DataTable dt = null;
@@ -300,7 +305,7 @@ namespace BusinessLayer
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
-            //dt.Columns.Add(dc);
+
             dc = new DataColumn();
             dc.ColumnName = "AcademicInfo_ID";
 
@@ -311,7 +316,7 @@ namespace BusinessLayer
             dt.Columns.Add(dc);
 
 
-            dc = new DataColumn("Intermedite", typeof(int));
+            dc = new DataColumn("intermediate", typeof(int));
             dt.Columns.Add(dc);
             dc = new DataColumn("Expert", typeof(int));
             dt.Columns.Add(dc);
@@ -329,8 +334,8 @@ namespace BusinessLayer
             {
                 return dt;
             }         
-         DataTable dtProg = new DataTable();
-            dtProg = m.GetResearchAcademicAssociatedInfo();
+                DataTable dtProg = new DataTable();
+                dtProg = m.GetResAcademicInfo();
             foreach (DataRow dr in dtProg.Rows)
             {
                 DataRow dr1 = dt.NewRow();
@@ -338,7 +343,7 @@ namespace BusinessLayer
                 dr1["AcademicInfo_ID"] = dr["AcademicInfo_ID"];
                 dr1["Available"] = 0;
                 dr1["Expert"] = 0;
-                dr1["Intermedite"] = 0;
+                dr1["intermediate"] = 0;
                 dr1["NotAvailable"] = 1;
                 dt.Rows.Add(dr1);
             }
@@ -347,7 +352,7 @@ namespace BusinessLayer
 
 
                 int id1 = int.Parse(dr["AcademicInfo_ID"].ToString());
-                //  DataRow[] dre = dt.Select("data=" + dr["Academic_info"].ToString());
+
                 DataRow dre = FindRow(dt, id1);
                 if (dre == null)
                     continue;
@@ -356,7 +361,7 @@ namespace BusinessLayer
                 {
                     dre["Available"] = 1;
                     dre["Expert"] = 0;
-                    dre["Intermedite"] = 0;
+                    dre["intermediate"] = 0;
                     dre["NotAvailable"] = 0;
                 }
 
@@ -364,14 +369,14 @@ namespace BusinessLayer
                 {
                     dre["Available"] = 0;
                     dre["Expert"] = 0;
-                    dre["Intermedite"] = 1;
+                    dre["intermediate"] = 1;
                     dre["NotAvailable"] = 0;
                 }
                 if (dr["Expertise_Level"].ToString() == "4")
                 {
                     dre["Available"] = 0;
                     dre["Expert"] = 1;
-                    dre["Intermedite"] = 0;
+                    dre["intermediate"] = 0;
                     dre["NotAvailable"] = 0;
                 }
                 dre.EndEdit();

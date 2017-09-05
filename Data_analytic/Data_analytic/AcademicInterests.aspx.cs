@@ -9,6 +9,9 @@ using System.Web.Services;
 
 namespace Data_analytic
 {
+
+    // The code is being written to implement future work (Project report - Section 5.5), proposed in project - Not completed yet
+
     public partial class AcademicInterests : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -37,9 +40,7 @@ namespace Data_analytic
             else
             ListBox1.Items.Add(txtSearch.Text);
             txtSearch.Text = "";
-            //string customerName = Request.Form[txtSearch.UniqueID];
-            //string customerId = Request.Form[hfCustomerId.UniqueID];
-            //ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Name: " + customerName + "\\nID: " + customerId + "');", true);
+
         }
 
         protected void Button2_Click(object sender, EventArgs e)

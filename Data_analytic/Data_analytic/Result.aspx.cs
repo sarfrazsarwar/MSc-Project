@@ -36,49 +36,110 @@ namespace Data_analytic
                 {
                     dtResearch = (DataTable)Session["ResearchExp"];
                 }
-
-
                 BusinessLayer.CalcualteResult obj = new BusinessLayer.CalcualteResult();
-                obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
-                //DsSemester1 contain 2 table of Semester 1..table[0] have sugesstion module  and table[1] have non sugestion module
-                DataSet dsSemester1 = obj.SortSmester1Data();
-                grdSugSemester1.DataSource = dsSemester1.Tables[0];
-                grdSugSemester1.DataBind();
-                grdNonSugSemester1.DataSource = dsSemester1.Tables[1];
-                grdNonSugSemester1.DataBind();
+                string CallFrom = "NotModify";
+                if (Session["CallFromResult"] != null)
+                {
+                     CallFrom = Session["CallFromResult"].ToString();
+                }
 
-                //Set the total range of credit hr of semester 1 and semester 2
-                obj.setTotalCridetHr(120,125);
+                    
 
-                //DsSemester2 contain 2 table of Semester 2..table[0] have sugesstion module  and table[1] have non sugestion module
-                DataSet dsSemester2 = obj.SortSmester2Data();
-
-                grdSugSemester2.DataSource = dsSemester2.Tables[0];
-                grdSugSemester2.DataBind();
-                grdNonSugSemester2.DataSource = dsSemester2.Tables[1];
-                grdNonSugSemester2.DataBind();
-
+                    if (CallFrom == "Modify")
+                    {
+                        int User_ID = (int)Session["UserID"];
+                        DataTable dtModuleSemester2 = obj.GetPreRecordSM2(User_ID);
+                        grdSugSemester2.DataSource = dtModuleSemester2;
+                        grdSugSemester2.DataBind();
+                        DataTable dtModuleSemester1 = obj.GetPreRecordSM1(User_ID);
+                        grdSugSemester1.DataSource = dtModuleSemester1;
+                        grdSugSemester1.DataBind();
 
 
-                DataTable dtSemster1 = obj.GetSM1RecordInfo();
-
-                DataColumn dc = new DataColumn("none Selected");
-                dtSemster1.Columns.Add(dc);
-                Add_falseNegetive(dsSemester1.Tables[0], dtSemster1);
-                Add_falseNegetive(dsSemester1.Tables[1], dtSemster1);
+                        
 
 
-                grdSemester1Detail.DataSource = dtSemster1;
-                   grdSemester1Detail.DataBind();
-                   DataTable dtSemester2 = obj.GetSM2RecordInfo();
+                        obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
+                        DataSet dsSemester1 = obj.SortSmester1Data();
+                        DataSet dsSemester2 = obj.SortSmester2Data();
+                        DataTable dtSemster1 = obj.GetSM1RecordInfo();
 
-                   Add_falseNegetive(dsSemester2.Tables[0], dtSemester2);
-                   Add_falseNegetive(dsSemester2.Tables[1], dtSemester2);
 
-                   grdSemester2Detail.DataSource = dtSemester2;
-                   grdSemester2Detail.DataBind();
+                        DataColumn dc = new DataColumn("none Selected");
+                        dtSemster1.Columns.Add(dc);
+                        Add_falseNegetive(dsSemester1.Tables[0], dtSemster1);
+                        Add_falseNegetive(dsSemester1.Tables[1], dtSemster1);
+                        grdSemester1Detail.DataSource = dtSemster1;
+                        grdSemester1Detail.DataBind();
+
+                        DataTable dtSemester2 = obj.GetSM2RecordInfo();
+
+                        Add_falseNegetive(dsSemester2.Tables[0], dtSemester2);
+                        Add_falseNegetive(dsSemester2.Tables[1], dtSemester2);
+                        grdSemester2Detail.DataSource = dtSemester2;
+                        grdSemester2Detail.DataBind();
+
+
+                        DataTable dttemp = obj.PriviousNonSugestionModuleSm1(dtModuleSemester1);
+
+                        grdNonSugSemester1.DataSource = dttemp;
+                        grdNonSugSemester1.DataBind();
+
+                        DataTable dttemp2 = obj.PriviousNonSugestionModuleSm2(dtModuleSemester2);
+
+                        grdNonSugSemester2.DataSource = dttemp2;
+                        grdNonSugSemester2.DataBind();
+
+                    }
+                    else
+                    {
+                        obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
+
+                        //DsSemester1 contain 2 table for Semester 1..table[0] have recommended modules  and table[1] have non recommended modules
+
+                        DataSet dsSemester1 = obj.SortSmester1Data();
+                        grdSugSemester1.DataSource = dsSemester1.Tables[0];
+                        grdSugSemester1.DataBind();
+                        grdNonSugSemester1.DataSource = dsSemester1.Tables[1];
+                        grdNonSugSemester1.DataBind();
+
+                        //Set the total range of credit hr of semester 1 and semester 2
+                        obj.setTotalCridetHr(120, 125);
+
+                        //DsSemester2 contain 2 table for Semester 2..table[0] have recommended modules  and table[1] have non recommended modules
+                        DataSet dsSemester2 = obj.SortSmester2Data();
+
+                        grdSugSemester2.DataSource = dsSemester2.Tables[0];
+                        grdSugSemester2.DataBind();
+                        grdNonSugSemester2.DataSource = dsSemester2.Tables[1];
+                        grdNonSugSemester2.DataBind();
+
+
+
+                        DataTable dtSemster1 = obj.GetSM1RecordInfo();
+
+                        DataColumn dc = new DataColumn("none Selected");
+                        dtSemster1.Columns.Add(dc);
+                        Add_falseNegetive(dsSemester1.Tables[0], dtSemster1);
+                        Add_falseNegetive(dsSemester1.Tables[1], dtSemster1);
+
+
+                        grdSemester1Detail.DataSource = dtSemster1;
+                        grdSemester1Detail.DataBind();
+                        DataTable dtSemester2 = obj.GetSM2RecordInfo();
+
+                        Add_falseNegetive(dsSemester2.Tables[0], dtSemester2);
+                        Add_falseNegetive(dsSemester2.Tables[1], dtSemester2);
+
+                        grdSemester2Detail.DataSource = dtSemester2;
+                        grdSemester2Detail.DataBind();
+                    }
+
+                   
             }
         }
+
+        // To implement web link functionality for column in module details grid
         protected string SetUrl(object o)
         {
             if (o.ToString().Trim() == "")
@@ -90,10 +151,13 @@ namespace Data_analytic
                 return "WebLink";
             }
         }
+
         protected string GetUrl(object id)
         {
             return "http://" + id;
         }
+
+        // To retrieve user deficiencies (False Negatives) agaisnt each module
         void Add_falseNegetive(DataTable dtSrc, DataTable dtDes)
         {
             foreach (DataRow dr in dtSrc.Rows)
@@ -116,7 +180,8 @@ namespace Data_analytic
                 }
 
         }
-        //call when binding the tabel with grid non Sugestion Module of semester 1
+
+
         protected void SM1NON_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -131,7 +196,8 @@ namespace Data_analytic
 
             }
         }
-        //Semester 1 Row Selection of Detail Grid When  Selecting of Row Suggestion module or non Suggestion module
+
+        //Row selection of Semester 1 detailed grid, when any row of recommended or non recommended tables is clicked
         void selectROw(GridViewRow rowSEl)
         {
             foreach (GridViewRow row in grdSemester1Detail.Rows)
@@ -143,7 +209,8 @@ namespace Data_analytic
                 
             }
         }
-        //Semester 2 Row Selection of Detail Grid When  Selecting of Row Suggestion module or non Suggestion module
+
+        //Row selection of Semester 2 detailed grid, when any row of recommended or non recommended tables is clicked
         void selectSM2Row(GridViewRow rowSEl)
         {
             foreach (GridViewRow row in grdSemester2Detail.Rows)
@@ -156,7 +223,8 @@ namespace Data_analytic
             }
         }
 
-        //call when Row selection Index change  on non Suggestion Module in Semester 1
+
+        //Called when row selection Index changes  on non recommended modules in Semester 1
         protected void SM1NON_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             SelROw = null;
@@ -183,7 +251,8 @@ namespace Data_analytic
                 }
             }
         }
-        //call when binding the tabel with grid Sugestion Module semester 1
+
+
         protected void OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -196,7 +265,7 @@ namespace Data_analytic
             }
         }
 
-        //call when Row selection Index change  on Suggestion Module in Semester 1
+        //Called when row selection Index changes  on recommended modules in Semester 1
         protected void OnSelectedIndexChanged(object sender, EventArgs e)
         {
             SelROw = null;
@@ -227,6 +296,7 @@ namespace Data_analytic
 
 
         //call when binding the tabel with grid non Sugestion Module of semester 2
+
         protected void SM2NON_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -238,7 +308,8 @@ namespace Data_analytic
                     e.Row.ForeColor = ColorTranslator.FromHtml("#FF0000");
             }
         }
-        //call when Row selection Index change  on non Suggestion Module in Semester 2
+
+        //Called when row selection Index changes  on non recommended modules in Semester 2
         protected void SM2NON_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             SelROw = null;
@@ -264,7 +335,10 @@ namespace Data_analytic
                 }
             }
         }
+
+
         //call when binding the tabel with grid  Sugestion Module of semester 2
+
         protected void SM2_OnRowDataBound(object sender, System.Web.UI.WebControls.GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -275,7 +349,9 @@ namespace Data_analytic
                     e.Row.ForeColor = ColorTranslator.FromHtml("#FF0000");
             }
         }
-        //call when Row selection Index change  on  Suggestion Module in Semester 2
+
+
+        //Called when row selection Index changes  on recommended modules in Semester 2
         protected void SM2_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             SelROw = null;
@@ -303,8 +379,8 @@ namespace Data_analytic
         }
 
 
-        //Checked and move  Suggeston module To non Suggestion module Gride during Manual shifting of Semester 1
-        void RemoveSm1MoudleSugest()
+        // To check and move recommended modules to non recommended modules Grid during manual shifting in Semester 1
+        void RemSem1ModRec()
         {
             LBLerror.Text = "";
             DataTable dtSMAT = new DataTable();
@@ -317,7 +393,7 @@ namespace Data_analytic
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("FalseNegtive");
             dtSMAT.Columns.Add(dc);
-            dc = new DataColumn("Recall");
+            dc = new DataColumn("Module_Priority");
             dtSMAT.Columns.Add(dc);
 
 
@@ -357,7 +433,7 @@ namespace Data_analytic
                     drRemove = dtSMAT.NewRow();
                     drRemove["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
                   
-                    drRemove["Recall"] = row.Cells[1].Text.ToString().Trim();
+                    drRemove["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                   
                     drRemove["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     drRemove["Compulsory"] = row.Cells[2].Text.ToString().Trim();
@@ -369,7 +445,7 @@ namespace Data_analytic
                     {
                         dtSMAT.Rows.Add(drRemove);
                         drRemove = null;
-                        LBLerror.Text = "Compulsory Module cannot Shifted";
+                        LBLerror.Text = "Compulsory module cannot be shifted from Recommedned Modules table";
                       
                     }
                     //remove Selection 
@@ -378,7 +454,7 @@ namespace Data_analytic
                 {
                     DataRow dr = dtSMAT.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                    dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                     
                     dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
@@ -394,7 +470,7 @@ namespace Data_analytic
 
                 DataRow dr = dtSm2.NewRow();
                 dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                 dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                 dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                 dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
@@ -405,7 +481,7 @@ namespace Data_analytic
             {
                 DataRow drTemp = dtSm2.NewRow();
                 drTemp["ACademic_Module"] = drRemove["ACademic_Module"];
-                drTemp["Recall"] = drRemove["Recall"];
+                drTemp["Module_Priority"] = drRemove["Module_Priority"];
                 drTemp["Credit_hours"] = drRemove["Credit_hours"];
                 drTemp["Compulsory"] = drRemove["Compulsory"];
                 drTemp["AcademicModule_ID"] = drRemove["AcademicModule_ID"];
@@ -414,8 +490,10 @@ namespace Data_analytic
             grdNonSugSemester1.DataSource = dtSm2;
             grdNonSugSemester1.DataBind();
         }
-        //validate Credit hr per Semester 
-        //Validate Total credit hr of semester 1 and Semester 2 when Submit Button pressed
+
+
+        //To validate Credit hr limitation per Semester 
+        // To validate total credit hr limitation of semester 1 and Semester 2 when "Submit Button" pressed
         bool validateSmesterCreditHr()
         {
             int creditHr = 0;
@@ -444,9 +522,9 @@ namespace Data_analytic
         }
 
 
-    //Checked and move non Suggeston module To Suggestion module Gride during Manual shifting of Semester 1
 
-        void RemoveSm1MoudleNonSugest()
+        // To check and move non recommended modules to  recommended modules Grid during manual shifting in Semester 1
+        void RemSem1ModNonRec()
         {
             DataTable dtSMAT = new DataTable();
             DataColumn dc = new DataColumn("AcademicModule_ID");
@@ -458,7 +536,7 @@ namespace Data_analytic
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("FalseNegtive");
             dtSMAT.Columns.Add(dc);
-            dc = new DataColumn("Recall");
+            dc = new DataColumn("Module_Priority");
             dtSMAT.Columns.Add(dc);
 
 
@@ -507,7 +585,7 @@ namespace Data_analytic
                 
                     DataRow dr = dtSMAT.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                    dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                     dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
 
                     totalcreditHour = totalcreditHour + int.Parse(dr["Credit_hours"].ToString());
@@ -516,8 +594,6 @@ namespace Data_analytic
                     dtSMAT.Rows.Add(dr);
             }
            
-
-            // dtSMAT.Clear();
             DataTable dtSm2 = dtSMAT.Clone();
             foreach (GridViewRow row in grdNonSugSemester1.Rows)
             {
@@ -531,7 +607,7 @@ namespace Data_analytic
                      {
                          DataRow dr = dtSMAT.NewRow();
                          dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                         dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                         dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                          dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                          dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                          dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
@@ -541,15 +617,15 @@ namespace Data_analytic
                      {
                          DataRow dr = dtSm2.NewRow();
                          dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                         dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                         dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                          dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                          dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                          dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                          dtSm2.Rows.Add(dr);
                          if(totalcreditHour>70)
-                         LBLerror.Text = "Maximum 70 crdit hr in Smester";
+                         LBLerror.Text = "Maximum 70 credit hours allowed in a semester";
                          else
-                          LBLerror.Text = "Maximum 120 to 125 crdit hr both Smester";
+                             LBLerror.Text = "Credit hours limitation for complete program ranges between 120 to 125";
                        
                      }
                 }
@@ -557,7 +633,7 @@ namespace Data_analytic
                 {
                     DataRow dr = dtSm2.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                    dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                     dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                     dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
@@ -570,8 +646,10 @@ namespace Data_analytic
             grdNonSugSemester1.DataBind();
         }
 
-        //Checked and move  Suggeston module To non Suggestion module Gride during Manual shifting of Semester 2
-        void RemoveSm2MoudleSugest()
+
+
+        // To check and move recommended modules to non recommended modules Grid during manual shifting in Semester 2
+        void RemSem2ModRec()
         {
             DataTable dtSMAT = new DataTable();
             DataColumn dc = new DataColumn("AcademicModule_ID");
@@ -583,7 +661,7 @@ namespace Data_analytic
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("FalseNegtive");
             dtSMAT.Columns.Add(dc);
-            dc = new DataColumn("Recall");
+            dc = new DataColumn("Module_Priority");
             dtSMAT.Columns.Add(dc);
 
 
@@ -622,8 +700,8 @@ namespace Data_analytic
                 {
                     drRemove = dtSMAT.NewRow();
                     drRemove["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    drRemove["Recall"] = row.Cells[1].Text.ToString().Trim();
-                    //dr["Smester"] = row.Cells[5].ToString().Trim();
+                    drRemove["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
+
                     drRemove["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     drRemove["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                     drRemove["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
@@ -635,7 +713,7 @@ namespace Data_analytic
                         dtSMAT.Rows.Add(drRemove);
 
                         drRemove = null;
-                        Label1.Text = "Compulsory module can not Shifted";
+                        Label1.Text = "Compulsory module cannot be shifted from Recommedned Modules table";
                        
                     }
                     //remove Selection 
@@ -645,7 +723,7 @@ namespace Data_analytic
                     DataRow dr = dtSMAT.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
 
-                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                    dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                     dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                     dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
@@ -655,7 +733,7 @@ namespace Data_analytic
             grdSugSemester2.DataSource = dtSMAT;
             grdSugSemester2.DataBind();
 
-            // dtSMAT.Clear();
+
             DataTable dtSm2 = dtSMAT.Clone();
             foreach (GridViewRow row in grdNonSugSemester2.Rows)
             {
@@ -663,7 +741,7 @@ namespace Data_analytic
                 DataRow dr = dtSm2.NewRow();
                 dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
 
-                dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
 
                 dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                 dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
@@ -676,7 +754,7 @@ namespace Data_analytic
                 DataRow drTemp = dtSm2.NewRow();
                 drTemp["ACademic_Module"] = drRemove["ACademic_Module"];
 
-                drTemp["Recall"] = drRemove["Recall"];
+                drTemp["Module_Priority"] = drRemove["Module_Priority"];
                 drTemp["Credit_hours"] = drRemove["Credit_hours"];
                 drTemp["Compulsory"] = drRemove["Compulsory"];
                 drTemp["AcademicModule_ID"] = drRemove["AcademicModule_ID"];
@@ -686,8 +764,8 @@ namespace Data_analytic
             grdNonSugSemester2.DataBind();
         }
 
-        //Checked and move non Suggeston module To Suggestion module Gride during Manual shifting of Semester 2
-        void RemoveSm2MoudleNonSugest()
+        // To check and move non recommended modules to recommended modules Grid during manual shifting in Semester 2
+        void RemSem2ModNonRec()
         {
             DataTable dtSMAT = new DataTable();
             DataColumn dc = new DataColumn("AcademicModule_ID");
@@ -699,7 +777,7 @@ namespace Data_analytic
             dtSMAT.Columns.Add(dc);
             dc = new DataColumn("FalseNegtive");
             dtSMAT.Columns.Add(dc);
-            dc = new DataColumn("Recall");
+            dc = new DataColumn("Module_Priority");
             dtSMAT.Columns.Add(dc);
 
 
@@ -743,7 +821,7 @@ namespace Data_analytic
 
                 DataRow dr = dtSMAT.NewRow();
                 dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                 dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                 dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                 dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
@@ -753,7 +831,7 @@ namespace Data_analytic
             }
 
 
-            // dtSMAT.Clear();
+
             DataTable dtSm2 = dtSMAT.Clone();
             foreach (GridViewRow row in grdNonSugSemester2.Rows)
             {
@@ -767,7 +845,7 @@ namespace Data_analytic
                     {
                         DataRow dr = dtSMAT.NewRow();
                         dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                        dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                        dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                         dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                         dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                         dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
@@ -777,22 +855,22 @@ namespace Data_analytic
                     {
                         DataRow dr = dtSm2.NewRow();
                         dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                        dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                        dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                         dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                         dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                         dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
                         dtSm2.Rows.Add(dr);
                         if(totalcreditHour>70)
-                        Label1.Text = "Maximum 70 crdit hr in Smester";
+                            Label1.Text = "Maximum 70 credit hours allowed in a semester";
                         else
-                          Label1.Text = "Maximum 120 to 125 crdit hr both Smester";
+                            Label1.Text = "Credit hours limitation for complete program ranges between 120 to 125";
                     }
                 }
                 else
                 {
                     DataRow dr = dtSm2.NewRow();
                     dr["ACademic_Module"] = row.Cells[0].Text.ToString().Trim();
-                    dr["Recall"] = row.Cells[1].Text.ToString().Trim();
+                    dr["Module_Priority"] = row.Cells[1].Text.ToString().Trim();
                     dr["Credit_hours"] = row.Cells[3].Text.ToString().Trim();
                     dr["Compulsory"] = row.Cells[2].Text.ToString().Trim();
                     dr["AcademicModule_ID"] = row.Cells[4].Text.ToString().Trim();
@@ -830,58 +908,67 @@ namespace Data_analytic
             }
             else
             {
-                lblErrorMian.Text = "Smestr 1 and Smester 2 must have 120 to 125 crdit Hr";
+                lblErrorMian.Text = "Credit hours limitation for complete program ranges between 120 to 125";
             }
         }
 
+        // Event function
         protected void btnSemster1LeftShift_Click(object sender, EventArgs e)
         {
             LBLerror.Text = "";
             Label1.Text = "";
             lblErrorMian.Text = "";
-            RemoveSm1MoudleNonSugest();
+            RemSem1ModNonRec();
             UpdatePanel1.Update();
             UpdatePanel4.Update();
             UpdatePanel12.Update();
             UpdatePanel11.Update();
         }
+
+        // Event function
 
         protected void btnSemster1RightShift_Click(object sender, EventArgs e)
         {
             LBLerror.Text = "";
             Label1.Text = "";
             lblErrorMian.Text = "";
-            RemoveSm1MoudleSugest();
+            RemSem1ModRec();
             UpdatePanel1.Update();
             UpdatePanel4.Update();
             UpdatePanel12.Update();
             UpdatePanel11.Update();
         }
 
+        // Event function
+
         protected void btnSemster2LeftShift_Click(object sender, EventArgs e)
         {
             LBLerror.Text = "";
             Label1.Text = "";
             lblErrorMian.Text = "";
-            RemoveSm2MoudleNonSugest();
+            RemSem2ModNonRec();
             UpdatePanel2.Update();
             UpdatePanel3.Update();
             UpdatePanel12.Update();
             UpdatePanel11.Update();
         }
 
+
+        // Event function
         protected void btnSemster2RightShift_Click(object sender, EventArgs e)
         {
             LBLerror.Text = "";
             Label1.Text = "";
             lblErrorMian.Text = "";
-            RemoveSm2MoudleSugest();
+            RemSem2ModRec();
             UpdatePanel2.Update();
             UpdatePanel3.Update();
             UpdatePanel12.Update();
             UpdatePanel11.Update();
            
         }
+
+
         //Reset Manual Shifting of Semester 2
         protected void btnResetSemester2_Click(object sender, EventArgs e)
         {
@@ -916,16 +1003,49 @@ namespace Data_analytic
             }
             int rangfrom = 60;
             int rang = 125 - creditHr;
+
+            if (creditHr >= 65)
+            {
+                rangfrom = 50;
+            }
             if (rang >= 70)
             {
                 rang = 70;
             }
-            else
-            {
-                rangfrom = 50;
-            }
 
             BusinessLayer.CalcualteResult obj = new BusinessLayer.CalcualteResult();
+            string CallFrom = "NotModify";
+            if (Session["CallFromResult"] != null)
+            {
+                CallFrom = Session["CallFromResult"].ToString();
+            }
+
+
+
+            if (CallFrom == "Modify")
+            {
+                int User_ID = (int)Session["UserID"];
+                DataTable dtModuleSemester2 = obj.GetPreRecordSM2(User_ID);
+                grdSugSemester2.DataSource = dtModuleSemester2;
+                grdSugSemester2.DataBind();
+                obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
+               
+                DataSet dsSemester2 = obj.SortSmester2Data();
+                DataTable dtSemester2 = obj.GetSM2RecordInfo();
+                DataColumn dc = new DataColumn("none Selected");
+                dtSemester2.Columns.Add(dc);
+                Add_falseNegetive(dsSemester2.Tables[0], dtSemester2);
+                Add_falseNegetive(dsSemester2.Tables[1], dtSemester2);
+                grdSemester2Detail.DataSource = dtSemester2;
+                grdSemester2Detail.DataBind();
+
+                DataTable dttemp2 = obj.PriviousNonSugestionModuleSm2(dtModuleSemester2);
+                grdNonSugSemester2.DataSource = dttemp2;
+                grdNonSugSemester2.DataBind();
+
+            }
+            else
+            {
             obj.setTotalCridetHr(rangfrom, rang);
             obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
             DataSet dtsm2 = obj.SortSmester2Data();
@@ -944,6 +1064,7 @@ namespace Data_analytic
 
             grdSemester2Detail.DataSource = dttemp;
             grdSemester2Detail.DataBind();
+            }
            
         }
 
@@ -980,15 +1101,51 @@ namespace Data_analytic
             }
             int rangfrom = 60;
             int rang = 125 - creditHr;
+
+            if (creditHr >= 65)
+            {
+                 rangfrom = 50;
+            }
             if (rang >= 70)
             {
                 rang = 70;
             }
-            else
-            {
-                rangfrom = 50;
-            }
+
             BusinessLayer.CalcualteResult obj = new BusinessLayer.CalcualteResult();
+            string CallFrom = "NotModify";
+            if (Session["CallFromResult"] != null)
+            {
+                CallFrom = Session["CallFromResult"].ToString();
+            }
+
+
+
+            if (CallFrom == "Modify")
+            {
+                int User_ID = (int)Session["UserID"];
+                DataTable dtModuleSemester2 = obj.GetPreRecordSM2(User_ID);
+                grdSugSemester2.DataSource = dtModuleSemester2;
+                grdSugSemester2.DataBind();
+                DataTable dtModuleSemester1 = obj.GetPreRecordSM1(User_ID);
+                grdSugSemester1.DataSource = dtModuleSemester1;
+                grdSugSemester1.DataBind();
+                obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
+                DataSet dsSemester1 = obj.SortSmester1Data();
+                DataTable dtSemster1 = obj.GetSM1RecordInfo();
+                DataColumn dc = new DataColumn("none Selected");
+                dtSemster1.Columns.Add(dc);
+                Add_falseNegetive(dsSemester1.Tables[0], dtSemster1);
+                Add_falseNegetive(dsSemester1.Tables[1], dtSemster1);
+                grdSemester1Detail.DataSource = dtSemster1;
+                grdSemester1Detail.DataBind();
+                DataTable dttemp = obj.PriviousNonSugestionModuleSm1(dtModuleSemester1);
+                grdNonSugSemester1.DataSource = dttemp;
+                grdNonSugSemester1.DataBind();
+
+
+
+            }
+            else{
             obj.setTotalCridetHr(rangfrom, rang);
             obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
             DataSet dtsm1 = obj.SortSmester1Data();
@@ -1004,11 +1161,134 @@ namespace Data_analytic
             Add_falseNegetive(dtsm1.Tables[1], dt);
             grdSemester1Detail.DataSource = dt;
             grdSemester1Detail.DataBind();
-            
+            }
            
         }
 
-      
+        // To reset all modules from semester 1 and 2
+
+        protected void BtnSystemReset_Click(object sender, EventArgs e)
+        {
+            DataTable dtTools = null;
+            DataTable dtMath = null;
+            DataTable dtResearch = null;
+            DataTable dtPrograming = null;
+            if (Session["TOOL"] != null)
+            {
+                dtTools = (DataTable)Session["TOOL"];
+            }
+            if (Session["Mathmetic"] != null)
+            {
+                dtMath = (DataTable)Session["Mathmetic"];
+            }
+            if (Session["Programing"] != null)
+            {
+                dtPrograming = (DataTable)Session["Programing"];
+            }
+            if (Session["ResearchExp"] != null)
+            {
+                dtResearch = (DataTable)Session["ResearchExp"];
+            }
+
+
+            BusinessLayer.CalcualteResult obj = new BusinessLayer.CalcualteResult();
+            string CallFrom = "NotModify";
+            if (Session["CallFromResult"] != null)
+            {
+                CallFrom = Session["CallFromResult"].ToString();
+            }
+
+
+
+            if (CallFrom == "Modify")
+            {
+                int User_ID = (int)Session["UserID"];
+                DataTable dtModuleSemester2 = obj.GetPreRecordSM2(User_ID);
+                grdSugSemester2.DataSource = dtModuleSemester2;
+                grdSugSemester2.DataBind();
+                DataTable dtModuleSemester1 = obj.GetPreRecordSM1(User_ID);
+                grdSugSemester1.DataSource = dtModuleSemester1;
+                grdSugSemester1.DataBind();
+
+
+
+
+
+                obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
+                DataSet dsSemester1 = obj.SortSmester1Data();
+                DataSet dsSemester2 = obj.SortSmester2Data();
+                DataTable dtSemster1 = obj.GetSM1RecordInfo();
+
+
+                DataColumn dc = new DataColumn("none Selected");
+                dtSemster1.Columns.Add(dc);
+                Add_falseNegetive(dsSemester1.Tables[0], dtSemster1);
+                Add_falseNegetive(dsSemester1.Tables[1], dtSemster1);
+                grdSemester1Detail.DataSource = dtSemster1;
+                grdSemester1Detail.DataBind();
+
+                DataTable dtSemester2 = obj.GetSM2RecordInfo();
+
+                Add_falseNegetive(dsSemester2.Tables[0], dtSemester2);
+                Add_falseNegetive(dsSemester2.Tables[1], dtSemester2);
+                grdSemester2Detail.DataSource = dtSemester2;
+                grdSemester2Detail.DataBind();
+
+
+                DataTable dttemp = obj.PriviousNonSugestionModuleSm1(dtModuleSemester1);
+
+                grdNonSugSemester1.DataSource = dttemp;
+                grdNonSugSemester1.DataBind();
+
+                DataTable dttemp2 = obj.PriviousNonSugestionModuleSm2(dtModuleSemester2);
+
+                grdNonSugSemester2.DataSource = dttemp2;
+                grdNonSugSemester2.DataBind();
+
+            }
+            else{
+            obj.CalculateResults(dtTools, dtMath, dtResearch, dtPrograming);
+
+            //DsSemester1 contain 2 table for Semester 1..table[0] have recommended modules  and table[1] have non recommended modules
+            DataSet dsSemester1 = obj.SortSmester1Data();
+            grdSugSemester1.DataSource = dsSemester1.Tables[0];
+            grdSugSemester1.DataBind();
+            grdNonSugSemester1.DataSource = dsSemester1.Tables[1];
+            grdNonSugSemester1.DataBind();
+
+            //Set the total range of credit hr of semester 1 and semester 2
+            obj.setTotalCridetHr(120, 125);
+
+            //DsSemester2 contain 2 table for Semester 2..table[0] have recommended modules  and table[1] have non recommended modules
+           
+            DataSet dsSemester2 = obj.SortSmester2Data();
+
+            grdSugSemester2.DataSource = dsSemester2.Tables[0];
+            grdSugSemester2.DataBind();
+            grdNonSugSemester2.DataSource = dsSemester2.Tables[1];
+            grdNonSugSemester2.DataBind();
+
+
+
+            DataTable dtSemster1 = obj.GetSM1RecordInfo();
+
+            DataColumn dc = new DataColumn("none Selected");
+            dtSemster1.Columns.Add(dc);
+            Add_falseNegetive(dsSemester1.Tables[0], dtSemster1);
+            Add_falseNegetive(dsSemester1.Tables[1], dtSemster1);
+
+
+            grdSemester1Detail.DataSource = dtSemster1;
+            grdSemester1Detail.DataBind();
+            DataTable dtSemester2 = obj.GetSM2RecordInfo();
+
+            Add_falseNegetive(dsSemester2.Tables[0], dtSemester2);
+            Add_falseNegetive(dsSemester2.Tables[1], dtSemester2);
+
+            grdSemester2Detail.DataSource = dtSemester2;
+            grdSemester2Detail.DataBind();
+            }
+        }      
   
     }
 }

@@ -16,7 +16,6 @@ namespace DB_ACCESS
     public class DbAccess
     {
         public static SqlConnection DbConn = new SqlConnection();
-        //        private static SqlDataAdapter DbAdapter = new SqlDataAdapter();
         public static SqlCommand DbCommand = new SqlCommand();
         public static SqlTransaction DbTran;
         private static string strConnString;
@@ -48,11 +47,13 @@ namespace DB_ACCESS
 
         }
 
-        public static void createConn()
+        // To create connection with requisite credentials
+
+        public static void CreateConn()
         {
             try
             {
-                //string server = System.Configuration.ConfigurationSettings.AppSettings["server"];
+
                 string server = System.Configuration.ConfigurationManager.AppSettings["server"];
                 string dataBaseName = System.Configuration.ConfigurationManager.AppSettings["Database"];
                 if (server == null || server.Length < 1)
@@ -70,7 +71,6 @@ namespace DB_ACCESS
 
 
                 DbConn.ConnectionString = strConnString.Trim();
-                //DbConn.ConnectionTimeout = 0;
                 DbConn.Open();
             }
             catch (Exception exp)
@@ -78,6 +78,8 @@ namespace DB_ACCESS
                 throw exp;
             }
         }
+
+        // To close connection, once data has been retrieved or submitted
 
         public static void closeConnection()
         {
@@ -103,7 +105,7 @@ namespace DB_ACCESS
         /// <param name="query">select Command</param>
         public static void FillLocalTable(DataTable tblName, string query)
         {
-            //SqlDataAdapter DA1 = new SqlDataAdapter();
+           
             for (int i = 0; i < NoOfAttempts; i++)
             {
                 SqlDataAdapter DbAdapter = new SqlDataAdapter();
@@ -114,7 +116,7 @@ namespace DB_ACCESS
                     {
                         if (DbConn.State == 0)
                         {
-                            createConn();
+                            CreateConn();
                         }
                         DbCommand.Connection = DbConn;
                         DbCommand.CommandText = query;
@@ -124,7 +126,7 @@ namespace DB_ACCESS
                         DbAdapter.SelectCommand = DbCommand;
                         DbAdapter.Fill(tblName);
 
-                
+                     
                         DbAdapter.Dispose();
                         DbCommand.Dispose();
                         return;
@@ -145,7 +147,7 @@ namespace DB_ACCESS
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public static int executeQuery(string query)
+        public static int ExecuteQuery(string query)
         {
             for (int i = 0; i < NoOfAttempts; i++)
             {
@@ -154,7 +156,7 @@ namespace DB_ACCESS
                 {
                     if (DbConn.State == 0)
                     {
-                        createConn();
+                        CreateConn();
                     }
                     DbCommand.Connection = DbConn;
                     DbCommand.CommandText = query;
@@ -185,7 +187,7 @@ namespace DB_ACCESS
                 {
                     if (DbConn.State == 0)
                     {
-                        createConn();
+                        CreateConn();
                     }
                     DbCommand.Connection = DbConn;
                     DbCommand.CommandText = query;

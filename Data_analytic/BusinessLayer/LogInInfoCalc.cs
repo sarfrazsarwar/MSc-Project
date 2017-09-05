@@ -26,12 +26,12 @@ namespace BusinessLayer
             {
                 string str = "INSERT Into [Data_Analytics].[dbo].[User] ([User_Name] ,[Password],[Email]) VALUES "+
                                                             "('" + dr[0].ToString() + "','" + dr[1].ToString() + "','" + dr[2].ToString() + "')";
-                DB_ACCESS.DbAccess.executeQuery(str);
+                DB_ACCESS.DbAccess.ExecuteQuery(str);
             }
            
         }
 
-        // To check the user exist in Database or not. if exist set user Reviews in StrReviews and return  UserID
+        // To check the user exist in database or not. If exists, set user reviews in "StrReviews" and return  UserID
 
         public int  GetUserInfoRecord(string strUserName, string strpass)
         {
@@ -54,34 +54,36 @@ namespace BusinessLayer
                 
         }
 
-        // Check the new user name already exist in database or not
-        public int DuplicateUserInfoRecord(string strUserName)
+        // To check user name already exists in database or not
+        public int DuplicateUserInfoRec(string strUserName)
         {
             DT.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[User] where [User_Name]= '" + strUserName + "'  ";
 
-           // AND [Password]= '" + strpass + "'
+
             DB_ACCESS.DbAccess.FillLocalTable(DT, str);
             return DT.Rows.Count;
         }
-        //Update user Reviews in database
+
+        //To update user Reviews in database
         public DataTable UserReviewsUpdate(string str,int ID)
         {
             DT.Clear();
             string qury = " UPDATE [Data_Analytics].[dbo].[User] SET  [Reviews] ='" + str + "' WHERE [User_ID]='" + ID + "'";
-            DB_ACCESS.DbAccess.executeQuery(qury);
+            DB_ACCESS.DbAccess.ExecuteQuery(qury);
             int rcord = DT.Rows.Count;
            
             return DT;
         }
-        //Update user password in database
+
+        //To update user password in database
         public DataTable UserpasswordUpdate(string str, int ID)
         {
             DT.Clear();
             string qury = " UPDATE [Data_Analytics].[dbo].[User] SET  [password] ='" + str + "' WHERE [User_ID]='" + ID + "'";
 
-            // AND [Password]= '" + strpass + "
-            DB_ACCESS.DbAccess.executeQuery(qury);
+
+            DB_ACCESS.DbAccess.ExecuteQuery(qury);
             int rcord = DT.Rows.Count;
 
             return DT;

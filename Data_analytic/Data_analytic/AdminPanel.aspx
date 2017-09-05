@@ -93,8 +93,13 @@
 </td>
 
 </tr></table>
+   
 <br />
-<br />
+<br /> 
+<div style=" float:left; margin-left:8%; width:80%">
+<asp:Label ID="lblError" runat="server" Text="" ForeColor="#FF3300" ></asp:Label>
+</div>
+<br /> 
 <div style=" float:right; margin-right:40%">
 <asp:Button ID="btnModify" runat="server" Text="Modify Requriment" 
         onclick="btnModify_Click"  Height="43px" style="margin-left: 0px" Width="146px" BackColor="#55a6dd" 

@@ -13,7 +13,7 @@ namespace BusinessLayer
     { 
         DataTable dtConfusionMat = new DataTable();
         int TotalCridetHour = 0;
-        private DataTable DT = new DataTable("Academic_module_model");
+        private DataTable DT = new DataTable("Academic_module_model11");
         private DataTable DTRE = new DataTable("ModuleRequirement");
         int RangeTo = 70;
         int RangeFrom = 60;
@@ -22,7 +22,8 @@ namespace BusinessLayer
             RangeFrom = from;
             RangeTo= to;
         }
-      //Get those record which have 'anyone' word and beloge to programing  e.g " Language_anyOne or Domain_anyone" 
+
+      // To get those record which have 'anyone' word and belong to programing domain  e.g " Language_anyOne or Domain_anyone" 
         public DataTable GetPrograming_AnyOne()
         {
             DT.Clear();
@@ -33,7 +34,7 @@ namespace BusinessLayer
         }
 
        
-      // parameter e.g Language and it return Language_R, language_c# , language_java etc
+      // To return specific language e.g Language_R, language_c# , language_java etc
         public DataTable GetPrograming_AnyOne(string str)
         {
             DT.Clear();
@@ -43,8 +44,7 @@ namespace BusinessLayer
             return DT;
         }
 
-
-     
+     // To retrieve module details from database
         public DataTable GetModuleInfo()
         {
             DT.Clear();
@@ -53,13 +53,16 @@ namespace BusinessLayer
             return DT;
         }
 
-        public DataTable GetModuleRequirmentInfo()
+      // To retrieve module requiremewnt details from database
+        public DataTable GetModReqInfo()
         {
             DTRE.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[ModuleRequirement]";
             DB_ACCESS.DbAccess.FillLocalTable(DTRE, str);
             return DTRE;
         }
+
+        // To compare each module against user profile data. To invoke CheckExpertise(), GetModuleInfo(), GetModReqInfo()
       public  void CalculateResults(DataTable dtTools,DataTable dtMath ,DataTable dtResearch ,DataTable dtPrograming )
         {
 
@@ -73,7 +76,7 @@ namespace BusinessLayer
             dtConfusionMat.Columns.Add(dc);
             dc = new DataColumn("FalseNegtive");
             dtConfusionMat.Columns.Add(dc);
-            dc = new DataColumn("Recall");
+            dc = new DataColumn("Module_Priority");
             dtConfusionMat.Columns.Add(dc);
 
 
@@ -110,16 +113,18 @@ namespace BusinessLayer
             BusinessLayer.CalcualteResult m = new BusinessLayer.CalcualteResult();
             DataTable dtMoudle = m.GetModuleInfo();
 
-            DataTable dtMoudleRequirment = m.GetModuleRequirmentInfo();
+            DataTable dtMoudleRequirment = m.GetModReqInfo();
 
             foreach (DataRow dr in dtMoudle.Rows)
             {
                 DataRow[] dtRer = dtMoudleRequirment.Select("AcademicModule_ID=" + dr["AcademicModule_ID"]);
                 if (dtRer.Length > 0)
-                    checkExpertise(dtRer, dtConfusionMat, dr, dtTools, dtMath , dtResearch , dtPrograming );
+                    CheckExpertise(dtRer, dtConfusionMat, dr, dtTools, dtMath, dtResearch, dtPrograming);
             }
-            //SortSmesterData(dtConfusionMat);
+
         }
+
+      // To sort modules for semester 1
       public DataSet SortSmester1Data()
         {
            // Semester 1
@@ -129,12 +134,88 @@ namespace BusinessLayer
 
              DataTable dtMat = dtConfusionMat.Clone();
             dtMat.Clear();
-            DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dtMat, RangeFrom, RangeTo);
+            DataTable dtSm1 = SemModSelection(dtTempSmester1, dtMat, RangeFrom, RangeTo);
             ds.Tables.Add(dtSm1);
             ds.Tables.Add(dtMat);
             return ds;
            
         }
+
+     public DataTable PriviousNonSugestionModuleSm1(DataTable dtdes)
+      {
+          DataRow[] fRow = dtConfusionMat.Select("Smester=1");
+          DataTable dtTempSmester1 = fRow.CopyToDataTable();
+          DataTable dtMat = dtConfusionMat.Clone();
+          foreach (DataRow dr in dtTempSmester1.Rows)
+          {
+              bool isfind = false;
+              foreach (DataRow dr1 in dtdes.Rows)
+              {
+                  if (dr1["AcademicModule_ID"].ToString() == dr["AcademicModule_ID"].ToString())
+                  {
+                      isfind = true;
+                      break;
+                  }
+              }
+
+              if (isfind==false)
+              {
+                  DataRow drnew = dtMat.NewRow();
+                  drnew["AcademicModule_ID"] = dr["AcademicModule_ID"];
+                  drnew["ACademic_Module"] = dr["ACademic_Module"];
+                  drnew["Smester"] = dr["Smester"];
+                  drnew["Compulsory"] = dr["Compulsory"];
+                  drnew["Credit_hours"] = dr["Credit_hours"];
+                  //""
+                   drnew["Module_Priority"] = dr["Module_Priority"];
+
+
+                   dtMat.Rows.Add(drnew);
+              }
+
+
+          }
+          return dtMat;
+      }
+
+    public  DataTable PriviousNonSugestionModuleSm2(DataTable dtdes)
+      {
+          DataRow[] fRow = dtConfusionMat.Select("Smester=2");
+          DataTable dtTempSmester1 = fRow.CopyToDataTable();
+          DataTable dtMat = dtConfusionMat.Clone();
+          foreach (DataRow dr in dtTempSmester1.Rows)
+          {
+              bool isfind = false;
+              foreach (DataRow dr1 in dtdes.Rows)
+              {
+                  if (dr1["AcademicModule_ID"].ToString() == dr["AcademicModule_ID"].ToString())
+                  {
+                      isfind = true;
+                      break;
+                  }
+              }
+
+              if (isfind == false)
+              {
+                  DataRow drnew = dtMat.NewRow();
+                  drnew["AcademicModule_ID"] = dr["AcademicModule_ID"];
+                  drnew["ACademic_Module"] = dr["ACademic_Module"];
+                  drnew["Smester"] = dr["Smester"];
+                  drnew["Compulsory"] = dr["Compulsory"];
+                  drnew["Credit_hours"] = dr["Credit_hours"];
+                  //""
+                  drnew["Module_Priority"] = dr["Module_Priority"];
+
+
+                  dtMat.Rows.Add(drnew);
+              }
+
+
+          }
+          return dtMat;
+      }
+
+      // To sort modules for semester 2
       public DataSet SortSmester2Data()
         {
 
@@ -144,18 +225,19 @@ namespace BusinessLayer
             DataTable dtTempSmester1 = fRow.CopyToDataTable();
             dtMat = dtConfusionMat.Clone();
             dtMat.Clear();
-            DataTable dtSm1 = SmesterModuleSelction(dtTempSmester1, dtMat,RangeFrom,RangeTo);
+            DataTable dtSm1 = SemModSelection(dtTempSmester1, dtMat, RangeFrom, RangeTo);
             ds1.Tables.Add(dtSm1);
             ds1.Tables.Add(dtMat);
             return ds1;
          }
 
-     //Sort Smester data on base of recall values,True postive,and compulsory
-        DataTable SmesterModuleSelction(DataTable dtSm, DataTable dttemp,int RangeTo,int RangeFrom)
+     // To sort semester data on the basis of Recall values,True Positive,and compulsory module factor
+
+      DataTable SemModSelection(DataTable dtSm, DataTable dttemp, int RangeTo, int RangeFrom)
         {
 
             DataTable dtcom = null;
-            DataRow[] dr = dtSm.Select("compulsory=true", "Recall DESC");
+            DataRow[] dr = dtSm.Select("compulsory=true", "Module_Priority DESC");
             if (dr.Length > 0)
             {
                 dtcom = dr.CopyToDataTable();
@@ -177,8 +259,8 @@ namespace BusinessLayer
             if (dr1.Length > 0)
             {
                 DataTable dtTm = dr1.CopyToDataTable();
-                //DataTable dtTm = dr1.CopyToDataTable();
-                DataRow[] dr2 = dtTm.Select("compulsory=false", "Recall DESC");
+
+                DataRow[] dr2 = dtTm.Select("compulsory=false", "Module_Priority DESC");
                 dtNonCom = dr2.CopyToDataTable();
             }
             else
@@ -209,7 +291,7 @@ namespace BusinessLayer
                         //""
 
 
-                        drnew["Recall"] = drNonCom["Recall"]; ;
+                        drnew["Module_Priority"] = drNonCom["Module_Priority"]; ;
                         dttemp.Rows.Add(drnew);
                     }
                     else
@@ -227,7 +309,7 @@ namespace BusinessLayer
                         //""
 
 
-                        drnew["Recall"] = drNonCom["Recall"]; ;
+                        drnew["Module_Priority"] = drNonCom["Module_Priority"]; ;
                         dtcom.Rows.Add(drnew);
                     }
                 }
@@ -246,7 +328,7 @@ namespace BusinessLayer
                     //""
                     drnew["none Selected"] = drNonCom["none Selected"];
 
-                    drnew["Recall"] = drNonCom["Recall"]; ;
+                    drnew["Module_Priority"] = drNonCom["Module_Priority"]; ;
                     dttemp.Rows.Add(drnew);
                 }
             }
@@ -274,7 +356,7 @@ namespace BusinessLayer
             if (dr["NotAvailable"].ToString() == "0")
             {
                 
-                if (dr["Intermedite"].ToString() == "1")
+                if (dr["intermediate"].ToString() == "1")
                 {
 
                     Level = 3;
@@ -295,7 +377,7 @@ namespace BusinessLayer
             if (dr1["NotAvailable"].ToString() == "0")
             {
 
-                if (dr1["Intermedite"].ToString() == "1")
+                if (dr1["intermediate"].ToString() == "1")
                 {
 
                     Level2 = 3;
@@ -321,46 +403,47 @@ namespace BusinessLayer
         }
 
 
-      //final module selection save in database  
+      // To save final module selections in database  
         public void InsertUserInputRecord(int User_ID, int AcademicInfo_ID,float p)
         {
 
             string str = "INSERT Into [Data_Analytics].[dbo].[ModuleSelction] ([AcademicModule_ID] ,[User_ID],[Module_Priority]) VALUES " +
                                         "(" + AcademicInfo_ID + "," + User_ID + "," + p + ")";
-            DB_ACCESS.DbAccess.executeQuery(str);
+            DB_ACCESS.DbAccess.ExecuteQuery(str);
 
         }
 
-      //delete Module selection from data base
+      // To delete module selection from data base against certain user
         public void DeleteUserSelectionRecord(int User_ID)
         {
 
             string str = "DELETE FROM [Data_Analytics].[dbo].[ModuleSelction]" +
                             "WHERE [User_ID]=" + User_ID;
-            DB_ACCESS.DbAccess.executeQuery(str);
+            DB_ACCESS.DbAccess.ExecuteQuery(str);
 
         }
 
 
-      // when visit again get module Selection of semester 1 agaist user
+      // To get module selection of semester 1 against user, on his next visit 
     public  DataTable GetPreRecordSM1(int User_ID)
       {
-          DT.Clear();
-        
-   string qury=     "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module_No],ab.[Credit_hours], "+
+          DataTable dtTemp=new DataTable();
+
+          string qury = "SELECT ab.[AcademicModule_ID],ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module_No],ab.[Credit_hours], " +
   "ab.[Theoretical_Lecture],ab.[Practical_Labs],ab.[CourseWorks_Weightage],ab.[ExamType], "+
   "ab.[Exam_Weightage],mm.[Manager_Name],mm.Email,se.[Module_Priority], " +
-  " ab.[ClassTests],ab.[Private_Study_Required] ,ab.[CourseWorks] " +
+  " ab.[ClassTests],ab.[Private_Study_Required] ,ab.[CourseWorks] , wa.[WebAddress] " +
   "FROM [Data_Analytics].[dbo].[AcademicModule] ab inner join "+
   "[Data_Analytics].[dbo].[ModuleSelction] se ON ab.AcademicModule_ID=se.AcademicModule_ID  "+ 
   "inner join [Data_Analytics].[dbo].[ModuleManager] mm on ab.[ModuleManager_ID]=mm.ModuleManager_ID  "+
+  "  Left Join   [Data_Analytics].[dbo].[WebAddress] wa on ab.[AcademicModule_ID]=wa.[AcademicModule_ID]  " +
 
   "where se.[User_ID]=" +User_ID+" and ab.Smester=1";
-          DB_ACCESS.DbAccess.FillLocalTable(DT, qury);
-          return DT;
+          DB_ACCESS.DbAccess.FillLocalTable(dtTemp, qury);
+          return dtTemp;
       }
 
-      //Get semester 1 modules   detail From database like courseWorks,Credit hour,Practical_Labs ec
+      // To get semester 1 modules detail from database like courseWorks,Credit hour,Practical_Labs ec
     public DataTable GetSM1RecordInfo()
     {
         DT.Clear();
@@ -376,7 +459,8 @@ namespace BusinessLayer
         DB_ACCESS.DbAccess.FillLocalTable(DT, qury);
         return DT;
     }
-    //Get semester 2 modules   detail From database like courseWorks,Credit hour,Practical_Labs ec
+
+    // To get semester 2 modules detail from database like courseWorks,Credit hour,Practical_Labs ec
     public DataTable GetSM2RecordInfo()
     {
         DT.Clear();
@@ -392,25 +476,28 @@ namespace BusinessLayer
         DB_ACCESS.DbAccess.FillLocalTable(DT, qury);
         return DT;
     }
-    // when visit again get module Selection of semester 2 agaist user
+
+    // To get module selection of semester 2 against user, on his next visit 
      public DataTable GetPreRecordSM2(int User_ID)
       {
-          DT.Clear();
-          string qury = "SELECT ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module_No],ab.[Credit_hours], " +
+          DataTable dtTemp = new DataTable();
+          string qury = "SELECT ab.[AcademicModule_ID],ab.[ACademic_Module],ab.[Compulsory],ab.[Smester],ab.[Module_No],ab.[Credit_hours], " +
                             "ab.[Theoretical_Lecture],ab.[Practical_Labs],ab.[CourseWorks_Weightage],ab.[ExamType], " +
                              "ab.[Exam_Weightage],mm.[Manager_Name],mm.Email,se.[Module_Priority], " +
-                               " ab.[ClassTests],ab.[Private_Study_Required] ,ab.[CourseWorks]" +
+                               " ab.[ClassTests],ab.[Private_Study_Required] ,ab.[CourseWorks], wa.[WebAddress] " +
                              "FROM [Data_Analytics].[dbo].[AcademicModule] ab inner join " +
                              "[Data_Analytics].[dbo].[ModuleSelction] se ON ab.AcademicModule_ID=se.AcademicModule_ID  " +
                              "inner join [Data_Analytics].[dbo].[ModuleManager] mm on ab.[ModuleManager_ID]=mm.ModuleManager_ID  " +
+                              "  Left Join   [Data_Analytics].[dbo].[WebAddress] wa on ab.[AcademicModule_ID]=wa.[AcademicModule_ID]  " +
                                "where se.[User_ID]=" + User_ID + " and ab.Smester=2";
-          DB_ACCESS.DbAccess.FillLocalTable(DT, qury);
-          return DT;
+          DB_ACCESS.DbAccess.FillLocalTable(dtTemp, qury);
+          return dtTemp;
       }
 
-//Calculate False Nagetive and True Postive on bases of Expertise Selection and set the proirty of module
-     
-        void checkExpertise(DataRow[] drreq, DataTable dtConMat, DataRow drModule, DataTable dtTools, DataTable dtMath, DataTable dtResearch, DataTable dtPrograming)
+
+    // To calculate False Negatives and True Positives on basis of User profile Expertise and set the priority of each module
+
+     void CheckExpertise(DataRow[] drreq, DataTable dtConMat, DataRow drModule, DataTable dtTools, DataTable dtMath, DataTable dtResearch, DataTable dtPrograming)
         {
             float TruePostive = 0;
             float FalseNegtive = 0;
@@ -420,7 +507,7 @@ namespace BusinessLayer
             string nonSel="";
             foreach (DataRow dr in drreq)
             {
-                //DataRow[] dTselet=null;
+
                 drComp = null;
                 int ReqExpertise = int.Parse(dr["ExpertiseLevel_ID"].ToString());
 
@@ -500,7 +587,7 @@ namespace BusinessLayer
                     if (drComp["NotAvailable"].ToString() == "0")
                     {
                         
-                        if (drComp["Intermedite"].ToString() == "1")
+                        if (drComp["intermediate"].ToString() == "1")
                         {
 
                             Level = 3;
@@ -521,10 +608,7 @@ namespace BusinessLayer
                     }
                     int Th = ReqExpertise - 1;
                     double final = 0;
-                    //if (Th >= Level && Th>=2 && Level>1)
-                    //{
-                    //    final = 0.5;
-                    //}
+
                     if (ReqExpertise == 4 && Level == 3)
                     {
                         final = 0.666;
@@ -555,10 +639,6 @@ namespace BusinessLayer
                     }
                 }
 
-
-
-
-
             }
             if (AcademicModule_ID > 0)
             {
@@ -572,7 +652,7 @@ namespace BusinessLayer
                 dr["none Selected"] = nonSel;
                 dr["ACademic_Module"] = drModule["ACademic_Module"];
                 float Re = ((float)TruePostive / (float)(TruePostive + FalseNegtive));
-                dr["Recall"] = System.Math.Round(Re, 2);
+                dr["Module_Priority"] = System.Math.Round(Re, 2);
                 dtConMat.Rows.Add(dr);
             }
 

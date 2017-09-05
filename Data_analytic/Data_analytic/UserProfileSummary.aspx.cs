@@ -14,18 +14,18 @@ namespace Data_analytic
         {
             if (!IsPostBack)
             {
-                showToolSummary();
-                showProgramingSummary();
-                showMathmeticSummary();
-                showResearchSummary();
+                ShowToolSummary();
+                ShowProgSummary();
+                ShowMathsSummary();
+                ShowResSummary();
             }
 
         }
 
         /// <summary>
-        //show User selection in programing page during its vists
+        //Show user profile selections associated to programing domain
         /// </summary>
-        void showProgramingSummary()
+        void ShowProgSummary()
         {
             if (Session["Programing"] != null)
             {
@@ -43,9 +43,9 @@ namespace Data_analytic
                     DataRow drn = dtSelectPrograming.NewRow();
                     drn["Data"] = dr["Data"];
                     string str = "";
-                    if (dr["Intermedite"].ToString() == "1")
+                    if (dr["intermediate"].ToString() == "1")
                     {
-                        str = "Intermedite";
+                        str = "intermediate";
                     }
                     else if (dr["Expert"].ToString() == "1")
                     {
@@ -62,10 +62,11 @@ namespace Data_analytic
                 grdPrograming.DataBind();
             }
         }
+        
         /// <summary>
-        //show User selection in Research and Mathmetic  page during its vists
+        //Show user profile selections associated to Maths domain
         /// </summary>
-        void showMathmeticSummary()
+        void ShowMathsSummary()
         {
             if (Session["Mathmetic"] != null)
             {
@@ -84,9 +85,9 @@ namespace Data_analytic
                     drn["Data"] = dr["Data"];
                     string str = "";
                     //Expert
-                    if (dr["Intermedite"].ToString() == "1")
+                    if (dr["intermediate"].ToString() == "1")
                     {
-                        str = "Intermedite";
+                        str = "intermediate";
                     }
                     else if (dr["Expert"].ToString() == "1")
                     {
@@ -103,10 +104,11 @@ namespace Data_analytic
                 grdMath.DataBind();
             }
         }
+
         /// <summary>
-        //show User selection in Research and Mathmetic  page during its vists
+        //Show user profile selections associated to Research domain
         /// </summary>
-        void showResearchSummary()
+        void ShowResSummary()
         {
             if (Session["ResearchExp"] != null)
             {
@@ -125,9 +127,9 @@ namespace Data_analytic
                     drn["Data"] = dr["Data"];
                     string str = "";
                     //Expert
-                    if (dr["Intermedite"].ToString() == "1")
+                    if (dr["intermediate"].ToString() == "1")
                     {
-                        str = "Intermedite";
+                        str = "intermediate";
                     }
                     else if (dr["Expert"].ToString() == "1")
                     {
@@ -144,10 +146,11 @@ namespace Data_analytic
                 grdResearch.DataBind();
             }
         }
+
         /// <summary>
-        //show User selection in tool page during its vists
+        //Show user profile selections associated to Tools domain
         /// </summary>
-        void showToolSummary()
+        void ShowToolSummary()
         {
             if (Session["Tool"] != null)
             {
@@ -166,9 +169,9 @@ namespace Data_analytic
                         DataRow drn = dtSelectionTools.NewRow();
                         drn["Data"] = dr["Data"];
                         string str = "";
-                        if (dr["Intermedite"].ToString() == "1")
+                        if (dr["intermediate"].ToString() == "1")
                         {
-                            str = "Intermedite";
+                            str = "intermediate";
                         }
                         else if (dr["Expert"].ToString() == "1")
                         {
@@ -189,10 +192,10 @@ namespace Data_analytic
 
 
         /// <summary>
-        /// Save user record in Data base that selection during vists programing ,Tool,Mathmetic and Research
+        /// To save user profile to application database
         /// </summary>
-        
-        void SaveUserInputRecord(string TblName, BusinessLayer.DataServices m)
+
+        void SaveUserInputRec(string TblName, BusinessLayer.DataServices m)
         {
             if (Session[TblName] != null)
             {
@@ -207,7 +210,7 @@ namespace Data_analytic
                         
                         int AcademicInfo_ID= int.Parse(dr["AcademicInfo_ID"].ToString());
                         int Level = 1;
-                        if (dr["Intermedite"].ToString() == "1")
+                        if (dr["intermediate"].ToString() == "1")
                         {
                             Level = 3;
                         }
@@ -220,39 +223,43 @@ namespace Data_analytic
                             Level = 2;
                         }
 
-                        m.InsertUserInputRecord(User_ID, AcademicInfo_ID, Level);
+                        m.InsertUserInputRec(User_ID, AcademicInfo_ID, Level);
                     }
                 }
             }
         }
-        // To Selection the Sugest The Module When clicking next
+
+        // To delete any previous data in database related to student and call SaveUserInputRec() for each expertise domain
+
         protected void btnNext_Click(object sender, EventArgs e)
         {
              BusinessLayer.DataServices m = new BusinessLayer.DataServices();
              int User_ID = (int)Session["UserID"];
-             m.DeleteUserInputRecord(User_ID);
+             m.DeleteUserInputRec(User_ID);
             for (int i = 0; i < 4; i++)
             {
                 if (i == 0)
                 {
-                    SaveUserInputRecord("Programing", m);
+                    SaveUserInputRec("Programing", m);
                 }
                 else if (i == 1)
                 {
-                    SaveUserInputRecord("Tool", m);
+                    SaveUserInputRec("Tool", m);
                 }
                 else if (i == 2)
                 {
-                    SaveUserInputRecord("Mathmetic", m);
+                    SaveUserInputRec("Mathmetic", m);
                 }
                 else if (i == 3)
                 {
-                    SaveUserInputRecord("ResearchExp", m);
+                    SaveUserInputRec("ResearchExp", m);
                 }
             }
+            Session["CallFromResult"] = "NotModify";
             Response.Redirect("~/Result.aspx");
         }
-        //To Modify Tool Selections
+
+        //To modify Tool selections - Go to previous page
 
         protected void btnPre_Click(object sender, EventArgs e)
         {

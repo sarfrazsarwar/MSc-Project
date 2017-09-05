@@ -20,6 +20,8 @@ namespace Data_analytic
                 Session.RemoveAll();
         }
 
+
+        // To login
         protected void LoginButton_Click(object sender, EventArgs e)
         {
 
@@ -58,7 +60,6 @@ namespace Data_analytic
                     }
                 }
                 }
-
 
 
         }

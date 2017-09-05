@@ -17,7 +17,8 @@ namespace BusinessLayer
             return DT;
         }
 
-        public DataTable GetModuleRequirement(int id)
+       // To retrieve module requirements
+        public DataTable GetModuleReq(int id)
         {
             DataTable dtreq = new DataTable();
             string query = "select ab.[Academic_info],ce.[Expertise] ,ce.[ExpertiseLevel_ID],ab.AcademicInfo_ID from " +
@@ -28,6 +29,8 @@ namespace BusinessLayer
             DB_ACCESS.DbAccess.FillLocalTable(dtreq, query);
             return dtreq;
         }
+
+
         public DataTable GetAssocitedMoudleinfo()
         {
             DT.Clear();
@@ -37,21 +40,25 @@ namespace BusinessLayer
             return DT;
         }
 
-        public void DeleteModuleReqrRecord(int u_id)
+       // To delete module requirements from database
+
+        public void DeleteModuleReq(int u_id)
         {
 
             string str = "DELETE FROM [Data_Analytics].[dbo].[ModuleRequirement]" +
                             "WHERE [AcademicModule_ID]=" + u_id;
-            DB_ACCESS.DbAccess.executeQuery(str);
+            DB_ACCESS.DbAccess.ExecuteQuery(str);
 
         }
 
-        public void InsertModuleReqRecord(int AcademicModule_ID, int AcademicInfo_ID, int Level)
+       // To insert module requirement into database
+
+        public void InsertModuleReq(int AcademicModule_ID, int AcademicInfo_ID, int Level)
         {
 
             string str = "INSERT Into [Data_Analytics].[dbo].[ModuleRequirement] ([AcademicInfo_ID] ,[AcademicModule_ID],[ExpertiseLevel_ID]) VALUES " +
                                         "(" + AcademicInfo_ID + "," + AcademicModule_ID + "," + Level + ")";
-            DB_ACCESS.DbAccess.executeQuery(str);
+            DB_ACCESS.DbAccess.ExecuteQuery(str);
 
         }
     }

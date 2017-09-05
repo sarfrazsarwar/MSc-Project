@@ -4,8 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div id="progressbar";  style="width:100%">
     <div class="progBar_Fill">Programming</div> 
-    <div class="progBar">Math</div> 
-    <div class="progBar">Tool</div> 
+    <div class="progBar">Mathematics</div> 
+    <div class="progBar">Tools</div> 
     <div class="progBar">Summary</div>
     <div class="progBar">Result</div>
     <div class="progBar">Final</div>

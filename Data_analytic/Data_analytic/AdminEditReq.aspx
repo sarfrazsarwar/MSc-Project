@@ -43,7 +43,7 @@
                    </ItemTemplate>
                    <HeaderStyle Font-Bold="True" Font-Size="Medium" />
                </asp:TemplateField>
-               <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="Intermedite">
+               <asp:TemplateField HeaderStyle-Font-Bold="false" HeaderText="intermediate">
                    <ItemTemplate>
                        <asp:RadioButton ID="RowSelector2" runat="server" GroupName="InfoGroup" 
                            Width="100" />

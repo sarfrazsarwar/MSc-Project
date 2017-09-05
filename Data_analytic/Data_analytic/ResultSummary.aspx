@@ -15,8 +15,8 @@
 
     <div id="progressbar";  style="width:101%">
     <div class="progBar_Fill">Programming</div> 
-    <div class="progBar_Fill">Math</div> 
-    <div class="progBar_Fill">Tool</div> 
+    <div class="progBar_Fill">Mathematics</div> 
+    <div class="progBar_Fill">Tools</div> 
     <div class="progBar_Fill">Summary</div>
     <div class="progBar_Fill">Result</div>
     <div class="progBar_Fill">Final</div>
@@ -165,6 +165,12 @@
                      HtmlEncode="False" ItemStyle-Width="200px" />
                 <asp:BoundField DataField="Email" HeaderText="Contact Info" HtmlEncode="False" 
                      ItemStyle-Width="200px" />
+                <asp:TemplateField  HeaderText ="Online Catalogue" ItemStyle-Width="150px">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="lnk"  runat="server" Target="_blank" Text='<%# SetUrl(Eval("WebAddress")) %>'
+                            NavigateUrl='<%# GetUrl(Eval("WebAddress")) %>'></asp:HyperLink>
+                    </ItemTemplate>
+               </asp:TemplateField>
                
              </Columns>
              <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
@@ -215,6 +221,12 @@
                      HtmlEncode="False" ItemStyle-Width="200px" />
                 <asp:BoundField DataField="Email" HeaderText="Contact Info" HtmlEncode="False" 
                      ItemStyle-Width="200px" />
+                <asp:TemplateField  HeaderText ="Online Catalogue" ItemStyle-Width="150px">
+                    <ItemTemplate>
+                        <asp:HyperLink ID="lnk"  runat="server" Target="_blank" Text='<%# SetUrl(Eval("WebAddress")) %>'
+                            NavigateUrl='<%# GetUrl(Eval("WebAddress")) %>'></asp:HyperLink>
+                    </ItemTemplate>
+       </asp:TemplateField>
          </Columns>
          <HeaderStyle BackColor="#CCCCFF" BorderColor="Black" Height="18px" />
          <SelectedRowStyle BackColor="#A1DCF2" Font-Bold="True" />

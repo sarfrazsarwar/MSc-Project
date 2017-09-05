@@ -31,7 +31,7 @@ namespace Data_analytic
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 e.Row.Attributes["onclick"] = Page.ClientScript.GetPostBackClientHyperlink(Module_GD, "Select$" + e.Row.RowIndex);
-                e.Row.ToolTip = "Click to select this row.";
+                e.Row.ToolTip = "Click to select this row";
             }
         }
 
@@ -42,7 +42,7 @@ namespace Data_analytic
             {
                 if (row.RowIndex == Module_GD.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+
                     row.ToolTip = string.Empty;
 
                     BusinessLayer.EditModuleReq R = new BusinessLayer.EditModuleReq();
@@ -55,7 +55,7 @@ namespace Data_analytic
                         {
 
                         }
-                        DataTable dt1 = R.GetModuleRequirement(mmID);
+                        DataTable dt1 = R.GetModuleReq(mmID);
                         grdRequirment.DataSource = dt1;
                         grdRequirment.DataBind();
                         UpdatePanel1.Update();
@@ -65,19 +65,21 @@ namespace Data_analytic
                 else
                 {
                     row.BackColor = ColorTranslator.FromHtml("#FFFFFF");
-                    row.ToolTip = "Click to select this row.";
+                    row.ToolTip = "Click to select this row";
                 }
             }
         }
        
-        //Modify Requirment of Mudule 
+        //Event function to modify module requirements 
         protected void btnModify_Click(object sender, EventArgs e)
         {
+
+            lblError.Text = "";
             if (Session["REQ_Module"] == null && Session["REQ_ID"] == null)
             {
-                  
-         
-                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Select The Module');", true);
+
+                lblError.Text = "Click to select appropriate academic module";
+
            
             }
             else
@@ -86,6 +88,5 @@ namespace Data_analytic
             }
         }
 
-        //TestLink()
     }
 }

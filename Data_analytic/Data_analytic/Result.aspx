@@ -17,8 +17,8 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
     <div id="progressbar";  style="width:100%">
     
     <div class="progBar_Fill">Programming</div> 
-    <div class="progBar_Fill">Math</div> 
-    <div class="progBar_Fill">Tool</div> 
+    <div class="progBar_Fill">Mathematics</div> 
+    <div class="progBar_Fill">Tools</div> 
     <div class="progBar_Fill">Summary</div>
     <div class="progBar_Fill">Result</div>
     <div class="progBar">Final</div>
@@ -51,7 +51,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
                 HtmlEncode="False" ItemStyle-Width="270px">
                
                  </asp:BoundField>
-        <asp:BoundField DataField="Recall" HeaderText="Priority" 
+        <asp:BoundField DataField="Module_Priority" HeaderText="Priority" 
                 HtmlEncode="False" ItemStyle-Width="50px">
              
                  </asp:BoundField>
@@ -112,7 +112,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
                 HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="FalseNegtive" HeaderText="False Negtive" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>--%>
-        <asp:BoundField DataField="Recall" HeaderText="Priority" 
+        <asp:BoundField DataField="Module_Priority" HeaderText="Priority" 
                 HtmlEncode="False" ItemStyle-Width="20px" />
         <asp:BoundField DataField="Compulsory" HeaderText="Compulsory" 
                 HtmlEncode="False" ItemStyle-Width="40px" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"/>
@@ -153,7 +153,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
     <div style='overflow:scroll; width:98%; height:286px; margin-left:7px; margin-top:10px'>
     <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional" >
       <ContentTemplate>
-     <asp:GridView ID="grdSemester1Detail" runat="server" Width="2000px" 
+     <asp:GridView ID="grdSemester1Detail" runat="server" Width="1250px" 
             AutoGenerateColumns="false"  Font-Italic="False" Font-Names="Calibri" 
             Font-Size="Medium" Height="371px" style="margin-left: 4px" >
              <Columns  >
@@ -162,7 +162,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
        <asp:BoundField DataField="Module_No" HeaderText="Module ID" 
                 HtmlEncode="False" ItemStyle-Width="100px"/>
        <asp:BoundField DataField="none Selected" HeaderText="Deficient Module Requirements" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="350px"/>
        <asp:BoundField DataField="ExamType" HeaderText="Evaluation Mode" 
                 HtmlEncode="False" ItemStyle-Width="100px"/>
        <asp:BoundField DataField="Exam_Weightage" HeaderText="Exam Weightage" 
@@ -171,7 +171,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
                 HtmlEncode="False" ItemStyle-Width="100px"/>
        <asp:BoundField DataField="CourseWorks" HeaderText="No of Coursework" 
                 HtmlEncode="False" ItemStyle-Width="100px"/>
-       <asp:TemplateField  HeaderText ="Online Catalogue">
+       <asp:TemplateField  HeaderText ="Online Catalogue" ItemStyle-Width="150px">
                     <ItemTemplate>
                         <asp:HyperLink ID="lnk"  runat="server" Target="_blank" Text='<%# SetUrl(Eval("WebAddress")) %>'
                             NavigateUrl='<%# GetUrl(Eval("WebAddress")) %>'></asp:HyperLink>
@@ -247,7 +247,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
                 HtmlEncode="False" ItemStyle-Width="300px"/>
         <asp:BoundField DataField="FalseNegtive" HeaderText="False Negtive" 
                 HtmlEncode="False" ItemStyle-Width="300px"/>--%>
-        <asp:BoundField DataField="Recall" HeaderText="Priority" 
+        <asp:BoundField DataField="Module_Priority" HeaderText="Priority" 
                 HtmlEncode="False" ItemStyle-Width="50px"/>
         <asp:BoundField DataField="Compulsory" HeaderText="Compulsory" 
                 HtmlEncode="False" ItemStyle-Width="50px" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"/>
@@ -293,7 +293,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
              <Columns  >
        <asp:BoundField DataField="ACademic_Module" HeaderText="Module" 
                 HtmlEncode="False" ItemStyle-Width="270px"/>
-        <asp:BoundField DataField="Recall" HeaderText="Priority" 
+        <asp:BoundField DataField="Module_Priority" HeaderText="Priority" 
                 HtmlEncode="False" ItemStyle-Width="20px"/>
         <asp:BoundField DataField="Compulsory" HeaderText="Compulsory" 
                 HtmlEncode="False" ItemStyle-Width="40px" ItemStyle-CssClass="hiddencol"  HeaderStyle-CssClass="hiddencol"/>
@@ -324,7 +324,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
         <div style='overflow:scroll; width:98%; height:286px; margin-left:8px; margin-top:10px;'>
         <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Conditional" >
       <ContentTemplate>
-             <asp:GridView ID="grdSemester2Detail" runat="server" Width="1998px" 
+             <asp:GridView ID="grdSemester2Detail" runat="server" Width="1249px" 
             AutoGenerateColumns="false"  Font-Italic="False" Font-Names="Calibri" 
             Font-Size="Medium" Height="429px" style="margin-left: 1px" >
              <Columns  >
@@ -333,7 +333,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
        <asp:BoundField DataField="Module_No" HeaderText="Module ID" 
                 HtmlEncode="False" ItemStyle-Width="100px"/>
        <asp:BoundField DataField="none Selected" HeaderText="Deficient Module Requirements" 
-                HtmlEncode="False" ItemStyle-Width="300px"/>
+                HtmlEncode="False" ItemStyle-Width="350px"/>
        <asp:BoundField DataField="ExamType" HeaderText="Evaluation Mode" 
                 HtmlEncode="False" ItemStyle-Width="100px"/>
        <asp:BoundField DataField="Exam_Weightage" HeaderText="Exam Weightage" 
@@ -342,7 +342,7 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
                 HtmlEncode="False" ItemStyle-Width="100px"/>
        <asp:BoundField DataField="CourseWorks" HeaderText="No of Coursework" 
                 HtmlEncode="False" ItemStyle-Width="100px"/>
-       <asp:TemplateField  HeaderText ="Online Catalogue">
+       <asp:TemplateField  HeaderText ="Online Catalogue" ItemStyle-Width="150px">
                     <ItemTemplate>
                         <asp:HyperLink ID="lnk"  runat="server" Target="_blank" Text='<%# SetUrl(Eval("WebAddress")) %>'
                             NavigateUrl='<%# GetUrl(Eval("WebAddress")) %>'></asp:HyperLink>
@@ -385,8 +385,10 @@ Inherits="Data_analytic.Result"  EnableEventValidation="false" %>
    </asp:Panel> 
    <br />
     <asp:Label ID="lblErrorMian" runat="server" Text="" ForeColor="#FF3300"></asp:Label>
-     <div style=" float:right; margin-right:40%;margin-top:15px" >
-        
+     <div style=" float:right; margin-right:32%;margin-top:15px" >
+        <asp:Button ID="BtnSystemReset" runat="server" Text=" System Reset"  
+             Height="43px" style="margin-left: 0px" Width="146px" BackColor="#55a6dd" 
+            BorderColor="#666768" BorderStyle="Solid" onclick="BtnSystemReset_Click" />
          <asp:Button ID="btnSubmit" runat="server" Text="Submit" onclick="btnSubmit_Click" Height="43px" style="margin-left: 0px" Width="146px"  BackColor="#55a6dd" 
             BorderColor="#666768" BorderStyle="Solid" />
         

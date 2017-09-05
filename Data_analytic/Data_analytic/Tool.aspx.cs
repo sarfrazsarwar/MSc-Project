@@ -12,10 +12,11 @@ namespace Data_analytic
 {
     public partial class Tool : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
             BusinessLayer.DataServices m = new BusinessLayer.DataServices();
-            grdTools.DataSource = m.GetToolAcademicAssociatedInfo();
+            grdTools.DataSource = m.GetToolAcademicInfo();
             grdTools.DataBind();
             if (Session["Tool"] != null && !IsPostBack)
             {
@@ -39,7 +40,6 @@ namespace Data_analytic
             {
                 if (row.RowIndex == grdTools.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
                     row.ToolTip = string.Empty;
 
                 }
@@ -50,7 +50,8 @@ namespace Data_analytic
                 }
             }
         }
-        //Load Previous Selection State when visits again
+
+        //To load previous selections of the student, during same session
         void LoadSelectedState()
         {
             DataTable dt=(DataTable)Session["Tool"];
@@ -71,7 +72,7 @@ namespace Data_analytic
                      {
                         rbt1.Checked = true;
                         }
-                     else if (dr["Intermedite"].ToString() == "1")
+                     else if (dr["intermediate"].ToString() == "1")
                      {
                          rbt3.Checked = true;
                      }
@@ -83,7 +84,8 @@ namespace Data_analytic
                      i++;
                 }
         }
-       // maintain the user Selection Expertise   when click on next
+
+       // To maintain the user selections within session variable for subsequent use
         void SetLoadStateData()
         {
             DataTable dt = new DataTable();
@@ -96,18 +98,15 @@ namespace Data_analytic
 
             dt.Columns.Add(dc);
             dc = new DataColumn("Available", typeof(int));
-            // dc.ColumnName = "Available";
 
             dt.Columns.Add(dc);
 
             dc = new DataColumn("NotAvailable", typeof(int));
            
             dt.Columns.Add(dc);
-            dc = new DataColumn("Intermedite", typeof(int));
+            dc = new DataColumn("intermediate", typeof(int));
             dt.Columns.Add(dc);
-            //dc = new DataColumn();
 
-            //dc.ColumnName = "Expert";
 
             dc = new DataColumn("Expert", typeof(int));
 
@@ -133,10 +132,10 @@ namespace Data_analytic
                 RadioButton r2 = (RadioButton)row.FindControl("RowSelector2");
 
                 if (r2.Checked)
-                    dr["Intermedite"] = 1;
+                    dr["intermediate"] = 1;
 
                 else
-                    dr["Intermedite"] = 0;
+                    dr["intermediate"] = 0;
                 RadioButton r3 = (RadioButton)row.FindControl("RowSelector3");
 
                 if (r3.Checked)
@@ -149,22 +148,27 @@ namespace Data_analytic
             }
             Session["Tool"] = dt;
         }
+
+        // To go to previous page
         protected void btnPre_Click(object sender, EventArgs e)
         {
             SetLoadStateData();
             Response.Redirect("~/MathematicsResearch.aspx");
         }
+
+        // To go to next page
         protected void btnNext_Click(object sender, EventArgs e)
         {
             SetLoadStateData();
             Response.Redirect("~/UserProfileSummary.aspx");
         }
 
+        // To reset all options to default settings
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
             BusinessLayer.DataServices m = new BusinessLayer.DataServices();
-            grdTools.DataSource = m.GetToolAcademicAssociatedInfo();
+            grdTools.DataSource = m.GetToolAcademicInfo();
             grdTools.DataBind();
         }
 

@@ -15,10 +15,10 @@ namespace Data_analytic
         {
             
             BusinessLayer.DataServices m = new BusinessLayer.DataServices();
-            DataTable dtb = m.GetProgramingAcademicAssociatedInfo();
+            DataTable dtb = m.GetProgAcademicInfo();
             grdPrograming.DataSource = dtb;
             grdPrograming.DataBind();
-            //Session.Add("UserName", "");
+
             if (Session["Programing"] != null && !IsPostBack)
             {
                 LoadSelectedState();
@@ -43,7 +43,7 @@ namespace Data_analytic
             {
                 if (row.RowIndex == grdPrograming.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+
                     row.ToolTip = string.Empty;
                     
                 }
@@ -54,7 +54,9 @@ namespace Data_analytic
                 }
             }
         }
-        //Load Previous Selection State when visits again
+
+
+        //To load previous selections of the student, during same session
         void LoadSelectedState()
         {
             DataTable dt = (DataTable)Session["programing"];
@@ -75,7 +77,7 @@ namespace Data_analytic
                 {
                     rbt1.Checked = true;
                 }
-                else if (dr["Intermedite"].ToString() == "1")
+                else if (dr["intermediate"].ToString() == "1")
                 {
                     rbt3.Checked = true;
                 }
@@ -87,7 +89,9 @@ namespace Data_analytic
                 i++;
             }
         }
-        // maintain the user Selection Expertise   when click on next
+
+
+        // To maintain the user selections within session variable for subsequent use
 
         void SetLoadStateData()
         {
@@ -96,20 +100,18 @@ namespace Data_analytic
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc); 
-            //dt.Columns.Add(dc);
+
             dc = new DataColumn();
             dc.ColumnName = "AcademicInfo_ID";
 
             dt.Columns.Add(dc);
             dc = new DataColumn("Available", typeof(int));
            
-            // dc.ColumnName = "Available";
-
             dt.Columns.Add(dc);
 
             dc = new DataColumn("NotAvailable", typeof(int));
             dt.Columns.Add(dc);
-            dc = new DataColumn("Intermedite", typeof(int));
+            dc = new DataColumn("intermediate", typeof(int));
             dt.Columns.Add(dc);
             dc = new DataColumn("Expert", typeof(int));
 
@@ -135,10 +137,10 @@ namespace Data_analytic
                 RadioButton r2 = (RadioButton)row.FindControl("RowSelector2");
 
                 if (r2.Checked)
-                    dr["Intermedite"] = 1;
+                    dr["intermediate"] = 1;
 
                 else
-                    dr["Intermedite"] = 0;
+                    dr["intermediate"] = 0;
                 RadioButton r3 = (RadioButton)row.FindControl("RowSelector3");
 
                 if (r3.Checked)
@@ -151,6 +153,8 @@ namespace Data_analytic
             }
             Session["Programing"] = dt;
         }
+
+        // Go to next page
         
         protected void btnNext_Click(object sender, EventArgs e)
         {
@@ -159,10 +163,12 @@ namespace Data_analytic
             
         }
 
+
+        // To reset all options to default state - "No Experience"
         protected void btnReset_Click(object sender, EventArgs e)
         {
             BusinessLayer.DataServices m = new BusinessLayer.DataServices();
-            DataTable dtb = m.GetProgramingAcademicAssociatedInfo();
+            DataTable dtb = m.GetProgAcademicInfo();
         
 
             grdPrograming.DataSource = dtb;

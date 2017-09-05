@@ -14,17 +14,18 @@ namespace Data_analytic.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           // RegisterUser.ContinueDestinationPageUrl = Request.QueryString["ReturnUrl"];
+
             if(!IsPostBack)
             Session.RemoveAll();
         }
 
+        // For user registration
         protected void RegisterUser_CreatedUser(object sender, EventArgs e)
         {
-            //FormsAuthentication.SetAuthCookie(RegisterUser.UserName, false /* createPersistentCookie */);
+
 
             BusinessLayer.LogInInfoCalc m = new BusinessLayer.LogInInfoCalc();
-            if (m.DuplicateUserInfoRecord(UserName.Text) == 0)
+            if (m.DuplicateUserInfoRec(UserName.Text) == 0)
             {
                 List<string> strlist=new List<string>();
                 strlist.Add(UserName.Text);
@@ -43,16 +44,7 @@ namespace Data_analytic.Account
                 else
                 Response.Redirect("~/Programming.aspx");
             }
-            //else
-            //{
-            //    Response.Redirect("About.aspx");
-            //}
-          //  string continueUrl = RegisterUser.ContinueDestinationPageUrl;
-            //if (String.IsNullOrEmpty(continueUrl))
-            //{
-            //    continueUrl = "~/";
-            //}
-            //Response.Redirect(continueUrl);
+
         }
 
       

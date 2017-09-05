@@ -71,7 +71,7 @@ namespace Data_analytic
                 BusinessLayer.LogInInfoCalc m = new BusinessLayer.LogInInfoCalc();
                 Session["Reviews"] = msg;
                  m.UserReviewsUpdate(msg, id);
-                //UpdatePanel record;
+
             }
             if (Session["call"] != null)
             {

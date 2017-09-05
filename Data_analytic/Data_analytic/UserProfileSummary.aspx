@@ -5,8 +5,8 @@
     <div id="progressbar";  style="width:100%">
     
     <div class="progBar_Fill">Programming</div> 
-    <div class="progBar_Fill">Math</div> 
-    <div class="progBar_Fill">Tool</div> 
+    <div class="progBar_Fill">Mathematics</div> 
+    <div class="progBar_Fill">Tools</div> 
     <div class="progBar_Fill">Summary</div>
     <div class="progBar">Result</div>
     <div class="progBar">Final</div>

@@ -20,18 +20,40 @@ namespace Data_analytic
                 showMathmeticSummary();
                 showResearchSummary();
                  BusinessLayer.CalcualteResult obj = new BusinessLayer.CalcualteResult();
-                   int User_ID =(int)Session["UserID"];
+                   
+                int User_ID =(int)Session["UserID"];
                  DataTable dtModuleSemester2=  obj.GetPreRecordSM2(User_ID);
                  grdSugSemester2.DataSource = dtModuleSemester2;
                  grdSugSemester2.DataBind();
                  DataTable dtModuleSemester1 = obj.GetPreRecordSM1(User_ID);
                  grdSugSemester1.DataSource = dtModuleSemester1;
-                  grdSugSemester1.DataBind();
+                 grdSugSemester1.DataBind();
             }
            
         }
+
+        // To implement web link column for module details grid
+
+        protected string SetUrl(object o)
+        {
+            if (o.ToString().Trim() == "")
+            {
+                return "";
+            }
+            else
+            {
+                return "WebLink";
+            }
+        }
+
+        // To implement web link column for module details grid
+        protected string GetUrl(object id)
+        {
+            return "http://" + id;
+        }
+
         /// <summary>
-        //show User selection in programing page during its vists
+        //Show user profile selections associated to Programming domain
         /// </summary>
         void showProgramingSummary()
         {
@@ -51,9 +73,9 @@ namespace Data_analytic
                     DataRow drn = dtSelectPrograming.NewRow();
                     drn["Data"] = dr["Data"];
                     string str = "";
-                    if (dr["Intermedite"].ToString() == "1")
+                    if (dr["intermediate"].ToString() == "1")
                     {
-                        str = "Intermedite";
+                        str = "intermediate";
                     }
                     else if (dr["Expert"].ToString() == "1")
                     {
@@ -70,8 +92,9 @@ namespace Data_analytic
                 grdPrograming.DataBind();
             }
         }
+
         /// <summary>
-        //show User selection in Research and Mathmetic  page during its vists
+        //Show user profile selections associated to Maths domain
         /// </summary>
         void showMathmeticSummary()
         {
@@ -92,9 +115,9 @@ namespace Data_analytic
                     drn["Data"] = dr["Data"];
                     string str = "";
                     //Expert
-                    if (dr["Intermedite"].ToString() == "1")
+                    if (dr["intermediate"].ToString() == "1")
                     {
-                        str = "Intermedite";
+                        str = "intermediate";
                     }
                     else if (dr["Expert"].ToString() == "1")
                     {
@@ -111,8 +134,9 @@ namespace Data_analytic
                 grdMath.DataBind();
             }
         }
+
         /// <summary>
-        //show User selection in Research and Mathmetic  page during its vists
+        //Show user profile selections associated to Research domain
         /// </summary>
         void showResearchSummary()
         {
@@ -133,9 +157,9 @@ namespace Data_analytic
                     drn["Data"] = dr["Data"];
                     string str = "";
                     //Expert
-                    if (dr["Intermedite"].ToString() == "1")
+                    if (dr["intermediate"].ToString() == "1")
                     {
-                        str = "Intermedite";
+                        str = "intermediate";
                     }
                     else if (dr["Expert"].ToString() == "1")
                     {
@@ -152,8 +176,9 @@ namespace Data_analytic
                 grdResearch.DataBind();
             }
         }
+
         /// <summary>
-        //show User selection in tool page during its vists
+        //Show user profile selections associated to Tools domain
         /// </summary>
         void showToolSummary()
         {
@@ -174,9 +199,9 @@ namespace Data_analytic
                         DataRow drn = dtSelectionTools.NewRow();
                         drn["Data"] = dr["Data"];
                         string str = "";
-                        if (dr["Intermedite"].ToString() == "1")
+                        if (dr["intermediate"].ToString() == "1")
                         {
-                            str = "Intermedite";
+                            str = "intermediate";
                         }
                         else if (dr["Expert"].ToString() == "1")
                         {
@@ -194,15 +219,19 @@ namespace Data_analytic
                 grdTools.DataBind();
             }
         }
-        //Modify Expertise and Recalculate Modules of Semester 1 and semester 2
+
+
+        //Go to Programming page for any modificatiosn in expertise and recalculate modules of semester 1 and semester 2
         protected void btnModifyExpertise_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Programming.aspx");
         }
          
-        // Readjust the semester 1 and semester 2  modules
+
+        // Go to result page for readjusting the semester 1 and semester 2  modules
         protected void btnModifyModule_Click(object sender, EventArgs e)
         {
+            Session["CallFromResult"] = "Modify";
             Response.Redirect("~/Result.aspx");
         }
     }

@@ -13,12 +13,12 @@ namespace Data_analytic
         protected void Page_Load(object sender, EventArgs e)
         {
             BusinessLayer.DataServices m = new BusinessLayer.DataServices();
-            DataTable dtMath = m.GetMathmeticAcademicAssociatedInfo();
+            DataTable dtMath = m.GetMathAcademicInfo();
           
             grdMath.DataSource = dtMath;
             grdMath.DataBind();
 
-            DataTable dtResearch = m.GetResearchAcademicAssociatedInfo();
+            DataTable dtResearch = m.GetResAcademicInfo();
             grdResearch.DataSource = dtResearch;
             grdResearch.DataBind();
             if (!IsPostBack)
@@ -26,9 +26,9 @@ namespace Data_analytic
                
                 
                 if(Session["Mathmetic"] != null)
-                LoadMathmeticSelectedState();
+                LoadMathsSelState();
                 if (Session["ResearchExp"] != null)
-                LoadResearchSelectedState();
+                LoadResSelState();
             }
 
         }
@@ -48,7 +48,7 @@ namespace Data_analytic
             {
                 if (row.RowIndex == grdMath.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+
                     row.ToolTip = string.Empty;
 
                 }
@@ -75,7 +75,7 @@ namespace Data_analytic
             {
                 if (row.RowIndex == grdResearch.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+
                     row.ToolTip = string.Empty;
 
                 }
@@ -86,8 +86,10 @@ namespace Data_analytic
                 }
             }
         }
-        //Load Previous Selection State when visits again
-        void LoadMathmeticSelectedState()
+
+
+        //To load previous selections of the student, during same session (Maths domain)
+        void LoadMathsSelState()
         {
             DataTable dt = (DataTable)Session["Mathmetic"];
             int i = 0;
@@ -107,7 +109,7 @@ namespace Data_analytic
                 {
                     rbt1.Checked = true;
                 }
-                else if (dr["Intermedite"].ToString() == "1")
+                else if (dr["intermediate"].ToString() == "1")
                 {
                     rbt3.Checked = true;
                 }
@@ -119,28 +121,29 @@ namespace Data_analytic
                 i++;
             }
         }
-        // maintain the user Selection Expertise   when click on next
-        void SetMathmeticData()
+
+
+        // To maintain the user selections within session variable for subsequent use (Maths domain)
+        void SetMathsData()
         {
             DataTable dt = new DataTable();
             DataColumn dc = new DataColumn();
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
-            //dt.Columns.Add(dc);
+
             dc = new DataColumn();
             dc.ColumnName = "AcademicInfo_ID";
 
             dt.Columns.Add(dc);
             dc = new DataColumn("Available", typeof(int));
 
-            // dc.ColumnName = "Available";
 
             dt.Columns.Add(dc);
 
             dc = new DataColumn("NotAvailable", typeof(int));
             dt.Columns.Add(dc);
-            dc = new DataColumn("Intermedite", typeof(int));
+            dc = new DataColumn("intermediate", typeof(int));
             dt.Columns.Add(dc);
             dc = new DataColumn("Expert", typeof(int));
 
@@ -167,10 +170,10 @@ namespace Data_analytic
                 RadioButton r2 = (RadioButton)row.FindControl("RowSelector2");
 
                 if (r2.Checked)
-                    dr["Intermedite"] = 1;
+                    dr["intermediate"] = 1;
 
                 else
-                    dr["Intermedite"] = 0;
+                    dr["intermediate"] = 0;
                 RadioButton r3 = (RadioButton)row.FindControl("RowSelector3");
 
                 if (r3.Checked)
@@ -183,8 +186,9 @@ namespace Data_analytic
             }
             Session["Mathmetic"] = dt;
         }
-        //Load Previous Selection State when visits again
-        void LoadResearchSelectedState()
+
+        //To load previous selections of the student, during same session (Research domain)
+        void LoadResSelState()
         {
             DataTable dt = (DataTable)Session["ResearchExp"];
             int i = 0;
@@ -204,7 +208,7 @@ namespace Data_analytic
                 {
                     rbt1.Checked = true;
                 }
-                else if (dr["Intermedite"].ToString() == "1")
+                else if (dr["intermediate"].ToString() == "1")
                 {
                     rbt3.Checked = true;
                 }
@@ -216,29 +220,29 @@ namespace Data_analytic
                 i++;
             }
         }
-        // maintain the user Selection Expertise   when click on next
-        void SetResearchExprianceData()
+
+
+        // To maintain the user selections within session variable for subsequent use (Research domain)
+        void SetResExpData()
         {
             DataTable dt = new DataTable();
             DataColumn dc = new DataColumn();
             dc.ColumnName = "data";
 
             dt.Columns.Add(dc);
-            //dt.Columns.Add(dc);
+
             dc = new DataColumn();
             dc.ColumnName = "AcademicInfo_ID";
 
             dt.Columns.Add(dc);
             dc = new DataColumn("Available", typeof(int));
 
-            // dc.ColumnName = "Available";
-
             dt.Columns.Add(dc);
 
             dc = new DataColumn("NotAvailable", typeof(int));
 
             dt.Columns.Add(dc);
-            dc = new DataColumn("Intermedite", typeof(int));
+            dc = new DataColumn("intermediate", typeof(int));
             dt.Columns.Add(dc);
             dc = new DataColumn("Expert", typeof(int));
 
@@ -265,10 +269,10 @@ namespace Data_analytic
                 RadioButton r2 = (RadioButton)row.FindControl("RowSelector6");
 
                 if (r2.Checked)
-                    dr["Intermedite"] = 1;
+                    dr["intermediate"] = 1;
 
                 else
-                    dr["Intermedite"] = 0;
+                    dr["intermediate"] = 0;
                 RadioButton r3 = (RadioButton)row.FindControl("RowSelector7");
 
                 if (r3.Checked)
@@ -282,30 +286,34 @@ namespace Data_analytic
             Session["ResearchExp"] = dt;
         }
 
-
+        // Go to next page
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            SetMathmeticData();
-            SetResearchExprianceData();
+            SetMathsData();
+            SetResExpData();
             Response.Redirect("~/Tool.aspx");
 
         }
+
+        // Go to previous page
         protected void btnPre_Click(object sender, EventArgs e)
         {
-            SetMathmeticData();
-            SetResearchExprianceData();
+            SetMathsData();
+            SetResExpData();
             Response.Redirect("~/Programming.aspx");
             
         }
 
+
+        // Reset to default options
         protected void btnReset_Click(object sender, EventArgs e)
         {
             BusinessLayer.DataServices m = new BusinessLayer.DataServices();
-            DataTable dtMath = m.GetMathmeticAcademicAssociatedInfo();
+            DataTable dtMath = m.GetMathAcademicInfo();
             grdMath.DataSource = dtMath;
             grdMath.DataBind();
 
-            DataTable dtResearch = m.GetResearchAcademicAssociatedInfo();
+            DataTable dtResearch = m.GetResAcademicInfo();
             grdResearch.DataSource = dtResearch;
             grdResearch.DataBind();
         }

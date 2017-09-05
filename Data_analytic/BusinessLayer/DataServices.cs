@@ -10,8 +10,8 @@ namespace BusinessLayer
     {
         private DataTable DT = new DataTable("Academic_associated_info");
 
-       // Get Tools page Information  form database 
-        public DataTable GetToolAcademicAssociatedInfo()
+       // To retrieve expertise attributes (Tools domain) from database 
+        public DataTable GetToolAcademicInfo()
         {
             DT.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[AcademicInfo] where Domain_ID=4 AND"+
@@ -20,8 +20,9 @@ namespace BusinessLayer
             int rcord = DT.Rows.Count;
             return DT;
         }
-        // Get programing page Information  form database 
-        public DataTable GetProgramingAcademicAssociatedInfo()
+
+        // To retrieve expertise attributes (Programmming domain) from database 
+        public DataTable GetProgAcademicInfo()
         {
             DT.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[AcademicInfo] where Domain_ID=1 AND [Academic_info]  not like '%_anyOne' ORDER BY AcademicInfo_ID";
@@ -29,8 +30,9 @@ namespace BusinessLayer
             int rcord = DT.Rows.Count;
             return DT;
         }
-        // Get Mathmetic page Information  form database 
-        public DataTable GetMathmeticAcademicAssociatedInfo()
+
+        // To retrieve expertise attributes (Maths domain) from database 
+        public DataTable GetMathAcademicInfo()
         {
             DT.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[AcademicInfo] where Domain_ID=2 AND [Academic_info]  not like '%_anyOne' ORDER BY AcademicInfo_ID";
@@ -38,8 +40,9 @@ namespace BusinessLayer
             int rcord = DT.Rows.Count;
             return DT;
         }
-        // Get Mathmetic page Information  form database 
-        public DataTable GetResearchAcademicAssociatedInfo()
+
+        // To retrieve expertise attributes (Research domain) from database 
+        public DataTable GetResAcademicInfo()
         {
             DT.Clear();
             string str = "Select *from [Data_Analytics].[dbo].[AcademicInfo] where Domain_ID=3 ORDER BY AcademicInfo_ID";
@@ -47,26 +50,30 @@ namespace BusinessLayer
             int rcord = DT.Rows.Count;
             return DT;
         }
-       //Delete previous Selection Expertise  Record if user modify and updata Expertise
-        public void DeleteUserInputRecord(int User_ID)
+
+       //Delete previous selection expertise  record if user modify and updata Expertise
+        public void DeleteUserInputRec(int User_ID)
         {
 
             string str = "DELETE FROM [Data_Analytics].[dbo].[UserProfile]" +
                             "WHERE [User_ID]=" + User_ID;
-            DB_ACCESS.DbAccess.executeQuery(str);
+            DB_ACCESS.DbAccess.ExecuteQuery(str);
 
         }
-       //Insert user Expertise data in data base 
-        public void InsertUserInputRecord(int User_ID,int AcademicInfo_ID,int Level)
+
+       //To insert user expertise data in database
+ 
+        public void InsertUserInputRec(int User_ID, int AcademicInfo_ID, int Level)
         {
 
                 string str = "INSERT Into [Data_Analytics].[dbo].[UserProfile] ([AcademicInfo_ID] ,[User_ID],[Expertise_Level]) VALUES " +
                                             "(" + AcademicInfo_ID + "," + User_ID + "," + Level + ")";
-                DB_ACCESS.DbAccess.executeQuery(str);
+                DB_ACCESS.DbAccess.ExecuteQuery(str);
            
         }
 
-       // Get word sugestion when type the word on text boxt//// This work is absulte
+       // To get word sugestion when type the word on text box//// The function relates to future work - Not completed
+
         public DataTable GetResearchAcademicAssociatedInfo1(string pr)
         {
             DT.Clear();

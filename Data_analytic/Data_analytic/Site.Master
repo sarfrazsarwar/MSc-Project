@@ -161,7 +161,9 @@
   </div>
   <div class="footer">
     <div class="footer_resize">
-      <p>© Copyright 2017. The University of Leeds</p>
+      <p>By using this application, the user agrees to allow academic 
+          profile data (anonymised) to be used for future data analysis.
+          © Copyright 2017. The University of Leeds</p>
     </div>
     <div class="clr"></div>
   </div>

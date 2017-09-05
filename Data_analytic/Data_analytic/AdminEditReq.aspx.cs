@@ -32,7 +32,7 @@ namespace Data_analytic
             BusinessLayer.EditModuleReq R = new BusinessLayer.EditModuleReq();
 
             int id = int.Parse(Session["REQ_ID"].ToString());
-            DataTable dt1 = R.GetModuleRequirement(id);
+            DataTable dt1 = R.GetModuleReq(id);
             {
                 foreach (DataRow dr in dt1.Rows)
                 {
@@ -42,7 +42,8 @@ namespace Data_analytic
                 }
             }
         }
-        //Set the Current requirment of modules
+
+        //To set the current module requirements
         void SetCheckState(string Text,int expertise)
         {
             
@@ -92,7 +93,7 @@ namespace Data_analytic
             {
                 if (row.RowIndex == grdRequirment.SelectedIndex)
                 {
-                   // row.BackColor = ColorTranslator.FromHtml("#A1DCF2");
+
                     row.ToolTip = string.Empty;
                   
 
@@ -104,12 +105,13 @@ namespace Data_analytic
                 }
             }
         }
-        //Save the requirement of module in data base and go back
+
+        // To save the module requirements in database and go back
         protected void btnSave_Click(object sender, EventArgs e)
         {
             int AcademicModule_ID=int.Parse(Session["REQ_ID"].ToString());
             BusinessLayer.EditModuleReq R = new BusinessLayer.EditModuleReq();
-            R.DeleteModuleReqrRecord(AcademicModule_ID);
+            R.DeleteModuleReq(AcademicModule_ID);
 
              foreach (GridViewRow gdrow in grdRequirment.Rows)
             {
@@ -141,7 +143,7 @@ namespace Data_analytic
                          level=4;
                      }
                      if(level>1)
-                     R.InsertModuleReqRecord(AcademicModule_ID,AcademicInfo_ID,level);
+                         R.InsertModuleReq(AcademicModule_ID, AcademicInfo_ID, level);
 
                  }
                   
@@ -149,7 +151,9 @@ namespace Data_analytic
              Response.Redirect("~/AdminPanel.aspx");
         
         }
-        //goto previous page
+
+
+        //Go to previous page
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/AdminPanel.aspx");
